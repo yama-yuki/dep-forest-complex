@@ -1,0 +1,17 @@
+data/
+obs/
+pkl/
+rescore/
+saves/
+__pycache__/
+
+parsers/*.json
+parsers/*.out
+parsers/obs/
+parsers/__pycache__/
+
+dataset_test.py
+test_data/
+*.sh
+*log
+
