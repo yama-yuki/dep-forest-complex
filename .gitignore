@@ -5,10 +5,10 @@ rescore/
 saves/
 __pycache__/
 
-parsers/*.json
-parsers/*.out
-parsers/obs/
-parsers/__pycache__/
+lib/models/parsers/*.json
+lib/models/parsers/*.out
+lib/models/parsers/obs/
+lib/models/parsers/__pycache__/
 
 dataset_test.py
 test_data/
