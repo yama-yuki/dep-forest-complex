@@ -41,3 +41,8 @@ The scores in each step do not seem to align with vanilla k-best even without re
 * Bugs (some duplication fixed, overevaluation: somehow keeps spans with the lower scores, tends to prune spans with broader range)
 * todo?: Rescoring model sometimes overevaluates the case where the verb of matrix clause becomes the dependent of the verb of subordinate clause. Threshold for rescoring S_BERT (e.g., rescore only when S_BERT > S_biaffine)?
 * todo?: However, it's better not adding  much complicated rules... considering improvements training-wise
+
+## etc
+`analyze_deprel.py`: head prediction accuracy based on deprel
+
+`analyze_forest.py`: density: nodes&edges per sentence, check if gold tree is included (in progress)
