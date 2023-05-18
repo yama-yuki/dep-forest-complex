@@ -104,7 +104,7 @@ def backward_star(node, forest, b):
 def topological_sort(nodes):
     ## sort nodes based on span length (rising order)
     #9_3_9_0_4_9
-    #head_lt_rt_lgov_bound_rgov
+    #head_lt_rt_lmost_bound_rmost
     d = defaultdict()
     for node in nodes:
         sp = list(map(int,node.split('_')))
@@ -116,7 +116,7 @@ def topological_sort(nodes):
     for node in sorted_nodes:
         h,_,_,l,_,r,_ = list(map(int,node.split('_')))
         if (h,l,r) not in nodes_hlr:
-            nodes_hlr.append((h,l,r)) ## head,lgov,rgov
+            nodes_hlr.append((h,l,r)) ## head,lmost,rmost
 
     print('topological sort')
     print(nodes_hlr)
@@ -150,7 +150,7 @@ def main_loop(forest, parse_probs, rel_probs, rescores, rescore_config, K):
     #parse_score_d = parse_score(forest_d, length)
 
     '''
-    nodes_hlrlbr: head, ltail, rtail, lgov, boundary, rgov
+    nodes_hlrlbr: head, ltail, rtail, lmost, boundary, rmost
     nodes_hlr: head, lmost, rmost
     forest_d: node_id -> hyperedge
     hlr_forest_d: span_range(head, lmost, rmost) -> [node_ids]
@@ -172,7 +172,7 @@ def main_loop(forest, parse_probs, rel_probs, rescores, rescore_config, K):
 
     ## main loop
     for i,node in enumerate(nodes_hlr):
-        #nodes: [(2, 0, 2), (3, 2, 4), (5, 4, 6)] (head, lgov, rgov)
+        #nodes: [(2, 0, 2), (3, 2, 4), (5, 4, 6)] (head, lmost, rmost)
         print('start_loop')
         print(node)
         select_k(i, node, derivations, forest_d, hlr_forest_d, parse_probs, rel_probs, rescores, rescore_config, K)
@@ -214,7 +214,7 @@ def main_loop(forest, parse_probs, rel_probs, rescores, rescore_config, K):
     pprint(sorted(nbest[0], key=lambda x: x[1]))
 
 def select_k(i, node, derivations, forest_d, hlr_forest_d, parse_probs, rel_probs, rescores, rescore_config, K):
-    # TODO: control K 10/100/1000
+    # TODO: control K
     ## eisner_beam_k = {8,16,32,64,128}
     ## create priq from each incoming hyperedge
     head, lmost, rmost = node
@@ -420,8 +420,8 @@ if __name__ == '__main__':
     with open(os.path.join(cur_dir,'pkl/tags.pkl'), 'rb') as p5:
         all_tags = pkl.load(p5)
 
-    rescore_config = {'alpha': 10.0,
-                      'beta': 10.0,
+    rescore_config = {'alpha': 2.0,
+                      'beta': 2.0,
                       'RESCORE': True}
 
     print('loading model')

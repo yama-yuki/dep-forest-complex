@@ -145,7 +145,7 @@ def dfs_for_span(tree, node, governed):
 
 def form_cfg_hyperedges(hypo, parse_probs, rel_probs):
     '''
-    ## rewrite dep v->u to  x_v->v,u cfg-style
+    ## rewrite dep v->u to x_v->v,u cfg-style
     ## right-element-first merge to handle spurious ambiguity
 
     args:
@@ -162,16 +162,15 @@ def form_cfg_hyperedges(hypo, parse_probs, rel_probs):
     '''
     
     ## make tree from edges
-    edges = sorted(list(hypo.edges), key=lambda x: x[1]) #{(9, 6, 1), (3, 2, 1), (7, 9, 1), (6, 5, 1), (5, 4, 1), (8, 9, 1), (4, 2, 1)}
-    d_tails_labels = defaultdict(dict) # {head:[(tail,label), ()], head:...}
-    for edge in edges: #(9, 6, 1)
+    edges = sorted(list(hypo.edges), key=lambda x: x[1]) ##{(9, 6, 1), (3, 2, 1), (7, 9, 1), (6, 5, 1), (5, 4, 1), (8, 9, 1), (4, 2, 1)}
+    d_tails_labels = defaultdict(dict) ## {head:[(tail,label), ()], head:...}
+    for edge in edges: ##(9, 6, 1)
         d_tails_labels[edge[1]].update([(edge[0],edge[2])])
     tree = Tree(edges)
 
     if len(tree.relation[0])>1:
         print('invalid_tree')
         return
-    #top = tree.relation[0][0]
     top = tree.find_top()
 
     ## binarize dep tree (to resolve spurious amb.)
@@ -405,18 +404,18 @@ def eisner_dp_nbest(length, parse_probs, rel_probs, rescores, RESCORE, NBEST, AL
 
 def eisner_dp_forest(length, parse_probs, rel_probs, NBEST):
     #st_time = time.time()
+    forest = {'hyperedges': [], 'nodes': [], 'node_ids': [i for i in range(int(length+1))]}
 
+    ##constant
     ALPHA=None
     RESCORE=False
     rescores=None
 
-    forest = {'hyperedges': [], 'nodes': [], 'node_ids': [i for i in range(int(length+1))]}
-
     ##init
     memory = defaultdict(list)
-    for i in range(0, length+1): #token_len
-        for d in ('->', '<-'): #direction
-            for c in range(2): #completeness (0:incomplete, 1: complete)
+    for i in range(0, length+1): ##token_len
+        for d in ('->', '<-'): ##direction
+            for c in range(2): ##completeness (0:incomplete, 1: complete)
                 memory[(i,i,d,c)].append(Hypo(0.0, set(), None, 0))
 
     for t in range(1, length+1):
@@ -435,7 +434,7 @@ def eisner_dp_forest(length, parse_probs, rel_probs, NBEST):
             nbest[-1].append((prb,mi,hi,lb))
 
     print(len(forest['hyperedges']))
-    len_file='len_mytree.out'
+    len_file='len.out'
     with open(len_file, 'a') as f:
         f.write(str(len(forest['node_ids']))+' '+str(len(forest['hyperedges'])))
         f.write('\n')
