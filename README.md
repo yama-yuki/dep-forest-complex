@@ -1,36 +1,48 @@
-# Notes on the implementation
+# Dependency Forest Rescoring
+Create Binarized Dependency Forest [Hayashi+,13] with Forest Parser [Song+,19] to do rescoring through Cube Pruning [Huang,08].
+Our system comprises 3 components including `Dependency Forest Parser`, `Rescoring Module`, and `Forest Decoder`.
 
-* Training data reading is a bit tricky and buggy. Please check the code in
-  `dataset.py` and `vocab.py`. In particular, you need to tweak `file_iterator`
-  in `dataset.py` and `add_train_file` in `vocab.py`.
+## Dependency Forest Parser
+Implementation based on https://github.com/freesunshine0316/dep-forest-re/tree/master/biaffine_forest [Song+,19]
 
-* `RadamOptimizer` is buggy and does not work as expected, probably because
-  there's significant changes in handling model parameters in TF. Thus, Adam
-  optimizer is directly borrwed from TF which works as expected.
-
+Notes from [Song+,19]:
 * 1-best parsing algorithm is based on maximum (minimum) spanning tree
   alorithm. See `prob_argmax` of `lib/models/parser/parser.py` and
   `parse_argmax` of `lib/models/nn.py`.
-
 * Eisner's algorithm simply uses the edge scores for parsing. See
   `lib/models/parsers/eisner_nbest.py` for details, in particular, the simple
   unit test. The code seems to be portable so that you have only to feed two
   NumPy array, one for relation probabilitis and the other for label
-  probabilities.
+  probabilities. 
 
-  * It will return nbest parses, not hypergraphs. However, it is probably
-    trivial to output a hypergraph by returning the intermediate data
-    structures.
+Extensions: `lib/models/parser/eisner_nbest.py` (also `lib/models/parser/base_parser.py` and `network.py`)
 
-* The edge-wise method simply enumerates the probable edge with labels by
-  multiplying the relation and label probabilites without considering the tree
-  structures. I feel the code should be modified to compute the posterior
-  probabilities. See `vallidate_cube` in `lib/models/parse/base_parser.py`.
+* In `eisner_nbest.py`, we added `eisner_dp_forest` that outputs a forest (a set of hypergraphs) in .json format.
+* `DepHeadBinarizer` converts intermediate eisner spans into binarized structure `BinHyperedge` by Head-Binarization method to resolve spuriousness.
+* todo: current implementation targets all spans (including incomplete) which may be causing some errors in later cube pruning. better to target only complete spans
 
-  * For details on computing posteriors, check Kirchhoff's matrix tree
-    theorem which allows computing all the non-projective tree
-    structures. Basically, you need to compute the matrix inverse with
-    approprivate transformation of logits. See
-    [https://aclanthology.org/D07-1015/](https://aclanthology.org/D07-1015/),
-    [https://aclanthology.org/D07-1014/](https://aclanthology.org/D07-1014/) and
-    [https://aclanthology.org/I17-1007/](https://aclanthology.org/I17-1007/).
+## Rescoring Module
+some experimental results and stuff: `lib/models/parser/rescore_module`
+
+## Forest Decoder
+CURRENTLY BEING FIXED: `lib/models/parser/forest_decoder.py`
+
+Adopting Cube Pruning for Binarized Dependency Forest
+
+`main_loop`: load hyperedges from forest .json, initialize derivation memory, select_k for each node (head, lgov, rgov), output final derivation
+
+`select_k`: actual cube pruning function: find incoming edges, initialize cubes, manage priority queue
+
+`cube_next`: search on cubes, rescore inside
+
+`bert_rescore`: actual scoring function
+
+The scores in each step do not seem to align with vanilla k-best even without rescoring
+* Bugs (some duplication fixed, overevaluation: somehow keeps spans with the lower scores, tends to prune spans with broader range)
+* todo?: Rescoring model sometimes overevaluates the case where the verb of matrix clause becomes the dependent of the verb of subordinate clause. Threshold for rescoring S_BERT (e.g., rescore only when S_BERT > S_biaffine)?
+* todo?: However, it's better not adding  much complicated rules... considering improvements training-wise
+
+## etc
+`analyze_deprel.py`: head prediction accuracy based on deprel
+
+`analyze_forest.py`: density: nodes&edges per sentence, check if gold tree is included (in progress)
