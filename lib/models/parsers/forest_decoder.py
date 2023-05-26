@@ -425,12 +425,15 @@ if __name__ == '__main__':
                       'RESCORE': True}
 
     print('loading model')
-    remodel = RescoreModel('models')
+    remodel = RescoreModel('root_models')
     cnt=0
     for forest,parse_probs,rel_probs,sent,tags in tqdm(zip(all_forests,all_parse_probs,all_rel_probs,all_sents,all_tags)):
         if cnt==1:
             break
         rescores = remodel.head_prediction(sent, tags)
+        print(sent)
+        print(rescores)
+
         '''
         rescores = [None, None, None, None, np.array([4.8442665e-08, 4.3052935e-08, 4.3104702e-08, 4.2075676e-08,
        4.6197080e-08, 5.0632288e-08, 1.3114438e-07, 4.5686441e-08,
