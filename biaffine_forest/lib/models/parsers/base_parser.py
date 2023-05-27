@@ -31,7 +31,7 @@ from lib.models.parsers.eisner_nbest import eisner_dp_nbest, eisner_dp_forest
 import math
 import os
 import sys
-sys.path.append(os.path.join(os.path.dirname(__file__), '/home/is/yuki-yama/work/d3/dep-forest/biaffine_forest/rescore/scripts'))
+sys.path.append(os.path.join(os.path.dirname(__file__), '/home/is/yuki-yama/work/d3/dep-forest-complex/biaffine_forest/rescore/scripts'))
 from main_test import bert_head_scores
 from pprint import pprint
 from collections import defaultdict

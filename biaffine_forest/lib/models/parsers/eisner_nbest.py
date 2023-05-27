@@ -480,7 +480,8 @@ if __name__ == '__main__':
     print(len(forest['hyperedges']))
 
     ##json
-    forest_out = 'out.json'
-    with open(forest_out, 'w') as f:
+    out_dir = '/home/is/yuki-yama/work/d3/dep-forest-complex/outputs/'
+    forest_out = 'test_forest.json'
+    with open(out_dir+forest_out, 'w') as f:
         json.dump(forest, f)
 

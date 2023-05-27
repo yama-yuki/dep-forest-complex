@@ -1,3 +1,4 @@
+biaffine_forest/config/obs/
 biaffine_forest/data/
 biaffine_forest/obs/
 biaffine_forest/pkl/
@@ -17,4 +18,7 @@ biaffine_forest/lib/models/parsers/rescore_module/obs/
 biaffine_forest/*.sh
 biaffine_forest/*log
 biaffine_forest/*.out
+
+rescore_module/data/
+rescore_module/models/
 

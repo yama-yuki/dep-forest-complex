@@ -1,5 +1,5 @@
 '''
-## head-to-head rescoring model
+## word2word rescoring model
 input:
     sent:(list)
         ['Several', 'traders', 'could', 'be', 'seen', 'shaking', 'their', 'heads', 'when', 'the', 'news', 'flashed', '.']
@@ -21,7 +21,7 @@ import json
 import os
 import sys
 from tqdm import tqdm
-sys.path.append(os.path.join(os.path.dirname(__file__), '../../rescore/rescore'))
+#sys.path.append(os.path.join(os.path.dirname(__file__), '../../rescore/rescore'))
 
 import torch
 import transformers
@@ -272,7 +272,8 @@ if __name__ == '__main__':
 
 
     cfg = configparser.RawConfigParser()
-    cfg.read('rescore.cfg')
+    cfg.read('../rescore.cfg')
+    print('hoge')
     remodel = RescoreModel(cfg)
     print(remodel.head_prediction(sent, tags))
 
