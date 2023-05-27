@@ -1,17 +1,20 @@
-data/
-obs/
-pkl/
-rescore/
-saves/
-__pycache__/
+biaffine_forest/data/
+biaffine_forest/obs/
+biaffine_forest/pkl/
+biaffine_forest/rescore/
+biaffine_forest/saves/
+biaffine_forest/test/
+biaffine_forest__pycache__/
 
-lib/models/parsers/*.json
-lib/models/parsers/*.out
-lib/models/parsers/obs/
-lib/models/parsers/__pycache__/
+biaffine_forest/lib/models/parsers/*.json
+biaffine_forest/lib/models/parsers/*.out
+biaffine_forest/lib/models/parsers/obs/
+biaffine_forest/lib/models/parsers/__pycache__/
 
-dataset_test.py
-test_data/
-*.sh
-*log
+biaffine_forest/lib/models/parsers/rescore_module/__pycashe__/
+biaffine_forest/lib/models/parsers/rescore_module/obs/
+
+biaffine_forest/*.sh
+biaffine_forest/*log
+biaffine_forest/*.out
 

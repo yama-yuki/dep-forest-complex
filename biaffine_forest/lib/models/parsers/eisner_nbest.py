@@ -264,7 +264,8 @@ def cube_pruning(s, t, kk, memory, parse_probs, rel_probs, rescores, RESCORE, NB
             new_hyp = Hypo(logp, edges, u, num_roots)
             #print(hd, md)
 
-            '''kbest merging method from original paper
+            '''kbest merging method of creating a forest based on original paper
+            ## merge hypotheses using all edges
             if len(new_hyp.edges) == length:
                 print(new_hyp.edges)
                 ## create hyperedge representation
@@ -278,13 +279,14 @@ def cube_pruning(s, t, kk, memory, parse_probs, rel_probs, rescores, RESCORE, NB
             '''
 
             ## create hyperedge representation
-            hyperedges = form_cfg_hyperedges(new_hyp, parse_probs, rel_probs)
-            #print([he.as_list() for he in hyperedges])
-            if hyperedges is not None:
-                for he in hyperedges:
-                    if he.as_dict() not in forest['hyperedges']:
-                        forest['hyperedges'].append(he.as_dict())
-                        forest['nodes'].append(he.he_name)
+            if kk[1]==1: ## only when is_making_complete
+                hyperedges = form_cfg_hyperedges(new_hyp, parse_probs, rel_probs)
+                #print([he.as_list() for he in hyperedges])
+                if hyperedges is not None:
+                    for he in hyperedges:
+                        if he.as_dict() not in forest['hyperedges']:
+                            forest['hyperedges'].append(he.as_dict())
+                            forest['nodes'].append(he.he_name)
 
             if j == -1:
                 nbest.append(new_hyp)
@@ -347,8 +349,8 @@ def cube_next(lhs_list, rhs_list, visited, priq,
 
 
 '''
-eisner_dp_nbest: for nbest parsing
-eisner_dp_forest: for creating forest
+eisner_dp_nbest: returns nbest trees
+eisner_dp_forest: returns binarized dependency forest
 '''
 
 def eisner_dp_nbest(length, parse_probs, rel_probs, rescores, RESCORE, NBEST, ALPHA):
@@ -393,13 +395,13 @@ def eisner_dp_nbest(length, parse_probs, rel_probs, rescores, RESCORE, NBEST, AL
             prb = parse_probs[mi,hi] * rel_probs[mi,hi,lb]
             assert prb > 0.0
             nbest[-1].append((prb,mi,hi,lb))
-    #print(nbest)
 
     print(len(forest['hyperedges']))
     len_file='len.out'
     with open(len_file, 'a') as f:
         f.write(str(len(forest['node_ids']))+' '+str(len(forest['hyperedges'])))
         f.write('\n')
+
     return nbest
 
 def eisner_dp_forest(length, parse_probs, rel_probs, NBEST):
@@ -438,6 +440,7 @@ def eisner_dp_forest(length, parse_probs, rel_probs, NBEST):
     with open(len_file, 'a') as f:
         f.write(str(len(forest['node_ids']))+' '+str(len(forest['hyperedges'])))
         f.write('\n')
+
     return forest
 
 if __name__ == '__main__':

@@ -209,7 +209,7 @@ def main_loop(forest, parse_probs, rel_probs, rescores, rescore_config, K):
         for hi,mi,lb in hyp.hyperedges:
             prb = parse_probs[mi,hi] * rel_probs[mi,hi,lb]
             assert prb > 0.0
-            nbest[-1].append((hi,mi,lb,prb))
+            nbest[-1].append((hi,mi,lb,))#prb
     
     pprint(sorted(nbest[0], key=lambda x: x[1]))
 
@@ -314,7 +314,7 @@ def select_k(i, node, derivations, forest_d, hlr_forest_d, parse_probs, rel_prob
         cube_next(derivations, node, kl+1, kr, b, lb, head, lspan, rspan, visited, priq, forest_d, hlr_forest_d, parse_probs, rel_probs, rescores, rescore_config)
         cube_next(derivations, node, kl, kr+1, b, lb, head, lspan, rspan, visited, priq, forest_d, hlr_forest_d, parse_probs, rel_probs, rescores, rescore_config)
     ## sort buffer to D(v)
-    #best_K_buffer = sorted(best_K_buffer, key=lambda x: x.acclogp, reverse=True)
+    best_K_buffer = sorted(best_K_buffer, key=lambda x: x.acclogp, reverse=True)
     derivations[node] = best_K_buffer[:K]
     #print(visited)
 
@@ -420,21 +420,18 @@ if __name__ == '__main__':
     with open(os.path.join(cur_dir,'pkl/tags.pkl'), 'rb') as p5:
         all_tags = pkl.load(p5)
 
-    rescore_config = {'alpha': 2.0,
-                      'beta': 2.0,
+    rescore_config = {'alpha': 10.0,
+                      'beta': -0.5,
                       'RESCORE': True}
 
     print('loading model')
-    remodel = RescoreModel('root_models')
+    ## = RescoreModel('models') ##'root_models','models_verb'
     cnt=0
     for forest,parse_probs,rel_probs,sent,tags in tqdm(zip(all_forests,all_parse_probs,all_rel_probs,all_sents,all_tags)):
         if cnt==1:
             break
-        rescores = remodel.head_prediction(sent, tags)
-        print(sent)
-        print(rescores)
+        ##rescores = remodel.head_prediction(sent, tags)
 
-        '''
         rescores = [None, None, None, None, np.array([4.8442665e-08, 4.3052935e-08, 4.3104702e-08, 4.2075676e-08,
        4.6197080e-08, 5.0632288e-08, 1.3114438e-07, 4.5686441e-08,
        9.9988854e-01, 9.7648467e-08, 5.0003713e-08, 1.1035899e-04,
@@ -457,10 +454,8 @@ if __name__ == '__main__':
        5.5844964e-08, 5.8704348e-08, 6.7323739e-08, 7.6822495e-08,
        7.8168952e-08, 4.3558558e-08], dtype=np.float32), None]
         #print(rescores)
-        '''
 
         verb_nodes = [bool(tag[0] == 'V') for tag in tags]
-        #print(forest)
         print(len(forest['hyperedges']))
 
         ##json
@@ -469,8 +464,7 @@ if __name__ == '__main__':
             json.dump(forest, f)
 
         #sys.exit()
-        print(rescores)
-        main_loop(forest, parse_probs, rel_probs, rescores, rescore_config, 3)
+        main_loop(forest, parse_probs, rel_probs, rescores, rescore_config, 50)
         cnt+=1
 
         print(sent)

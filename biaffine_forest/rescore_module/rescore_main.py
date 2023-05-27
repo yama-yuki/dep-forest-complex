@@ -28,6 +28,8 @@ import transformers
 from transformers import AutoModelForQuestionAnswering, AutoTokenizer, AutoConfig#BertForQuestionAnswering
 import numpy as np
 
+import configparser
+
 import logging
 logger = logging.getLogger('EVAL_LOG')
 logging.basicConfig(
@@ -40,28 +42,17 @@ transformers.utils.logging.disable_progress_bar()
 hide_pb = True
 
 class RescoreModel:## fix hard coding
-    def __init__(self, model_name):
+    def __init__(self, cfg):
         super().__init__()
 
-        ## path
-        self.model_name = model_name #'models' / 'models_verb_all'
-        self.data_dir = '/home/is/yuki-yama/work/d3/dep-forest/biaffine_forest/rescore/data' 
-
-        ## config        
-        self.rescore_config = {'mode': 'pred', 
-        'model_dir': '/home/is/yuki-yama/work/d3/rescore/'+self.model_name+'/bert-base-uncased_1_2_3e-5_32',
-        'pretrained': 'bert-base-uncased',
-        'input_path': os.path.join(self.data_dir, 'temp.in'),
-        'output_path': os.path.join(self.data_dir, 'temp.out')}
-
         ## read config
-        self.config = AutoConfig.from_pretrained(os.path.join(self.rescore_config['model_dir'], "config.json"))
-        self.tokenizer_config = AutoConfig.from_pretrained(os.path.join(self.rescore_config['model_dir'], "tokenizer_config.json"))
+        self.config = AutoConfig.from_pretrained(os.path.join(cfg['OS']['model_dir'], "config.json"))
+        self.tokenizer_config = AutoConfig.from_pretrained(os.path.join(cfg['OS']['model_dir'], "tokenizer_config.json"))
 
         ## load model & tokenizer
-        self.model = AutoModelForQuestionAnswering.from_pretrained(self.rescore_config['pretrained'], config=self.config)
-        self.model.load_state_dict(torch.load(os.path.join(self.rescore_config['model_dir'], "pytorch_model.bin"), map_location=torch.device('cuda:1')))
-        self.tokenizer = AutoTokenizer.from_pretrained(self.rescore_config['pretrained'], config=self.tokenizer_config)
+        self.model = AutoModelForQuestionAnswering.from_pretrained(cfg['Model']['pretrained'], config=self.config)
+        self.model.load_state_dict(torch.load(os.path.join(cfg['OS']['model_dir'], "pytorch_model.bin"), map_location=torch.device('cuda:0')))
+        self.tokenizer = AutoTokenizer.from_pretrained(cfg['Model']['pretrained'], config=self.tokenizer_config)
 
         self.model.eval()
 
@@ -91,7 +82,7 @@ class RescoreModel:## fix hard coding
 
             if tag[0] == 'V':
                 ##create input to rescore model (.json)
-                self._to_squad(sent, cur_node, self.data_dir)
+                self._to_squad(sent, cur_node, cfg['OS']['input_path'])
                 ## predict & return score
                 predictions = self._predict_head()
                 '''predictions
@@ -107,7 +98,7 @@ class RescoreModel:## fix hard coding
 
         return sent_predictions
 
-    def _to_squad(self, sent, cur_node, data_dir):
+    def _to_squad(self, sent, cur_node, input_path):
         new_data = {"data": [{"title": "None", "paragraphs":[]}]}
         entry = {"context":"","qas":[]}
 
@@ -121,16 +112,15 @@ class RescoreModel:## fix hard coding
         entry["qas"] = qas
         new_data["data"][0]["paragraphs"].append(entry)
         
-        out_path = os.path.join(data_dir,'temp.in')
-        with open(out_path, 'w') as o:
+        with open(input_path, 'w') as o:
             json.dump(new_data, o)
 
     def _predict_head(self):
-        mode = self.rescore_config['mode']
+        mode = cfg['Mode']['mode']
         ## mode specification
         logger.info('MODE: '+mode)
-        input_path = self.rescore_config['input_path']
-        pred_path = self.rescore_config['output_path'] #'pred.json'
+        input_path = cfg['OS']['input_path']
+        pred_path = cfg['OS']['output_path'] #'pred.json'
         logger.info('LOADING: '+input_path)
         with open(input_path, mode='r', encoding='utf-8') as f:
             dataset_json = json.load(f)
@@ -280,7 +270,10 @@ if __name__ == '__main__':
     tags = ['JJ', 'NNS', 'MD', 'VB', 'VBN', 'VBG', 'PRP$', 'NNS', 'WRB']
     verb_nodes = [bool(tag[0] == 'V') for tag in tags]
 
-    remodel = RescoreModel('models')
+
+    cfg = configparser.RawConfigParser()
+    cfg.read('rescore.cfg')
+    remodel = RescoreModel(cfg)
     print(remodel.head_prediction(sent, tags))
 
     '''
