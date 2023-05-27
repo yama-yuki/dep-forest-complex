@@ -7,25 +7,25 @@ Implementation based on https://github.com/freesunshine0316/dep-forest-re/tree/m
 
 Notes from [Song+,19]:
 * 1-best parsing algorithm is based on maximum (minimum) spanning tree
-  alorithm. See `prob_argmax` of `lib/models/parser/parser.py` and
-  `parse_argmax` of `lib/models/nn.py`.
+  alorithm. See `prob_argmax` of `biaffine_forest/lib/models/parser/parser.py` and
+  `parse_argmax` of `biaffine_forest/lib/models/nn.py`.
 * Eisner's algorithm simply uses the edge scores for parsing. See
-  `lib/models/parsers/eisner_nbest.py` for details, in particular, the simple
+  `biaffine_forest/lib/models/parsers/eisner_nbest.py` for details, in particular, the simple
   unit test. The code seems to be portable so that you have only to feed two
   NumPy array, one for relation probabilitis and the other for label
   probabilities. 
 
-Extensions: `lib/models/parser/eisner_nbest.py` (also `lib/models/parser/base_parser.py` and `network.py`)
+Extensions: `biaffine_forest/lib/models/parser/eisner_nbest.py` (also `biaffine_forest/lib/models/parser/base_parser.py` and `biaffine_forest/network.py`)
 
 * In `eisner_nbest.py`, we added `eisner_dp_forest` that outputs a forest (a set of hypergraphs) in .json format.
 * `DepHeadBinarizer` converts intermediate eisner spans into binarized structure `BinHyperedge` by Head-Binarization method to resolve spuriousness.
 * todo: current implementation targets all spans (including incomplete) which may be causing some errors in later cube pruning. better to target only complete spans
 
 ## Rescoring Module
-some experimental results and stuff: `lib/models/parser/rescore_module`
+some experimental results and stuff: `rescore_module`
 
 ## Forest Decoder
-CURRENTLY BEING FIXED: `lib/models/parser/forest_decoder.py`
+CURRENTLY BEING FIXED: `forest_decoder.py`
 
 Adopting Cube Pruning for Binarized Dependency Forest
 
