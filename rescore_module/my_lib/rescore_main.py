@@ -41,7 +41,7 @@ transformers.logging.set_verbosity_error()
 transformers.utils.logging.disable_progress_bar()
 hide_pb = True
 
-class RescoreModel:## fix hard coding
+class RescoreModel:
     def __init__(self, cfg):
         super().__init__()
 

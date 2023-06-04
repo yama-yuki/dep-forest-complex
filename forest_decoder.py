@@ -8,7 +8,7 @@ from collections import Counter, defaultdict
 from pprint import pprint
 from tqdm import tqdm
 
-from rescore_module.rescore_main import RescoreModel
+from rescore_module.my_lib.rescore_main import RescoreModel
 
 class Tree:
     def __init__(self, edges):
@@ -407,17 +407,27 @@ def bert_rescore(logp, node, head_node, l_tail, r_tail, forest_d, hlr_forest_d, 
 
 if __name__ == '__main__':
     ## do some unit test
+    import argparse
 
-    cur_dir = '/home/is/yuki-yama/work/d3/dep-forest/biaffine_forest'
-    with open(os.path.join(cur_dir,'pkl/forests.pkl'), 'rb') as p1:
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--pkl_dir')
+    parser.add_argument('--model')
+    parser.add_argument('--test', action='store_true', default=False)
+    args = parser.parse_args()
+
+    pkl_dir = args.pkl_dir
+    model = args.model
+    test = args.test
+
+    with open(os.path.join(pkl_dir,'forests.pkl'), 'rb') as p1:
         all_forests = pkl.load(p1)
-    with open(os.path.join(cur_dir,'pkl/parse_probs.pkl'), 'rb') as p2:
+    with open(os.path.join(pkl_dir,'parse_probs.pkl'), 'rb') as p2:
         all_parse_probs = pkl.load(p2)
-    with open(os.path.join(cur_dir,'pkl/rel_probs.pkl'), 'rb') as p3:
+    with open(os.path.join(pkl_dir,'rel_probs.pkl'), 'rb') as p3:
         all_rel_probs = pkl.load(p3)
-    with open(os.path.join(cur_dir,'pkl/sents.pkl'), 'rb') as p4:
+    with open(os.path.join(pkl_dir,'sents.pkl'), 'rb') as p4:
         all_sents = pkl.load(p4)
-    with open(os.path.join(cur_dir,'pkl/tags.pkl'), 'rb') as p5:
+    with open(os.path.join(pkl_dir,'tags.pkl'), 'rb') as p5:
         all_tags = pkl.load(p5)
 
     rescore_config = {'alpha': 10.0,
@@ -425,7 +435,7 @@ if __name__ == '__main__':
                       'RESCORE': True}
 
     print('loading model')
-    ## = RescoreModel('models') ##'root_models','models_verb'
+    ##remodel = RescoreModel('models') ##'root_models','models_verb'
     cnt=0
     for forest,parse_probs,rel_probs,sent,tags in tqdm(zip(all_forests,all_parse_probs,all_rel_probs,all_sents,all_tags)):
         if cnt==1:
