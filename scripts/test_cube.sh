@@ -1,16 +1,27 @@
 #!/bin/bash
+
+## paths
 PJ_DIR=/home/is/yuki-yama/work/d3/dep-forest-complex
 PKL_DIR=${PJ_DIR}/biaffine_forest/pkl
-MODEL_DIR=${PJ_DIR}/rescore_module/models/
+RESCORE_DIR=${PJ_DIR}/rescore_module
+rescore_config=${RESCORE_DIR}/rescore.cfg
 
-## finetuned model
-model_name=bert-base-uncased_1_2_3e-5_32
+## parameters
+K=10
+alpha=2
+beta=1
+
+## mode
+rescore=True
 test=True
 
 cd ${PJ_DIR}
-
 python forest_decoder.py \
     --pkl_dir=${PKL_DIR} \
-    --model=${MODEL_DIR}/${model_name} \
+    --rescore_cfg=${rescore_config} \
+    --K=${K} \
+    --alpha=${alpha} \
+    --beta=${beta} \
+    --rescore=${rescore} \
     --test=${test}
 

@@ -270,10 +270,13 @@ if __name__ == '__main__':
     tags = ['JJ', 'NNS', 'MD', 'VB', 'VBN', 'VBG', 'PRP$', 'NNS', 'WRB']
     verb_nodes = [bool(tag[0] == 'V') for tag in tags]
 
-
+    cfg_path='../rescore.cfg'
     cfg = configparser.RawConfigParser()
-    cfg.read('../rescore.cfg')
-    print('hoge')
+    if not os.path.exists(cfg_path):
+      logger.error('rescore.cfg not found')
+      sys.exit(-1)
+    cfg.read(cfg_path)
+
     remodel = RescoreModel(cfg)
     print(remodel.head_prediction(sent, tags))
 
