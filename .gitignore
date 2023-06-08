@@ -26,3 +26,6 @@ biaffine_forest/*.out
 rescore_module/data/
 rescore_module/models/
 
+test/log
+test/*.out
+test/rels.txt

@@ -27,7 +27,7 @@ class HypoD:
         self.node = int(node)
         self.depedges_l = depedges_l
         self.depedges = depedges
-        self.node_names=node_names
+        self.node_names = node_names
         self.c = c
         self.num_roots = num_roots
 
@@ -342,17 +342,9 @@ def select_k(Xspan, derivations, terminals, forest_d, Xspan_forest_d, parse_prob
 
 def cube_next(derivations, terminals, forest_d, label_for_incoming_edges_d, edge_id_nolabel, Xspan, c, kl, kr, X, visited, priq, parse_probs, rel_probs, rescore_matrix, rescore_config, is_root):
     '''
-    (lhs_list, rhs_list, visited, priq,
-        is_making_incomplete, u, k1, k2, new_uas, new_las, is_s_0 = False)
-    
-    lhs_list: candidates of left_tails; alpha
-    rhs_list: candidates of right_tails; beta
-    c: boundary; gamma
-
-    k1: x-axis; lhs
-    k2: y-axis; rhs
-    init:
-        k1,k2 = 0,0
+    kl: subderivations (Aspans)
+    kr: subderivations (Bspans)
+    init: kl,kl = 0,0
     '''
     #(derivations, terminals, Xspan, kl, kr, c, lb, deprel, X, Aspan, Bspan, visited, priq, parse_probs, rel_probs, rescore_matrix, rescore_config, head_is_root=False)
     X,A,B,a,c,b = list(map(int,edge_id_nolabel.split('_')))
@@ -390,8 +382,9 @@ def cube_next(derivations, terminals, forest_d, label_for_incoming_edges_d, edge
         '''
         [3] handle terminals
         '''
-        if (Aspan in terminals and Bspan in terminals):
-            pass
+        ## merged to [4]
+        #if (Aspan in terminals and Bspan in terminals):
+            #pass
 
         '''
         [4] actual scoring
@@ -402,8 +395,6 @@ def cube_next(derivations, terminals, forest_d, label_for_incoming_edges_d, edge
             logp = np.log(parse_probs[md,hd]+1e-10) + np.log(rel_probs[md,hd,:][lb]+1e-10)
             comb_type=1
         elif Aspan in terminals:
-            #print(Bspan)
-            #print(derivations[Bspan])
             lhs, rhs = None, derivations[Bspan][kr][-1]
             logp = rhs.acclogp + np.log(parse_probs[md,hd]+1e-10) + np.log(rel_probs[md,hd,:][lb]+1e-10)
             comb_type=2
