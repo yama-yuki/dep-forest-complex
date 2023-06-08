@@ -369,7 +369,7 @@ def cube_next(derivations, terminals, forest_d, label_for_incoming_edges_d, edge
         tail = A if B==X else B
         X,a,b = Xspan
         Aspan, Bspan = (A,a,c), (B,c,b)
-        print('A: '+str(A), 'c: '+str(c), 'B: '+str(B), 'lb: '+str(lb))
+        print('A: '+str(A), 'c: '+str(c), 'B: '+str(B), 'lb: '+str(lb), 'deprel: '+str(deprel))
 
         '''
         [2] check whether to stop
@@ -389,33 +389,38 @@ def cube_next(derivations, terminals, forest_d, label_for_incoming_edges_d, edge
         '''
         [4] actual scoring
         '''
+        print('Aspan: '+str(Aspan)+' + Bspan: '+str(Bspan))
         md,hd = tail,X
         if Aspan in terminals and Bspan in terminals:
             lhs, rhs = None, None
             logp = np.log(parse_probs[md,hd]+1e-10) + np.log(rel_probs[md,hd,:][lb]+1e-10)
             comb_type=1
+            print('new: '+str(np.log(parse_probs[md,hd]+1e-10) + np.log(rel_probs[md,hd,:][lb]+1e-10)))
         elif Aspan in terminals:
             lhs, rhs = None, derivations[Bspan][kr][-1]
             logp = rhs.acclogp + np.log(parse_probs[md,hd]+1e-10) + np.log(rel_probs[md,hd,:][lb]+1e-10)
             comb_type=2
+            print('new: '+str(np.log(parse_probs[md,hd]+1e-10) + np.log(rel_probs[md,hd,:][lb]+1e-10))+' +Bspan: '+str(rhs.acclogp))
         elif Bspan in terminals:
             lhs, rhs = derivations[Aspan][kl][-1], None
             logp = lhs.acclogp + np.log(parse_probs[md,hd]+1e-10) + np.log(rel_probs[md,hd,:][lb]+1e-10)
             comb_type=3
+            print('Aspan: '+str(lhs.acclogp)+' + new: '+str(np.log(parse_probs[md,hd]+1e-10) + np.log(rel_probs[md,hd,:][lb]+1e-10)))
         else:
             lhs, rhs= derivations[Aspan][kl][-1], derivations[Bspan][kr][-1]
             logp = lhs.acclogp + rhs.acclogp + np.log(parse_probs[md,hd]+1e-10) + np.log(rel_probs[md,hd,:][lb]+1e-10)
             comb_type=0
+            print('Aspan: '+str(lhs.acclogp)+' + Bspan: '+str(rhs.acclogp))
     
         '''
         [5] add bert score
         '''
-        if rescore_config['RESCORE']:
+        print('logp: '+str(logp))
+        if rescore_config['RESCORE']=='True':
             newlogp = bert_rescore(logp, md, hd, rescore_matrix, rescore_config)
         else: #for debug
             newlogp = logp
         
-        print('Aspan: '+str(Aspan)+' + Bspan: '+str(Bspan))
         print('newlogp: '+str(newlogp))
         print('----------')
 
@@ -434,6 +439,7 @@ def bert_rescore(logp, md, hd, rescore_matrix, rescore_config):
     #print('Xspan: ' + str(Xspan))
 
     if rescore_matrix[md-1] is not None: # parent node is verb
+
         bert_score = rescore_matrix[md-1][hd-1]
         #print('before: '+str(logp))
         #print('bert: '+str(bert_score))
@@ -446,8 +452,8 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--pkl_dir', help='dir path for parsed data (.plk)')
     parser.add_argument('--rescore_cfg', help='file path for rescore config (.cfg)')
-    parser.add_argument('--rescore', default=False, type=str, help='rescore on cube pruning or not')
-    parser.add_argument('--test', default=False, type=str, help='test or not')
+    parser.add_argument('--rescore', default='False', type=str, help='rescore on cube pruning or not')
+    parser.add_argument('--test', default='False', type=str, help='test or not')
     parser.add_argument('--K', type=int, help='K for Kbest')
     parser.add_argument('--alpha', type=float, help='alpha weight for scoring function')
     parser.add_argument('--beta', type=float, help='beta bias for scoring function')

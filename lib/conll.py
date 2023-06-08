@@ -60,13 +60,15 @@ def to_conllu(out_path, best_tree, sent, tags):
 
     temp_d = defaultdict()
     for edge in best_tree:
-        head, tail, label, deprel,prb = edge
+        tail, head, label, deprel, prb = edge
         temp_d[tail] = (head,deprel)
         print(edge)
     
     keys = list(sorted(temp_d.keys()))
+    print(temp_d)
+    print(keys)
     conll_lines = ['\t'.join([str(tail),sent[tail-1],sent[tail-1].lower(),tags[tail-1],'_','_','_','_',str(temp_d[tail][0]),str(temp_d[tail][1])]) for tail in keys]
-
+    print(conll_lines)
     with open(out_path, mode='w', encoding='utf-8') as o:
         o.write('# '+' '.join(sent)+'\n')
         for line in conll_lines:

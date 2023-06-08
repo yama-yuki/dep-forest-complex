@@ -2,17 +2,17 @@
 
 ## paths
 PJ_DIR=/home/is/yuki-yama/work/d3/dep-forest-complex
-PKL_DIR=${PJ_DIR}/biaffine_forest/pkl_complete
+PKL_DIR=${PJ_DIR}/biaffine_forest/pkl
 RESCORE_DIR=${PJ_DIR}/rescore_module
 rescore_config=${RESCORE_DIR}/rescore.cfg
 
 ## parameters
 K=10
-alpha=2
+alpha=0.5
 beta=1
 
 ## mode
-rescore=False
+rescore=True
 test=True
 
 cd ${PJ_DIR}
