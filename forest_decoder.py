@@ -22,17 +22,17 @@ from lib.conll import final_1best, to_conllu
 ## derivation D
 class HypoD:
     ## tree hypotheses
-    def __init__(self, node, acclogp, hyperedges, depedges, c, num_roots):
-        self.node = int(node)
+    def __init__(self, acclogp, node, depedges_l, depedges, c, num_roots):
         self.acclogp = acclogp
-        self.hyperedges = hyperedges
+        self.node = int(node)
+        self.depedges_l = depedges_l
         self.depedges = depedges
         self.c = c
         self.num_roots = num_roots
 
     def to_list(self):
         print(str(self.node))
-        print(list(self.hyperedges))
+        print(list(self.depedges_l))
         print(list(self.depedges))
         print(str(self.acclogp))
 
@@ -99,7 +99,7 @@ def load_forest(forest):
     return Xspans, forest_d, Xspan_forest_d
 
 def topological_sort(nodes_hlrlbr):
-    ## sort nodes based on span length (ascending order)
+    ## sort nodes based on its governing span length (ascending order)
     #9_3_9_0_4_9
     #head_lt_rt_lmost_bound_rmost
     d = defaultdict()
@@ -123,6 +123,8 @@ def topological_sort(nodes_hlrlbr):
 
 ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 ## (B) Cube Pruning Algorithm
+## This algorithm searches Kbest derivations of a Xspan which is a triplet of X(head node), a(leftmost governing span boundary of X), and b(rightmost governing span boundary of X)
+## Then returns derivation[(0,-1,length-1)][0], the resulting 1best dependency tree with a root node governing leftmost to rightmost
 ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 
 def main_loop(forest, parse_probs, rel_probs, rescore_matrix, rescore_config, sent, tags, K):
@@ -147,9 +149,11 @@ def main_loop(forest, parse_probs, rel_probs, rescore_matrix, rescore_config, se
                 ## check if it is a terminal edge (i.e. bottom/terminal)
                 if B-A==1 and A<=X<=B:
                     terminals.add((X,A,B))
-                    #derivations[(X,A,B)].append(HypoD(X, None, set(), set(), -1, 0))
-                    ##node, acclogp, hyperedges, depedges, c, num_roots
-                    ##lspan, rspan = (left_tail,lmost,c), (right_tail,c,rmost)
+                derivations[(X,A,B)].append((0.0, 0, HypoD(0.0, X, set(), set(), None, 0)))
+                ##node, acclogp, depedges_l, depedges, c, num_roots
+                ##Aspan, Bspan = (A,a,c), (B,c,b)
+                #logp, edges, u, num_roots
+                #Hypo(0.0, set(), None, 0)
 
     print(derivations)
 
@@ -162,13 +166,14 @@ def main_loop(forest, parse_probs, rel_probs, rescore_matrix, rescore_config, se
         print('------------------------------')
         select_k(Xspan, derivations, terminals, forest_d, hlr_forest_d, parse_probs, rel_probs, rescore_matrix, rescore_config, K)
 
-    ## the goal is to get to the root HE(0,0,length-1) with all node_ids in it
+    ## the goal is to get to the root HE(0,-1,length-1) with all node_ids in it
     print('final_derivation')
-    final = derivations[(0,-1,length-1)]
-    print(final)
+    final_kbests = derivations[(0,-1,length-1)]
+    print(final_kbests)
+    print(final_kbests[0][-1].depedges)
 
-    best_tree = final_1best(length, derivations, parse_probs, rel_probs)
-    to_conllu('test/test_1best.conllu', best_tree, sent, tags)
+    #best_tree = final_1best(length, derivations, parse_probs, rel_probs)
+    #to_conllu('test/test_1best.conllu', best_tree, sent, tags)
 
 def select_k(Xspan, derivations, terminals, forest_d, Xspan_forest_d, parse_probs, rel_probs, rescore_matrix, rescore_config, K):
     ## eisner_beam_k = {8,16,32,64,128}
@@ -182,6 +187,7 @@ def select_k(Xspan, derivations, terminals, forest_d, Xspan_forest_d, parse_prob
     
     best_K_buffer = [] # initialize 
     heapq.heapify(best_K_buffer) # priq-temp
+
     visited = set()
 
     '''
@@ -215,13 +221,17 @@ def select_k(Xspan, derivations, terminals, forest_d, Xspan_forest_d, parse_prob
     '''
     [4] actual cube pruning
     '''
+    print('[4] ACTUAL CUBE PRUNING')
+    cnt=0
     while len(priq) > 0:
+        ## cnt is necessary to distinguish hypotheses in heapq
+        cnt+=1
         '''
         [A] pop next-best from priq
         '''
         neglogp, kl, kr, c, lb, deprel, md, hd, lhs, rhs, edge_id_nolabel, comb_type = heapq.heappop(priq) ## return minimum = -maximum
         logp = -neglogp
-        
+
         '''
         [B] create new derivation
         '''
@@ -232,18 +242,18 @@ def select_k(Xspan, derivations, terminals, forest_d, Xspan_forest_d, parse_prob
         
         elif comb_type==2:
             edges = {(hd,md)} |  rhs.depedges
-            edges_l = {(hd,md,lb,deprel)} | rhs.hyperedges
+            edges_l = {(hd,md,lb,deprel)} | rhs.depedges_l
             num_roots = 1+rhs.num_roots if hd*md==0 else 0+rhs.num_roots       
 
         elif comb_type==3:
             edges = lhs.depedges | {(hd,md)}
-            edges_l =  lhs.hyperedges | {(hd,md,lb,deprel)}
+            edges_l =  lhs.depedges_l | {(hd,md,lb,deprel)}
             num_roots = 1+lhs.num_roots if hd*md==0 else 0+lhs.num_roots
 
         ## combining 2 subderivations
         else: #if comb_type==0:
             edges = lhs.depedges | rhs.depedges
-            edges_l = lhs.hyperedges | rhs.hyperedges
+            edges_l = lhs.depedges_l | rhs.depedges_l
             edges.add((hd,md)) # head, tail
             edges_l.add((hd,md,lb,deprel))
             num_roots = lhs.num_roots + rhs.num_roots
@@ -252,6 +262,7 @@ def select_k(Xspan, derivations, terminals, forest_d, Xspan_forest_d, parse_prob
         [C] checking validity
         '''
         is_violate = (num_roots > 1)
+        #print(num_roots)
         has_head = set()
         for edge in edges:
             if edge[1] in has_head:
@@ -265,23 +276,29 @@ def select_k(Xspan, derivations, terminals, forest_d, Xspan_forest_d, parse_prob
         #heapq.heappush(best_K_buffer, [logp, node])
         ## stop if invalid
         j = -1 #init
-        for i, hyp in enumerate(best_K_buffer):
+        for i, best_K in enumerate(best_K_buffer):
             ## hypotheses with same edges should have same logp
-            if hyp.depedges == edges:
+            if best_K[-1].depedges == edges:
                 is_violate = True
                 break
-            if hyp.acclogp < logp:
+            if best_K[-1].acclogp < logp:
                 j = i
                 break
 
         ## insert new_hyp to best_K_buffer
+        '''obs
         if not is_violate: 
             acclogp = logp
-            new_hyp = HypoD(X, acclogp, edges_l, edges, c, num_roots)
+            new_hyp = HypoD(acclogp, X, edges_l, edges, c, num_roots)
             if j == -1:
                 best_K_buffer.append(new_hyp)
             else:
                 best_K_buffer.insert(j, new_hyp)
+        '''
+        if not is_violate: 
+            new_hyp = HypoD(logp, X, edges_l, edges, c, num_roots)
+            print(new_hyp.acclogp)
+            heapq.heappush(best_K_buffer, (new_hyp.acclogp, cnt, new_hyp))            
 
         '''
         [E] check whether to stop loop
@@ -302,6 +319,8 @@ def select_k(Xspan, derivations, terminals, forest_d, Xspan_forest_d, parse_prob
     ## fixed: best_K_buffer is heapq. extra sorted() is not necessary.
     #best_K_buffer = sorted(best_K_buffer, key=lambda x: x.acclogp, reverse=True)
     derivations[Xspan] = best_K_buffer[:K]
+    print('********************')
+    print(derivations[Xspan])
 
 def cube_next(derivations, terminals, forest_d, label_for_incoming_edges_d, edge_id_nolabel, Xspan, c, kl, kr, X, visited, priq, parse_probs, rel_probs, rescore_matrix, rescore_config, head_is_root=False):
     '''
@@ -318,9 +337,14 @@ def cube_next(derivations, terminals, forest_d, label_for_incoming_edges_d, edge
         k1,k2 = 0,0
     '''
     #(derivations, terminals, Xspan, kl, kr, c, lb, deprel, X, Aspan, Bspan, visited, priq, parse_probs, rel_probs, rescore_matrix, rescore_config, head_is_root=False)
+    X,A,B,a,c,b = list(map(int,edge_id_nolabel.split('_')))
+    print('-----')
     print('k1: '+str(kl)+' k2: '+str(kr))
-    visited.add((kl,kr,c))
-    print('cube: '+str((kl,kr,c)))
+    print('cube: '+str((kl,kr,A,c,B)))
+    if (kl,kr,c) in visited:
+        print('visited')
+        return
+    visited.add((kl,kr,A,c,B))
 
     for i,lb in enumerate(label_for_incoming_edges_d[edge_id_nolabel]):
         '''
@@ -340,11 +364,8 @@ def cube_next(derivations, terminals, forest_d, label_for_incoming_edges_d, edge
         '''
         [2] check whether to stop
         '''
-        if (kl,kr,A,c,B) in visited:
-            print('visited')
-            return
-        
-        if (len(derivations[Aspan]) <= kl or len(derivations[Bspan]) <= kr) and (Aspan not in terminals and Bspan not in terminals):
+        #if (len(derivations[Aspan]) <= kl or len(derivations[Bspan]) <= kr) and (Aspan not in terminals and Bspan not in terminals):
+        if (len(derivations[Aspan]) <= kl or len(derivations[Bspan]) <= kr):
             print('cube_end')
             return
 
@@ -363,17 +384,18 @@ def cube_next(derivations, terminals, forest_d, label_for_incoming_edges_d, edge
             logp = np.log(parse_probs[md,hd]+1e-10) + np.log(rel_probs[md,hd,:][lb]+1e-10)
             comb_type=1
         elif Aspan in terminals:
-            print(Aspan)
-            print(Bspan)
-            lhs, rhs = None, derivations[Bspan][kr]
+            #print(derivations)
+            #print(Aspan)
+            #print(Bspan)
+            lhs, rhs = None, derivations[Bspan][kr][-1]
             logp = rhs.acclogp + np.log(parse_probs[md,hd]+1e-10) + np.log(rel_probs[md,hd,:][lb]+1e-10)
             comb_type=2
         elif Bspan in terminals:
-            lhs, rhs = derivations[Aspan][kl], None
+            lhs, rhs = derivations[Aspan][kl][-1], None
             logp = lhs.acclogp + np.log(parse_probs[md,hd]+1e-10) + np.log(rel_probs[md,hd,:][lb]+1e-10)
             comb_type=3
         else:
-            lhs, rhs= derivations[Aspan][kl], derivations[Bspan][kr]
+            lhs, rhs= derivations[Aspan][kl][-1], derivations[Bspan][kr][-1]
             logp = lhs.acclogp + rhs.acclogp + np.log(parse_probs[md,hd]+1e-10) + np.log(rel_probs[md,hd,:][lb]+1e-10)
             comb_type=0
     
@@ -508,36 +530,4 @@ if __name__ == '__main__':
             print(tags)
             #print(parse_probs)
             #print(rel_probs.shape)
-
-'''legacy
-def backward_star(node, forest, c):
-    ## a list of candidate/incoming hyperedges for an input head node
-
-    incoming_edges = []
-    head, lmost, rmost = node
-
-    for he in forest["hyperedges"]:
-        if (he['head'] == head) and (he['head_span'] == [lmost, rmost]):
-            ##neglogp
-            incoming_edges.append([np.log(float(he['prob']))*(-1),he['name']])
-
-    return incoming_edges
-
-def parse_score(forest_d, length):
-    ##init
-    key = [l for l in range(length)]
-    val = [0]*length
-    parse_score_d = dict()
-    for k in key:
-        parse_score_d[k] = val
-
-    for node_id in forest_d:
-        sp = node_id.split('_')
-        head = int(sp[0])
-        edge = list(map(int,sp[1:3]))
-        tail = edge[0] if head==edge[1] else edge[1]
-        parse_score_d[head][tail] = forest_d[node_id]['prob']
-
-    return parse_score_d
-'''
 

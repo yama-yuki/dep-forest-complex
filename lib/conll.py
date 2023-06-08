@@ -1,3 +1,4 @@
+import heapq
 from collections import defaultdict
 from pprint import pprint
 
@@ -29,36 +30,42 @@ def final_1best(length, derivations, parse_probs, rel_probs):
     '''
     output 1best set of edges from derivation chart
     '''
-    finals = []
-    for i in range(1,length):
+    tmp = []
+    heapq.heapify(tmp)
+    for i in range(0,length):
         print(i)
-        final = derivations[(i,0,length-1)]
-        finals.extend(final)
-        if final:
-            for j,f in enumerate(final):
-                print(f.depedges)
+        final_derivations = derivations[(i,-1,length-1)]
     
-    kbests = sorted(finals, key=lambda x: x.acclogp, reverse=True)
+        if final_derivations:
+            print(final_derivations)
+            for j,derivation in enumerate(final_derivations):
+                print(derivation)
+                heapq.heappush(tmp,derivation)
+                print(derivation[-1].depedges)
+    
+    #kbests = sorted(finals, key=lambda x: x.acclogp, reverse=True)
     #kbests = sorted(finals, key=lambda x: x.acclogp)
 
-    tree = Tree(kbests[0].depedges)
+    '''
+    tree = Tree(tmp[0].depedges)
     top = tree.find_top()
-    kbests[0].depedges.add((0, top))
-    print(kbests[0].acclogp)
-    print(kbests[0].depedges)
-    kbests[1].depedges.add((0, top))
-    print(kbests[1].acclogp)
-    print(kbests[1].depedges)
+    tmp[0].depedges.add((0, top))
+    print(tmp[0].acclogp)
+    print(tmp[0].depedges)
+    tmp[1].depedges.add((0, top))
+    print(tmp[1].acclogp)
+    print(tmp[1].depedges)
+    '''
 
-    nbest = []
-    for hyp in kbests:
-        nbest.append([])
-        for hi,mi,lb,deprel in hyp.hyperedges:
+    kbests = []
+    for hyp in tmp:
+        kbests.append([])
+        for hi,mi,lb,deprel in hyp.depedges_l:
             prb = parse_probs[mi,hi] * rel_probs[mi,hi,lb]
             assert prb > 0.0
-            nbest[-1].append((hi,mi,lb,deprel))#prb
+            kbests[-1].append((hi,mi,lb,deprel))#prb
     
-    best_tree = sorted(nbest[0], key=lambda x: x[1]) 
+    best_tree = sorted(kbests[0], key=lambda x: x[1]) 
 
     return best_tree
 
