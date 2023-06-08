@@ -12,7 +12,7 @@ alpha=2
 beta=1
 
 ## mode
-rescore=True
+rescore=False
 test=True
 
 cd ${PJ_DIR}

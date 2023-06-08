@@ -204,7 +204,7 @@ class BaseParser(NN):
         '''
 
         nbest = [[[float(x[0]), int(x[1]), int(x[2]), rel_vocab[x[-1]],] for x in cur_best] \
-                for cur_best in eisner_dp_nbest(length, parse_probs, rel_probs, rescores, RESCORE, NBEST, ALPHA)]
+                for cur_best in eisner_dp_nbest(length, parse_probs, rel_probs, rel_vocab, rescores, RESCORE, NBEST, ALPHA)]
         
         sents.append(nbest) # [batch, nbest, edges]
 
@@ -240,7 +240,7 @@ class BaseParser(NN):
       tokens_to_keep = np.greater(inputs[:,0], Vocab.ROOT) #Vocab.ROOT=1
       length = np.sum(tokens_to_keep)
 
-      forest = eisner_dp_forest(length, parse_probs, rel_probs, NBEST)
+      forest = eisner_dp_forest(length, parse_probs, rel_probs, rel_vocab, NBEST)
 
       forests.append(forest)
       parse_probs_list.append(parse_probs)

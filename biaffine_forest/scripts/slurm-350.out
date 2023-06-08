@@ -1,0 +1,323 @@
+.bashrc
+# conda environments:
+#
+base                     /home/is/yuki-yama/.pyenv/versions/anaconda3-2021.11
+for                   *  /home/is/yuki-yama/.pyenv/versions/anaconda3-2021.11/envs/for
+par                      /home/is/yuki-yama/.pyenv/versions/anaconda3-2021.11/envs/par
+skele                    /home/is/yuki-yama/.pyenv/versions/anaconda3-2021.11/envs/skele
+sq                       /home/is/yuki-yama/.pyenv/versions/anaconda3-2021.11/envs/sq
+
+2023-06-07 20:40:29.070378: I tensorflow/core/platform/cpu_feature_guard.cc:151] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2023-06-07 20:40:32.755137: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1525] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 11484 MB memory:  -> device: 0, name: NVIDIA GeForce GTX TITAN X, pci bus id: 0000:03:00.0, compute capability: 5.2
+/var/autofs/cl/work/yuki-yama/d3/dep-forest-complex/biaffine_forest/bucket.py:112: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify 'dtype=object' when creating the ndarray.
+  self._sents = np.array(self._sents)
+*** Parser ***
+CUDA_VISIBLE_DEVICES 0
+Bucket Sents-0 is 1890 x 8
+Bucket Sents-1 is 2181 x 11
+Bucket Sents-2 is 1975 x 13
+Bucket Sents-3 is 2437 x 15
+Bucket Sents-4 is 2577 x 17
+Bucket Sents-5 is 2733 x 19
+Bucket Sents-6 is 1408 x 20
+Bucket Sents-7 is 1466 x 21
+Bucket Sents-8 is 2748 x 23
+Bucket Sents-9 is 2866 x 25
+Bucket Sents-10 is 1316 x 26
+Bucket Sents-11 is 2590 x 28
+Bucket Sents-12 is 1215 x 29
+Bucket Sents-13 is 2245 x 31
+Bucket Sents-14 is 2041 x 33
+Bucket Sents-15 is 1715 x 35
+Bucket Sents-16 is 1382 x 37
+Bucket Sents-17 is 1084 x 39
+Bucket Sents-18 is 2219 x 45
+Bucket Sents-19 is 1744 x 142
+Bucket Sents-0 is 247 x 10
+Bucket Sents-1 is 395 x 15
+Bucket Sents-2 is 293 x 18
+Bucket Sents-3 is 329 x 21
+Bucket Sents-4 is 318 x 24
+Bucket Sents-5 is 295 x 27
+Bucket Sents-6 is 297 x 30
+Bucket Sents-7 is 317 x 34
+Bucket Sents-8 is 284 x 40
+Bucket Sents-9 is 271 x 119
+Bucket Sents-0 is 247 x 10
+Bucket Sents-1 is 395 x 15
+Bucket Sents-2 is 293 x 18
+Bucket Sents-3 is 329 x 21
+Bucket Sents-4 is 318 x 24
+Bucket Sents-5 is 295 x 27
+Bucket Sents-6 is 297 x 30
+Bucket Sents-7 is 317 x 34
+Bucket Sents-8 is 284 x 40
+Bucket Sents-9 is 271 x 119
+hogehoge
+RNN0/BiRNN_FW/LSTMCell/Linear
+Orthogonal pretrainer loss: 5.82e-27
+RNN0/BiRNN_BW/LSTMCell/Linear
+Orthogonal pretrainer loss: 6.23e-27
+RNN1/BiRNN_FW/LSTMCell/Linear
+Orthogonal pretrainer loss: 2.57e-30
+RNN1/BiRNN_BW/LSTMCell/Linear
+Orthogonal pretrainer loss: 2.47e-30
+RNN2/BiRNN_FW/LSTMCell/Linear
+Orthogonal pretrainer loss: 2.62e-30
+RNN2/BiRNN_BW/LSTMCell/Linear
+Orthogonal pretrainer loss: 2.63e-30
+MLP/Linear
+Orthogonal pretrainer loss: 3.73e-23
+hogehoge
+hogehoge
+N-best batch 0
+0it [00:00, ?it/s]1it [00:03,  3.37s/it]2it [00:05,  2.72s/it]3it [00:08,  2.92s/it]4it [00:08,  1.84s/it]5it [00:09,  1.22s/it]6it [00:09,  1.07it/s]7it [00:09,  1.50it/s]8it [00:09,  1.76it/s]9it [00:12,  1.09s/it]10it [00:12,  1.16it/s]11it [00:15,  1.64s/it]12it [00:18,  1.81s/it]13it [00:20,  1.85s/it]14it [00:21,  1.63s/it]15it [00:21,  1.20s/it]16it [00:25,  1.99s/it]17it [00:28,  2.38s/it]18it [00:29,  2.00s/it]20it [00:33,  1.96s/it]21it [00:36,  2.23s/it]23it [00:36,  1.33s/it]24it [00:36,  1.05s/it]25it [00:37,  1.14it/s]26it [00:37,  1.47it/s]27it [00:39,  1.15s/it]28it [00:39,  1.13it/s]29it [00:40,  1.04it/s]30it [00:41,  1.38it/s]31it [00:41,  1.74it/s]33it [00:41,  2.68it/s]34it [00:44,  1.10s/it]35it [00:46,  1.25s/it]36it [00:46,  1.00s/it]37it [00:48,  1.07s/it]38it [00:49,  1.07s/it]39it [00:49,  1.15it/s]40it [00:49,  1.47it/s]41it [00:52,  1.12s/it]42it [00:52,  1.02it/s]43it [00:53,  1.26it/s]44it [00:53,  1.69it/s]45it [00:54,  1.34it/s]46it [00:56,  1.09s/it]47it [00:58,  1.41s/it]48it [01:00,  1.54s/it]49it [01:01,  1.61s/it]50it [01:02,  1.16s/it]51it [01:03,  1.19s/it]52it [01:04,  1.26s/it]53it [01:05,  1.23s/it]54it [01:07,  1.21s/it]55it [01:07,  1.05it/s]56it [01:08,  1.16it/s]57it [01:09,  1.16s/it]58it [01:10,  1.18it/s]59it [01:11,  1.03s/it]60it [01:11,  1.28it/s]61it [01:11,  1.66it/s]62it [01:12,  1.64it/s]63it [01:13,  1.30it/s]64it [01:13,  1.56it/s]65it [01:15,  1.29it/s]66it [01:15,  1.55it/s]67it [01:17,  1.11s/it]68it [01:18,  1.09s/it]69it [01:21,  1.76s/it]70it [01:23,  1.80s/it]71it [01:27,  2.39s/it]72it [01:29,  2.22s/it]74it [01:29,  1.30s/it]75it [01:31,  1.27s/it]77it [01:31,  1.11it/s]79it [01:32,  1.41it/s]81it [01:32,  2.05it/s]82it [01:34,  1.30it/s]83it [01:38,  1.38s/it]84it [01:38,  1.20s/it]85it [01:41,  1.68s/it]86it [01:42,  1.32s/it]87it [01:45,  1.87s/it]88it [01:47,  1.97s/it]89it [01:50,  2.32s/it]90it [01:52,  1.95s/it]91it [01:52,  1.58s/it]92it [01:53,  1.34s/it]93it [01:56,  1.89s/it]94it [01:58,  1.76s/it]95it [01:58,  1.29s/it]96it [02:00,  1.46s/it]97it [02:03,  1.92s/it]98it [02:06,  2.26s/it]99it [02:07,  1.90s/it]101it [02:08,  1.21s/it]102it [02:09,  1.19s/it]103it [02:10,  1.18s/it]104it [02:11,  1.04s/it]105it [02:12,  1.08s/it]106it [02:12,  1.05it/s]107it [02:13,  1.14it/s]108it [02:16,  1.46s/it]109it [02:18,  1.58s/it]110it [02:20,  1.85s/it]111it [02:20,  1.36s/it]113it [02:21,  1.31it/s]115it [02:21,  2.04it/s]116it [02:21,  2.33it/s]117it [02:21,  2.82it/s]118it [02:23,  1.28it/s]119it [02:23,  1.60it/s]120it [02:26,  1.34s/it]121it [02:28,  1.30s/it]122it [02:30,  1.49s/it]123it [02:33,  2.10s/it]124it [02:35,  2.02s/it]125it [02:36,  1.74s/it]126it [02:38,  1.81s/it]127it [02:39,  1.46s/it]128it [02:39,  1.23s/it]129it [02:40,  1.07s/it]130it [02:40,  1.16it/s]131it [02:44,  1.67s/it]133it [02:44,  1.00it/s]135it [02:45,  1.52it/s]136it [02:45,  1.67it/s]137it [02:45,  1.86it/s]138it [02:49,  1.22s/it]139it [02:51,  1.62s/it]140it [02:53,  1.70s/it]141it [02:54,  1.33s/it]142it [02:54,  1.01s/it]143it [02:55,  1.05s/it]144it [02:59,  1.75s/it]145it [03:00,  1.54s/it]146it [03:02,  1.94s/it]147it [03:05,  2.27s/it]148it [03:09,  2.54s/it]149it [03:09,  1.81s/it]150it [03:11,  1.86s/it]151it [03:13,  1.91s/it]152it [03:16,  2.45s/it]153it [03:18,  2.05s/it]154it [03:21,  2.35s/it]155it [03:23,  2.22s/it]156it [03:23,  1.74s/it]157it [03:25,  1.79s/it]158it [03:26,  1.59s/it]159it [03:26,  1.17s/it]160it [03:27,  1.13it/s]161it [03:27,  1.48it/s]162it [03:29,  1.15s/it]163it [03:30,  1.16s/it]164it [03:31,  1.09it/s]165it [03:31,  1.19it/s]166it [03:31,  1.55it/s]167it [03:34,  1.34s/it]168it [03:36,  1.27s/it]169it [03:39,  1.92s/it]170it [03:41,  1.93s/it]171it [03:41,  1.46s/it]172it [03:42,  1.13s/it]173it [03:43,  1.14s/it]174it [03:45,  1.51s/it]175it [03:46,  1.25s/it]176it [03:46,  1.01it/s]177it [03:47,  1.14it/s]178it [03:50,  1.50s/it]179it [03:51,  1.36s/it]180it [03:51,  1.07s/it]181it [03:53,  1.34s/it]182it [03:54,  1.27s/it]183it [03:56,  1.47s/it]184it [03:57,  1.35s/it]185it [04:00,  1.68s/it]186it [04:02,  1.80s/it]187it [04:05,  2.19s/it]188it [04:06,  1.73s/it]189it [04:08,  1.87s/it]190it [04:08,  1.43s/it]191it [04:09,  1.12s/it]192it [04:09,  1.12it/s]193it [04:10,  1.05it/s]194it [04:11,  1.00s/it]195it [04:12,  1.03s/it]196it [04:13,  1.09it/s]197it [04:14,  1.00s/it]198it [04:18,  1.87s/it]199it [04:21,  2.20s/it]200it [04:23,  2.10s/it]201it [04:23,  1.53s/it]202it [04:26,  2.11s/it]203it [04:28,  1.81s/it]204it [04:31,  2.22s/it]205it [04:32,  1.90s/it]206it [04:32,  1.36s/it]207it [04:36,  2.14s/it]208it [04:39,  2.42s/it]209it [04:41,  2.25s/it]210it [04:41,  1.69s/it]211it [04:42,  1.40s/it]212it [04:43,  1.28s/it]213it [04:46,  1.81s/it]214it [04:47,  1.50s/it]215it [04:47,  1.25s/it]216it [04:48,  1.07it/s]217it [04:49,  1.01it/s]218it [04:52,  1.65s/it]219it [04:53,  1.49s/it]220it [04:56,  1.82s/it]221it [04:56,  1.38s/it]222it [04:57,  1.29s/it]223it [05:00,  1.75s/it]224it [05:00,  1.33s/it]225it [05:03,  1.87s/it]226it [05:06,  2.22s/it]227it [05:09,  2.45s/it]229it [05:10,  1.50s/it]230it [05:10,  1.15s/it]231it [05:11,  1.06it/s]232it [05:12,  1.01it/s]233it [05:14,  1.22s/it]234it [05:15,  1.18s/it]235it [05:18,  1.92s/it]236it [05:19,  1.55s/it]237it [05:22,  2.04s/it]238it [05:23,  1.62s/it]239it [05:26,  2.15s/it]240it [05:27,  1.83s/it]241it [05:28,  1.35s/it]242it [05:30,  1.60s/it]243it [05:30,  1.23s/it]244it [05:33,  1.76s/it]245it [05:36,  2.13s/it]246it [05:37,  1.80s/it]247it [05:41,  2.41s/it]247it [05:41,  1.38s/it]
+2991
+2834
+3168
+618
+296
+959
+270
+830
+2432
+961
+3215
+2157
+2452
+2034
+547
+3350
+3189
+1916
+87
+3474
+2920
+87
+87
+87
+928
+276
+2608
+540
+1931
+87
+566
+1
+525
+3172
+1903
+880
+2086
+1828
+832
+548
+2586
+1342
+925
+303
+1962
+2351
+2263
+2345
+2435
+284
+1991
+1891
+2050
+2167
+887
+1579
+2360
+263
+1808
+629
+548
+1314
+1943
+931
+2062
+877
+2442
+1666
+3156
+2275
+3371
+2656
+87
+881
+1937
+87
+1355
+87
+1495
+87
+1
+2490
+3359
+1323
+3415
+881
+3340
+2422
+3124
+1925
+1309
+1490
+3285
+2038
+538
+2507
+3374
+3381
+1712
+87
+1458
+1561
+1719
+1322
+2126
+1375
+1375
+3126
+2697
+2754
+560
+87
+87
+87
+87
+558
+268
+2561
+467
+3247
+2168
+2686
+3486
+2347
+1914
+2434
+1441
+1510
+1514
+952
+3541
+87
+862
+87
+535
+972
+882
+3435
+2645
+2684
+887
+640
+1785
+3151
+1914
+2851
+2880
+3414
+276
+2529
+2596
+3289
+1903
+2720
+2633
+1303
+2545
+1999
+590
+627
+623
+2362
+1718
+875
+1170
+599
+3268
+2003
+3196
+2663
+785
+1005
+1923
+2596
+1452
+823
+1394
+2891
+1778
+993
+2615
+1777
+2521
+1824
+2524
+2720
+2845
+1366
+2725
+958
+1014
+859
+1961
+1985
+2044
+1459
+1986
+3362
+3013
+2494
+495
+3385
+1968
+3047
+1908
+274
+3236
+3095
+2554
+957
+1406
+1528
+3027
+1347
+1377
+583
+2065
+2809
+2075
+2642
+940
+1720
+3045
+970
+3190
+3310
+3092
+87
+1458
+299
+886
+1853
+2394
+1785
+3030
+1451
+2831
+1334
+3283
+1819
+533
+2685
+919
+2990
+3224
+1459
+2860
+Parsing took 346.337266 seconds

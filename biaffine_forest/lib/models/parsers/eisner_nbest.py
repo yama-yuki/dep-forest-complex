@@ -49,7 +49,7 @@ class Tree:
 
 class BinHyperedge:
     ## Binarized Hyperedge Structure
-    def __init__(self, he_name, head, left_tail, right_tail, label, prob, tri_span):
+    def __init__(self, he_name, head, left_tail, right_tail, label_id, label, prob, tri_span):
         '''
         args:
             head: head node
@@ -62,6 +62,7 @@ class BinHyperedge:
         self.head = head
         self.left_tail = left_tail
         self.right_tail = right_tail
+        self.label_id = label_id
         self.label = label
         self.prob = prob
         self.tri_span = tri_span
@@ -74,6 +75,7 @@ class BinHyperedge:
                 'head_span':[self.tri_span[0],self.tri_span[2]],
                 'left_span':[self.tri_span[0],self.tri_span[1]],
                 'right_span':[self.tri_span[1],self.tri_span[2]],
+                'label_id':self.label_id,
                 'label':self.label,
                 'prob':str(self.prob)}
 
@@ -143,7 +145,7 @@ def dfs_for_span(tree, node, governed):
         if tail not in governed:
             dfs_for_span(tree, tail, governed)
 
-def form_cfg_hyperedges(hypo, parse_probs, rel_probs):
+def form_cfg_hyperedges(hypo, parse_probs, rel_probs, rel_vocab):
     '''
     ## rewrite dep v->u to x_v->v,u cfg-style
     ## right-element-first merge to handle spurious ambiguity
@@ -186,14 +188,15 @@ def form_cfg_hyperedges(hypo, parse_probs, rel_probs):
         left_tail,right_tail = tails
         ## compute prob
         tail = left_tail if head!=left_tail else right_tail
-        label = d_tails_labels[head][tail]
-        prob = str(parse_probs[tail,head]*rel_probs[tail,head,:][label])
-        he = BinHyperedge(name,head,left_tail,right_tail,label,prob,tri_span)
+        label_id = d_tails_labels[head][tail]
+        label = rel_vocab[label_id]
+        prob = str(parse_probs[tail,head]*rel_probs[tail,head,:][label_id])
+        he = BinHyperedge(name,head,left_tail,right_tail,label_id,label,prob,tri_span)
         hyperedges.add(he)
 
     return hyperedges
 
-def cube_pruning(s, t, kk, memory, parse_probs, rel_probs, rescores, RESCORE, NBEST, ALPHA, forest, length):
+def cube_pruning(s, t, kk, memory, parse_probs, rel_probs, rel_vocab, rescores, RESCORE, NBEST, ALPHA, forest, length):
     if s == 0 and kk[0] == '<-': ## artificial root can't be governed
         return
 
@@ -280,7 +283,7 @@ def cube_pruning(s, t, kk, memory, parse_probs, rel_probs, rescores, RESCORE, NB
 
             ## create hyperedge representation
             if kk[1]==1: ## only when is_making_complete
-                hyperedges = form_cfg_hyperedges(new_hyp, parse_probs, rel_probs)
+                hyperedges = form_cfg_hyperedges(new_hyp, parse_probs, rel_probs, rel_vocab)
                 #print([he.as_list() for he in hyperedges])
                 if hyperedges is not None:
                     for he in hyperedges:
@@ -353,14 +356,10 @@ eisner_dp_nbest: returns nbest trees
 eisner_dp_forest: returns binarized dependency forest
 '''
 
-def eisner_dp_nbest(length, parse_probs, rel_probs, rescores, RESCORE, NBEST, ALPHA):
+def eisner_dp_nbest(length, parse_probs, rel_probs, rel_vocab, rescores, RESCORE, NBEST, ALPHA):
     #st_time = time.time()
     forest = {'hyperedges': [], 'nodes': [], 'node_ids': [i for i in range(int(length+1))]}
     
-    '''init
-    memory:
-    defaultdict(<class 'list'>, {(0, 0, '->', 0): [0], (0, 0, '->', 1): [0], (0, 0, '<-', 0): [0], (0, 0, '<-', 1): [0], (1, 1, '->', 0): [0], (1, 1, '->', 1): [0], (1, 1, '<-', 0): [0], (1, 1, '<-', 1): [0], (2, 2, '->', 0): [0], (2, 2, '->', 1): [0], (2, 2, '<-', 0): [0], (2, 2, '<-', 1): [0], (3, 3, '->', 0): [0], (3, 3, '->', 1): [0], (3, 3, '<-', 0): [0], (3, 3, '<-', 1): [0], (4, 4, '->', 0): [0], (4, 4, '->', 1): [0], (4, 4, '<-', 0): [0], (4, 4, '<-', 1): [0], (5, 5, '->', 0): [0], (5, 5, '->', 1): [0], (5, 5, '<-', 0): [0], (5, 5, '<-', 1): [0]})
-    '''
     memory = defaultdict(list)
     for i in range(0, length+1): ##token_len
         for d in ('->', '<-'): ##direction
@@ -369,10 +368,55 @@ def eisner_dp_nbest(length, parse_probs, rel_probs, rescores, RESCORE, NBEST, AL
 
     for t in range(1, length+1):
         for s in range(t-1, -1, -1):
-            cube_pruning(s, t, ('<-',0), memory, parse_probs, rel_probs, rescores, RESCORE, NBEST, ALPHA, forest, length)
-            cube_pruning(s, t, ('->',0), memory, parse_probs, rel_probs, rescores, RESCORE, NBEST, ALPHA, forest, length)
-            cube_pruning(s, t, ('<-',1), memory, parse_probs, rel_probs, rescores, RESCORE, NBEST, ALPHA, forest, length)
-            cube_pruning(s, t, ('->',1), memory, parse_probs, rel_probs, rescores, RESCORE, NBEST, ALPHA, forest, length)
+            cube_pruning(s, t, ('<-',0), memory, parse_probs, rel_probs, rel_vocab, rescores, RESCORE, NBEST, ALPHA, forest, length)
+            cube_pruning(s, t, ('->',0), memory, parse_probs, rel_probs, rel_vocab, rescores, RESCORE, NBEST, ALPHA, forest, length)
+            cube_pruning(s, t, ('<-',1), memory, parse_probs, rel_probs, rel_vocab, rescores, RESCORE, NBEST, ALPHA, forest, length)
+            cube_pruning(s, t, ('->',1), memory, parse_probs, rel_probs, rel_vocab, rescores, RESCORE, NBEST, ALPHA, forest, length)
+
+    nbest = []
+    for hyp in memory[(0,length,'->',1)]:
+        nbest.append([])
+        for mi,hi,lb in hyp.edges:
+            prb = parse_probs[mi,hi] * rel_probs[mi,hi,lb]
+            assert prb > 0.0
+            nbest[-1].append((prb,mi,hi,lb))
+
+    '''
+    print(len(forest['hyperedges']))
+    len_file='len.out'
+    with open(len_file, 'a') as f:
+        f.write(str(len(forest['node_ids']))+' '+str(len(forest['hyperedges'])))
+        f.write('\n')
+    '''
+
+    return nbest
+
+def eisner_dp_forest(length, parse_probs, rel_probs, rel_vocab, NBEST):
+    #st_time = time.time()
+    forest = {'hyperedges': [], 'nodes': [], 'node_ids': [i for i in range(int(length+1))]}
+
+    ##constant
+    ALPHA=None
+    RESCORE=False
+    rescores=None
+
+    '''init
+    memory:
+    defaultdict(<class 'list'>, {(0, 0, '->', 0): [0], (0, 0, '->', 1): [0], (0, 0, '<-', 0): [0], (0, 0, '<-', 1): [0], (1, 1, '->', 0): [0], (1, 1, '->', 1): [0], (1, 1, '<-', 0): [0], (1, 1, '<-', 1): [0], (2, 2, '->', 0): [0], (2, 2, '->', 1): [0], (2, 2, '<-', 0): [0], (2, 2, '<-', 1): [0], (3, 3, '->', 0): [0], (3, 3, '->', 1): [0], (3, 3, '<-', 0): [0], (3, 3, '<-', 1): [0], (4, 4, '->', 0): [0], (4, 4, '->', 1): [0], (4, 4, '<-', 0): [0], (4, 4, '<-', 1): [0], (5, 5, '->', 0): [0], (5, 5, '->', 1): [0], (5, 5, '<-', 0): [0], (5, 5, '<-', 1): [0]})
+    '''
+
+    memory = defaultdict(list)
+    for i in range(0, length+1): ##token_len
+        for d in ('->', '<-'): ##direction
+            for c in range(2): ##completeness (0:incomplete, 1: complete)
+                memory[(i,i,d,c)].append(Hypo(0.0, set(), None, 0))
+
+    for t in range(1, length+1):
+        for s in range(t-1, -1, -1):
+            cube_pruning(s, t, ('<-',0), memory, parse_probs, rel_probs, rel_vocab, rescores, RESCORE, NBEST, ALPHA, forest, length)
+            cube_pruning(s, t, ('->',0), memory, parse_probs, rel_probs, rel_vocab, rescores, RESCORE, NBEST, ALPHA, forest, length)
+            cube_pruning(s, t, ('<-',1), memory, parse_probs, rel_probs, rel_vocab, rescores, RESCORE, NBEST, ALPHA, forest, length)
+            cube_pruning(s, t, ('->',1), memory, parse_probs, rel_probs, rel_vocab, rescores, RESCORE, NBEST, ALPHA, forest, length)
 
     '''original kbest eisner
     ## output nbest of memory[(0,length,'->',1)]
@@ -388,44 +432,6 @@ def eisner_dp_nbest(length, parse_probs, rel_probs, rescores, RESCORE, NBEST, AL
     hi: head idx
     lb: relation label
     '''
-    nbest = []
-    for hyp in memory[(0,length,'->',1)]:
-        nbest.append([])
-        for mi,hi,lb in hyp.edges:
-            prb = parse_probs[mi,hi] * rel_probs[mi,hi,lb]
-            assert prb > 0.0
-            nbest[-1].append((prb,mi,hi,lb))
-
-    print(len(forest['hyperedges']))
-    len_file='len.out'
-    with open(len_file, 'a') as f:
-        f.write(str(len(forest['node_ids']))+' '+str(len(forest['hyperedges'])))
-        f.write('\n')
-
-    return nbest
-
-def eisner_dp_forest(length, parse_probs, rel_probs, NBEST):
-    #st_time = time.time()
-    forest = {'hyperedges': [], 'nodes': [], 'node_ids': [i for i in range(int(length+1))]}
-
-    ##constant
-    ALPHA=None
-    RESCORE=False
-    rescores=None
-
-    ##init
-    memory = defaultdict(list)
-    for i in range(0, length+1): ##token_len
-        for d in ('->', '<-'): ##direction
-            for c in range(2): ##completeness (0:incomplete, 1: complete)
-                memory[(i,i,d,c)].append(Hypo(0.0, set(), None, 0))
-
-    for t in range(1, length+1):
-        for s in range(t-1, -1, -1):
-            cube_pruning(s, t, ('<-',0), memory, parse_probs, rel_probs, rescores, RESCORE, NBEST, ALPHA, forest, length)
-            cube_pruning(s, t, ('->',0), memory, parse_probs, rel_probs, rescores, RESCORE, NBEST, ALPHA, forest, length)
-            cube_pruning(s, t, ('<-',1), memory, parse_probs, rel_probs, rescores, RESCORE, NBEST, ALPHA, forest, length)
-            cube_pruning(s, t, ('->',1), memory, parse_probs, rel_probs, rescores, RESCORE, NBEST, ALPHA, forest, length)
 
     nbest = []
     for hyp in memory[(0,length,'->',1)]:

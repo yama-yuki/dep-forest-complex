@@ -22,12 +22,12 @@ from lib.conll import final_1best, to_conllu
 ## derivation D
 class HypoD:
     ## tree hypotheses
-    def __init__(self, node, acclogp, hyperedges, depedges, c, num_roots):
+    def __init__(self, node, acclogp, hyperedges, depedges, b, num_roots):
         self.node = int(node)
         self.acclogp = acclogp
         self.hyperedges = hyperedges
         self.depedges = depedges
-        self.c = c
+        self.b = b
         self.num_roots = num_roots
 
     def to_list(self):
@@ -50,76 +50,64 @@ def node2hyperedge(forest):
 
     return forest_d
 
-def Xspan2hyperedgeid(forest_d, Xspans):
+def nodehlr2hyperedge(forest_d, nodes):
     '''
-    In:
-    Xspans: list
-        Xspan = (X, a, b)
+    nodes: head, lmost, rmost
 
-    Out:
-    Xspan_forest_d: dict
-        Xspan_forest_d[Xspan] = hyperedge_id
+    hlr_forest_d: dict
+                  dict[node] = hyperedge_node_name
     '''
-    Xspan_forest_d = defaultdict(list)
-    for Xspan in Xspans:
-        X, a, b = Xspan
+    hlr_forest_d = defaultdict(list)
+    for node in nodes:
+        head, lmost, rmost = node
         for he_name in forest_d:
             sp = list(map(int,he_name.split('_')))
-            if sp[0]==X and sp[3]==a and sp[5]==b:
-                Xspan_forest_d[Xspan].append(he_name)
+            if sp[0] == head and sp[3] == lmost and sp[5] == rmost:
+                hlr_forest_d[node].append(he_name)
             
-    return Xspan_forest_d
+    return hlr_forest_d
 
 def load_forest(forest):
     '''
-    X: head node
-    A: left tail
-    B: right tail
-    a: left most id
-    c: boundary id
-    b: right most id
-    lb: deprel id
-
-    hyperedge_id: X_A_B_a_c_b_lb
-    Xspan: X, a, b
+    nodes_hlrlbr: head_ltail_rtail_lmost_boundary_rmost_label-id
+    nodes_hlr: head, lmost, rmost
     forest_d: node_id -> hyperedge
-    Xspan_forest_d: (X, a, b) -> list(hyperedge_ids)
+    hlr_forest_d: span_range(head, lmost, rmost) -> [node_ids]
     '''
 
     ## a list of node_ids
-    hyperedge_ids = forest['nodes']
+    nodes_hlrlbr = forest['nodes']
     ## node_id->hyperedge
     forest_d = node2hyperedge(forest)
     #print(forest_d)    
     ## sorting hyperedges based on span_len
-    Xspans = topological_sort(hyperedge_ids)
+    nodes_hlr = topological_sort(nodes_hlrlbr)
     ## node_span_range->[hyperedges]
-    Xspan_forest_d = Xspan2hyperedgeid(forest_d, Xspans)
+    hlr_forest_d = nodehlr2hyperedge(forest_d, nodes_hlr)
 
-    return Xspans, forest_d, Xspan_forest_d
+    return nodes_hlr, forest_d, hlr_forest_d
 
-def topological_sort(nodes_hlrlbr):
+def topological_sort(nodes):
     ## sort nodes based on span length (ascending order)
     #9_3_9_0_4_9
     #head_lt_rt_lmost_bound_rmost
     d = defaultdict()
-    for node in nodes_hlrlbr:
+    for node in nodes:
         sp = list(map(int,node.split('_')))
         span_len = sp[5]-sp[3] 
         d[node] = span_len
     sorted_nodes = [node for (node,_) in sorted(d.items(), key=lambda x: x[1])]
 
-    Xspans = []
+    nodes_hlr = []
     for node in sorted_nodes:
         h,_,_,l,_,r,_ = list(map(int,node.split('_')))
-        Xspan = (h,l,r)
-        if Xspan not in Xspans:
-            Xspans.append(Xspan) ## head,lmost,rmost
+        if (h,l,r) not in nodes_hlr:
+            nodes_hlr.append((h,l,r)) ## head,lmost,rmost
 
     print('topological sort')
-    print(Xspans)
+    print(nodes_hlr)
 
-    return Xspans
+    return nodes_hlr
 
 ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 ## (B) Cube Pruning Algorithm
@@ -132,35 +120,45 @@ def main_loop(forest, parse_probs, rel_probs, rescore_matrix, rescore_config, se
     print('total nodes: '+str(len(forest['nodes'])))
 
     ## get sorted list of nodes from parsed forest
-    Xspans, forest_d, hlr_forest_d = load_forest(forest)
+    nodes_hlr, forest_d, hlr_forest_d = load_forest(forest)
     #parse_score_d = parse_score(forest_d, length)
 
     ## create/init chart of derivations
-    ## key:Xspan(X,a,b)
+    ##head, lmost, rmost = node
     ## (1,0,1), ... (9,0,9), (1,1,2)
+    
+    '''legacy
+    ## initialize with terminal hyperedges
+    for x in range(length): ## head loop 0-9
+        for left in range(length): ## left tail loop 0-9
+            for right in range(length): ## right tail loop 0-9
+                #if alpha < x <= beta: 
+                ## check if terminal edge (i.e. bottom/terminal)
+                if right-left==1 and x==right: #0_0_1_-1_0_1_1
+                    derivations[(x,left,right)].append(HypoD(x, 'terminal', set(), set(), -1, 0))
+                else:
+                    pass
+    ''' 
 
-    terminals = set()
     derivations = defaultdict(list)
-    for X in range(length): ## X loop 0-9
-        for A in range(-1,length): ## A loop 0-9, will be used as 'a'
-            for B in range(length): ## B loop 0-9, will be used as 'b'
-                ## check if it is a terminal edge (i.e. bottom/terminal)
-                if B-A==1 and A<=X<=B:
-                    terminals.add((X,A,B))
-                    #derivations[(X,A,B)].append(HypoD(X, None, set(), set(), -1, 0))
-                    ##node, acclogp, hyperedges, depedges, c, num_roots
-                    ##lspan, rspan = (left_tail,lmost,c), (right_tail,c,rmost)
+    for head in range(length): ## head loop 0-9
+        for ltail in range(-1,length): ## ltail loop 0-9
+            for rtail in range(length): ## rtail loop 0-9
+                #if alpha < x <= beta: 
+                ## check if terminal edge (i.e. bottom/terminal)
+                if rtail-ltail==1 and ltail<=head<=rtail:
+                    derivations[(head,ltail,rtail)].append(HypoD(head, 'terminal', set(), set(), -1, 0))
+                    ##node, acclogp, hyperedges, depedges, b, num_roots
+                    ##lspan, rspan = (left_tail,lmost,b), (right_tail,b,rmost)
 
     print(derivations)
 
     ## main loop
-    for i,Xspan in enumerate(Xspans):
+    for i,node in enumerate(nodes_hlr):
         #nodes: [(2, 0, 2), (3, 2, 4), (5, 4, 6)] (head, lmost, rmost)
-        print('------------------------------')
-        print('------------------------------')
-        print('STARTING LOOP for Xspan'+str(Xspan))
-        print('------------------------------')
-        select_k(Xspan, derivations, terminals, forest_d, hlr_forest_d, parse_probs, rel_probs, rescore_matrix, rescore_config, K)
+        print('start_loop')
+        print(node)
+        select_k(i, node, derivations, forest_d, hlr_forest_d, parse_probs, rel_probs, rescore_matrix, rescore_config, K)
 
     ## the goal is to get to the root HE(0,0,length-1) with all node_ids in it
     print('final_derivation')
@@ -170,87 +168,69 @@ def main_loop(forest, parse_probs, rel_probs, rescore_matrix, rescore_config, se
     best_tree = final_1best(length, derivations, parse_probs, rel_probs)
     to_conllu('test/test_1best.conllu', best_tree, sent, tags)
 
-def select_k(Xspan, derivations, terminals, forest_d, Xspan_forest_d, parse_probs, rel_probs, rescore_matrix, rescore_config, K):
+def select_k(i, node, derivations, forest_d, hlr_forest_d, parse_probs, rel_probs, rescore_matrix, rescore_config, K):
     ## eisner_beam_k = {8,16,32,64,128}
-    X, a, b = Xspan
+    ## create priq from each incoming hyperedge
+    head, lmost, rmost = node
 
-    '''
-    [1] prepare priority queue
-    '''
     priq = []
     heapq.heapify(priq) # priq of candidates
-    
-    best_K_buffer = [] # initialize 
+        
+    ## initialize priority queue
+    best_K_buffer = []
     heapq.heapify(best_K_buffer) # priq-temp
     visited = set()
 
-    '''
-    [2] prepare incoming edges
-    '''
-    incoming_edge_ids = Xspan_forest_d[Xspan]
-    #incoming_edge_sps = [tuple(map(int, edge_id.split('_'))) for edge_id in incoming_edge_ids]
+    ## incoming edges
+    incoming_edge_ids = hlr_forest_d[node]
+    incoming_edge_sp = [tuple(map(int, edge_id.split('_'))) for edge_id in incoming_edge_ids]
     #[(4, 4, 6, 3, 5, 6, 18), (4, 4, 5, 3, 4, 6, 23)]
-    print('All edge candidates: '+str(incoming_edge_ids))
-    label_for_incoming_edges_d = defaultdict(list)
-    for edge_id in incoming_edge_ids:
-        sp = edge_id.split('_')
-        edge_id_nolabel = '_'.join(sp[:-1])
-        label_for_incoming_edges_d[edge_id_nolabel].append(int(sp[-1]))
+    print(incoming_edge_ids)
+    ## for each incoming edge
+    for incoming_edge in incoming_edge_ids:
+        print('CURRENT_EDGE: '+str(incoming_edge)) #1_1_2_0_1_7_23
+        sp = tuple(map(int, incoming_edge.split('_')))
+        he = forest_d[incoming_edge]
+        deprel,head,left_tail,right_tail, = he['label'],he['head'],he['left_tail'],he['right_tail']
+        tail = left_tail if right_tail==head else right_tail
+        #probs = he['prob']
+        ## boundary, label_id
+        b, lb = sp[4], sp[-1]
+        #head_ltail_rtail_lmost_boundary_rmost_label-id
+        lspan, rspan = (left_tail,lmost,b), (right_tail,b,rmost) ##todo: add hypo for subderivations
+        #print('b: '+str(b))
+        #print('lspan: '+str(lspan))
+        #print('rspan: '+str(rspan))
 
-    '''
-    [3] initialize cube based on boundary c (/gamma)
-    '''
-    for edge_id_nolabel in label_for_incoming_edges_d.keys():
-        print('------------------------------')
-        print('CURRENT_EDGE: '+str(edge_id_nolabel)) #1_1_2_0_1_7
-        X,A,B,a,c,b = list(map(int,edge_id_nolabel.split('_')))
-        print('X: '+str(X))
-        print('A: '+str(A)+' B: '+str(B))
-        print('a: '+str(a)+' c: '+str(c)+' b: '+str(b))
-        print('------------------------------')
+        ## init cube with kl=kr=0, b, lspan, rspan
+        cube_next(derivations, node, 0, 0, b, lb, deprel, head, lspan, rspan, visited, priq, parse_probs, rel_probs, rescore_matrix, rescore_config, head==0)
 
-        ## loop based on labels inside cube_next()
-        cube_next(derivations, terminals, forest_d, label_for_incoming_edges_d, edge_id_nolabel, Xspan, c, 0, 0, X, visited, priq, parse_probs, rel_probs, rescore_matrix, rescore_config, head_is_root=False)
-
-    '''
-    [4] actual cube pruning
-    '''
-    while len(priq) > 0:
-        '''
-        [A] pop next-best from priq
-        '''
-        neglogp, kl, kr, c, lb, deprel, md, hd, lhs, rhs, edge_id_nolabel, comb_type = heapq.heappop(priq) ## return minimum = -maximum
+    ## actual cube pruning
+    while len(priq) > 0: 
+        ## extract next-best
+        neglogp, kl, kr, b, lb, deprel, head, lspan, rspan = heapq.heappop(priq) ## return minimum = -maximum
         logp = -neglogp
-        
-        '''
-        [B] create new derivation
-        '''
-        if comb_type==1:
-            edges = {(hd,md)}
-            edges_l = {(hd,md,lb,deprel)}
-            num_roots = 1 if hd*md==0 else 0
-        
-        elif comb_type==2:
-            edges = {(hd,md)} |  rhs.depedges
-            edges_l = {(hd,md,lb,deprel)} | rhs.hyperedges
-            num_roots = 1+rhs.num_roots if hd*md==0 else 0+rhs.num_roots       
 
-        elif comb_type==3:
-            edges = lhs.depedges | {(hd,md)}
-            edges_l =  lhs.hyperedges | {(hd,md,lb,deprel)}
-            num_roots = 1+lhs.num_roots if hd*md==0 else 0+lhs.num_roots
-
-        ## combining 2 subderivations
-        else: #if comb_type==0:
-            edges = lhs.depedges | rhs.depedges
-            edges_l = lhs.hyperedges | rhs.hyperedges
-            edges.add((hd,md)) # head, tail
-            edges_l.add((hd,md,lb,deprel))
-            num_roots = lhs.num_roots + rhs.num_roots
+        #if not is_root:
+        lhs, rhs = derivations[lspan][kl], derivations[rspan][kr]
+        edges = lhs.depedges | rhs.depedges
+        edges_l = lhs.hyperedges | rhs.hyperedges
+        tail = lhs.node if rhs.node==head else rhs.node
+        edges.add((head, tail))#head->tail
+        edges_l.add((head, tail, lb, deprel))
+        num_roots = lhs.num_roots + rhs.num_roots
 
         '''
-        [C] checking validity
+        else:
+            rhs = derivations[rspan][kr]
+            edges = rhs.depedges
+            he = rhs.hyperedges
+            tail = rhs.node
+            edges.add((head, tail))
+            num_roots = rhs.num_roots
         '''
+
+        ### check if violates
         is_violate = (num_roots > 1)
         has_head = set()
         for edge in edges:
@@ -258,13 +238,11 @@ def select_k(Xspan, derivations, terminals, forest_d, Xspan_forest_d, parse_prob
                 is_violate = True
                 break
             has_head.add(edge[1])
+        j = -1
         
-        '''
-        [D] append item to best_K_buffer
-        '''
+        ## append item to buffer
         #heapq.heappush(best_K_buffer, [logp, node])
-        ## stop if invalid
-        j = -1 #init
+
         for i, hyp in enumerate(best_K_buffer):
             ## hypotheses with same edges should have same logp
             if hyp.depedges == edges:
@@ -274,20 +252,14 @@ def select_k(Xspan, derivations, terminals, forest_d, Xspan_forest_d, parse_prob
                 j = i
                 break
 
-        ## insert new_hyp to best_K_buffer
-        if not is_violate: 
+        ### insert
+        if not is_violate :
             acclogp = logp
-            new_hyp = HypoD(X, acclogp, edges_l, edges, c, num_roots)
+            new_hyp = HypoD(head, acclogp, edges_l, edges, b, num_roots)
             if j == -1:
                 best_K_buffer.append(new_hyp)
             else:
                 best_K_buffer.insert(j, new_hyp)
-
-        '''
-        [E] check whether to stop loop
-        '''
-        if comb_type==1:
-            break
 
         if len(best_K_buffer) >= K:
             print('best_K')
@@ -295,119 +267,124 @@ def select_k(Xspan, derivations, terminals, forest_d, Xspan_forest_d, parse_prob
             break
 
         ## move on to next grid
-        cube_next(derivations, terminals, forest_d, label_for_incoming_edges_d, edge_id_nolabel, Xspan, c, kl+1, kr, X, visited, priq, parse_probs, rel_probs, rescore_matrix, rescore_config, head_is_root=False)
-        cube_next(derivations, terminals, forest_d, label_for_incoming_edges_d, edge_id_nolabel, Xspan, c, kl, kr+1, X, visited, priq, parse_probs, rel_probs, rescore_matrix, rescore_config, head_is_root=False)
+        cube_next(derivations, node, kl+1, kr, b, lb, deprel, head, lspan, rspan, visited, priq, parse_probs, rel_probs, rescore_matrix, rescore_config, head==0)
+        cube_next(derivations, node, kl, kr+1, b, lb, deprel, head, lspan, rspan, visited, priq, parse_probs, rel_probs, rescore_matrix, rescore_config, head==0)
 
     ## sort buffer to D(v)
     ## fixed: best_K_buffer is heapq. extra sorted() is not necessary.
     #best_K_buffer = sorted(best_K_buffer, key=lambda x: x.acclogp, reverse=True)
-    derivations[Xspan] = best_K_buffer[:K]
+    derivations[node] = best_K_buffer[:K]
 
-def cube_next(derivations, terminals, forest_d, label_for_incoming_edges_d, edge_id_nolabel, Xspan, c, kl, kr, X, visited, priq, parse_probs, rel_probs, rescore_matrix, rescore_config, head_is_root=False):
+def cube_next(derivations, node, kl, kr, b, lb, deprel, head, lspan, rspan, visited, priq, parse_probs, rel_probs, rescore_matrix, rescore_config, head_is_root=False):
     '''
     (lhs_list, rhs_list, visited, priq,
         is_making_incomplete, u, k1, k2, new_uas, new_las, is_s_0 = False)
     
     lhs_list: candidates of left_tails; alpha
     rhs_list: candidates of right_tails; beta
-    c: boundary; gamma
+    b: boundary; gamma
 
     k1: x-axis; lhs
     k2: y-axis; rhs
     init:
         k1,k2 = 0,0
     '''
-    #(derivations, terminals, Xspan, kl, kr, c, lb, deprel, X, Aspan, Bspan, visited, priq, parse_probs, rel_probs, rescore_matrix, rescore_config, head_is_root=False)
+
     print('k1: '+str(kl)+' k2: '+str(kr))
-    visited.add((kl,kr,c))
-    print('cube: '+str((kl,kr,c)))
 
-    for i,lb in enumerate(label_for_incoming_edges_d[edge_id_nolabel]):
-        '''
-        [1] prepare spans and nodes
-        '''
-        ## head_A_B_lmost_boundary_rmost_label-id
-        incoming_edge_id = edge_id_nolabel+'_'+str(lb)
-        he = forest_d[incoming_edge_id]
-        deprel,X,A,B, = he['label'],he['head'],he['left_tail'],he['right_tail']
-        if (A==B) or (X not in {A,B}):
-            return
-        tail = A if B==X else B
-        X,a,b = Xspan
-        Aspan, Bspan = (A,a,c), (B,c,b)
-        print('A: '+str(A), 'c: '+str(c), 'B: '+str(B), 'lb: '+str(lb))
+    ##if not root relation
+    ## look for next block
+    #is_root = bool(lspan[:2] == (0,-1))
+    if (len(derivations[lspan]) <= kl or len(derivations[rspan]) <= kr):
+        #print(derivations[lspan])
+        #print(derivations[rspan])
+        print('cube_end')
+        return
 
-        '''
-        [2] check whether to stop
-        '''
-        if (kl,kr,A,c,B) in visited:
-            print('visited')
-            return
-        
-        if (len(derivations[Aspan]) <= kl or len(derivations[Bspan]) <= kr) and (Aspan not in terminals and Bspan not in terminals):
-            print('cube_end')
-            return
+    '''
+    if (kl,kr,b) in visited:
+        print(((kl,kr,b) in visited))
+        print('visited')
+        return
+    '''
+    visited.add((kl,kr,b))
+    print('cube: '+str((kl,kr,b)))
 
-        '''
-        [3] handle terminals
-        '''
-        if (Aspan in terminals and Bspan in terminals):
-            pass
+    #if not is_root:
+    ## derivations[lspan]/[rspan]
+    print(lspan)
+    print(rspan)    
+    lhs, rhs = derivations[lspan][kl], derivations[rspan][kr]
+    #print(derivations)
 
-        '''
-        [4] actual scoring
-        '''
-        md,hd = tail,X
-        if Aspan in terminals and Bspan in terminals:
-            lhs, rhs = None, None
-            logp = np.log(parse_probs[md,hd]+1e-10) + np.log(rel_probs[md,hd,:][lb]+1e-10)
-            comb_type=1
-        elif Aspan in terminals:
-            print(Aspan)
-            print(Bspan)
-            lhs, rhs = None, derivations[Bspan][kr]
-            logp = rhs.acclogp + np.log(parse_probs[md,hd]+1e-10) + np.log(rel_probs[md,hd,:][lb]+1e-10)
-            comb_type=2
-        elif Bspan in terminals:
-            lhs, rhs = derivations[Aspan][kl], None
-            logp = lhs.acclogp + np.log(parse_probs[md,hd]+1e-10) + np.log(rel_probs[md,hd,:][lb]+1e-10)
-            comb_type=3
-        else:
-            lhs, rhs= derivations[Aspan][kl], derivations[Bspan][kr]
-            logp = lhs.acclogp + rhs.acclogp + np.log(parse_probs[md,hd]+1e-10) + np.log(rel_probs[md,hd,:][lb]+1e-10)
-            comb_type=0
+    l_tail, r_tail = lhs.node, rhs.node
+    if l_tail == r_tail or head not in {l_tail, r_tail}:
+        #print(l_tail, r_tail)
+        return
+    tail = l_tail if r_tail==head else r_tail
+    print('l_tail: '+str(l_tail), 'r_tail: '+str(r_tail))
+    print(lhs.acclogp)
+    print(rhs.acclogp)
+
+    mi,hi = tail,head
+    if lhs.acclogp=='terminal' and rhs.acclogp=='terminal':
+        logp = np.log(parse_probs[mi,hi]+1e-10) + np.log(rel_probs[mi,hi,:][lb]+1e-10)
+    elif lhs.acclogp=='terminal':
+        logp = rhs.acclogp + np.log(parse_probs[mi,hi]+1e-10) + np.log(rel_probs[mi,hi,:][lb]+1e-10)
+    elif rhs.acclogp=='terminal':
+        logp = lhs.acclogp + np.log(parse_probs[mi,hi]+1e-10) + np.log(rel_probs[mi,hi,:][lb]+1e-10)
+    else:
+        logp = lhs.acclogp + rhs.acclogp + np.log(parse_probs[mi,hi]+1e-10) + np.log(rel_probs[mi,hi,:][lb]+1e-10)
     
-        '''
-        [5] add bert score
-        '''
-        if rescore_config['RESCORE']:
-            newlogp = bert_rescore(logp, md, hd, rescore_matrix, rescore_config)
-        else: #for debug
-            newlogp = logp
-        print('newlogp: '+str(newlogp))
-        print('----------')
+    ## rescoring
+    if rescore_config['RESCORE']:
+        newlogp = bert_rescore(logp, node, head, l_tail, r_tail, rescore_matrix, rescore_config)
+    else: newlogp = logp
+    print('newlogp: '+str(newlogp))
 
-        '''
-        [6] push to priq
-        '''
-        heapq.heappush(priq, [-newlogp, kl, kr, c, lb, deprel, md, hd, lhs, rhs, edge_id_nolabel, comb_type])
-        ##(-las_logp,u,k1,k2,Vocab.ROOT)
+    heapq.heappush(priq, [-newlogp, kl, kr, b, lb, deprel, head, lspan, rspan])
+    ##(-las_logp,u,k1,k2,Vocab.ROOT)
+    
+    ##if head is root
+    '''
+    else:
+        print('hoge')
+        print(lspan)
+        print(kl)
+        lhs = derivations[lspan][kl]
+        print('hogehoge')
+        rhs =  derivations[rspan][kr]
+        l_tail, r_tail = lhs.node, rhs.node
+        if l_tail == r_tail or head not in {l_tail, r_tail}:
+            #print(l_tail, r_tail)
+            return
+        tail = l_tail if r_tail==head else r_tail
+        mi,hi = tail,head
+        logp = rhs.acclogp + np.log(parse_probs[mi,hi]+1e-10) + np.log(rel_probs[mi,hi,:][lb]+1e-10)
+        heapq.heappush(priq, [-rhs.acclogp, kl, kr, 0, 0, lspan, rspan, head==0])
+
+        ##node, acclogp, hyperedges, depedges, b, num_roots
+        ##lspan, rspan = (left_tail,lmost,b), (right_tail,b,rmost)
+    '''
 
 ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 ## (C) Rescoring Function
 ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 
-def bert_rescore(logp, md, hd, rescore_matrix, rescore_config):
-    #print('BERT_RESCORE_FUNCTION')
-    alpha, beta = rescore_config['alpha'], rescore_config['beta']
-    #print('Xspan: ' + str(Xspan))
+def bert_rescore(logp, node, head_node, l_tail, r_tail, rescore_matrix, rescore_config):
+    #logp = biaffine
+    alpha, beta, RESCORE = rescore_config['alpha'], rescore_config['beta'], rescore_config['RESCORE']
+    ## md,hd are both verbs
+    print('node: ' + str(node))
+    print('head: '+str(head_node)+' ltail: '+str(l_tail)+' rtail: '+str(r_tail))
+    #print(hlr_forest_d[node])
+    ## '<--' or '-->'   
+    tail_node = l_tail if head_node==r_tail else r_tail
 
-    if rescore_matrix[md-1] is not None: # parent node is verb
-        bert_score = rescore_matrix[md-1][hd-1]
-        #print('before: '+str(logp))
-        #print('bert: '+str(bert_score))
-        #print('after: '+str(logp + beta + alpha*np.log(bert_score)))
+    if rescore_matrix[tail_node-1] is not None: # parent node is verb
+        bert_score = rescore_matrix[tail_node-1][head_node-1]
         return logp + beta + alpha*np.log(bert_score)
+    
     else:
         return logp
 
@@ -510,7 +487,7 @@ if __name__ == '__main__':
             #print(rel_probs.shape)
 
 '''legacy
-def backward_star(node, forest, c):
+def backward_star(node, forest, b):
     ## a list of candidate/incoming hyperedges for an input head node
 
     incoming_edges = []
