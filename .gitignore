@@ -1,0 +1,33 @@
+biaffine_forest/config/obs/
+biaffine_forest/data/
+biaffine_forest/obs/
+<<<<<<< HEAD
+biaffine_forest/pkl*/
+=======
+biaffine_forest/pkl/
+<<<<<<< HEAD
+>>>>>>> parent of 0daf4ef... third commit
+=======
+>>>>>>> parent of 0daf4ef... third commit
+biaffine_forest/rescore/
+biaffine_forest/saves/
+biaffine_forest/test/
+biaffine_forest__pycache__/
+
+biaffine_forest/scripts/*.out
+
+biaffine_forest/lib/models/parsers/*.json
+biaffine_forest/lib/models/parsers/*.out
+biaffine_forest/lib/models/parsers/obs/
+biaffine_forest/lib/models/parsers/__pycache__/
+
+biaffine_forest/lib/models/parsers/rescore_module/__pycashe__/
+biaffine_forest/lib/models/parsers/rescore_module/obs/
+
+biaffine_forest/*.sh
+biaffine_forest/*log
+biaffine_forest/*.out
+
+rescore_module/data/
+rescore_module/models/
+

@@ -1,0 +1,10 @@
+1	We	_	PRON	PRP	_	2	nsubj	2	nsubj
+2	're	_	AUX	VBP	_	0	root	0	root
+3	about	_	ADP	IN	_	2	dep	2	dep
+4	to	_	PART	TO	_	5	aux	5	aux
+5	see	_	VERB	VB	_	3	xcomp	3	xcomp
+6	if	_	SCONJ	IN	_	8	mark	8	mark
+7	advertising	_	NOUN	NN	_	8	nsubj	8	nsubj
+8	works	_	VERB	VBZ	_	5	advcl	5	advcl
+9	.	_	PUNCT	.	_	2	punct	2	punct
+
