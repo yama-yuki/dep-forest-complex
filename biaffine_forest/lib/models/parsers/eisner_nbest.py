@@ -6,7 +6,11 @@ import time
 import numpy as np
 from pprint import pprint
 from collections import defaultdict
-from vocab import Vocab
+##from vocab import Vocab
+class Vocab:
+    PAD=0
+    ROOT=1
+    UNK=2
 
 import json
 sys.path.append('/home/is/yuki-yama/work/d3/dep-forest/biaffine_forest')#sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
@@ -242,6 +246,9 @@ def cube_pruning(s, t, kk, memory, parse_probs, rel_probs, rel_vocab, rescores, 
         lhs = (s,u) + ll
         rhs = (u+u_inc,t) + rr
         edges = memory[lhs][k1].edges | memory[rhs][k2].edges
+
+        #print('lhs ',str(memory[lhs][k1].edges))
+        #print('rhs ',str(memory[rhs][k2].edges))
         num_roots = memory[lhs][k1].num_roots + memory[rhs][k2].num_roots
         if li is not None:
             edges.add((md,hd,li))
@@ -266,6 +273,16 @@ def cube_pruning(s, t, kk, memory, parse_probs, rel_probs, rel_vocab, rescores, 
         if not is_violate :
             new_hyp = Hypo(logp, edges, u, num_roots)
             #print(hd, md)
+            #print(edges)
+            #if edges == {(9, 2, 3), (3, 2, 19), (6, 8, 20), (8, 5, 28), (7, 8, 8), (5, 2, 18), (2, 1, 21), (4, 5, 11)}:
+                #print('-----')
+                #print(kk[1])
+            flag=True
+            for edge in edges:
+                if edge[0]==2 and edge[1]!=0:
+                    flag=False
+            if flag==True and len(edges)==9:
+                print(edges)
 
             '''kbest merging method of creating a forest based on original paper
             ## merge hypotheses using all edges
@@ -281,6 +298,21 @@ def cube_pruning(s, t, kk, memory, parse_probs, rel_probs, rel_vocab, rescores, 
                         forest['nodes'].append(he.he_name)
             '''
 
+
+            ## create hyperedge representation
+            if kk[1]==1: ## only when is_making_complete
+                lhs_he = form_cfg_hyperedges(memory[lhs][k1], parse_probs, rel_probs, rel_vocab)
+                rhs_he = form_cfg_hyperedges(memory[rhs][k2], parse_probs, rel_probs, rel_vocab)
+                #print([he.as_list() for he in hyperedges])
+                for hyperedges in [lhs_he, rhs_he]:
+                    if hyperedges is not None:
+                        for he in hyperedges:
+                            if he.as_dict() not in forest['hyperedges']:
+                                forest['hyperedges'].append(he.as_dict())
+                                forest['nodes'].append(he.he_name)
+
+
+            '''
             ## create hyperedge representation
             if kk[1]==1: ## only when is_making_complete
                 hyperedges = form_cfg_hyperedges(new_hyp, parse_probs, rel_probs, rel_vocab)
@@ -289,7 +321,18 @@ def cube_pruning(s, t, kk, memory, parse_probs, rel_probs, rel_vocab, rescores, 
                     for he in hyperedges:
                         if he.as_dict() not in forest['hyperedges']:
                             forest['hyperedges'].append(he.as_dict())
-                            forest['nodes'].append(he.he_name)
+            '''
+
+            '''
+            ## include incomplete
+            hyperedges = form_cfg_hyperedges(new_hyp, parse_probs, rel_probs, rel_vocab)
+            #print([he.as_list() for he in hyperedges])
+            if hyperedges is not None:
+                for he in hyperedges:
+                    if he.as_dict() not in forest['hyperedges']:
+                        forest['hyperedges'].append(he.as_dict())
+                        forest['nodes'].append(he.he_name)
+            '''
 
             if j == -1:
                 nbest.append(new_hyp)
@@ -452,6 +495,31 @@ def eisner_dp_forest(length, parse_probs, rel_probs, rel_vocab, NBEST):
 if __name__ == '__main__':
     ## do some unit test
 
+    import pickle as pkl
+
+    pkl_dir = '/home/is/yuki-yama/work/d3/dep-forest-complex/biaffine_forest/pkl_complete'
+    with open(os.path.join(pkl_dir,'parse_probs.pkl'), 'rb') as p2:
+        all_parse_probs = pkl.load(p2)
+    with open(os.path.join(pkl_dir,'rel_probs.pkl'), 'rb') as p3:
+        all_rel_probs = pkl.load(p3)
+    parse_probs=all_parse_probs[0]
+    rel_probs=all_rel_probs[0]
+
+    rescores = RESCORE = ALPHA = None
+
+    length = 9
+    NBEST = 128
+    rel_vocab=[0]*10**3
+    forest = eisner_dp_forest(length, parse_probs, rel_probs, rel_vocab, NBEST)
+
+    print(len(forest['hyperedges']))
+
+    ##json
+    out_dir = '/home/is/yuki-yama/work/d3/dep-forest-complex/outputs/'
+    forest_out = 'test_forest.json'
+    with open(out_dir+forest_out, 'w') as f:
+        json.dump(forest, f)
+
     '''original
     Vocab.ROOT = 0
     parse_probs = np.arange(1, 10001, dtype=np.float32).reshape((100,100))
@@ -465,6 +533,7 @@ if __name__ == '__main__':
     print(Vocab.ROOT)
     '''
 
+    '''
     ##(prb, mi:child, hi:head, lb:label)
     Vocab.ROOT = 0
     length = 0
@@ -490,4 +559,5 @@ if __name__ == '__main__':
     forest_out = 'test_forest.json'
     with open(out_dir+forest_out, 'w') as f:
         json.dump(forest, f)
+    '''
 

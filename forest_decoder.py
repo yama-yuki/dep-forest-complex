@@ -143,9 +143,9 @@ def main_loop(forest, parse_probs, rel_probs, rescore_matrix, rescore_config, se
 
     terminals = set()
     derivations = defaultdict(list)
-    for X in range(length): ## X loop 0-9
+    for X in range(0,length+1): ## X loop 0-9
         for A in range(-1,length): ## A loop 0-9, will be used as 'a'
-            for B in range(length): ## B loop 0-9, will be used as 'b'
+            for B in range(0,length+1): ## B loop 0-9, will be used as 'b'
                 ## check if it is a terminal edge (i.e. bottom/terminal)
                 if B-A==1 and A<=X<=B:
                     terminals.add((X,A,B))
@@ -166,11 +166,20 @@ def main_loop(forest, parse_probs, rel_probs, rescore_matrix, rescore_config, se
         print('------------------------------')
         select_k(Xspan, derivations, terminals, forest_d, hlr_forest_d, parse_probs, rel_probs, rescore_matrix, rescore_config, K)
 
+    '''Xspans
+    [(0, -1, 1), (2, 0, 2), (1, 0, 2), (3, 1, 3), (2, 1, 3), (4, 2, 4), (3, 2, 4), (5, 3, 5), (4, 3, 5), (6, 4, 6), (5, 4, 6), (7, 5, 7), (6, 5, 7), (8, 6, 8), (7, 6, 8), (9, 7, 9), (8, 7, 9), (0, -1, 2), (3, 0, 3), (1, 0, 3), (4, 1, 4), (2, 1, 4), (5, 2, 5), (3, 2, 5), (6, 3, 6), (4, 3, 6), (7, 4, 7), (5, 4, 7), (8, 5, 8), (6, 5, 8), (9, 6, 9), (7, 6, 9), (0, -1, 3), (4, 0, 4), (1, 0, 4), (5, 1, 5), (2, 1, 5), (6, 2, 6), (3, 2, 6), (7, 3, 7), (4, 3, 7), (8, 4, 8), (5, 4, 8), (9, 5, 9), (6, 5, 9), (0, -1, 4), (5, 0, 5), (1, 0, 5), (6, 1, 6), (2, 1, 6), (7, 2, 7), (3, 2, 7), (8, 3, 8), (4, 3, 8), (9, 4, 9), (5, 4, 9), (0, -1, 5), (6, 0, 6), (1, 0, 6), (7, 1, 7), (2, 1, 7), (8, 2, 8), (3, 2, 8), (9, 3, 9), (4, 3, 9), (0, -1, 6), (7, 0, 7), (1, 0, 7), (8, 1, 8), (2, 1, 8), (9, 2, 9), (3, 2, 9), (0, -1, 7), (8, 0, 8), (1, 0, 8), (9, 1, 9), (2, 1, 9), (0, -1, 8), (9, 0, 9), (1, 0, 9), (0, -1, 9)]
+
+    Combining operation for root Xspan flagments (e.g., (0, -1, 1)) is necessary after creating all possible derivations for Xspans with select_k()
+    e.g., Aspan(0,-1,1)+Bspan(2,1,9) -> Xspan(0,-1,9)
+
+    '''
+
     ## the goal is to get to the root HE(0,-1,length-1) with all node_ids in it
     print('final_derivation')
     final_kbests = derivations[(0,-1,length-1)]
     print(final_kbests)
     print(final_kbests[0][-1].depedges)
+    print(Xspans)
 
     #best_tree = final_1best(length, derivations, parse_probs, rel_probs)
     #to_conllu('test/test_1best.conllu', best_tree, sent, tags)
@@ -224,13 +233,14 @@ def select_k(Xspan, derivations, terminals, forest_d, Xspan_forest_d, parse_prob
     print('[4] ACTUAL CUBE PRUNING')
     cnt=0
     while len(priq) > 0:
-        ## cnt is necessary to distinguish hypotheses in heapq
+        ## cnt is necessary to distinguish hypotheses in heapq, otherwise shows typeerror
         cnt+=1
         '''
         [A] pop next-best from priq
         '''
         neglogp, kl, kr, c, lb, deprel, md, hd, lhs, rhs, edge_id_nolabel, comb_type = heapq.heappop(priq) ## return minimum = -maximum
         logp = -neglogp
+
 
         '''
         [B] create new derivation
@@ -241,7 +251,10 @@ def select_k(Xspan, derivations, terminals, forest_d, Xspan_forest_d, parse_prob
             num_roots = 1 if hd*md==0 else 0
         
         elif comb_type==2:
-            edges = {(hd,md)} |  rhs.depedges
+            print({(hd,md)})
+            print(rhs.depedges)
+            print(rhs.acclogp)
+            edges = {(hd,md)} | rhs.depedges
             edges_l = {(hd,md,lb,deprel)} | rhs.depedges_l
             num_roots = 1+rhs.num_roots if hd*md==0 else 0+rhs.num_roots       
 
@@ -258,6 +271,7 @@ def select_k(Xspan, derivations, terminals, forest_d, Xspan_forest_d, parse_prob
             edges_l.add((hd,md,lb,deprel))
             num_roots = lhs.num_roots + rhs.num_roots
 
+        print(comb_type)
         '''
         [C] checking validity
         '''
@@ -297,6 +311,7 @@ def select_k(Xspan, derivations, terminals, forest_d, Xspan_forest_d, parse_prob
         '''
         if not is_violate: 
             new_hyp = HypoD(logp, X, edges_l, edges, c, num_roots)
+            print(new_hyp.depedges)
             print(new_hyp.acclogp)
             heapq.heappush(best_K_buffer, (new_hyp.acclogp, cnt, new_hyp))            
 
@@ -320,7 +335,9 @@ def select_k(Xspan, derivations, terminals, forest_d, Xspan_forest_d, parse_prob
     #best_K_buffer = sorted(best_K_buffer, key=lambda x: x.acclogp, reverse=True)
     derivations[Xspan] = best_K_buffer[:K]
     print('********************')
+    print(Xspan)
     print(derivations[Xspan])
+    print('********************')
 
 def cube_next(derivations, terminals, forest_d, label_for_incoming_edges_d, edge_id_nolabel, Xspan, c, kl, kr, X, visited, priq, parse_probs, rel_probs, rescore_matrix, rescore_config, head_is_root=False):
     '''
@@ -384,9 +401,6 @@ def cube_next(derivations, terminals, forest_d, label_for_incoming_edges_d, edge
             logp = np.log(parse_probs[md,hd]+1e-10) + np.log(rel_probs[md,hd,:][lb]+1e-10)
             comb_type=1
         elif Aspan in terminals:
-            #print(derivations)
-            #print(Aspan)
-            #print(Bspan)
             lhs, rhs = None, derivations[Bspan][kr][-1]
             logp = rhs.acclogp + np.log(parse_probs[md,hd]+1e-10) + np.log(rel_probs[md,hd,:][lb]+1e-10)
             comb_type=2
