@@ -30,42 +30,29 @@ def final_1best(length, derivations, parse_probs, rel_probs):
     '''
     output 1best set of edges from derivation chart
     '''
-    tmp = []
-    heapq.heapify(tmp)
-    for i in range(0,length):
-        print(i)
-        final_derivations = derivations[(i,-1,length-1)]
+    print('final_derivation')
+    final_kbests = derivations[(0,-1,length-1)]
+    print(final_kbests)
     
-        if final_derivations:
-            print(final_derivations)
-            for j,derivation in enumerate(final_derivations):
-                print(derivation)
-                heapq.heappush(tmp,derivation)
-                print(derivation[-1].depedges)
+    for j,kbest in enumerate(final_kbests):
+        print(kbest)
+        print(kbest[-1].depedges)
+    best_hyp = final_kbests[0][-1]
+
+    print('best_hyp')
+    print(best_hyp)
+    print(best_hyp.node_names)
+
+    edges = []
+    for hd,md,lb,deprel in best_hyp.depedges_l:
+        prb = parse_probs[md,hd] * rel_probs[md,hd,:][lb]
+        assert prb > 0.0
+        edges.append((md,hd,lb,deprel,prb))#prb
+
+    best_tree = sorted(edges, key=lambda x: x[0]) 
     
     #kbests = sorted(finals, key=lambda x: x.acclogp, reverse=True)
     #kbests = sorted(finals, key=lambda x: x.acclogp)
-
-    '''
-    tree = Tree(tmp[0].depedges)
-    top = tree.find_top()
-    tmp[0].depedges.add((0, top))
-    print(tmp[0].acclogp)
-    print(tmp[0].depedges)
-    tmp[1].depedges.add((0, top))
-    print(tmp[1].acclogp)
-    print(tmp[1].depedges)
-    '''
-
-    kbests = []
-    for hyp in tmp:
-        kbests.append([])
-        for hi,mi,lb,deprel in hyp.depedges_l:
-            prb = parse_probs[mi,hi] * rel_probs[mi,hi,lb]
-            assert prb > 0.0
-            kbests[-1].append((hi,mi,lb,deprel))#prb
-    
-    best_tree = sorted(kbests[0], key=lambda x: x[1]) 
 
     return best_tree
 
@@ -73,7 +60,7 @@ def to_conllu(out_path, best_tree, sent, tags):
 
     temp_d = defaultdict()
     for edge in best_tree:
-        head, tail, label, deprel = edge
+        head, tail, label, deprel,prb = edge
         temp_d[tail] = (head,deprel)
         print(edge)
     

@@ -101,43 +101,94 @@ class DepHeadBinarizer:
         '''
         tree.relation: {head: [tails], head: [tails], ...}
         '''
-        l_tails = [tail for tail in tree.relation[node] if tail<node]
         r_tails = sorted([tail for tail in tree.relation[node] if tail>node],reverse=True)
+        l_tails = sorted([tail for tail in tree.relation[node] if tail<node])
+        print('---')
+        print(node)
+        print(r_tails)
+        print(l_tails)
+        print('---')
 
         if not l_tails and not r_tails: #terminal
             self.visited.add(node)
             #print(sorted(list(self.visited)))
             return
-
-        for lt in l_tails:
-            ## x -> lt, x
-            lt_governed = []
-            dfs_for_span(tree, lt, lt_governed)
-            tails = [lt,node]
-            edge = self._make_edge(tree, node, lt, tails, lt_governed, 'lt')
-            self.actions.append(edge)
-            self.cfg_conversion(tree, lt)
         
-        for rt in r_tails:
-            ## x -> x, rt
-            rt_governed = []
-            dfs_for_span(tree, rt, rt_governed)
-            tails = [node,rt]
-            edge = self._make_edge(tree, node, rt, tails, rt_governed, 'rt')
-            self.actions.append(edge)
-            self.cfg_conversion(tree, rt)
+        if r_tails and l_tails:
+            governed = []
+            dfs_for_span(tree, node, governed)
+            
+            for rt in r_tails:
+                ## x -> x, rt
+                print('rt')
+                print(rt)
+                print(sorted(governed))
+
+                rt_governed = []
+                dfs_for_span(tree, rt, rt_governed)
+
+                tails = [node,rt]
+                edge = self._make_edge(tree, node, rt, tails, governed, rt_governed, 'rt')
+                self.actions.append(edge)
+                self.cfg_conversion(tree, rt)
+                governed=[gov for gov in governed if gov not in set(rt_governed)|{rt}]
+
+            for lt in l_tails:
+                ## x -> lt, x
+                print('lt')
+                print(lt)
+                print(sorted(governed))
+
+                lt_governed = []
+                dfs_for_span(tree, lt, lt_governed)
+                tails = [lt,node]
+                edge = self._make_edge(tree, node, lt, tails, governed, lt_governed, 'lt')
+                self.actions.append(edge)
+                self.cfg_conversion(tree, lt)
+                governed=[gov for gov in governed if gov not in set(lt_governed)|{lt}]
+
+        elif r_tails:
+            for rt in r_tails:
+                ## x -> x, rt
+                rt_governed = []
+                dfs_for_span(tree, rt, rt_governed)
+                print('rt')
+                print(rt)
+                print(rt_governed)
+                tails = [node,rt]
+                edge = self._make_edge(tree, node, rt, tails, rt_governed, rt_governed, 'rt')
+                self.actions.append(edge)
+                self.cfg_conversion(tree, rt)
+
+        elif l_tails:
+            for lt in l_tails:
+                ## x -> lt, x
+                lt_governed = []
+                dfs_for_span(tree, lt, lt_governed)
+                print('lt')
+                print(lt)
+                print(lt_governed)
+                tails = [lt,node]
+                edge = self._make_edge(tree, node, lt, tails, lt_governed, lt_governed, 'lt')
+                self.actions.append(edge)
+                self.cfg_conversion(tree, lt)
 
         self.visited.add(node)
         #print(self.visited)          
 
-    def _make_edge(self, tree, node, tail, tails, governed, mode):
+    def _make_edge(self, tree, node, tail, tails, governed1, governed2, mode):
         label = tree.label_d[tail,node]
-        head_gov_set = set(governed+tails)
-        tail_gov_set = set(governed)|{tail}
-        bound = max(tail_gov_set) if mode=='lt' else min(tail_gov_set)-1
-        tri_span = [min(head_gov_set)-1, bound, max(head_gov_set)]            
+        head_gov_set = set(governed1+tails)
+        tail_gov_set = set(governed2)|{tail}
+ 
+        a = min(head_gov_set)-1
+        c = max(tail_gov_set) if mode=='lt' else min(tail_gov_set)-1
+        b = max(head_gov_set)
+        tri_span = [a, c, b]
+
         node_name = '_'.join(map(str,[node]+tails+tri_span+[label]))
         edge = (node,tails,tri_span,node_name) #(1, [1, 5], [0, 4, 9], '1_1_5_0_4_9')
+        print(edge)
         return edge
     
     def __str__(self):
@@ -149,7 +200,7 @@ def dfs_for_span(tree, node, governed):
         if tail not in governed:
             dfs_for_span(tree, tail, governed)
 
-def form_cfg_hyperedges(hypo, parse_probs, rel_probs, rel_vocab):
+def form_cfg_hyperedges(edges, parse_probs, rel_probs, rel_vocab):
     '''
     ## rewrite dep v->u to x_v->v,u cfg-style
     ## right-element-first merge to handle spurious ambiguity
@@ -168,7 +219,8 @@ def form_cfg_hyperedges(hypo, parse_probs, rel_probs, rel_vocab):
     '''
     
     ## make tree from edges
-    edges = sorted(list(hypo.edges), key=lambda x: x[1]) ##{(9, 6, 1), (3, 2, 1), (7, 9, 1), (6, 5, 1), (5, 4, 1), (8, 9, 1), (4, 2, 1)}
+    #edges = sorted(list(hypo.edges), key=lambda x: x[1]) ##{(9, 6, 1), (3, 2, 1), (7, 9, 1), (6, 5, 1), (5, 4, 1), (8, 9, 1), (4, 2, 1)}
+    edges = sorted(list(edges), key=lambda x: x[1])
     d_tails_labels = defaultdict(dict) ## {head:[(tail,label), ()], head:...}
     for edge in edges: ##(9, 6, 1)
         d_tails_labels[edge[1]].update([(edge[0],edge[2])])
@@ -183,7 +235,7 @@ def form_cfg_hyperedges(hypo, parse_probs, rel_probs, rel_vocab):
     #actions,visited = [],set()
     #cfg_conversion(tree, top, actions, visited)
     db = DepHeadBinarizer(tree,top) 
-    #print(db.actions)
+    print(db.actions)
 
     ## create a set of hyperedges
     hyperedges = set()
@@ -277,12 +329,14 @@ def cube_pruning(s, t, kk, memory, parse_probs, rel_probs, rel_vocab, rescores, 
             #if edges == {(9, 2, 3), (3, 2, 19), (6, 8, 20), (8, 5, 28), (7, 8, 8), (5, 2, 18), (2, 1, 21), (4, 5, 11)}:
                 #print('-----')
                 #print(kk[1])
+            '''
             flag=True
             for edge in edges:
                 if edge[0]==2 and edge[1]!=0:
                     flag=False
             if flag==True and len(edges)==9:
                 print(edges)
+            '''
 
             '''kbest merging method of creating a forest based on original paper
             ## merge hypotheses using all edges
@@ -301,12 +355,18 @@ def cube_pruning(s, t, kk, memory, parse_probs, rel_probs, rel_vocab, rescores, 
 
             ## create hyperedge representation
             if kk[1]==1: ## only when is_making_complete
-                lhs_he = form_cfg_hyperedges(memory[lhs][k1], parse_probs, rel_probs, rel_vocab)
-                rhs_he = form_cfg_hyperedges(memory[rhs][k2], parse_probs, rel_probs, rel_vocab)
+                #lhs_he = form_cfg_hyperedges(memory[lhs][k1].edges, parse_probs, rel_probs, rel_vocab)
+                #rhs_he = form_cfg_hyperedges(memory[rhs][k2].edges, parse_probs, rel_probs, rel_vocab)
+                all_he = form_cfg_hyperedges(edges, parse_probs, rel_probs, rel_vocab)
+                #wo_root_he = form_cfg_hyperedges(set(filter(lambda x: x[1]!=0, edges)), parse_probs, rel_probs, rel_vocab)
+                print(edges)
+                #print(set(filter(lambda x: x[1]!=0, edges)))
                 #print([he.as_list() for he in hyperedges])
-                for hyperedges in [lhs_he, rhs_he]:
+                #for hyperedges in [lhs_he, rhs_he, all_he, wo_root_he]:
+                for hyperedges in [all_he]:
                     if hyperedges is not None:
                         for he in hyperedges:
+                            print(he.he_name)
                             if he.as_dict() not in forest['hyperedges']:
                                 forest['hyperedges'].append(he.as_dict())
                                 forest['nodes'].append(he.he_name)

@@ -22,11 +22,12 @@ from lib.conll import final_1best, to_conllu
 ## derivation D
 class HypoD:
     ## tree hypotheses
-    def __init__(self, acclogp, node, depedges_l, depedges, c, num_roots):
+    def __init__(self, acclogp, node, depedges_l, depedges, node_names, c, num_roots):
         self.acclogp = acclogp
         self.node = int(node)
         self.depedges_l = depedges_l
         self.depedges = depedges
+        self.node_names=node_names
         self.c = c
         self.num_roots = num_roots
 
@@ -149,7 +150,7 @@ def main_loop(forest, parse_probs, rel_probs, rescore_matrix, rescore_config, se
                 ## check if it is a terminal edge (i.e. bottom/terminal)
                 if B-A==1 and A<=X<=B:
                     terminals.add((X,A,B))
-                derivations[(X,A,B)].append((0.0, 0, HypoD(0.0, X, set(), set(), None, 0)))
+                derivations[(X,A,B)].append((0.0, 0, HypoD(0.0, X, set(), set(), set(), None, 0)))
                 ##node, acclogp, depedges_l, depedges, c, num_roots
                 ##Aspan, Bspan = (A,a,c), (B,c,b)
                 #logp, edges, u, num_roots
@@ -175,14 +176,9 @@ def main_loop(forest, parse_probs, rel_probs, rescore_matrix, rescore_config, se
     '''
 
     ## the goal is to get to the root HE(0,-1,length-1) with all node_ids in it
-    print('final_derivation')
-    final_kbests = derivations[(0,-1,length-1)]
-    print(final_kbests)
-    print(final_kbests[0][-1].depedges)
     print(Xspans)
-
-    #best_tree = final_1best(length, derivations, parse_probs, rel_probs)
-    #to_conllu('test/test_1best.conllu', best_tree, sent, tags)
+    best_tree = final_1best(length, derivations, parse_probs, rel_probs)
+    to_conllu('test/test_1best.conllu', best_tree, sent, tags)
 
 def select_k(Xspan, derivations, terminals, forest_d, Xspan_forest_d, parse_probs, rel_probs, rescore_matrix, rescore_config, K):
     ## eisner_beam_k = {8,16,32,64,128}
@@ -194,8 +190,8 @@ def select_k(Xspan, derivations, terminals, forest_d, Xspan_forest_d, parse_prob
     priq = []
     heapq.heapify(priq) # priq of candidates
     
-    best_K_buffer = [] # initialize 
-    heapq.heapify(best_K_buffer) # priq-temp
+    #best_K_buffer = [] # initialize 
+    #heapq.heapify(best_K_buffer) # priq-temp
 
     visited = set()
 
@@ -213,8 +209,9 @@ def select_k(Xspan, derivations, terminals, forest_d, Xspan_forest_d, parse_prob
         label_for_incoming_edges_d[edge_id_nolabel].append(int(sp[-1]))
 
     '''
-    [3] initialize cube based on boundary c (/gamma)
+    [3] initialize cube based on boundary c
     '''
+    print('[3] initialize cube based on boundary c')
     for edge_id_nolabel in label_for_incoming_edges_d.keys():
         print('------------------------------')
         print('CURRENT_EDGE: '+str(edge_id_nolabel)) #1_1_2_0_1_7
@@ -225,12 +222,13 @@ def select_k(Xspan, derivations, terminals, forest_d, Xspan_forest_d, parse_prob
         print('------------------------------')
 
         ## loop based on labels inside cube_next()
-        cube_next(derivations, terminals, forest_d, label_for_incoming_edges_d, edge_id_nolabel, Xspan, c, 0, 0, X, visited, priq, parse_probs, rel_probs, rescore_matrix, rescore_config, head_is_root=False)
+        cube_next(derivations, terminals, forest_d, label_for_incoming_edges_d, edge_id_nolabel, Xspan, c, 0, 0, X, visited, priq, parse_probs, rel_probs, rescore_matrix, rescore_config, X==0)
 
     '''
     [4] actual cube pruning
     '''
     print('[4] ACTUAL CUBE PRUNING')
+    best_K_buffer = []
     cnt=0
     while len(priq) > 0:
         ## cnt is necessary to distinguish hypotheses in heapq, otherwise shows typeerror
@@ -238,7 +236,7 @@ def select_k(Xspan, derivations, terminals, forest_d, Xspan_forest_d, parse_prob
         '''
         [A] pop next-best from priq
         '''
-        neglogp, kl, kr, c, lb, deprel, md, hd, lhs, rhs, edge_id_nolabel, comb_type = heapq.heappop(priq) ## return minimum = -maximum
+        neglogp, kl, kr, c, lb, deprel, md, hd, lhs, rhs, edge_id_nolabel, comb_type = heapq.heappop(priq) ## heappop returns 'minimum' (i.e., -maximum)
         logp = -neglogp
 
 
@@ -249,19 +247,22 @@ def select_k(Xspan, derivations, terminals, forest_d, Xspan_forest_d, parse_prob
             edges = {(hd,md)}
             edges_l = {(hd,md,lb,deprel)}
             num_roots = 1 if hd*md==0 else 0
+            node_names = set([edge_id_nolabel])
         
         elif comb_type==2:
-            print({(hd,md)})
-            print(rhs.depedges)
-            print(rhs.acclogp)
+            #print({(hd,md)})
+            #print(rhs.depedges)
+            #print(rhs.acclogp)
             edges = {(hd,md)} | rhs.depedges
             edges_l = {(hd,md,lb,deprel)} | rhs.depedges_l
-            num_roots = 1+rhs.num_roots if hd*md==0 else 0+rhs.num_roots       
+            num_roots = 1+rhs.num_roots if hd*md==0 else 0+rhs.num_roots     
+            node_names = rhs.node_names | set([edge_id_nolabel])
 
         elif comb_type==3:
             edges = lhs.depedges | {(hd,md)}
             edges_l =  lhs.depedges_l | {(hd,md,lb,deprel)}
             num_roots = 1+lhs.num_roots if hd*md==0 else 0+lhs.num_roots
+            node_names = lhs.node_names | set([edge_id_nolabel])
 
         ## combining 2 subderivations
         else: #if comb_type==0:
@@ -270,8 +271,9 @@ def select_k(Xspan, derivations, terminals, forest_d, Xspan_forest_d, parse_prob
             edges.add((hd,md)) # head, tail
             edges_l.add((hd,md,lb,deprel))
             num_roots = lhs.num_roots + rhs.num_roots
+            node_names = lhs.node_names | rhs.node_names | set([edge_id_nolabel])
 
-        print(comb_type)
+        #print(comb_type)
         '''
         [C] checking validity
         '''
@@ -292,28 +294,29 @@ def select_k(Xspan, derivations, terminals, forest_d, Xspan_forest_d, parse_prob
         j = -1 #init
         for i, best_K in enumerate(best_K_buffer):
             ## hypotheses with same edges should have same logp
-            if best_K[-1].depedges == edges:
-                is_violate = True
-                break
+            #if best_K[-1].depedges == edges:
+                #is_violate = True
+                #break
             if best_K[-1].acclogp < logp:
                 j = i
                 break
 
         ## insert new_hyp to best_K_buffer
-        '''obs
+
         if not is_violate: 
-            acclogp = logp
-            new_hyp = HypoD(acclogp, X, edges_l, edges, c, num_roots)
+            new_hyp = HypoD(logp, X, edges_l, edges, node_names, c, num_roots)
             if j == -1:
-                best_K_buffer.append(new_hyp)
+                best_K_buffer.append([new_hyp.acclogp, cnt, new_hyp])
             else:
-                best_K_buffer.insert(j, new_hyp)
-        '''
+                best_K_buffer.insert(j, [new_hyp.acclogp, cnt, new_hyp])
+        
+        '''obs
         if not is_violate: 
             new_hyp = HypoD(logp, X, edges_l, edges, c, num_roots)
             print(new_hyp.depedges)
             print(new_hyp.acclogp)
-            heapq.heappush(best_K_buffer, (new_hyp.acclogp, cnt, new_hyp))            
+            heapq.heappush(best_K_buffer, (new_hyp.acclogp, cnt, new_hyp))
+        '''            
 
         '''
         [E] check whether to stop loop
@@ -322,13 +325,11 @@ def select_k(Xspan, derivations, terminals, forest_d, Xspan_forest_d, parse_prob
             break
 
         if len(best_K_buffer) >= K:
-            print('best_K')
-            print(best_K_buffer)
             break
 
         ## move on to next grid
-        cube_next(derivations, terminals, forest_d, label_for_incoming_edges_d, edge_id_nolabel, Xspan, c, kl+1, kr, X, visited, priq, parse_probs, rel_probs, rescore_matrix, rescore_config, head_is_root=False)
-        cube_next(derivations, terminals, forest_d, label_for_incoming_edges_d, edge_id_nolabel, Xspan, c, kl, kr+1, X, visited, priq, parse_probs, rel_probs, rescore_matrix, rescore_config, head_is_root=False)
+        cube_next(derivations, terminals, forest_d, label_for_incoming_edges_d, edge_id_nolabel, Xspan, c, kl+1, kr, X, visited, priq, parse_probs, rel_probs, rescore_matrix, rescore_config, X==0)
+        cube_next(derivations, terminals, forest_d, label_for_incoming_edges_d, edge_id_nolabel, Xspan, c, kl, kr+1, X, visited, priq, parse_probs, rel_probs, rescore_matrix, rescore_config, X==0)
 
     ## sort buffer to D(v)
     ## fixed: best_K_buffer is heapq. extra sorted() is not necessary.
@@ -339,7 +340,7 @@ def select_k(Xspan, derivations, terminals, forest_d, Xspan_forest_d, parse_prob
     print(derivations[Xspan])
     print('********************')
 
-def cube_next(derivations, terminals, forest_d, label_for_incoming_edges_d, edge_id_nolabel, Xspan, c, kl, kr, X, visited, priq, parse_probs, rel_probs, rescore_matrix, rescore_config, head_is_root=False):
+def cube_next(derivations, terminals, forest_d, label_for_incoming_edges_d, edge_id_nolabel, Xspan, c, kl, kr, X, visited, priq, parse_probs, rel_probs, rescore_matrix, rescore_config, is_root):
     '''
     (lhs_list, rhs_list, visited, priq,
         is_making_incomplete, u, k1, k2, new_uas, new_las, is_s_0 = False)
@@ -401,6 +402,8 @@ def cube_next(derivations, terminals, forest_d, label_for_incoming_edges_d, edge
             logp = np.log(parse_probs[md,hd]+1e-10) + np.log(rel_probs[md,hd,:][lb]+1e-10)
             comb_type=1
         elif Aspan in terminals:
+            #print(Bspan)
+            #print(derivations[Bspan])
             lhs, rhs = None, derivations[Bspan][kr][-1]
             logp = rhs.acclogp + np.log(parse_probs[md,hd]+1e-10) + np.log(rel_probs[md,hd,:][lb]+1e-10)
             comb_type=2
@@ -420,6 +423,8 @@ def cube_next(derivations, terminals, forest_d, label_for_incoming_edges_d, edge
             newlogp = bert_rescore(logp, md, hd, rescore_matrix, rescore_config)
         else: #for debug
             newlogp = logp
+        
+        print('Aspan: '+str(Aspan)+' + Bspan: '+str(Bspan))
         print('newlogp: '+str(newlogp))
         print('----------')
 
@@ -427,7 +432,6 @@ def cube_next(derivations, terminals, forest_d, label_for_incoming_edges_d, edge
         [6] push to priq
         '''
         heapq.heappush(priq, [-newlogp, kl, kr, c, lb, deprel, md, hd, lhs, rhs, edge_id_nolabel, comb_type])
-        ##(-las_logp,u,k1,k2,Vocab.ROOT)
 
 ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 ## (C) Rescoring Function

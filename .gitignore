@@ -1,14 +1,9 @@
 biaffine_forest/config/obs/
 biaffine_forest/data/
 biaffine_forest/obs/
-<<<<<<< HEAD
+
 biaffine_forest/pkl*/
-=======
-biaffine_forest/pkl/
-<<<<<<< HEAD
->>>>>>> parent of 0daf4ef... third commit
-=======
->>>>>>> parent of 0daf4ef... third commit
+
 biaffine_forest/rescore/
 biaffine_forest/saves/
 biaffine_forest/test/
