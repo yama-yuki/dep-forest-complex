@@ -1,9 +1,7 @@
 biaffine_forest/config/obs/
 biaffine_forest/data/
 biaffine_forest/obs/
-
 biaffine_forest/pkl*/
-
 biaffine_forest/rescore/
 biaffine_forest/saves/
 biaffine_forest/test/
@@ -26,6 +24,9 @@ biaffine_forest/*.out
 rescore_module/data/
 rescore_module/models/
 
-test/log
-test/*.out
-test/rels.txt
+test/*
+
+outputs/
+
+forest_decoder_obs.py
+

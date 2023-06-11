@@ -45,14 +45,16 @@ class RescoreModel:
     def __init__(self, cfg):
         super().__init__()
 
+        self.cfg=cfg
+
         ## read config
-        self.config = AutoConfig.from_pretrained(os.path.join(cfg['OS']['model_dir'], "config.json"))
-        self.tokenizer_config = AutoConfig.from_pretrained(os.path.join(cfg['OS']['model_dir'], "tokenizer_config.json"))
+        self.config = AutoConfig.from_pretrained(os.path.join(self.cfg['OS']['model_dir'], "config.json"))
+        self.tokenizer_config = AutoConfig.from_pretrained(os.path.join(self.cfg['OS']['model_dir'], "tokenizer_config.json"))
 
         ## load model & tokenizer
-        self.model = AutoModelForQuestionAnswering.from_pretrained(cfg['Model']['pretrained'], config=self.config)
-        self.model.load_state_dict(torch.load(os.path.join(cfg['OS']['model_dir'], "pytorch_model.bin"), map_location=torch.device('cuda:0')))
-        self.tokenizer = AutoTokenizer.from_pretrained(cfg['Model']['pretrained'], config=self.tokenizer_config)
+        self.model = AutoModelForQuestionAnswering.from_pretrained(self.cfg['Model']['pretrained'], config=self.config)
+        self.model.load_state_dict(torch.load(os.path.join(self.cfg['OS']['model_dir'], "pytorch_model.bin"), map_location=torch.device('cuda:0')))
+        self.tokenizer = AutoTokenizer.from_pretrained(self.cfg['Model']['pretrained'], config=self.tokenizer_config)
 
         self.model.eval()
 
@@ -82,7 +84,7 @@ class RescoreModel:
 
             if tag[0] == 'V':
                 ##create input to rescore model (.json)
-                self._to_squad(sent, cur_node, cfg['OS']['input_path'])
+                self._to_squad(sent, cur_node, self.cfg['OS']['input_path'])
                 ## predict & return score
                 predictions = self._predict_head()
                 '''predictions
@@ -116,11 +118,11 @@ class RescoreModel:
             json.dump(new_data, o)
 
     def _predict_head(self):
-        mode = cfg['Mode']['mode']
+        mode = self.cfg['Mode']['mode']
         ## mode specification
         logger.info('MODE: '+mode)
-        input_path = cfg['OS']['input_path']
-        pred_path = cfg['OS']['output_path'] #'pred.json'
+        input_path = self.cfg['OS']['input_path']
+        pred_path = self.cfg['OS']['output_path'] #'pred.json'
         logger.info('LOADING: '+input_path)
         with open(input_path, mode='r', encoding='utf-8') as f:
             dataset_json = json.load(f)

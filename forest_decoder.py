@@ -128,7 +128,7 @@ def topological_sort(nodes_hlrlbr):
 ## Then returns derivation[(0,-1,length-1)][0], the resulting 1best dependency tree with a root node governing leftmost to rightmost
 ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 
-def main_loop(forest, parse_probs, rel_probs, rescore_matrix, rescore_config, sent, tags, K):
+def main_loop(forest, parse_probs, rel_probs, rescore_matrix, rescore_config, sent, tags, out_path, K):
     length = len(forest['node_ids'])
     print('words: '+str(length-1))
     print('with root: '+str(length))
@@ -178,7 +178,7 @@ def main_loop(forest, parse_probs, rel_probs, rescore_matrix, rescore_config, se
     ## the goal is to get to the root HE(0,-1,length-1) with all node_ids in it
     print(Xspans)
     best_tree = final_1best(length, derivations, parse_probs, rel_probs)
-    to_conllu('test/test_1best.conllu', best_tree, sent, tags)
+    to_conllu(out_path, best_tree, sent, tags)
 
 def select_k(Xspan, derivations, terminals, forest_d, Xspan_forest_d, parse_probs, rel_probs, rescore_matrix, rescore_config, K):
     ## eisner_beam_k = {8,16,32,64,128}
@@ -451,6 +451,7 @@ def bert_rescore(logp, md, hd, rescore_matrix, rescore_config):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--pkl_dir', help='dir path for parsed data (.plk)')
+    parser.add_argument('--out_path', help='1best tree output file path (.conllu)')
     parser.add_argument('--rescore_cfg', help='file path for rescore config (.cfg)')
     parser.add_argument('--rescore', default='False', type=str, help='rescore on cube pruning or not')
     parser.add_argument('--test', default='False', type=str, help='test or not')
@@ -460,6 +461,7 @@ if __name__ == '__main__':
     args = parser.parse_args()
 
     pkl_dir = args.pkl_dir
+    out_path = args.out_path
     rescore_cfg = args.rescore_cfg
     test = args.test
     rescore_config = {'alpha': args.alpha,
@@ -490,18 +492,19 @@ if __name__ == '__main__':
             sys.exit('rescore.cfg not found')
         cfg = configparser.RawConfigParser(interpolation=configparser.ExtendedInterpolation())
         cfg.read(rescore_cfg)
+
+        print(len(all_forests))
         remodel = RescoreModel(cfg)
 
         for forest,parse_probs,rel_probs,sent,tags in tqdm(zip(all_forests,all_parse_probs,all_rel_probs,all_sents,all_tags)):
-            if cnt==2:
-                break
+            #if cnt==2:
+                #break
             rescore_matrix = remodel.head_prediction(sent, tags)
             #verb_nodes = [bool(tag[0] == 'V') for tag in tags]
             print(len(forest['hyperedges']))
-            main_loop(forest, parse_probs, rel_probs, rescore_matrix, rescore_config, sent, tags, args.K)
+            main_loop(forest, parse_probs, rel_probs, rescore_matrix, rescore_config, sent, tags, out_path, args.K)
             cnt+=1
-        
-        print('hoge')
+
 
     ## for testing purpose using an example from devset
     else:
@@ -538,7 +541,7 @@ if __name__ == '__main__':
             with open(forest_out, 'w') as f:
                 json.dump(forest, f)
 
-            main_loop(forest, parse_probs, rel_probs, rescore_matrix, rescore_config, sent, tags, args.K)
+            main_loop(forest, parse_probs, rel_probs, rescore_matrix, rescore_config, sent, tags, out_path, args.K)
             cnt+=1
 
             print(sent)

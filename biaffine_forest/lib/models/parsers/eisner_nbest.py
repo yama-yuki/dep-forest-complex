@@ -545,10 +545,12 @@ def eisner_dp_forest(length, parse_probs, rel_probs, rel_vocab, NBEST):
             nbest[-1].append((prb,mi,hi,lb))
 
     print(len(forest['hyperedges']))
+    '''
     len_file='len.out'
     with open(len_file, 'a') as f:
         f.write(str(len(forest['node_ids']))+' '+str(len(forest['hyperedges'])))
         f.write('\n')
+    '''
 
     return forest
 

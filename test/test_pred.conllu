@@ -1,0 +1,11 @@
+# They never considered themselves to be anything else .
+1	They	they	PRON	_	_	_	_	3	nsubj
+2	never	never	ADV	_	_	_	_	3	neg
+3	considered	considered	VERB	_	_	_	_	0	root
+4	themselves	themselves	PRON	_	_	_	_	3	dobj
+5	to	to	PART	_	_	_	_	6	aux
+6	be	be	VERB	_	_	_	_	3	xcomp
+7	anything	anything	PRON	_	_	_	_	6	xcomp
+8	else	else	ADV	_	_	_	_	7	advmod
+9	.	.	PUNCT	_	_	_	_	3	punct
+

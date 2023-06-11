@@ -353,18 +353,16 @@ class Network(Configurable):
       all_tags.extend(input_tags_list)
       all_sents.extend([[w for w in sent] for sent in sents])
 
-      if btch_idx==1:
-        break
-
-    with open('pkl/forests.pkl', 'wb') as p1:
+    pkl_dir = 'pkl_test'
+    with open(pkl_dir+'/forests.pkl', 'wb') as p1:
       pkl.dump(all_forests, p1)
-    with open('pkl/parse_probs.pkl', 'wb') as p2:
+    with open(pkl_dir+'/parse_probs.pkl', 'wb') as p2:
       pkl.dump(all_parse_probs, p2)
-    with open('pkl/rel_probs.pkl', 'wb') as p3:
+    with open(pkl_dir+'/rel_probs.pkl', 'wb') as p3:
       pkl.dump(all_rel_probs, p3)  
-    with open('pkl/sents.pkl', 'wb') as p4:
+    with open(pkl_dir+'/sents.pkl', 'wb') as p4:
       pkl.dump(all_sents, p4)
-    with open('pkl/tags.pkl', 'wb') as p5:
+    with open(pkl_dir+'/tags.pkl', 'wb') as p5:
       pkl.dump(all_tags, p5)
 
     return

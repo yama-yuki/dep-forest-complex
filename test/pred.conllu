@@ -1,0 +1,4156 @@
+# We 're about to see if advertising works .
+1	We	we	PRON	_	_	_	_	2	nsubj
+2	're	're	AUX	_	_	_	_	0	root
+3	about	about	ADP	_	_	_	_	2	dep
+4	to	to	PART	_	_	_	_	5	aux
+5	see	see	VERB	_	_	_	_	3	xcomp
+6	if	if	SCONJ	_	_	_	_	8	mark
+7	advertising	advertising	NOUN	_	_	_	_	8	nsubj
+8	works	works	VERB	_	_	_	_	5	advcl
+9	.	.	PUNCT	_	_	_	_	2	punct
+
+# This time , the firms were ready .
+1	This	this	DET	_	_	_	_	2	det
+2	time	time	NOUN	_	_	_	_	6	tmod
+3	,	,	PUNCT	_	_	_	_	6	punct
+4	the	the	DET	_	_	_	_	5	det
+5	firms	firms	NOUN	_	_	_	_	6	nsubj
+6	were	were	VERB	_	_	_	_	0	root
+7	ready	ready	ADJ	_	_	_	_	6	acomp
+8	.	.	PUNCT	_	_	_	_	6	punct
+
+# `` To maintain that dialogue is absolutely crucial .
+1	``	``	PUNCT	_	_	_	_	6	punct
+2	To	to	PART	_	_	_	_	3	aux
+3	maintain	maintain	VERB	_	_	_	_	6	csubj
+4	that	that	DET	_	_	_	_	5	det
+5	dialogue	dialogue	NOUN	_	_	_	_	3	dobj
+6	is	is	VERB	_	_	_	_	0	root
+7	absolutely	absolutely	ADV	_	_	_	_	8	advmod
+8	crucial	crucial	ADJ	_	_	_	_	6	acomp
+9	.	.	PUNCT	_	_	_	_	6	punct
+
+# Ad Notes ... .
+1	Ad	ad	NOUN	_	_	_	_	2	nn
+2	Notes	notes	NOUN	_	_	_	_	0	root
+3	...	...	PUNCT	_	_	_	_	2	punct
+4	.	.	PUNCT	_	_	_	_	2	punct
+
+# ARNOLD ADVERTISING :
+1	ARNOLD	arnold	PROPN	_	_	_	_	3	nn
+2	ADVERTISING	advertising	PROPN	_	_	_	_	3	nn
+3	:	:	PUNCT	_	_	_	_	0	root
+
+# Terms were n't disclosed .
+1	Terms	terms	NOUN	_	_	_	_	4	nsubjpass
+2	were	were	AUX	_	_	_	_	4	auxpass
+3	n't	n't	PART	_	_	_	_	4	neg
+4	disclosed	disclosed	VERB	_	_	_	_	0	root
+5	.	.	PUNCT	_	_	_	_	4	punct
+
+# EDUCATION ADS :
+1	EDUCATION	education	NOUN	_	_	_	_	2	nn
+2	ADS	ads	NOUN	_	_	_	_	0	root
+3	:	:	PUNCT	_	_	_	_	2	punct
+
+# I love 'em both .
+1	I	i	PRON	_	_	_	_	2	nsubj
+2	love	love	VERB	_	_	_	_	0	root
+3	'em	'em	PRON	_	_	_	_	2	dobj
+4	both	both	DET	_	_	_	_	2	advmod
+5	.	.	PUNCT	_	_	_	_	2	punct
+
+# Not his autograph ; power-hitter McGwire 's .
+1	Not	not	ADV	_	_	_	_	3	neg
+2	his	his	PRON	_	_	_	_	3	poss
+3	autograph	autograph	NOUN	_	_	_	_	0	root
+4	;	;	PUNCT	_	_	_	_	3	punct
+5	power-hitter	power-hitter	NOUN	_	_	_	_	6	nn
+6	McGwire	mcgwire	NOUN	_	_	_	_	3	dep
+7	's	's	PART	_	_	_	_	6	possessive
+8	.	.	PUNCT	_	_	_	_	3	punct
+
+# `` That 's baseball .
+1	``	``	PUNCT	_	_	_	_	3	punct
+2	That	that	PRON	_	_	_	_	3	nsubj
+3	's	's	VERB	_	_	_	_	0	root
+4	baseball	baseball	NOUN	_	_	_	_	3	xcomp
+5	.	.	PUNCT	_	_	_	_	3	punct
+
+# Now , would n't that be a novelty .
+1	Now	now	ADV	_	_	_	_	6	advmod
+2	,	,	PUNCT	_	_	_	_	6	punct
+3	would	would	AUX	_	_	_	_	6	aux
+4	n't	n't	PART	_	_	_	_	6	neg
+5	that	that	PRON	_	_	_	_	6	nsubj
+6	be	be	VERB	_	_	_	_	0	root
+7	a	a	DET	_	_	_	_	8	det
+8	novelty	novelty	NOUN	_	_	_	_	6	xcomp
+9	.	.	PUNCT	_	_	_	_	6	punct
+
+# Phyllis Kyle Stephenson Newport News , Va .
+1	Phyllis	phyllis	PROPN	_	_	_	_	3	nn
+2	Kyle	kyle	PROPN	_	_	_	_	3	nn
+3	Stephenson	stephenson	PROPN	_	_	_	_	0	root
+4	Newport	newport	PROPN	_	_	_	_	5	nn
+5	News	news	PROPN	_	_	_	_	3	dep
+6	,	,	PUNCT	_	_	_	_	5	punct
+7	Va	va	PROPN	_	_	_	_	5	appos
+8	.	.	PUNCT	_	_	_	_	3	punct
+
+# And it left mixed signals for London .
+1	And	and	CCONJ	_	_	_	_	3	cc
+2	it	it	PRON	_	_	_	_	3	nsubj
+3	left	left	VERB	_	_	_	_	0	root
+4	mixed	mixed	ADJ	_	_	_	_	5	amod
+5	signals	signals	NOUN	_	_	_	_	3	dobj
+6	for	for	ADP	_	_	_	_	3	prep
+7	London	london	PROPN	_	_	_	_	6	pobj
+8	.	.	PUNCT	_	_	_	_	3	punct
+
+# `` It 's very frustrating . ''
+1	``	``	PUNCT	_	_	_	_	3	punct
+2	It	it	PRON	_	_	_	_	3	nsubj
+3	's	's	VERB	_	_	_	_	0	root
+4	very	very	ADV	_	_	_	_	5	advmod
+5	frustrating	frustrating	ADJ	_	_	_	_	3	acomp
+6	.	.	PUNCT	_	_	_	_	3	punct
+7	''	''	PUNCT	_	_	_	_	3	punct
+
+# He was right .
+1	He	he	PRON	_	_	_	_	2	nsubj
+2	was	was	VERB	_	_	_	_	0	root
+3	right	right	ADJ	_	_	_	_	2	acomp
+4	.	.	PUNCT	_	_	_	_	2	punct
+
+# This market has been very badly damaged . ''
+1	This	this	DET	_	_	_	_	2	det
+2	market	market	NOUN	_	_	_	_	7	nsubjpass
+3	has	has	AUX	_	_	_	_	7	aux
+4	been	been	AUX	_	_	_	_	7	auxpass
+5	very	very	ADV	_	_	_	_	6	advmod
+6	badly	badly	ADV	_	_	_	_	7	advmod
+7	damaged	damaged	VERB	_	_	_	_	0	root
+8	.	.	PUNCT	_	_	_	_	7	punct
+9	''	''	PUNCT	_	_	_	_	7	punct
+
+# They saw an opportunity created by the sell-off .
+1	They	they	PRON	_	_	_	_	2	nsubj
+2	saw	saw	VERB	_	_	_	_	0	root
+3	an	an	DET	_	_	_	_	4	det
+4	opportunity	opportunity	NOUN	_	_	_	_	2	dobj
+5	created	created	VERB	_	_	_	_	4	vmod
+6	by	by	ADP	_	_	_	_	5	prep
+7	the	the	DET	_	_	_	_	8	det
+8	sell-off	sell-off	NOUN	_	_	_	_	6	pobj
+9	.	.	PUNCT	_	_	_	_	2	punct
+
+# `` This is panic buying ! ''
+1	``	``	PUNCT	_	_	_	_	3	punct
+2	This	this	PRON	_	_	_	_	3	nsubj
+3	is	is	VERB	_	_	_	_	0	root
+4	panic	panic	NOUN	_	_	_	_	5	nn
+5	buying	buying	NOUN	_	_	_	_	3	xcomp
+6	!	!	PUNCT	_	_	_	_	3	punct
+7	''	''	PUNCT	_	_	_	_	3	punct
+
+# Frank Tremdine
+1	Frank	frank	PROPN	_	_	_	_	2	nn
+2	Tremdine	tremdine	PROPN	_	_	_	_	0	root
+
+# Union officials could n't be reached for comment .
+1	Union	union	NOUN	_	_	_	_	2	nn
+2	officials	officials	NOUN	_	_	_	_	6	nsubjpass
+3	could	could	AUX	_	_	_	_	6	aux
+4	n't	n't	PART	_	_	_	_	6	neg
+5	be	be	AUX	_	_	_	_	6	auxpass
+6	reached	reached	VERB	_	_	_	_	0	root
+7	for	for	ADP	_	_	_	_	6	prep
+8	comment	comment	NOUN	_	_	_	_	7	pobj
+9	.	.	PUNCT	_	_	_	_	6	punct
+
+# Following is a breakdown of major market activity :
+1	Following	following	VERB	_	_	_	_	0	root
+2	is	is	VERB	_	_	_	_	1	aux
+3	a	a	DET	_	_	_	_	4	det
+4	breakdown	breakdown	NOUN	_	_	_	_	1	nsubj
+5	of	of	ADP	_	_	_	_	4	prep
+6	major	major	ADJ	_	_	_	_	8	amod
+7	market	market	NOUN	_	_	_	_	8	nn
+8	activity	activity	NOUN	_	_	_	_	5	pobj
+9	:	:	PUNCT	_	_	_	_	1	punct
+
+# FRANKFURT :
+1	FRANKFURT	frankfurt	PROPN	_	_	_	_	0	root
+2	:	:	PUNCT	_	_	_	_	1	punct
+
+# LONDON :
+1	LONDON	london	PROPN	_	_	_	_	0	root
+2	:	:	PUNCT	_	_	_	_	1	punct
+
+# PARIS :
+1	PARIS	paris	PROPN	_	_	_	_	0	root
+2	:	:	PUNCT	_	_	_	_	1	punct
+
+# J.P. Morgan & Co .
+1	J.P.	j.p.	PROPN	_	_	_	_	2	nn
+2	Morgan	morgan	PROPN	_	_	_	_	0	root
+3	&	&	CCONJ	_	_	_	_	2	cc
+4	Co	co	PROPN	_	_	_	_	2	conj
+5	.	.	PUNCT	_	_	_	_	2	punct
+
+# NCNB Corp .
+1	NCNB	ncnb	PROPN	_	_	_	_	2	nn
+2	Corp	corp	PROPN	_	_	_	_	0	root
+3	.	.	PUNCT	_	_	_	_	2	punct
+
+# Results were released after the market closed .
+1	Results	results	NOUN	_	_	_	_	3	nsubjpass
+2	were	were	AUX	_	_	_	_	3	auxpass
+3	released	released	VERB	_	_	_	_	0	root
+4	after	after	SCONJ	_	_	_	_	7	mark
+5	the	the	DET	_	_	_	_	6	det
+6	market	market	NOUN	_	_	_	_	7	nsubj
+7	closed	closed	VERB	_	_	_	_	3	advcl
+8	.	.	PUNCT	_	_	_	_	3	punct
+
+# Security Pacific Corp .
+1	Security	security	PROPN	_	_	_	_	3	nn
+2	Pacific	pacific	PROPN	_	_	_	_	3	nn
+3	Corp	corp	PROPN	_	_	_	_	0	root
+4	.	.	PUNCT	_	_	_	_	3	punct
+
+# The letter was dated Oct. 6 .
+1	The	the	DET	_	_	_	_	2	det
+2	letter	letter	NOUN	_	_	_	_	4	nsubjpass
+3	was	was	AUX	_	_	_	_	4	auxpass
+4	dated	dated	VERB	_	_	_	_	0	root
+5	Oct.	oct.	PROPN	_	_	_	_	4	tmod
+6	6	6	NUM	_	_	_	_	5	num
+7	.	.	PUNCT	_	_	_	_	4	punct
+
+# Idle Thought
+1	Idle	idle	ADJ	_	_	_	_	0	root
+2	Thought	thought	NOUN	_	_	_	_	1	punct
+
+# -- May Richstone .
+1	--	--	PUNCT	_	_	_	_	3	punct
+2	May	may	PROPN	_	_	_	_	3	nn
+3	Richstone	richstone	PROPN	_	_	_	_	0	root
+4	.	.	PUNCT	_	_	_	_	3	punct
+
+# Telecussed
+1	Telecussed	telecussed	VERB	_	_	_	_	0	root
+
+# -- Dick Emmons .
+1	--	--	PUNCT	_	_	_	_	3	punct
+2	Dick	dick	PROPN	_	_	_	_	3	nn
+3	Emmons	emmons	PROPN	_	_	_	_	0	root
+4	.	.	PUNCT	_	_	_	_	3	punct
+
+# BSN currently has 4.6 million common shares outstanding .
+1	BSN	bsn	PROPN	_	_	_	_	3	nsubj
+2	currently	currently	ADV	_	_	_	_	3	advmod
+3	has	has	VERB	_	_	_	_	0	root
+4	4.6	4.6	NUM	_	_	_	_	5	number
+5	million	million	NUM	_	_	_	_	7	num
+6	common	common	ADJ	_	_	_	_	7	amod
+7	shares	shares	NOUN	_	_	_	_	3	dobj
+8	outstanding	outstanding	ADJ	_	_	_	_	7	amod
+9	.	.	PUNCT	_	_	_	_	3	punct
+
+# Options markets stopped trading in many securities .
+1	Options	options	NOUN	_	_	_	_	2	nn
+2	markets	markets	NOUN	_	_	_	_	3	nsubj
+3	stopped	stopped	VERB	_	_	_	_	0	root
+4	trading	trading	NOUN	_	_	_	_	3	dobj
+5	in	in	ADP	_	_	_	_	3	prep
+6	many	many	ADJ	_	_	_	_	7	amod
+7	securities	securities	NOUN	_	_	_	_	5	pobj
+8	.	.	PUNCT	_	_	_	_	3	punct
+
+# Some give lump-sum incentives .
+1	Some	some	DET	_	_	_	_	2	nsubj
+2	give	give	VERB	_	_	_	_	0	root
+3	lump-sum	lump-sum	ADJ	_	_	_	_	4	amod
+4	incentives	incentives	NOUN	_	_	_	_	2	dobj
+5	.	.	PUNCT	_	_	_	_	2	punct
+
+# Chicken Chains Ruffled By Loss of Customers
+1	Chicken	chicken	NOUN	_	_	_	_	2	nn
+2	Chains	chains	NOUN	_	_	_	_	3	nsubj
+3	Ruffled	ruffled	VERB	_	_	_	_	0	root
+4	By	by	ADP	_	_	_	_	3	prep
+5	Loss	loss	NOUN	_	_	_	_	4	pobj
+6	of	of	ADP	_	_	_	_	5	prep
+7	Customers	customers	NOUN	_	_	_	_	6	pobj
+
+# But the company declines to comment .
+1	But	but	CCONJ	_	_	_	_	4	cc
+2	the	the	DET	_	_	_	_	3	det
+3	company	company	NOUN	_	_	_	_	4	nsubj
+4	declines	declines	VERB	_	_	_	_	0	root
+5	to	to	PART	_	_	_	_	6	aux
+6	comment	comment	VERB	_	_	_	_	4	xcomp
+7	.	.	PUNCT	_	_	_	_	4	punct
+
+# Reluctant Advertisers Try Soft-Sell Spots
+1	Reluctant	reluctant	ADJ	_	_	_	_	2	amod
+2	Advertisers	advertisers	NOUN	_	_	_	_	3	nsubj
+3	Try	try	VERB	_	_	_	_	0	root
+4	Soft-Sell	soft-sell	ADJ	_	_	_	_	5	amod
+5	Spots	spots	NOUN	_	_	_	_	3	punct
+
+# CALL IT un-advertising .
+1	CALL	call	VERB	_	_	_	_	0	root
+2	IT	it	PRON	_	_	_	_	3	nsubj
+3	un-advertising	un-advertising	NOUN	_	_	_	_	1	xcomp
+4	.	.	PUNCT	_	_	_	_	1	punct
+
+# But such spots can be too soft .
+1	But	but	CCONJ	_	_	_	_	5	cc
+2	such	such	ADJ	_	_	_	_	3	amod
+3	spots	spots	NOUN	_	_	_	_	5	nsubj
+4	can	can	AUX	_	_	_	_	5	aux
+5	be	be	VERB	_	_	_	_	0	root
+6	too	too	ADV	_	_	_	_	7	advmod
+7	soft	soft	ADJ	_	_	_	_	5	acomp
+8	.	.	PUNCT	_	_	_	_	5	punct
+
+# Retailer Sees Pitfalls In Environmental Push
+1	Retailer	retailer	NOUN	_	_	_	_	2	nsubj
+2	Sees	sees	VERB	_	_	_	_	0	root
+3	Pitfalls	pitfalls	NOUN	_	_	_	_	2	dobj
+4	In	in	ADP	_	_	_	_	3	prep
+5	Environmental	environmental	ADJ	_	_	_	_	6	amod
+6	Push	push	NOUN	_	_	_	_	4	pobj
+
+# Yet parents demand them .
+1	Yet	yet	CCONJ	_	_	_	_	3	cc
+2	parents	parents	NOUN	_	_	_	_	3	nsubj
+3	demand	demand	VERB	_	_	_	_	0	root
+4	them	them	PRON	_	_	_	_	3	dobj
+5	.	.	PUNCT	_	_	_	_	3	punct
+
+# Odds and Ends
+1	Odds	odds	NOUN	_	_	_	_	0	root
+2	and	and	CCONJ	_	_	_	_	1	cc
+3	Ends	ends	NOUN	_	_	_	_	1	conj
+
+# Which celebrity endorsers are most believable ?
+1	Which	which	DET	_	_	_	_	3	det
+2	celebrity	celebrity	NOUN	_	_	_	_	3	nn
+3	endorsers	endorsers	NOUN	_	_	_	_	4	nsubj
+4	are	are	VERB	_	_	_	_	0	root
+5	most	most	ADV	_	_	_	_	6	advmod
+6	believable	believable	ADJ	_	_	_	_	4	acomp
+7	?	?	PUNCT	_	_	_	_	4	punct
+
+# Is this what the home builders want ?
+1	Is	is	VERB	_	_	_	_	0	root
+2	this	this	PRON	_	_	_	_	1	nsubj
+3	what	what	PRON	_	_	_	_	7	dobj
+4	the	the	DET	_	_	_	_	6	det
+5	home	home	NOUN	_	_	_	_	6	nn
+6	builders	builders	NOUN	_	_	_	_	7	nsubj
+7	want	want	VERB	_	_	_	_	1	dep
+8	?	?	PUNCT	_	_	_	_	1	punct
+
+# Mr. Bandow is a Cato Institute fellow .
+1	Mr.	mr.	PROPN	_	_	_	_	2	nn
+2	Bandow	bandow	PROPN	_	_	_	_	3	nsubj
+3	is	is	VERB	_	_	_	_	0	root
+4	a	a	DET	_	_	_	_	7	det
+5	Cato	cato	PROPN	_	_	_	_	7	nn
+6	Institute	institute	PROPN	_	_	_	_	7	nn
+7	fellow	fellow	NOUN	_	_	_	_	3	xcomp
+8	.	.	PUNCT	_	_	_	_	3	punct
+
+# And so it was on Gray Friday .
+1	And	and	CCONJ	_	_	_	_	4	cc
+2	so	so	ADP	_	_	_	_	4	advmod
+3	it	it	PRON	_	_	_	_	4	nsubj
+4	was	was	VERB	_	_	_	_	0	root
+5	on	on	ADP	_	_	_	_	4	prep
+6	Gray	gray	PROPN	_	_	_	_	5	pobj
+7	Friday	friday	PROPN	_	_	_	_	4	tmod
+8	.	.	PUNCT	_	_	_	_	4	punct
+
+# ( Both took further hits yesterday . )
+1	(	(	PUNCT	_	_	_	_	3	punct
+2	Both	both	DET	_	_	_	_	3	nsubj
+3	took	took	VERB	_	_	_	_	0	root
+4	further	further	ADJ	_	_	_	_	5	amod
+5	hits	hits	NOUN	_	_	_	_	3	dobj
+6	yesterday	yesterday	NOUN	_	_	_	_	3	tmod
+7	.	.	PUNCT	_	_	_	_	3	punct
+8	)	)	PUNCT	_	_	_	_	3	punct
+
+# Absolutely not .
+1	Absolutely	absolutely	ADV	_	_	_	_	2	advmod
+2	not	not	PART	_	_	_	_	0	root
+3	.	.	PUNCT	_	_	_	_	2	punct
+
+# Not surprisingly , he sometimes bites .
+1	Not	not	PART	_	_	_	_	2	dep
+2	surprisingly	surprisingly	ADV	_	_	_	_	6	advmod
+3	,	,	PUNCT	_	_	_	_	6	punct
+4	he	he	PRON	_	_	_	_	6	nsubj
+5	sometimes	sometimes	ADV	_	_	_	_	6	advmod
+6	bites	bites	VERB	_	_	_	_	0	root
+7	.	.	PUNCT	_	_	_	_	6	punct
+
+# Declining issues swamped advancers , 941-105 .
+1	Declining	declining	VERB	_	_	_	_	2	amod
+2	issues	issues	NOUN	_	_	_	_	3	nsubj
+3	swamped	swamped	VERB	_	_	_	_	0	root
+4	advancers	advancers	NOUN	_	_	_	_	3	dobj
+5	,	,	PUNCT	_	_	_	_	3	punct
+6	941-105	941-105	NUM	_	_	_	_	3	dobj
+7	.	.	PUNCT	_	_	_	_	3	punct
+
+# Other fund managers were similarly sanguine .
+1	Other	other	ADJ	_	_	_	_	3	amod
+2	fund	fund	NOUN	_	_	_	_	3	nn
+3	managers	managers	NOUN	_	_	_	_	4	nsubj
+4	were	were	VERB	_	_	_	_	0	root
+5	similarly	similarly	ADV	_	_	_	_	6	advmod
+6	sanguine	sanguine	ADJ	_	_	_	_	4	acomp
+7	.	.	PUNCT	_	_	_	_	4	punct
+
+# The percentage change is since year-end .
+1	The	the	DET	_	_	_	_	3	det
+2	percentage	percentage	NOUN	_	_	_	_	3	nn
+3	change	change	NOUN	_	_	_	_	4	nsubj
+4	is	is	VERB	_	_	_	_	0	root
+5	since	since	ADP	_	_	_	_	4	prep
+6	year-end	year-end	NOUN	_	_	_	_	5	pobj
+7	.	.	PUNCT	_	_	_	_	4	punct
+
+# Consider the greenhouse-effect provision .
+1	Consider	consider	VERB	_	_	_	_	0	root
+2	the	the	DET	_	_	_	_	4	det
+3	greenhouse-effect	greenhouse-effect	ADJ	_	_	_	_	4	amod
+4	provision	provision	NOUN	_	_	_	_	1	dobj
+5	.	.	PUNCT	_	_	_	_	1	punct
+
+# He 's running for governor .
+1	He	he	PRON	_	_	_	_	3	nsubj
+2	's	's	AUX	_	_	_	_	3	aux
+3	running	running	VERB	_	_	_	_	0	root
+4	for	for	ADP	_	_	_	_	3	prep
+5	governor	governor	NOUN	_	_	_	_	4	pobj
+6	.	.	PUNCT	_	_	_	_	3	punct
+
+# First , there was a death watch .
+1	First	first	ADV	_	_	_	_	4	advmod
+2	,	,	PUNCT	_	_	_	_	4	punct
+3	there	there	PRON	_	_	_	_	4	expl
+4	was	was	VERB	_	_	_	_	0	root
+5	a	a	DET	_	_	_	_	7	det
+6	death	death	NOUN	_	_	_	_	7	nn
+7	watch	watch	NOUN	_	_	_	_	4	nsubj
+8	.	.	PUNCT	_	_	_	_	4	punct
+
+# Then exhilaration .
+1	Then	then	ADV	_	_	_	_	2	advmod
+2	exhilaration	exhilaration	NOUN	_	_	_	_	0	root
+3	.	.	PUNCT	_	_	_	_	2	punct
+
+# It 's just a strange feeling .
+1	It	it	PRON	_	_	_	_	2	nsubj
+2	's	's	VERB	_	_	_	_	0	root
+3	just	just	ADV	_	_	_	_	6	advmod
+4	a	a	DET	_	_	_	_	6	det
+5	strange	strange	ADJ	_	_	_	_	6	amod
+6	feeling	feeling	NOUN	_	_	_	_	2	xcomp
+7	.	.	PUNCT	_	_	_	_	2	punct
+
+# They did n't .
+1	They	they	PRON	_	_	_	_	2	nsubj
+2	did	did	VERB	_	_	_	_	0	root
+3	n't	n't	PART	_	_	_	_	2	neg
+4	.	.	PUNCT	_	_	_	_	2	punct
+
+# It was orderly .
+1	It	it	PRON	_	_	_	_	2	nsubj
+2	was	was	VERB	_	_	_	_	0	root
+3	orderly	orderly	ADJ	_	_	_	_	2	acomp
+4	.	.	PUNCT	_	_	_	_	2	punct
+
+# We put some orders together .
+1	We	we	PRON	_	_	_	_	2	nsubj
+2	put	put	VERB	_	_	_	_	0	root
+3	some	some	DET	_	_	_	_	4	det
+4	orders	orders	NOUN	_	_	_	_	2	dobj
+5	together	together	ADV	_	_	_	_	2	advmod
+6	.	.	PUNCT	_	_	_	_	2	punct
+
+# But not everybody was making money .
+1	But	but	CCONJ	_	_	_	_	5	cc
+2	not	not	ADV	_	_	_	_	3	neg
+3	everybody	everybody	PRON	_	_	_	_	5	nsubj
+4	was	was	AUX	_	_	_	_	5	aux
+5	making	making	VERB	_	_	_	_	0	root
+6	money	money	NOUN	_	_	_	_	5	dobj
+7	.	.	PUNCT	_	_	_	_	5	punct
+
+# They used their judgment .
+1	They	they	PRON	_	_	_	_	2	nsubj
+2	used	used	VERB	_	_	_	_	0	root
+3	their	their	PRON	_	_	_	_	4	poss
+4	judgment	judgment	NOUN	_	_	_	_	2	dobj
+5	.	.	PUNCT	_	_	_	_	2	punct
+
+# Maybe they learned from experience . ''
+1	Maybe	maybe	ADV	_	_	_	_	3	advmod
+2	they	they	PRON	_	_	_	_	3	nsubj
+3	learned	learned	VERB	_	_	_	_	0	root
+4	from	from	ADP	_	_	_	_	3	prep
+5	experience	experience	NOUN	_	_	_	_	4	pobj
+6	.	.	PUNCT	_	_	_	_	3	punct
+7	''	''	PUNCT	_	_	_	_	3	punct
+
+# Of course it was .
+1	Of	of	ADP	_	_	_	_	4	prep
+2	course	course	NOUN	_	_	_	_	1	pobj
+3	it	it	PRON	_	_	_	_	4	nsubj
+4	was	was	VERB	_	_	_	_	0	root
+5	.	.	PUNCT	_	_	_	_	4	punct
+
+# Congress previously cut six airports this year .
+1	Congress	congress	PROPN	_	_	_	_	3	nsubj
+2	previously	previously	ADV	_	_	_	_	3	advmod
+3	cut	cut	VERB	_	_	_	_	0	root
+4	six	six	NUM	_	_	_	_	5	num
+5	airports	airports	NOUN	_	_	_	_	3	dobj
+6	this	this	DET	_	_	_	_	7	det
+7	year	year	NOUN	_	_	_	_	3	tmod
+8	.	.	PUNCT	_	_	_	_	3	punct
+
+# There were n't any extraordinary items .
+1	There	there	PRON	_	_	_	_	2	expl
+2	were	were	VERB	_	_	_	_	0	root
+3	n't	n't	PART	_	_	_	_	2	neg
+4	any	any	DET	_	_	_	_	6	det
+5	extraordinary	extraordinary	ADJ	_	_	_	_	6	amod
+6	items	items	NOUN	_	_	_	_	2	nsubj
+7	.	.	PUNCT	_	_	_	_	2	punct
+
+# Waterford has decided against paying an interim dividend .
+1	Waterford	waterford	PROPN	_	_	_	_	3	nsubj
+2	has	has	AUX	_	_	_	_	3	aux
+3	decided	decided	VERB	_	_	_	_	0	root
+4	against	against	SCONJ	_	_	_	_	3	prep
+5	paying	paying	VERB	_	_	_	_	4	pcomp
+6	an	an	DET	_	_	_	_	8	det
+7	interim	interim	ADJ	_	_	_	_	8	amod
+8	dividend	dividend	NOUN	_	_	_	_	5	dobj
+9	.	.	PUNCT	_	_	_	_	3	punct
+
+# `` It was a pretty wild day .
+1	``	``	PUNCT	_	_	_	_	3	punct
+2	It	it	PRON	_	_	_	_	3	nsubj
+3	was	was	VERB	_	_	_	_	0	root
+4	a	a	DET	_	_	_	_	7	det
+5	pretty	pretty	ADV	_	_	_	_	6	advmod
+6	wild	wild	ADJ	_	_	_	_	7	amod
+7	day	day	NOUN	_	_	_	_	3	tmod
+8	.	.	PUNCT	_	_	_	_	3	punct
+
+# In Tokyo , trading is halted during lunchtime .
+1	In	in	ADP	_	_	_	_	6	prep
+2	Tokyo	tokyo	PROPN	_	_	_	_	1	pobj
+3	,	,	PUNCT	_	_	_	_	6	punct
+4	trading	trading	NOUN	_	_	_	_	6	nsubjpass
+5	is	is	AUX	_	_	_	_	6	auxpass
+6	halted	halted	VERB	_	_	_	_	0	root
+7	during	during	ADP	_	_	_	_	6	prep
+8	lunchtime	lunchtime	NOUN	_	_	_	_	7	pobj
+9	.	.	PUNCT	_	_	_	_	6	punct
+
+# It could do damage to us . ''
+1	It	it	PRON	_	_	_	_	3	nsubj
+2	could	could	AUX	_	_	_	_	3	aux
+3	do	do	VERB	_	_	_	_	0	root
+4	damage	damage	NOUN	_	_	_	_	3	dobj
+5	to	to	ADP	_	_	_	_	3	prep
+6	us	us	PRON	_	_	_	_	5	pobj
+7	.	.	PUNCT	_	_	_	_	3	punct
+8	''	''	PUNCT	_	_	_	_	3	punct
+
+# Treasury Securities
+1	Treasury	treasury	PROPN	_	_	_	_	2	nn
+2	Securities	securities	PROPN	_	_	_	_	0	root
+
+# Here are auction details :
+1	Here	here	ADV	_	_	_	_	2	advmod
+2	are	are	VERB	_	_	_	_	0	root
+3	auction	auction	NOUN	_	_	_	_	4	nn
+4	details	details	NOUN	_	_	_	_	2	nsubj
+5	:	:	PUNCT	_	_	_	_	2	punct
+
+# Both issues are dated Oct. 19 .
+1	Both	both	DET	_	_	_	_	2	det
+2	issues	issues	NOUN	_	_	_	_	4	nsubjpass
+3	are	are	AUX	_	_	_	_	4	auxpass
+4	dated	dated	VERB	_	_	_	_	0	root
+5	Oct.	oct.	PROPN	_	_	_	_	4	tmod
+6	19	19	NUM	_	_	_	_	5	num
+7	.	.	PUNCT	_	_	_	_	4	punct
+
+# Corporate Issues
+1	Corporate	corporate	ADJ	_	_	_	_	2	amod
+2	Issues	issues	NOUN	_	_	_	_	0	root
+
+# There were no new issues .
+1	There	there	PRON	_	_	_	_	2	expl
+2	were	were	VERB	_	_	_	_	0	root
+3	no	no	DET	_	_	_	_	5	neg
+4	new	new	ADJ	_	_	_	_	5	amod
+5	issues	issues	NOUN	_	_	_	_	2	nsubj
+6	.	.	PUNCT	_	_	_	_	2	punct
+
+# Foreign Bonds
+1	Foreign	foreign	ADJ	_	_	_	_	2	amod
+2	Bonds	bonds	NOUN	_	_	_	_	0	root
+
+# The yield was 5.245 % .
+1	The	the	DET	_	_	_	_	2	det
+2	yield	yield	NOUN	_	_	_	_	3	nsubj
+3	was	was	VERB	_	_	_	_	0	root
+4	5.245	5.245	NUM	_	_	_	_	5	num
+5	%	%	SYM	_	_	_	_	3	xcomp
+6	.	.	PUNCT	_	_	_	_	3	punct
+
+# Mortgage-Backed Securities
+1	Mortgage-Backed	mortgage-backed	ADJ	_	_	_	_	2	amod
+2	Securities	securities	NOUN	_	_	_	_	0	root
+
+# Municipals
+1	Municipals	municipals	NOUN	_	_	_	_	0	root
+
+# Professionals dominated municipal trading throughout the session .
+1	Professionals	professionals	NOUN	_	_	_	_	2	nsubj
+2	dominated	dominated	VERB	_	_	_	_	0	root
+3	municipal	municipal	ADJ	_	_	_	_	4	amod
+4	trading	trading	NOUN	_	_	_	_	2	dobj
+5	throughout	throughout	ADP	_	_	_	_	2	prep
+6	the	the	DET	_	_	_	_	7	det
+7	session	session	NOUN	_	_	_	_	5	pobj
+8	.	.	PUNCT	_	_	_	_	2	punct
+
+# Domestic leisure sales , however , were lower .
+1	Domestic	domestic	ADJ	_	_	_	_	3	amod
+2	leisure	leisure	NOUN	_	_	_	_	3	nn
+3	sales	sales	NOUN	_	_	_	_	7	nsubj
+4	,	,	PUNCT	_	_	_	_	7	punct
+5	however	however	ADV	_	_	_	_	7	advmod
+6	,	,	PUNCT	_	_	_	_	7	punct
+7	were	were	VERB	_	_	_	_	0	root
+8	lower	lower	ADJ	_	_	_	_	7	acomp
+9	.	.	PUNCT	_	_	_	_	7	punct
+
+# What does n't belong here ?
+1	What	what	PRON	_	_	_	_	4	nsubj
+2	does	does	AUX	_	_	_	_	4	aux
+3	n't	n't	PART	_	_	_	_	4	neg
+4	belong	belong	VERB	_	_	_	_	0	root
+5	here	here	ADV	_	_	_	_	4	advmod
+6	?	?	PUNCT	_	_	_	_	4	punct
+
+# And black-and-white photography classes are crowded with students .
+1	And	and	CCONJ	_	_	_	_	6	cc
+2	black-and-white	black-and-white	ADJ	_	_	_	_	4	amod
+3	photography	photography	NOUN	_	_	_	_	4	nn
+4	classes	classes	NOUN	_	_	_	_	6	nsubjpass
+5	are	are	AUX	_	_	_	_	6	auxpass
+6	crowded	crowded	VERB	_	_	_	_	0	root
+7	with	with	ADP	_	_	_	_	6	prep
+8	students	students	NOUN	_	_	_	_	7	pobj
+9	.	.	PUNCT	_	_	_	_	6	punct
+
+# Why all the interest ?
+1	Why	why	ADV	_	_	_	_	4	dep
+2	all	all	DET	_	_	_	_	4	predet
+3	the	the	DET	_	_	_	_	4	det
+4	interest	interest	NOUN	_	_	_	_	0	root
+5	?	?	PUNCT	_	_	_	_	4	punct
+
+# Portrait studios have also latched onto the trend .
+1	Portrait	portrait	NOUN	_	_	_	_	2	nn
+2	studios	studios	NOUN	_	_	_	_	5	nsubj
+3	have	have	AUX	_	_	_	_	5	aux
+4	also	also	ADV	_	_	_	_	5	advmod
+5	latched	latched	VERB	_	_	_	_	0	root
+6	onto	onto	ADP	_	_	_	_	5	prep
+7	the	the	DET	_	_	_	_	8	det
+8	trend	trend	NOUN	_	_	_	_	6	pobj
+9	.	.	PUNCT	_	_	_	_	5	punct
+
+# It is n't ordinary like color . ''
+1	It	it	PRON	_	_	_	_	2	nsubj
+2	is	is	VERB	_	_	_	_	0	root
+3	n't	n't	PART	_	_	_	_	2	neg
+4	ordinary	ordinary	ADJ	_	_	_	_	2	acomp
+5	like	like	ADP	_	_	_	_	4	prep
+6	color	color	NOUN	_	_	_	_	5	pobj
+7	.	.	PUNCT	_	_	_	_	2	punct
+8	''	''	PUNCT	_	_	_	_	2	punct
+
+# Some companies are starting to tackle that problem .
+1	Some	some	DET	_	_	_	_	2	det
+2	companies	companies	NOUN	_	_	_	_	4	nsubj
+3	are	are	AUX	_	_	_	_	4	aux
+4	starting	starting	VERB	_	_	_	_	0	root
+5	to	to	PART	_	_	_	_	6	aux
+6	tackle	tackle	VERB	_	_	_	_	4	xcomp
+7	that	that	DET	_	_	_	_	8	det
+8	problem	problem	NOUN	_	_	_	_	6	dobj
+9	.	.	PUNCT	_	_	_	_	4	punct
+
+# Other companies are introducing related products .
+1	Other	other	ADJ	_	_	_	_	2	amod
+2	companies	companies	NOUN	_	_	_	_	4	nsubj
+3	are	are	AUX	_	_	_	_	4	aux
+4	introducing	introducing	VERB	_	_	_	_	0	root
+5	related	related	VERB	_	_	_	_	6	amod
+6	products	products	NOUN	_	_	_	_	4	dobj
+7	.	.	PUNCT	_	_	_	_	4	punct
+
+# `` That 's the appeal .
+1	``	``	PUNCT	_	_	_	_	3	punct
+2	That	that	PRON	_	_	_	_	3	nsubj
+3	's	's	VERB	_	_	_	_	0	root
+4	the	the	DET	_	_	_	_	5	det
+5	appeal	appeal	NOUN	_	_	_	_	3	xcomp
+6	.	.	PUNCT	_	_	_	_	3	punct
+
+# The price was n't disclosed .
+1	The	the	DET	_	_	_	_	2	det
+2	price	price	NOUN	_	_	_	_	5	nsubjpass
+3	was	was	AUX	_	_	_	_	5	auxpass
+4	n't	n't	PART	_	_	_	_	5	neg
+5	disclosed	disclosed	VERB	_	_	_	_	0	root
+6	.	.	PUNCT	_	_	_	_	5	punct
+
+# The value of the acquisition was n't disclosed .
+1	The	the	DET	_	_	_	_	2	det
+2	value	value	NOUN	_	_	_	_	8	nsubjpass
+3	of	of	ADP	_	_	_	_	2	prep
+4	the	the	DET	_	_	_	_	5	det
+5	acquisition	acquisition	NOUN	_	_	_	_	3	pobj
+6	was	was	AUX	_	_	_	_	8	auxpass
+7	n't	n't	PART	_	_	_	_	8	neg
+8	disclosed	disclosed	VERB	_	_	_	_	0	root
+9	.	.	PUNCT	_	_	_	_	8	punct
+
+# CENTRUST SAVINGS BANK ( Miami ) --
+1	CENTRUST	centrust	PROPN	_	_	_	_	3	nn
+2	SAVINGS	savings	PROPN	_	_	_	_	3	nn
+3	BANK	bank	PROPN	_	_	_	_	0	root
+4	(	(	PUNCT	_	_	_	_	5	punct
+5	Miami	miami	PROPN	_	_	_	_	3	appos
+6	)	)	PUNCT	_	_	_	_	5	punct
+7	--	--	PUNCT	_	_	_	_	3	punct
+
+# Gold also rose .
+1	Gold	gold	PROPN	_	_	_	_	3	nsubj
+2	also	also	ADV	_	_	_	_	3	advmod
+3	rose	rose	VERB	_	_	_	_	0	root
+4	.	.	PUNCT	_	_	_	_	3	punct
+
+# The dollar also moved higher in Tokyo .
+1	The	the	DET	_	_	_	_	2	det
+2	dollar	dollar	NOUN	_	_	_	_	4	nsubj
+3	also	also	ADV	_	_	_	_	4	advmod
+4	moved	moved	VERB	_	_	_	_	0	root
+5	higher	higher	ADV	_	_	_	_	4	advmod
+6	in	in	ADP	_	_	_	_	4	prep
+7	Tokyo	tokyo	PROPN	_	_	_	_	6	pobj
+8	.	.	PUNCT	_	_	_	_	4	punct
+
+# AMR slid $ 22.125 , to $ 76.50 .
+1	AMR	amr	PROPN	_	_	_	_	2	nsubj
+2	slid	slid	VERB	_	_	_	_	0	root
+3	$	$	SYM	_	_	_	_	2	dobj
+4	22.125	22.125	NUM	_	_	_	_	3	num
+5	,	,	PUNCT	_	_	_	_	2	punct
+6	to	to	ADP	_	_	_	_	2	prep
+7	$	$	SYM	_	_	_	_	6	pobj
+8	76.50	76.50	NUM	_	_	_	_	7	num
+9	.	.	PUNCT	_	_	_	_	2	punct
+
+# UAL fell $ 56.875 , to $ 222.875 .
+1	UAL	ual	PROPN	_	_	_	_	2	nsubj
+2	fell	fell	VERB	_	_	_	_	0	root
+3	$	$	SYM	_	_	_	_	2	dobj
+4	56.875	56.875	NUM	_	_	_	_	3	num
+5	,	,	PUNCT	_	_	_	_	2	punct
+6	to	to	ADP	_	_	_	_	2	prep
+7	$	$	SYM	_	_	_	_	6	pobj
+8	222.875	222.875	NUM	_	_	_	_	7	num
+9	.	.	PUNCT	_	_	_	_	2	punct
+
+# NCNB 's profit more than doubled .
+1	NCNB	ncnb	PROPN	_	_	_	_	3	poss
+2	's	's	PART	_	_	_	_	1	possessive
+3	profit	profit	NOUN	_	_	_	_	6	nsubj
+4	more	more	ADV	_	_	_	_	5	advmod
+5	than	than	ADP	_	_	_	_	6	advmod
+6	doubled	doubled	VERB	_	_	_	_	0	root
+7	.	.	PUNCT	_	_	_	_	6	punct
+
+# Markets --
+1	Markets	markets	NOUN	_	_	_	_	0	root
+2	--	--	PUNCT	_	_	_	_	1	punct
+
+# Stocks : Volume 416,290,000 shares .
+1	Stocks	stocks	NOUN	_	_	_	_	0	root
+2	:	:	PUNCT	_	_	_	_	1	punct
+3	Volume	volume	NOUN	_	_	_	_	1	dep
+4	416,290,000	416,290,000	NUM	_	_	_	_	5	num
+5	shares	shares	NOUN	_	_	_	_	3	dep
+6	.	.	PUNCT	_	_	_	_	1	punct
+
+# Monday , October 16 , 1989
+1	Monday	monday	PROPN	_	_	_	_	0	root
+2	,	,	PUNCT	_	_	_	_	1	punct
+3	October	october	PROPN	_	_	_	_	1	appos
+4	16	16	NUM	_	_	_	_	3	num
+5	,	,	PUNCT	_	_	_	_	3	punct
+6	1989	1989	NUM	_	_	_	_	3	num
+
+# PRIME RATE : 10 1/2 % .
+1	PRIME	prime	PROPN	_	_	_	_	2	nn
+2	RATE	rate	PROPN	_	_	_	_	0	root
+3	:	:	PUNCT	_	_	_	_	2	punct
+4	10	10	NUM	_	_	_	_	5	number
+5	1/2	1/2	NUM	_	_	_	_	6	num
+6	%	%	SYM	_	_	_	_	2	dep
+7	.	.	PUNCT	_	_	_	_	2	punct
+
+# DISCOUNT RATE : 7 % .
+1	DISCOUNT	discount	PROPN	_	_	_	_	2	nn
+2	RATE	rate	PROPN	_	_	_	_	0	root
+3	:	:	PUNCT	_	_	_	_	2	punct
+4	7	7	NUM	_	_	_	_	5	num
+5	%	%	SYM	_	_	_	_	2	dep
+6	.	.	PUNCT	_	_	_	_	2	punct
+
+# The minimum unit is $ 100,000 .
+1	The	the	DET	_	_	_	_	3	det
+2	minimum	minimum	NOUN	_	_	_	_	3	nn
+3	unit	unit	NOUN	_	_	_	_	4	nsubj
+4	is	is	VERB	_	_	_	_	0	root
+5	$	$	SYM	_	_	_	_	4	xcomp
+6	100,000	100,000	NUM	_	_	_	_	5	num
+7	.	.	PUNCT	_	_	_	_	4	punct
+
+# Source : Telerate Systems Inc .
+1	Source	source	NOUN	_	_	_	_	0	root
+2	:	:	PUNCT	_	_	_	_	1	punct
+3	Telerate	telerate	PROPN	_	_	_	_	5	nn
+4	Systems	systems	PROPN	_	_	_	_	5	nn
+5	Inc	inc	PROPN	_	_	_	_	1	dep
+6	.	.	PUNCT	_	_	_	_	1	punct
+
+# Source : Telerate Systems Inc .
+1	Source	source	NOUN	_	_	_	_	0	root
+2	:	:	PUNCT	_	_	_	_	1	punct
+3	Telerate	telerate	PROPN	_	_	_	_	5	nn
+4	Systems	systems	PROPN	_	_	_	_	5	nn
+5	Inc	inc	PROPN	_	_	_	_	1	dep
+6	.	.	PUNCT	_	_	_	_	1	punct
+
+# MERRILL LYNCH READY ASSETS TRUST : 8.49 % .
+1	MERRILL	merrill	PROPN	_	_	_	_	5	nn
+2	LYNCH	lynch	PROPN	_	_	_	_	5	nn
+3	READY	ready	PROPN	_	_	_	_	5	nn
+4	ASSETS	assets	PROPN	_	_	_	_	5	nn
+5	TRUST	trust	PROPN	_	_	_	_	0	root
+6	:	:	PUNCT	_	_	_	_	5	punct
+7	8.49	8.49	NUM	_	_	_	_	8	num
+8	%	%	SYM	_	_	_	_	5	dep
+9	.	.	PUNCT	_	_	_	_	5	punct
+
+# SHV also owns 40 % of Calor .
+1	SHV	shv	PROPN	_	_	_	_	3	nsubj
+2	also	also	ADV	_	_	_	_	3	advmod
+3	owns	owns	VERB	_	_	_	_	0	root
+4	40	40	NUM	_	_	_	_	5	num
+5	%	%	SYM	_	_	_	_	3	dobj
+6	of	of	ADP	_	_	_	_	5	prep
+7	Calor	calor	PROPN	_	_	_	_	6	pobj
+8	.	.	PUNCT	_	_	_	_	3	punct
+
+# The elections are set for Nov. 7 .
+1	The	the	DET	_	_	_	_	2	det
+2	elections	elections	NOUN	_	_	_	_	4	nsubjpass
+3	are	are	AUX	_	_	_	_	4	auxpass
+4	set	set	VERB	_	_	_	_	0	root
+5	for	for	ADP	_	_	_	_	4	prep
+6	Nov.	nov.	PROPN	_	_	_	_	5	pobj
+7	7	7	NUM	_	_	_	_	6	num
+8	.	.	PUNCT	_	_	_	_	4	punct
+
+# Silver performed quietly .
+1	Silver	silver	NOUN	_	_	_	_	2	nsubj
+2	performed	performed	VERB	_	_	_	_	0	root
+3	quietly	quietly	ADV	_	_	_	_	2	advmod
+4	.	.	PUNCT	_	_	_	_	2	punct
+
+# ENERGY :
+1	ENERGY	energy	PROPN	_	_	_	_	0	root
+2	:	:	PUNCT	_	_	_	_	1	punct
+
+# COPPER :
+1	COPPER	copper	NOUN	_	_	_	_	0	root
+2	:	:	PUNCT	_	_	_	_	1	punct
+
+# COTTON :
+1	COTTON	cotton	PROPN	_	_	_	_	0	root
+2	:	:	PUNCT	_	_	_	_	1	punct
+
+# SUGAR :
+1	SUGAR	sugar	NOUN	_	_	_	_	0	root
+2	:	:	PUNCT	_	_	_	_	1	punct
+
+# Futures prices declined .
+1	Futures	futures	NOUN	_	_	_	_	2	nn
+2	prices	prices	NOUN	_	_	_	_	3	nsubj
+3	declined	declined	VERB	_	_	_	_	0	root
+4	.	.	PUNCT	_	_	_	_	3	punct
+
+# FARM PRODUCTS :
+1	FARM	farm	NOUN	_	_	_	_	2	nn
+2	PRODUCTS	products	NOUN	_	_	_	_	0	root
+3	:	:	PUNCT	_	_	_	_	2	punct
+
+# Terms of the agreement were n't disclosed .
+1	Terms	terms	NOUN	_	_	_	_	7	nsubjpass
+2	of	of	ADP	_	_	_	_	1	prep
+3	the	the	DET	_	_	_	_	4	det
+4	agreement	agreement	NOUN	_	_	_	_	2	pobj
+5	were	were	AUX	_	_	_	_	7	auxpass
+6	n't	n't	PART	_	_	_	_	7	neg
+7	disclosed	disclosed	VERB	_	_	_	_	0	root
+8	.	.	PUNCT	_	_	_	_	7	punct
+
+# Many went bargain-hunting .
+1	Many	many	ADJ	_	_	_	_	2	nsubj
+2	went	went	VERB	_	_	_	_	0	root
+3	bargain-hunting	bargain-hunting	NOUN	_	_	_	_	2	dobj
+4	.	.	PUNCT	_	_	_	_	2	punct
+
+# It ended with a gain of 88.12 points .
+1	It	it	PRON	_	_	_	_	2	nsubj
+2	ended	ended	VERB	_	_	_	_	0	root
+3	with	with	ADP	_	_	_	_	2	prep
+4	a	a	DET	_	_	_	_	5	det
+5	gain	gain	NOUN	_	_	_	_	3	pobj
+6	of	of	ADP	_	_	_	_	5	prep
+7	88.12	88.12	NUM	_	_	_	_	8	num
+8	points	points	NOUN	_	_	_	_	6	pobj
+9	.	.	PUNCT	_	_	_	_	2	punct
+
+# World-wide , trading was generally manageable .
+1	World-wide	world-wide	ADJ	_	_	_	_	4	advmod
+2	,	,	PUNCT	_	_	_	_	4	punct
+3	trading	trading	NOUN	_	_	_	_	4	nsubj
+4	was	was	VERB	_	_	_	_	0	root
+5	generally	generally	ADV	_	_	_	_	6	advmod
+6	manageable	manageable	ADJ	_	_	_	_	4	acomp
+7	.	.	PUNCT	_	_	_	_	4	punct
+
+# The screen was a sea of red .
+1	The	the	DET	_	_	_	_	2	det
+2	screen	screen	NOUN	_	_	_	_	3	nsubj
+3	was	was	VERB	_	_	_	_	0	root
+4	a	a	DET	_	_	_	_	5	det
+5	sea	sea	NOUN	_	_	_	_	3	xcomp
+6	of	of	ADP	_	_	_	_	5	prep
+7	red	red	NOUN	_	_	_	_	6	pobj
+8	.	.	PUNCT	_	_	_	_	3	punct
+
+# By 10 a.m. , it was down 49 .
+1	By	by	ADP	_	_	_	_	6	prep
+2	10	10	NUM	_	_	_	_	3	num
+3	a.m.	a.m.	NOUN	_	_	_	_	1	pobj
+4	,	,	PUNCT	_	_	_	_	6	punct
+5	it	it	PRON	_	_	_	_	6	nsubj
+6	was	was	VERB	_	_	_	_	0	root
+7	down	down	ADV	_	_	_	_	6	advmod
+8	49	49	NUM	_	_	_	_	7	pobj
+9	.	.	PUNCT	_	_	_	_	6	punct
+
+# Shearson 's London trading room went wild .
+1	Shearson	shearson	PROPN	_	_	_	_	5	poss
+2	's	's	PART	_	_	_	_	1	possessive
+3	London	london	PROPN	_	_	_	_	5	nn
+4	trading	trading	VERB	_	_	_	_	5	amod
+5	room	room	NOUN	_	_	_	_	6	nsubj
+6	went	went	VERB	_	_	_	_	0	root
+7	wild	wild	ADJ	_	_	_	_	6	acomp
+8	.	.	PUNCT	_	_	_	_	6	punct
+
+# `` This is panic buying . ''
+1	``	``	PUNCT	_	_	_	_	3	punct
+2	This	this	PRON	_	_	_	_	3	nsubj
+3	is	is	VERB	_	_	_	_	0	root
+4	panic	panic	NOUN	_	_	_	_	5	nn
+5	buying	buying	NOUN	_	_	_	_	3	xcomp
+6	.	.	PUNCT	_	_	_	_	3	punct
+7	''	''	PUNCT	_	_	_	_	3	punct
+
+# Japanese were said to be heavy buyers .
+1	Japanese	japanese	PROPN	_	_	_	_	3	nsubjpass
+2	were	were	AUX	_	_	_	_	3	auxpass
+3	said	said	VERB	_	_	_	_	0	root
+4	to	to	PART	_	_	_	_	5	aux
+5	be	be	VERB	_	_	_	_	3	xcomp
+6	heavy	heavy	NOUN	_	_	_	_	7	nn
+7	buyers	buyers	NOUN	_	_	_	_	5	xcomp
+8	.	.	PUNCT	_	_	_	_	3	punct
+
+# Not everybody was making money .
+1	Not	not	ADV	_	_	_	_	2	neg
+2	everybody	everybody	PRON	_	_	_	_	4	nsubj
+3	was	was	AUX	_	_	_	_	4	aux
+4	making	making	VERB	_	_	_	_	0	root
+5	money	money	NOUN	_	_	_	_	4	dobj
+6	.	.	PUNCT	_	_	_	_	4	punct
+
+# The public is still cautious .
+1	The	the	DET	_	_	_	_	2	det
+2	public	public	NOUN	_	_	_	_	3	nsubj
+3	is	is	VERB	_	_	_	_	0	root
+4	still	still	ADV	_	_	_	_	3	advmod
+5	cautious	cautious	ADJ	_	_	_	_	3	acomp
+6	.	.	PUNCT	_	_	_	_	3	punct
+
+# Revenue was $ 19.9 million .
+1	Revenue	revenue	NOUN	_	_	_	_	2	nsubj
+2	was	was	VERB	_	_	_	_	0	root
+3	$	$	SYM	_	_	_	_	2	xcomp
+4	19.9	19.9	NUM	_	_	_	_	5	number
+5	million	million	NUM	_	_	_	_	3	num
+6	.	.	PUNCT	_	_	_	_	2	punct
+
+# Police did n't intervene .
+1	Police	police	NOUN	_	_	_	_	4	nsubj
+2	did	did	AUX	_	_	_	_	4	aux
+3	n't	n't	PART	_	_	_	_	4	neg
+4	intervene	intervene	VERB	_	_	_	_	0	root
+5	.	.	PUNCT	_	_	_	_	4	punct
+
+# A temporary prohibition was imposed in March 1988 .
+1	A	a	DET	_	_	_	_	3	det
+2	temporary	temporary	ADJ	_	_	_	_	3	amod
+3	prohibition	prohibition	NOUN	_	_	_	_	5	nsubjpass
+4	was	was	AUX	_	_	_	_	5	auxpass
+5	imposed	imposed	VERB	_	_	_	_	0	root
+6	in	in	ADP	_	_	_	_	5	prep
+7	March	march	PROPN	_	_	_	_	6	pobj
+8	1988	1988	NUM	_	_	_	_	7	num
+9	.	.	PUNCT	_	_	_	_	5	punct
+
+# Two-Way Street
+1	Two-Way	two-way	PROPN	_	_	_	_	0	root
+2	Street	street	PROPN	_	_	_	_	1	punct
+
+# -- Rollin S. Trexler .
+1	--	--	PUNCT	_	_	_	_	4	punct
+2	Rollin	rollin	PROPN	_	_	_	_	4	nn
+3	S.	s.	PROPN	_	_	_	_	4	nn
+4	Trexler	trexler	PROPN	_	_	_	_	0	root
+5	.	.	PUNCT	_	_	_	_	4	punct
+
+# Candid Comment
+1	Candid	candid	PROPN	_	_	_	_	2	nn
+2	Comment	comment	PROPN	_	_	_	_	0	root
+
+# -- C.E. Friedman .
+1	--	--	PUNCT	_	_	_	_	3	punct
+2	C.E.	c.e.	PROPN	_	_	_	_	3	nn
+3	Friedman	friedman	PROPN	_	_	_	_	0	root
+4	.	.	PUNCT	_	_	_	_	3	punct
+
+# Ah , perfidious Columbia !
+1	Ah	ah	INTJ	_	_	_	_	4	discourse
+2	,	,	PUNCT	_	_	_	_	4	punct
+3	perfidious	perfidious	ADJ	_	_	_	_	4	amod
+4	Columbia	columbia	PROPN	_	_	_	_	0	root
+5	!	!	PUNCT	_	_	_	_	4	punct
+
+# But the investigation continues .
+1	But	but	CCONJ	_	_	_	_	4	cc
+2	the	the	DET	_	_	_	_	3	det
+3	investigation	investigation	NOUN	_	_	_	_	4	nsubj
+4	continues	continues	VERB	_	_	_	_	0	root
+5	.	.	PUNCT	_	_	_	_	4	punct
+
+# In fact , few consume much of anything .
+1	In	in	ADP	_	_	_	_	5	prep
+2	fact	fact	NOUN	_	_	_	_	1	pobj
+3	,	,	PUNCT	_	_	_	_	5	punct
+4	few	few	ADJ	_	_	_	_	5	nsubj
+5	consume	consume	VERB	_	_	_	_	0	root
+6	much	much	ADV	_	_	_	_	5	dobj
+7	of	of	ADP	_	_	_	_	6	prep
+8	anything	anything	PRON	_	_	_	_	7	pobj
+9	.	.	PUNCT	_	_	_	_	5	punct
+
+# Two share a house almost devoid of furniture .
+1	Two	two	NUM	_	_	_	_	2	nsubj
+2	share	share	NOUN	_	_	_	_	0	root
+3	a	a	DET	_	_	_	_	4	det
+4	house	house	NOUN	_	_	_	_	6	nsubj
+5	almost	almost	ADV	_	_	_	_	6	advmod
+6	devoid	devoid	ADJ	_	_	_	_	2	xcomp
+7	of	of	ADP	_	_	_	_	6	prep
+8	furniture	furniture	NOUN	_	_	_	_	7	pobj
+9	.	.	PUNCT	_	_	_	_	2	punct
+
+# The seeds already are in the script .
+1	The	the	DET	_	_	_	_	2	det
+2	seeds	seeds	NOUN	_	_	_	_	4	nsubj
+3	already	already	ADV	_	_	_	_	4	advmod
+4	are	are	VERB	_	_	_	_	0	root
+5	in	in	ADP	_	_	_	_	4	prep
+6	the	the	DET	_	_	_	_	7	det
+7	script	script	NOUN	_	_	_	_	5	pobj
+8	.	.	PUNCT	_	_	_	_	4	punct
+
+# It should run forever .
+1	It	it	PRON	_	_	_	_	3	nsubj
+2	should	should	AUX	_	_	_	_	3	aux
+3	run	run	VERB	_	_	_	_	0	root
+4	forever	forever	ADV	_	_	_	_	3	advmod
+5	.	.	PUNCT	_	_	_	_	3	punct
+
+# c - Domestic car
+1	c	c	SYM	_	_	_	_	0	root
+2	-	-	PUNCT	_	_	_	_	1	punct
+3	Domestic	domestic	ADJ	_	_	_	_	4	amod
+4	car	car	NOUN	_	_	_	_	1	punct
+
+# Sequa makes and repairs jet engines .
+1	Sequa	sequa	PROPN	_	_	_	_	2	nsubj
+2	makes	makes	VERB	_	_	_	_	0	root
+3	and	and	CCONJ	_	_	_	_	2	cc
+4	repairs	repairs	VERB	_	_	_	_	2	conj
+5	jet	jet	NOUN	_	_	_	_	6	nn
+6	engines	engines	NOUN	_	_	_	_	2	dobj
+7	.	.	PUNCT	_	_	_	_	2	punct
+
+# Radio and television are getting livelier and bolder .
+1	Radio	radio	NOUN	_	_	_	_	5	nsubj
+2	and	and	CCONJ	_	_	_	_	1	cc
+3	television	television	NOUN	_	_	_	_	1	conj
+4	are	are	AUX	_	_	_	_	5	aux
+5	getting	getting	VERB	_	_	_	_	0	root
+6	livelier	livelier	ADJ	_	_	_	_	5	acomp
+7	and	and	CCONJ	_	_	_	_	6	cc
+8	bolder	bolder	ADJ	_	_	_	_	6	conj
+9	.	.	PUNCT	_	_	_	_	5	punct
+
+# `` That is a miracle . ''
+1	``	``	PUNCT	_	_	_	_	3	punct
+2	That	that	PRON	_	_	_	_	3	nsubj
+3	is	is	VERB	_	_	_	_	0	root
+4	a	a	DET	_	_	_	_	5	det
+5	miracle	miracle	NOUN	_	_	_	_	3	xcomp
+6	.	.	PUNCT	_	_	_	_	3	punct
+7	''	''	PUNCT	_	_	_	_	3	punct
+
+# `` There were some very brave broadcasts . ''
+1	``	``	PUNCT	_	_	_	_	3	punct
+2	There	there	PRON	_	_	_	_	3	expl
+3	were	were	VERB	_	_	_	_	0	root
+4	some	some	DET	_	_	_	_	7	det
+5	very	very	ADV	_	_	_	_	6	advmod
+6	brave	brave	ADJ	_	_	_	_	7	amod
+7	broadcasts	broadcasts	NOUN	_	_	_	_	3	nsubj
+8	.	.	PUNCT	_	_	_	_	3	punct
+9	''	''	PUNCT	_	_	_	_	3	punct
+
+# Why does the national-service virus keep coming back ?
+1	Why	why	ADV	_	_	_	_	6	advmod
+2	does	does	AUX	_	_	_	_	6	aux
+3	the	the	DET	_	_	_	_	5	det
+4	national-service	national-service	ADJ	_	_	_	_	5	amod
+5	virus	virus	NOUN	_	_	_	_	6	nsubj
+6	keep	keep	VERB	_	_	_	_	0	root
+7	coming	coming	VERB	_	_	_	_	6	xcomp
+8	back	back	ADV	_	_	_	_	7	advmod
+9	?	?	PUNCT	_	_	_	_	6	punct
+
+# The aroma of patronage is in the air .
+1	The	the	DET	_	_	_	_	2	det
+2	aroma	aroma	NOUN	_	_	_	_	5	nsubj
+3	of	of	ADP	_	_	_	_	2	prep
+4	patronage	patronage	NOUN	_	_	_	_	3	pobj
+5	is	is	VERB	_	_	_	_	0	root
+6	in	in	ADP	_	_	_	_	5	prep
+7	the	the	DET	_	_	_	_	8	det
+8	air	air	NOUN	_	_	_	_	6	pobj
+9	.	.	PUNCT	_	_	_	_	5	punct
+
+# Not necessarily .
+1	Not	not	PART	_	_	_	_	2	dep
+2	necessarily	necessarily	ADV	_	_	_	_	0	root
+3	.	.	PUNCT	_	_	_	_	2	punct
+
+# There 's no need for such concessions .
+1	There	there	PRON	_	_	_	_	2	expl
+2	's	's	VERB	_	_	_	_	0	root
+3	no	no	DET	_	_	_	_	4	neg
+4	need	need	NOUN	_	_	_	_	2	nsubj
+5	for	for	ADP	_	_	_	_	4	prep
+6	such	such	ADJ	_	_	_	_	7	amod
+7	concessions	concessions	NOUN	_	_	_	_	5	pobj
+8	.	.	PUNCT	_	_	_	_	2	punct
+
+# The bonds go on sale Oct. 19 .
+1	The	the	DET	_	_	_	_	2	det
+2	bonds	bonds	NOUN	_	_	_	_	3	nsubj
+3	go	go	VERB	_	_	_	_	0	root
+4	on	on	ADP	_	_	_	_	3	prep
+5	sale	sale	NOUN	_	_	_	_	4	pobj
+6	Oct.	oct.	PROPN	_	_	_	_	3	tmod
+7	19	19	NUM	_	_	_	_	6	num
+8	.	.	PUNCT	_	_	_	_	3	punct
+
+# The debate over National Service has begun again .
+1	The	the	DET	_	_	_	_	2	det
+2	debate	debate	NOUN	_	_	_	_	7	nsubj
+3	over	over	ADP	_	_	_	_	2	prep
+4	National	national	PROPN	_	_	_	_	5	nn
+5	Service	service	PROPN	_	_	_	_	3	pobj
+6	has	has	AUX	_	_	_	_	7	aux
+7	begun	begun	VERB	_	_	_	_	0	root
+8	again	again	ADV	_	_	_	_	7	advmod
+9	.	.	PUNCT	_	_	_	_	7	punct
+
+# It might well win Senate passage .
+1	It	it	PRON	_	_	_	_	4	nsubj
+2	might	might	AUX	_	_	_	_	4	aux
+3	well	well	ADV	_	_	_	_	4	advmod
+4	win	win	VERB	_	_	_	_	0	root
+5	Senate	senate	PROPN	_	_	_	_	6	nn
+6	passage	passage	NOUN	_	_	_	_	4	dobj
+7	.	.	PUNCT	_	_	_	_	4	punct
+
+# What is one to think of all this ?
+1	What	what	PRON	_	_	_	_	2	nsubj
+2	is	is	VERB	_	_	_	_	0	root
+3	one	one	NOUN	_	_	_	_	2	xcomp
+4	to	to	PART	_	_	_	_	5	aux
+5	think	think	VERB	_	_	_	_	3	vmod
+6	of	of	ADP	_	_	_	_	5	prep
+7	all	all	DET	_	_	_	_	8	predet
+8	this	this	DET	_	_	_	_	6	pobj
+9	?	?	PUNCT	_	_	_	_	2	punct
+
+# Doctrine and special interests govern some responses .
+1	Doctrine	doctrine	NOUN	_	_	_	_	5	nsubj
+2	and	and	CCONJ	_	_	_	_	1	cc
+3	special	special	ADJ	_	_	_	_	4	amod
+4	interests	interests	NOUN	_	_	_	_	1	conj
+5	govern	govern	VERB	_	_	_	_	0	root
+6	some	some	DET	_	_	_	_	7	det
+7	responses	responses	NOUN	_	_	_	_	5	dobj
+8	.	.	PUNCT	_	_	_	_	5	punct
+
+# Then there are instinctive opponents .
+1	Then	then	ADV	_	_	_	_	3	advmod
+2	there	there	PRON	_	_	_	_	3	expl
+3	are	are	VERB	_	_	_	_	0	root
+4	instinctive	instinctive	ADJ	_	_	_	_	5	amod
+5	opponents	opponents	NOUN	_	_	_	_	3	nsubj
+6	.	.	PUNCT	_	_	_	_	3	punct
+
+# How should we think about national service ?
+1	How	how	ADV	_	_	_	_	4	advmod
+2	should	should	AUX	_	_	_	_	4	aux
+3	we	we	PRON	_	_	_	_	4	nsubj
+4	think	think	VERB	_	_	_	_	0	root
+5	about	about	ADP	_	_	_	_	4	prep
+6	national	national	ADJ	_	_	_	_	7	amod
+7	service	service	NOUN	_	_	_	_	5	pobj
+8	?	?	PUNCT	_	_	_	_	4	punct
+
+# Would service be voluntary or compulsory ?
+1	Would	would	AUX	_	_	_	_	3	aux
+2	service	service	NOUN	_	_	_	_	3	nsubj
+3	be	be	VERB	_	_	_	_	0	root
+4	voluntary	voluntary	ADJ	_	_	_	_	3	acomp
+5	or	or	CCONJ	_	_	_	_	4	cc
+6	compulsory	compulsory	ADJ	_	_	_	_	4	conj
+7	?	?	PUNCT	_	_	_	_	3	punct
+
+# Short or long ?
+1	Short	short	ADJ	_	_	_	_	0	root
+2	or	or	CCONJ	_	_	_	_	1	cc
+3	long	long	ADJ	_	_	_	_	1	conj
+4	?	?	PUNCT	_	_	_	_	1	punct
+
+# Part-time or full-time ?
+1	Part-time	part-time	ADJ	_	_	_	_	0	root
+2	or	or	CCONJ	_	_	_	_	1	cc
+3	full-time	full-time	ADJ	_	_	_	_	1	conj
+4	?	?	PUNCT	_	_	_	_	1	punct
+
+# Paid or unpaid ?
+1	Paid	paid	VERB	_	_	_	_	0	root
+2	or	or	CCONJ	_	_	_	_	1	cc
+3	unpaid	unpaid	ADJ	_	_	_	_	1	conj
+4	?	?	PUNCT	_	_	_	_	1	punct
+
+# What kinds of work would they do ?
+1	What	what	DET	_	_	_	_	2	det
+2	kinds	kinds	NOUN	_	_	_	_	7	dobj
+3	of	of	ADP	_	_	_	_	2	prep
+4	work	work	NOUN	_	_	_	_	3	pobj
+5	would	would	AUX	_	_	_	_	7	aux
+6	they	they	PRON	_	_	_	_	7	nsubj
+7	do	do	VERB	_	_	_	_	0	root
+8	?	?	PUNCT	_	_	_	_	7	punct
+
+# What does `` national '' mean ?
+1	What	what	PRON	_	_	_	_	6	dobj
+2	does	does	AUX	_	_	_	_	6	aux
+3	``	``	PUNCT	_	_	_	_	6	punct
+4	national	national	ADJ	_	_	_	_	6	dep
+5	''	''	PUNCT	_	_	_	_	6	punct
+6	mean	mean	VERB	_	_	_	_	0	root
+7	?	?	PUNCT	_	_	_	_	6	punct
+
+# And who would serve ?
+1	And	and	CCONJ	_	_	_	_	4	cc
+2	who	who	PRON	_	_	_	_	4	nsubj
+3	would	would	AUX	_	_	_	_	4	aux
+4	serve	serve	VERB	_	_	_	_	0	root
+5	?	?	PUNCT	_	_	_	_	4	punct
+
+# Youth only or all ages ?
+1	Youth	youth	NOUN	_	_	_	_	0	root
+2	only	only	ADV	_	_	_	_	5	advmod
+3	or	or	CCONJ	_	_	_	_	2	cc
+4	all	all	DET	_	_	_	_	5	det
+5	ages	ages	NOUN	_	_	_	_	1	conj
+6	?	?	PUNCT	_	_	_	_	1	punct
+
+# Many or few ?
+1	Many	many	ADJ	_	_	_	_	0	root
+2	or	or	CCONJ	_	_	_	_	1	cc
+3	few	few	ADJ	_	_	_	_	1	conj
+4	?	?	PUNCT	_	_	_	_	1	punct
+
+# Then how should we think about national service ?
+1	Then	then	ADV	_	_	_	_	5	advmod
+2	how	how	ADV	_	_	_	_	5	advmod
+3	should	should	AUX	_	_	_	_	5	aux
+4	we	we	PRON	_	_	_	_	5	nsubj
+5	think	think	VERB	_	_	_	_	0	root
+6	about	about	ADP	_	_	_	_	5	prep
+7	national	national	ADJ	_	_	_	_	8	amod
+8	service	service	NOUN	_	_	_	_	6	pobj
+9	?	?	PUNCT	_	_	_	_	5	punct
+
+# They will differ in crucial ways .
+1	They	they	PRON	_	_	_	_	3	nsubj
+2	will	will	AUX	_	_	_	_	3	aux
+3	differ	differ	VERB	_	_	_	_	0	root
+4	in	in	ADP	_	_	_	_	3	prep
+5	crucial	crucial	ADJ	_	_	_	_	6	amod
+6	ways	ways	NOUN	_	_	_	_	4	pobj
+7	.	.	PUNCT	_	_	_	_	3	punct
+
+# 2 . `` Service '' should be service .
+1	2	2	X	_	_	_	_	7	dep
+2	.	.	PUNCT	_	_	_	_	1	punct
+3	``	``	PUNCT	_	_	_	_	4	punct
+4	Service	service	NOUN	_	_	_	_	7	nsubj
+5	''	''	PUNCT	_	_	_	_	4	punct
+6	should	should	AUX	_	_	_	_	7	aux
+7	be	be	VERB	_	_	_	_	0	root
+8	service	service	NOUN	_	_	_	_	7	xcomp
+9	.	.	PUNCT	_	_	_	_	7	punct
+
+# As commonly understood , service implies sacrifice .
+1	As	as	SCONJ	_	_	_	_	3	mark
+2	commonly	commonly	ADV	_	_	_	_	3	advmod
+3	understood	understood	VERB	_	_	_	_	6	advcl
+4	,	,	PUNCT	_	_	_	_	6	punct
+5	service	service	NOUN	_	_	_	_	6	nsubj
+6	implies	implies	VERB	_	_	_	_	0	root
+7	sacrifice	sacrifice	NOUN	_	_	_	_	6	dobj
+8	.	.	PUNCT	_	_	_	_	6	punct
+
+# Why call that service ?
+1	Why	why	ADV	_	_	_	_	2	advmod
+2	call	call	VERB	_	_	_	_	0	root
+3	that	that	PRON	_	_	_	_	4	nsubj
+4	service	service	NOUN	_	_	_	_	2	xcomp
+5	?	?	PUNCT	_	_	_	_	2	punct
+
+# Compelled service is unconstitutional .
+1	Compelled	compelled	VERB	_	_	_	_	2	amod
+2	service	service	NOUN	_	_	_	_	3	nsubj
+3	is	is	VERB	_	_	_	_	0	root
+4	unconstitutional	unconstitutional	ADJ	_	_	_	_	3	acomp
+5	.	.	PUNCT	_	_	_	_	3	punct
+
+# It is also unwise and unenforceable .
+1	It	it	PRON	_	_	_	_	2	nsubj
+2	is	is	VERB	_	_	_	_	0	root
+3	also	also	ADV	_	_	_	_	2	advmod
+4	unwise	unwise	ADJ	_	_	_	_	2	acomp
+5	and	and	CCONJ	_	_	_	_	4	cc
+6	unenforceable	unenforceable	ADJ	_	_	_	_	4	conj
+7	.	.	PUNCT	_	_	_	_	2	punct
+
+# 4 . Good programs are not cheap .
+1	4	4	X	_	_	_	_	5	dep
+2	.	.	PUNCT	_	_	_	_	1	punct
+3	Good	good	ADJ	_	_	_	_	4	amod
+4	programs	programs	NOUN	_	_	_	_	5	nsubj
+5	are	are	VERB	_	_	_	_	0	root
+6	not	not	PART	_	_	_	_	5	neg
+7	cheap	cheap	ADJ	_	_	_	_	5	acomp
+8	.	.	PUNCT	_	_	_	_	5	punct
+
+# They involve stipends to participants .
+1	They	they	PRON	_	_	_	_	2	nsubj
+2	involve	involve	VERB	_	_	_	_	0	root
+3	stipends	stipends	NOUN	_	_	_	_	2	dobj
+4	to	to	ADP	_	_	_	_	3	prep
+5	participants	participants	NOUN	_	_	_	_	4	pobj
+6	.	.	PUNCT	_	_	_	_	2	punct
+
+# Are they worth that ?
+1	Are	are	VERB	_	_	_	_	0	root
+2	they	they	PRON	_	_	_	_	1	nsubj
+3	worth	worth	ADJ	_	_	_	_	1	prep
+4	that	that	PRON	_	_	_	_	3	dep
+5	?	?	PUNCT	_	_	_	_	1	punct
+
+# But the calculations are challengeable .
+1	But	but	CCONJ	_	_	_	_	4	cc
+2	the	the	DET	_	_	_	_	3	det
+3	calculations	calculations	NOUN	_	_	_	_	4	nsubj
+4	are	are	VERB	_	_	_	_	0	root
+5	challengeable	challengeable	ADJ	_	_	_	_	4	acomp
+6	.	.	PUNCT	_	_	_	_	4	punct
+
+# 5 . Underclass youth are a special concern .
+1	5	5	X	_	_	_	_	5	dep
+2	.	.	PUNCT	_	_	_	_	1	punct
+3	Underclass	underclass	NOUN	_	_	_	_	4	nn
+4	youth	youth	NOUN	_	_	_	_	5	nsubj
+5	are	are	VERB	_	_	_	_	0	root
+6	a	a	DET	_	_	_	_	8	det
+7	special	special	ADJ	_	_	_	_	8	amod
+8	concern	concern	NOUN	_	_	_	_	5	xcomp
+9	.	.	PUNCT	_	_	_	_	5	punct
+
+# Are such expenditures worthwhile , then ?
+1	Are	are	VERB	_	_	_	_	0	root
+2	such	such	ADJ	_	_	_	_	3	amod
+3	expenditures	expenditures	NOUN	_	_	_	_	1	nsubj
+4	worthwhile	worthwhile	ADJ	_	_	_	_	1	acomp
+5	,	,	PUNCT	_	_	_	_	1	punct
+6	then	then	ADV	_	_	_	_	1	advmod
+7	?	?	PUNCT	_	_	_	_	1	punct
+
+# Yes , if targeted .
+1	Yes	yes	INTJ	_	_	_	_	0	root
+2	,	,	PUNCT	_	_	_	_	1	punct
+3	if	if	SCONJ	_	_	_	_	4	mark
+4	targeted	targeted	VERB	_	_	_	_	1	dep
+5	.	.	PUNCT	_	_	_	_	1	punct
+
+# Underclass youth do n't have those opportunities .
+1	Underclass	underclass	ADJ	_	_	_	_	2	amod
+2	youth	youth	NOUN	_	_	_	_	5	nsubj
+3	do	do	AUX	_	_	_	_	5	aux
+4	n't	n't	PART	_	_	_	_	5	neg
+5	have	have	VERB	_	_	_	_	0	root
+6	those	those	DET	_	_	_	_	7	det
+7	opportunities	opportunities	NOUN	_	_	_	_	5	dobj
+8	.	.	PUNCT	_	_	_	_	5	punct
+
+# They are unlikely to be employed .
+1	They	they	PRON	_	_	_	_	2	nsubj
+2	are	are	VERB	_	_	_	_	0	root
+3	unlikely	unlikely	ADJ	_	_	_	_	2	acomp
+4	to	to	PART	_	_	_	_	6	aux
+5	be	be	AUX	_	_	_	_	6	auxpass
+6	employed	employed	VERB	_	_	_	_	3	xcomp
+7	.	.	PUNCT	_	_	_	_	2	punct
+
+# That is a service to the nation .
+1	That	that	PRON	_	_	_	_	2	nsubj
+2	is	is	VERB	_	_	_	_	0	root
+3	a	a	DET	_	_	_	_	4	det
+4	service	service	NOUN	_	_	_	_	2	xcomp
+5	to	to	ADP	_	_	_	_	4	prep
+6	the	the	DET	_	_	_	_	7	det
+7	nation	nation	NOUN	_	_	_	_	5	pobj
+8	.	.	PUNCT	_	_	_	_	2	punct
+
+# ( Lexington Books , 1986 ) .
+1	(	(	PUNCT	_	_	_	_	3	punct
+2	Lexington	lexington	PROPN	_	_	_	_	3	nn
+3	Books	books	PROPN	_	_	_	_	0	root
+4	,	,	PUNCT	_	_	_	_	3	punct
+5	1986	1986	NUM	_	_	_	_	3	appos
+6	)	)	PUNCT	_	_	_	_	3	punct
+7	.	.	PUNCT	_	_	_	_	3	punct
+
+# I think that 's less likely . ''
+1	I	i	PRON	_	_	_	_	2	nsubj
+2	think	think	VERB	_	_	_	_	0	root
+3	that	that	PRON	_	_	_	_	4	nsubj
+4	's	's	VERB	_	_	_	_	2	ccomp
+5	less	less	ADV	_	_	_	_	6	advmod
+6	likely	likely	ADJ	_	_	_	_	4	acomp
+7	.	.	PUNCT	_	_	_	_	2	punct
+8	''	''	PUNCT	_	_	_	_	2	punct
+
+# b - As of Thursday 's close .
+1	b	b	SYM	_	_	_	_	3	dep
+2	-	-	PUNCT	_	_	_	_	3	punct
+3	As	as	ADP	_	_	_	_	0	root
+4	of	of	ADP	_	_	_	_	3	pcomp
+5	Thursday	thursday	PROPN	_	_	_	_	7	poss
+6	's	's	PART	_	_	_	_	5	possessive
+7	close	close	NOUN	_	_	_	_	4	pobj
+8	.	.	PUNCT	_	_	_	_	3	punct
+
+# c - Translated at Commercial Rand exchange rate .
+1	c	c	SYM	_	_	_	_	3	dep
+2	-	-	PUNCT	_	_	_	_	3	punct
+3	Translated	translated	VERB	_	_	_	_	0	root
+4	at	at	ADP	_	_	_	_	3	prep
+5	Commercial	commercial	PROPN	_	_	_	_	8	nn
+6	Rand	rand	PROPN	_	_	_	_	8	nn
+7	exchange	exchange	NOUN	_	_	_	_	8	nn
+8	rate	rate	NOUN	_	_	_	_	4	pobj
+9	.	.	PUNCT	_	_	_	_	3	punct
+
+# e - In Canadian dollars .
+1	e	e	SYM	_	_	_	_	3	dep
+2	-	-	PUNCT	_	_	_	_	3	punct
+3	In	in	ADP	_	_	_	_	0	root
+4	Canadian	canadian	ADJ	_	_	_	_	5	amod
+5	dollars	dollars	NOUN	_	_	_	_	3	pobj
+6	.	.	PUNCT	_	_	_	_	3	punct
+
+# f - As of Wednesday 's close .
+1	f	f	SYM	_	_	_	_	3	dep
+2	-	-	PUNCT	_	_	_	_	3	punct
+3	As	as	ADP	_	_	_	_	0	root
+4	of	of	ADP	_	_	_	_	3	pcomp
+5	Wednesday	wednesday	PROPN	_	_	_	_	7	poss
+6	's	's	PART	_	_	_	_	5	possessive
+7	close	close	NOUN	_	_	_	_	4	pobj
+8	.	.	PUNCT	_	_	_	_	3	punct
+
+# g - 10.06.89 NAV:22.15 .
+1	g	g	SYM	_	_	_	_	0	root
+2	-	-	PUNCT	_	_	_	_	1	punct
+3	10.06.89	10.06.89	NUM	_	_	_	_	4	num
+4	NAV:22.15	nav:22.15	NOUN	_	_	_	_	1	dep
+5	.	.	PUNCT	_	_	_	_	1	punct
+
+# z - Not available .
+1	z	z	SYM	_	_	_	_	4	dep
+2	-	-	PUNCT	_	_	_	_	4	punct
+3	Not	not	ADV	_	_	_	_	4	neg
+4	available	available	ADJ	_	_	_	_	0	root
+5	.	.	PUNCT	_	_	_	_	4	punct
+
+# Put down that phone .
+1	Put	put	VERB	_	_	_	_	0	root
+2	down	down	ADP	_	_	_	_	1	prt
+3	that	that	DET	_	_	_	_	4	det
+4	phone	phone	NOUN	_	_	_	_	1	dobj
+5	.	.	PUNCT	_	_	_	_	1	punct
+
+# `` We understand panics and euphoria .
+1	``	``	PUNCT	_	_	_	_	3	punct
+2	We	we	PRON	_	_	_	_	3	nsubj
+3	understand	understand	VERB	_	_	_	_	0	root
+4	panics	panics	NOUN	_	_	_	_	3	dobj
+5	and	and	CCONJ	_	_	_	_	4	cc
+6	euphoria	euphoria	NOUN	_	_	_	_	4	conj
+7	.	.	PUNCT	_	_	_	_	3	punct
+
+# Other investment pros are more pessimistic .
+1	Other	other	ADJ	_	_	_	_	3	amod
+2	investment	investment	NOUN	_	_	_	_	3	nn
+3	pros	pros	NOUN	_	_	_	_	4	nsubj
+4	are	are	VERB	_	_	_	_	0	root
+5	more	more	ADV	_	_	_	_	6	advmod
+6	pessimistic	pessimistic	ADJ	_	_	_	_	4	acomp
+7	.	.	PUNCT	_	_	_	_	4	punct
+
+# `` It 's totally different . ''
+1	``	``	PUNCT	_	_	_	_	3	punct
+2	It	it	PRON	_	_	_	_	3	nsubj
+3	's	's	VERB	_	_	_	_	0	root
+4	totally	totally	ADV	_	_	_	_	5	advmod
+5	different	different	ADJ	_	_	_	_	3	acomp
+6	.	.	PUNCT	_	_	_	_	3	punct
+7	''	''	PUNCT	_	_	_	_	3	punct
+
+# `` There was no panic .
+1	``	``	PUNCT	_	_	_	_	3	punct
+2	There	there	PRON	_	_	_	_	3	expl
+3	was	was	VERB	_	_	_	_	0	root
+4	no	no	DET	_	_	_	_	5	neg
+5	panic	panic	NOUN	_	_	_	_	3	nsubj
+6	.	.	PUNCT	_	_	_	_	3	punct
+
+# S&P and MMI contracts also halt .
+1	S&P	s&p	PROPN	_	_	_	_	4	nn
+2	and	and	CCONJ	_	_	_	_	1	cc
+3	MMI	mmi	PROPN	_	_	_	_	1	conj
+4	contracts	contracts	NOUN	_	_	_	_	6	nsubj
+5	also	also	ADV	_	_	_	_	6	advmod
+6	halt	halt	VERB	_	_	_	_	0	root
+7	.	.	PUNCT	_	_	_	_	6	punct
+
+# Trading in MMI and S&P futures also halted .
+1	Trading	trading	NOUN	_	_	_	_	8	nsubj
+2	in	in	ADP	_	_	_	_	1	prep
+3	MMI	mmi	PROPN	_	_	_	_	2	pobj
+4	and	and	CCONJ	_	_	_	_	3	cc
+5	S&P	s&p	PROPN	_	_	_	_	6	nn
+6	futures	futures	NOUN	_	_	_	_	3	conj
+7	also	also	ADV	_	_	_	_	8	advmod
+8	halted	halted	VERB	_	_	_	_	0	root
+9	.	.	PUNCT	_	_	_	_	8	punct
+
+# Brady Task Force recommendations ( Jan. 1988 ) :
+1	Brady	brady	PROPN	_	_	_	_	4	nn
+2	Task	task	PROPN	_	_	_	_	4	nn
+3	Force	force	PROPN	_	_	_	_	4	nn
+4	recommendations	recommendations	NOUN	_	_	_	_	0	root
+5	(	(	PUNCT	_	_	_	_	6	punct
+6	Jan.	jan.	PROPN	_	_	_	_	4	appos
+7	1988	1988	NUM	_	_	_	_	6	num
+8	)	)	PUNCT	_	_	_	_	6	punct
+9	:	:	PUNCT	_	_	_	_	4	punct
+
+# -- Establish an overarching regulator for financial markets
+1	--	--	PUNCT	_	_	_	_	2	punct
+2	Establish	establish	VERB	_	_	_	_	0	root
+3	an	an	DET	_	_	_	_	5	det
+4	overarching	overarching	VERB	_	_	_	_	5	amod
+5	regulator	regulator	NOUN	_	_	_	_	2	dobj
+6	for	for	ADP	_	_	_	_	5	prep
+7	financial	financial	ADJ	_	_	_	_	8	amod
+8	markets	markets	NOUN	_	_	_	_	6	pobj
+
+# -- Unify trade-clearing systems
+1	--	--	PUNCT	_	_	_	_	2	punct
+2	Unify	unify	VERB	_	_	_	_	0	root
+3	trade-clearing	trade-clearing	ADJ	_	_	_	_	2	dobj
+4	systems	systems	NOUN	_	_	_	_	2	punct
+
+# -- Make margins consistent across stock and futures markets
+1	--	--	PUNCT	_	_	_	_	2	punct
+2	Make	make	VERB	_	_	_	_	0	root
+3	margins	margins	NOUN	_	_	_	_	4	nsubj
+4	consistent	consistent	ADJ	_	_	_	_	2	xcomp
+5	across	across	ADP	_	_	_	_	4	prep
+6	stock	stock	NOUN	_	_	_	_	5	pobj
+7	and	and	CCONJ	_	_	_	_	6	cc
+8	futures	futures	NOUN	_	_	_	_	6	conj
+9	markets	markets	NOUN	_	_	_	_	2	punct
+
+# SEC proposals ( May 1988 ) :
+1	SEC	sec	PROPN	_	_	_	_	2	nn
+2	proposals	proposals	NOUN	_	_	_	_	0	root
+3	(	(	PUNCT	_	_	_	_	4	punct
+4	May	may	PROPN	_	_	_	_	2	appos
+5	1988	1988	NUM	_	_	_	_	4	num
+6	)	)	PUNCT	_	_	_	_	4	punct
+7	:	:	PUNCT	_	_	_	_	2	punct
+
+# -- Require prompt reports of large securities trades .
+1	--	--	PUNCT	_	_	_	_	2	punct
+2	Require	require	VERB	_	_	_	_	0	root
+3	prompt	prompt	ADJ	_	_	_	_	4	amod
+4	reports	reports	NOUN	_	_	_	_	2	dobj
+5	of	of	ADP	_	_	_	_	4	prep
+6	large	large	ADJ	_	_	_	_	8	amod
+7	securities	securities	NOUN	_	_	_	_	8	nn
+8	trades	trades	NOUN	_	_	_	_	5	pobj
+9	.	.	PUNCT	_	_	_	_	2	punct
+
+# ( Opposed by new SEC chairman )
+1	(	(	PUNCT	_	_	_	_	2	punct
+2	Opposed	opposed	VERB	_	_	_	_	0	root
+3	by	by	ADP	_	_	_	_	2	prep
+4	new	new	ADJ	_	_	_	_	6	amod
+5	SEC	sec	PROPN	_	_	_	_	6	nn
+6	chairman	chairman	NOUN	_	_	_	_	3	pobj
+7	)	)	PUNCT	_	_	_	_	2	punct
+
+# Congressional proposal :
+1	Congressional	congressional	ADJ	_	_	_	_	2	amod
+2	proposal	proposal	NOUN	_	_	_	_	0	root
+3	:	:	PUNCT	_	_	_	_	2	punct
+
+# Replied a Justin salesman : `` Exactly . ''
+1	Replied	replied	VERB	_	_	_	_	0	root
+2	a	a	DET	_	_	_	_	4	det
+3	Justin	justin	PROPN	_	_	_	_	4	nn
+4	salesman	salesman	NOUN	_	_	_	_	1	nsubj
+5	:	:	PUNCT	_	_	_	_	1	punct
+6	``	``	PUNCT	_	_	_	_	1	punct
+7	Exactly	exactly	ADV	_	_	_	_	1	advmod
+8	.	.	PUNCT	_	_	_	_	1	punct
+9	''	''	PUNCT	_	_	_	_	1	punct
+
+# The visitor waxed enthusiastic and promised to return .
+1	The	the	DET	_	_	_	_	2	det
+2	visitor	visitor	NOUN	_	_	_	_	3	nsubj
+3	waxed	waxed	VERB	_	_	_	_	0	root
+4	enthusiastic	enthusiastic	ADJ	_	_	_	_	3	acomp
+5	and	and	CCONJ	_	_	_	_	3	cc
+6	promised	promised	VERB	_	_	_	_	3	conj
+7	to	to	PART	_	_	_	_	8	aux
+8	return	return	VERB	_	_	_	_	6	xcomp
+9	.	.	PUNCT	_	_	_	_	3	punct
+
+# ( Sony itself declines to comment . )
+1	(	(	PUNCT	_	_	_	_	4	punct
+2	Sony	sony	PROPN	_	_	_	_	4	nsubj
+3	itself	itself	PRON	_	_	_	_	2	npadvmod
+4	declines	declines	VERB	_	_	_	_	0	root
+5	to	to	PART	_	_	_	_	6	aux
+6	comment	comment	VERB	_	_	_	_	4	xcomp
+7	.	.	PUNCT	_	_	_	_	4	punct
+8	)	)	PUNCT	_	_	_	_	4	punct
+
+# It 's also costly .
+1	It	it	PRON	_	_	_	_	2	nsubj
+2	's	's	VERB	_	_	_	_	0	root
+3	also	also	ADV	_	_	_	_	2	advmod
+4	costly	costly	ADJ	_	_	_	_	2	acomp
+5	.	.	PUNCT	_	_	_	_	2	punct
+
+# Both companies rejected the offers .
+1	Both	both	DET	_	_	_	_	2	det
+2	companies	companies	NOUN	_	_	_	_	3	nsubj
+3	rejected	rejected	VERB	_	_	_	_	0	root
+4	the	the	DET	_	_	_	_	5	det
+5	offers	offers	NOUN	_	_	_	_	3	dobj
+6	.	.	PUNCT	_	_	_	_	3	punct
+
+# The previous agreement expired Thursday .
+1	The	the	DET	_	_	_	_	3	det
+2	previous	previous	ADJ	_	_	_	_	3	amod
+3	agreement	agreement	NOUN	_	_	_	_	4	nsubj
+4	expired	expired	VERB	_	_	_	_	0	root
+5	Thursday	thursday	PROPN	_	_	_	_	4	tmod
+6	.	.	PUNCT	_	_	_	_	4	punct
+
+# Giant agreed last month to purchase the carrier .
+1	Giant	giant	PROPN	_	_	_	_	2	nsubj
+2	agreed	agreed	VERB	_	_	_	_	0	root
+3	last	last	ADJ	_	_	_	_	4	amod
+4	month	month	NOUN	_	_	_	_	2	tmod
+5	to	to	PART	_	_	_	_	6	aux
+6	purchase	purchase	VERB	_	_	_	_	2	xcomp
+7	the	the	DET	_	_	_	_	8	det
+8	carrier	carrier	NOUN	_	_	_	_	6	dobj
+9	.	.	PUNCT	_	_	_	_	2	punct
+
+# Goldman officials declined to comment .
+1	Goldman	goldman	PROPN	_	_	_	_	2	nn
+2	officials	officials	NOUN	_	_	_	_	3	nsubj
+3	declined	declined	VERB	_	_	_	_	0	root
+4	to	to	PART	_	_	_	_	5	aux
+5	comment	comment	VERB	_	_	_	_	3	xcomp
+6	.	.	PUNCT	_	_	_	_	3	punct
+
+# It was herd instinct . ''
+1	It	it	PRON	_	_	_	_	2	nsubj
+2	was	was	VERB	_	_	_	_	0	root
+3	herd	herd	NOUN	_	_	_	_	4	nn
+4	instinct	instinct	NOUN	_	_	_	_	2	xcomp
+5	.	.	PUNCT	_	_	_	_	2	punct
+6	''	''	PUNCT	_	_	_	_	2	punct
+
+# Friday 's Market Activity
+1	Friday	friday	PROPN	_	_	_	_	4	poss
+2	's	's	PART	_	_	_	_	1	possessive
+3	Market	market	PROPN	_	_	_	_	4	nn
+4	Activity	activity	PROPN	_	_	_	_	0	root
+
+# Bond prices barely budged until midday .
+1	Bond	bond	NOUN	_	_	_	_	2	nn
+2	prices	prices	NOUN	_	_	_	_	4	nsubj
+3	barely	barely	ADV	_	_	_	_	4	advmod
+4	budged	budged	VERB	_	_	_	_	0	root
+5	until	until	ADP	_	_	_	_	4	prep
+6	midday	midday	NOUN	_	_	_	_	5	pobj
+7	.	.	PUNCT	_	_	_	_	4	punct
+
+# Municipal bonds rose as much as 3/4 point .
+1	Municipal	municipal	ADJ	_	_	_	_	2	amod
+2	bonds	bonds	NOUN	_	_	_	_	3	nsubj
+3	rose	rose	VERB	_	_	_	_	0	root
+4	as	as	ADV	_	_	_	_	7	quantmod
+5	much	much	ADV	_	_	_	_	7	quantmod
+6	as	as	ADP	_	_	_	_	7	quantmod
+7	3/4	3/4	NUM	_	_	_	_	8	num
+8	point	point	NOUN	_	_	_	_	3	dobj
+9	.	.	PUNCT	_	_	_	_	3	punct
+
+# Roger Lowenstein contributed to this article .
+1	Roger	roger	PROPN	_	_	_	_	2	nn
+2	Lowenstein	lowenstein	PROPN	_	_	_	_	3	nsubj
+3	contributed	contributed	VERB	_	_	_	_	0	root
+4	to	to	ADP	_	_	_	_	3	prep
+5	this	this	DET	_	_	_	_	6	det
+6	article	article	NOUN	_	_	_	_	4	pobj
+7	.	.	PUNCT	_	_	_	_	3	punct
+
+# Congratulations , Mr. Secretary and Mr. Congressman .
+1	Congratulations	congratulations	INTJ	_	_	_	_	4	discourse
+2	,	,	PUNCT	_	_	_	_	4	punct
+3	Mr.	mr.	PROPN	_	_	_	_	4	nn
+4	Secretary	secretary	PROPN	_	_	_	_	0	root
+5	and	and	CCONJ	_	_	_	_	4	cc
+6	Mr.	mr.	PROPN	_	_	_	_	7	nn
+7	Congressman	congressman	PROPN	_	_	_	_	4	conj
+8	.	.	PUNCT	_	_	_	_	4	punct
+
+# They are better capitalized .
+1	They	they	PRON	_	_	_	_	4	nsubjpass
+2	are	are	AUX	_	_	_	_	4	auxpass
+3	better	better	ADV	_	_	_	_	4	advmod
+4	capitalized	capitalized	VERB	_	_	_	_	0	root
+5	.	.	PUNCT	_	_	_	_	4	punct
+
+# The Fed promises any needed liquidity .
+1	The	the	DET	_	_	_	_	2	det
+2	Fed	fed	PROPN	_	_	_	_	3	nsubj
+3	promises	promises	VERB	_	_	_	_	0	root
+4	any	any	DET	_	_	_	_	6	det
+5	needed	needed	VERB	_	_	_	_	6	amod
+6	liquidity	liquidity	NOUN	_	_	_	_	3	dobj
+7	.	.	PUNCT	_	_	_	_	3	punct
+
+# Interest income and most fee income was strong .
+1	Interest	interest	NOUN	_	_	_	_	2	nn
+2	income	income	NOUN	_	_	_	_	7	nsubj
+3	and	and	CCONJ	_	_	_	_	2	cc
+4	most	most	ADJ	_	_	_	_	6	amod
+5	fee	fee	NOUN	_	_	_	_	6	nn
+6	income	income	NOUN	_	_	_	_	2	conj
+7	was	was	VERB	_	_	_	_	0	root
+8	strong	strong	ADJ	_	_	_	_	7	acomp
+9	.	.	PUNCT	_	_	_	_	7	punct
+
+# As for Mr. Papandreou ?
+1	As	as	ADP	_	_	_	_	0	root
+2	for	for	ADP	_	_	_	_	1	pcomp
+3	Mr.	mr.	PROPN	_	_	_	_	4	nn
+4	Papandreou	papandreou	PROPN	_	_	_	_	2	pobj
+5	?	?	PUNCT	_	_	_	_	1	punct
+
+# The dollar was trading sharply lower in Tokyo .
+1	The	the	DET	_	_	_	_	2	det
+2	dollar	dollar	NOUN	_	_	_	_	4	nsubj
+3	was	was	AUX	_	_	_	_	4	aux
+4	trading	trading	VERB	_	_	_	_	0	root
+5	sharply	sharply	ADV	_	_	_	_	6	advmod
+6	lower	lower	ADJ	_	_	_	_	4	advmod
+7	in	in	ADP	_	_	_	_	4	prep
+8	Tokyo	tokyo	PROPN	_	_	_	_	7	pobj
+9	.	.	PUNCT	_	_	_	_	4	punct
+
+# The Boeing strike is starting to affect airlines .
+1	The	the	DET	_	_	_	_	3	det
+2	Boeing	boeing	PROPN	_	_	_	_	3	nn
+3	strike	strike	NOUN	_	_	_	_	5	nsubj
+4	is	is	AUX	_	_	_	_	5	aux
+5	starting	starting	VERB	_	_	_	_	0	root
+6	to	to	PART	_	_	_	_	7	aux
+7	affect	affect	VERB	_	_	_	_	5	xcomp
+8	airlines	airlines	NOUN	_	_	_	_	7	dobj
+9	.	.	PUNCT	_	_	_	_	5	punct
+
+# Japan 's steel quota will be cut significantly .
+1	Japan	japan	PROPN	_	_	_	_	4	poss
+2	's	's	PART	_	_	_	_	1	possessive
+3	steel	steel	NOUN	_	_	_	_	4	nn
+4	quota	quota	NOUN	_	_	_	_	7	nsubjpass
+5	will	will	AUX	_	_	_	_	7	aux
+6	be	be	AUX	_	_	_	_	7	auxpass
+7	cut	cut	VERB	_	_	_	_	0	root
+8	significantly	significantly	ADV	_	_	_	_	7	advmod
+9	.	.	PUNCT	_	_	_	_	7	punct
+
+# Markets --
+1	Markets	markets	NOUN	_	_	_	_	0	root
+2	--	--	PUNCT	_	_	_	_	1	punct
+
+# Stocks : Volume 251,170,000 shares .
+1	Stocks	stocks	NOUN	_	_	_	_	0	root
+2	:	:	PUNCT	_	_	_	_	1	punct
+3	Volume	volume	NOUN	_	_	_	_	1	dep
+4	251,170,000	251,170,000	NUM	_	_	_	_	5	num
+5	shares	shares	NOUN	_	_	_	_	3	dep
+6	.	.	PUNCT	_	_	_	_	1	punct
+
+# HOUSTON-CALGARY ALLIANCE :
+1	HOUSTON-CALGARY	houston-calgary	PROPN	_	_	_	_	2	nn
+2	ALLIANCE	alliance	PROPN	_	_	_	_	0	root
+3	:	:	PUNCT	_	_	_	_	2	punct
+
+# FCC COUNSEL JOINS FIRM :
+1	FCC	fcc	PROPN	_	_	_	_	2	nn
+2	COUNSEL	counsel	NOUN	_	_	_	_	3	nsubj
+3	JOINS	joins	VERB	_	_	_	_	0	root
+4	FIRM	firm	NOUN	_	_	_	_	5	nn
+5	:	:	PUNCT	_	_	_	_	3	dobj
+
+# He left the company in 1987 .
+1	He	he	PRON	_	_	_	_	2	nsubj
+2	left	left	VERB	_	_	_	_	0	root
+3	the	the	DET	_	_	_	_	4	det
+4	company	company	NOUN	_	_	_	_	2	dobj
+5	in	in	ADP	_	_	_	_	2	prep
+6	1987	1987	NUM	_	_	_	_	5	pobj
+7	.	.	PUNCT	_	_	_	_	2	punct
+
+# It will have its headquarters in Munich .
+1	It	it	PRON	_	_	_	_	3	nsubj
+2	will	will	AUX	_	_	_	_	3	aux
+3	have	have	VERB	_	_	_	_	0	root
+4	its	its	PRON	_	_	_	_	5	poss
+5	headquarters	headquarters	NOUN	_	_	_	_	3	dobj
+6	in	in	ADP	_	_	_	_	3	prep
+7	Munich	munich	PROPN	_	_	_	_	6	pobj
+8	.	.	PUNCT	_	_	_	_	3	punct
+
+# Siemens will retain majority voting rights .
+1	Siemens	siemens	PROPN	_	_	_	_	3	nsubj
+2	will	will	AUX	_	_	_	_	3	aux
+3	retain	retain	VERB	_	_	_	_	0	root
+4	majority	majority	NOUN	_	_	_	_	6	nn
+5	voting	voting	VERB	_	_	_	_	6	amod
+6	rights	rights	NOUN	_	_	_	_	3	dobj
+7	.	.	PUNCT	_	_	_	_	3	punct
+
+# He said he will now consider those offers .
+1	He	he	PRON	_	_	_	_	2	nsubj
+2	said	said	VERB	_	_	_	_	0	root
+3	he	he	PRON	_	_	_	_	6	nsubj
+4	will	will	AUX	_	_	_	_	6	aux
+5	now	now	ADV	_	_	_	_	6	advmod
+6	consider	consider	VERB	_	_	_	_	2	ccomp
+7	those	those	DET	_	_	_	_	8	det
+8	offers	offers	NOUN	_	_	_	_	6	dobj
+9	.	.	PUNCT	_	_	_	_	2	punct
+
+# The company did n't elaborate .
+1	The	the	DET	_	_	_	_	2	det
+2	company	company	NOUN	_	_	_	_	5	nsubj
+3	did	did	AUX	_	_	_	_	5	aux
+4	n't	n't	PART	_	_	_	_	5	neg
+5	elaborate	elaborate	ADJ	_	_	_	_	0	root
+6	.	.	PUNCT	_	_	_	_	5	punct
+
+# The real-estate market suffered even more severe setbacks .
+1	The	the	DET	_	_	_	_	3	det
+2	real-estate	real-estate	NOUN	_	_	_	_	3	nn
+3	market	market	NOUN	_	_	_	_	4	nsubj
+4	suffered	suffered	VERB	_	_	_	_	0	root
+5	even	even	ADV	_	_	_	_	7	advmod
+6	more	more	ADV	_	_	_	_	7	advmod
+7	severe	severe	ADJ	_	_	_	_	8	amod
+8	setbacks	setbacks	NOUN	_	_	_	_	4	dobj
+9	.	.	PUNCT	_	_	_	_	4	punct
+
+# Office construction dropped 97 % .
+1	Office	office	NOUN	_	_	_	_	2	nn
+2	construction	construction	NOUN	_	_	_	_	3	nsubj
+3	dropped	dropped	VERB	_	_	_	_	0	root
+4	97	97	NUM	_	_	_	_	5	num
+5	%	%	SYM	_	_	_	_	3	dobj
+6	.	.	PUNCT	_	_	_	_	3	punct
+
+# As usual , the real-estate market had overreacted .
+1	As	as	ADP	_	_	_	_	8	prep
+2	usual	usual	ADJ	_	_	_	_	1	pobj
+3	,	,	PUNCT	_	_	_	_	8	punct
+4	the	the	DET	_	_	_	_	6	det
+5	real-estate	real-estate	NOUN	_	_	_	_	6	nn
+6	market	market	NOUN	_	_	_	_	8	nsubj
+7	had	had	AUX	_	_	_	_	8	aux
+8	overreacted	overreacted	VERB	_	_	_	_	0	root
+9	.	.	PUNCT	_	_	_	_	8	punct
+
+# Manufacturers are upgrading standby power plants .
+1	Manufacturers	manufacturers	NOUN	_	_	_	_	3	nsubj
+2	are	are	AUX	_	_	_	_	3	aux
+3	upgrading	upgrading	VERB	_	_	_	_	0	root
+4	standby	standby	ADJ	_	_	_	_	6	amod
+5	power	power	NOUN	_	_	_	_	6	nn
+6	plants	plants	NOUN	_	_	_	_	3	dobj
+7	.	.	PUNCT	_	_	_	_	3	punct
+
+# Indeed it is .
+1	Indeed	indeed	ADV	_	_	_	_	3	advmod
+2	it	it	PRON	_	_	_	_	3	nsubj
+3	is	is	VERB	_	_	_	_	0	root
+4	.	.	PUNCT	_	_	_	_	3	punct
+
+# Six years ago they were tantalizingly close .
+1	Six	six	NUM	_	_	_	_	2	num
+2	years	years	NOUN	_	_	_	_	3	npadvmod
+3	ago	ago	ADP	_	_	_	_	5	advmod
+4	they	they	PRON	_	_	_	_	5	nsubj
+5	were	were	VERB	_	_	_	_	0	root
+6	tantalizingly	tantalizingly	ADV	_	_	_	_	7	advmod
+7	close	close	ADJ	_	_	_	_	5	acomp
+8	.	.	PUNCT	_	_	_	_	5	punct
+
+# The FCC effort collapsed .
+1	The	the	DET	_	_	_	_	3	det
+2	FCC	fcc	PROPN	_	_	_	_	3	nn
+3	effort	effort	NOUN	_	_	_	_	4	nsubj
+4	collapsed	collapsed	VERB	_	_	_	_	0	root
+5	.	.	PUNCT	_	_	_	_	4	punct
+
+# The networks and studios have bickered ever since .
+1	The	the	DET	_	_	_	_	2	det
+2	networks	networks	NOUN	_	_	_	_	6	nsubj
+3	and	and	CCONJ	_	_	_	_	2	cc
+4	studios	studios	NOUN	_	_	_	_	2	conj
+5	have	have	AUX	_	_	_	_	6	aux
+6	bickered	bickered	VERB	_	_	_	_	0	root
+7	ever	ever	ADV	_	_	_	_	8	advmod
+8	since	since	ADP	_	_	_	_	6	advmod
+9	.	.	PUNCT	_	_	_	_	6	punct
+
+# The company and its executives deny the charges .
+1	The	the	DET	_	_	_	_	2	det
+2	company	company	NOUN	_	_	_	_	6	nsubj
+3	and	and	CCONJ	_	_	_	_	2	cc
+4	its	its	PRON	_	_	_	_	5	poss
+5	executives	executives	NOUN	_	_	_	_	2	conj
+6	deny	deny	VERB	_	_	_	_	0	root
+7	the	the	DET	_	_	_	_	8	det
+8	charges	charges	NOUN	_	_	_	_	6	dobj
+9	.	.	PUNCT	_	_	_	_	6	punct
+
+# There 's no turning back . ''
+1	There	there	PRON	_	_	_	_	2	expl
+2	's	's	VERB	_	_	_	_	0	root
+3	no	no	DET	_	_	_	_	5	neg
+4	turning	turning	VERB	_	_	_	_	5	amod
+5	back	back	NOUN	_	_	_	_	2	nsubj
+6	.	.	PUNCT	_	_	_	_	2	punct
+7	''	''	PUNCT	_	_	_	_	2	punct
+
+# They never considered themselves to be anything else .
+1	They	they	PRON	_	_	_	_	3	nsubj
+2	never	never	ADV	_	_	_	_	3	neg
+3	considered	considered	VERB	_	_	_	_	0	root
+4	themselves	themselves	PRON	_	_	_	_	3	dobj
+5	to	to	PART	_	_	_	_	6	aux
+6	be	be	VERB	_	_	_	_	3	xcomp
+7	anything	anything	PRON	_	_	_	_	6	xcomp
+8	else	else	ADV	_	_	_	_	7	advmod
+9	.	.	PUNCT	_	_	_	_	3	punct
+
+# We 're about to see if advertising works .
+1	We	we	PRON	_	_	_	_	2	nsubj
+2	're	're	AUX	_	_	_	_	0	root
+3	about	about	ADP	_	_	_	_	2	dep
+4	to	to	PART	_	_	_	_	5	aux
+5	see	see	VERB	_	_	_	_	3	xcomp
+6	if	if	SCONJ	_	_	_	_	8	mark
+7	advertising	advertising	NOUN	_	_	_	_	8	nsubj
+8	works	works	VERB	_	_	_	_	5	advcl
+9	.	.	PUNCT	_	_	_	_	2	punct
+
+# This time , the firms were ready .
+1	This	this	DET	_	_	_	_	2	det
+2	time	time	NOUN	_	_	_	_	6	tmod
+3	,	,	PUNCT	_	_	_	_	6	punct
+4	the	the	DET	_	_	_	_	5	det
+5	firms	firms	NOUN	_	_	_	_	6	nsubj
+6	were	were	VERB	_	_	_	_	0	root
+7	ready	ready	ADJ	_	_	_	_	6	acomp
+8	.	.	PUNCT	_	_	_	_	6	punct
+
+# `` To maintain that dialogue is absolutely crucial .
+1	``	``	PUNCT	_	_	_	_	6	punct
+2	To	to	PART	_	_	_	_	3	aux
+3	maintain	maintain	VERB	_	_	_	_	6	csubj
+4	that	that	DET	_	_	_	_	5	det
+5	dialogue	dialogue	NOUN	_	_	_	_	3	dobj
+6	is	is	VERB	_	_	_	_	0	root
+7	absolutely	absolutely	ADV	_	_	_	_	8	advmod
+8	crucial	crucial	ADJ	_	_	_	_	6	acomp
+9	.	.	PUNCT	_	_	_	_	6	punct
+
+# Ad Notes ... .
+1	Ad	ad	NOUN	_	_	_	_	2	nn
+2	Notes	notes	NOUN	_	_	_	_	0	root
+3	...	...	PUNCT	_	_	_	_	2	punct
+4	.	.	PUNCT	_	_	_	_	2	punct
+
+# ARNOLD ADVERTISING :
+1	ARNOLD	arnold	PROPN	_	_	_	_	3	nn
+2	ADVERTISING	advertising	PROPN	_	_	_	_	3	nn
+3	:	:	PUNCT	_	_	_	_	0	root
+
+# Terms were n't disclosed .
+1	Terms	terms	NOUN	_	_	_	_	4	nsubjpass
+2	were	were	AUX	_	_	_	_	4	auxpass
+3	n't	n't	PART	_	_	_	_	4	neg
+4	disclosed	disclosed	VERB	_	_	_	_	0	root
+5	.	.	PUNCT	_	_	_	_	4	punct
+
+# EDUCATION ADS :
+1	EDUCATION	education	NOUN	_	_	_	_	2	nn
+2	ADS	ads	NOUN	_	_	_	_	0	root
+3	:	:	PUNCT	_	_	_	_	2	punct
+
+# I love 'em both .
+1	I	i	PRON	_	_	_	_	2	nsubj
+2	love	love	VERB	_	_	_	_	0	root
+3	'em	'em	PRON	_	_	_	_	2	dobj
+4	both	both	DET	_	_	_	_	2	advmod
+5	.	.	PUNCT	_	_	_	_	2	punct
+
+# Not his autograph ; power-hitter McGwire 's .
+1	Not	not	ADV	_	_	_	_	3	neg
+2	his	his	PRON	_	_	_	_	3	poss
+3	autograph	autograph	NOUN	_	_	_	_	0	root
+4	;	;	PUNCT	_	_	_	_	3	punct
+5	power-hitter	power-hitter	NOUN	_	_	_	_	6	nn
+6	McGwire	mcgwire	NOUN	_	_	_	_	3	dep
+7	's	's	PART	_	_	_	_	6	possessive
+8	.	.	PUNCT	_	_	_	_	3	punct
+
+# `` That 's baseball .
+1	``	``	PUNCT	_	_	_	_	3	punct
+2	That	that	PRON	_	_	_	_	3	nsubj
+3	's	's	VERB	_	_	_	_	0	root
+4	baseball	baseball	NOUN	_	_	_	_	3	xcomp
+5	.	.	PUNCT	_	_	_	_	3	punct
+
+# Now , would n't that be a novelty .
+1	Now	now	ADV	_	_	_	_	6	advmod
+2	,	,	PUNCT	_	_	_	_	6	punct
+3	would	would	AUX	_	_	_	_	6	aux
+4	n't	n't	PART	_	_	_	_	6	neg
+5	that	that	PRON	_	_	_	_	6	nsubj
+6	be	be	VERB	_	_	_	_	0	root
+7	a	a	DET	_	_	_	_	8	det
+8	novelty	novelty	NOUN	_	_	_	_	6	xcomp
+9	.	.	PUNCT	_	_	_	_	6	punct
+
+# Phyllis Kyle Stephenson Newport News , Va .
+1	Phyllis	phyllis	PROPN	_	_	_	_	3	nn
+2	Kyle	kyle	PROPN	_	_	_	_	3	nn
+3	Stephenson	stephenson	PROPN	_	_	_	_	0	root
+4	Newport	newport	PROPN	_	_	_	_	5	nn
+5	News	news	PROPN	_	_	_	_	3	dep
+6	,	,	PUNCT	_	_	_	_	5	punct
+7	Va	va	PROPN	_	_	_	_	5	appos
+8	.	.	PUNCT	_	_	_	_	3	punct
+
+# And it left mixed signals for London .
+1	And	and	CCONJ	_	_	_	_	3	cc
+2	it	it	PRON	_	_	_	_	3	nsubj
+3	left	left	VERB	_	_	_	_	0	root
+4	mixed	mixed	ADJ	_	_	_	_	5	amod
+5	signals	signals	NOUN	_	_	_	_	3	dobj
+6	for	for	ADP	_	_	_	_	3	prep
+7	London	london	PROPN	_	_	_	_	6	pobj
+8	.	.	PUNCT	_	_	_	_	3	punct
+
+# `` It 's very frustrating . ''
+1	``	``	PUNCT	_	_	_	_	3	punct
+2	It	it	PRON	_	_	_	_	3	nsubj
+3	's	's	VERB	_	_	_	_	0	root
+4	very	very	ADV	_	_	_	_	5	advmod
+5	frustrating	frustrating	ADJ	_	_	_	_	3	acomp
+6	.	.	PUNCT	_	_	_	_	3	punct
+7	''	''	PUNCT	_	_	_	_	3	punct
+
+# He was right .
+1	He	he	PRON	_	_	_	_	2	nsubj
+2	was	was	VERB	_	_	_	_	0	root
+3	right	right	ADJ	_	_	_	_	2	acomp
+4	.	.	PUNCT	_	_	_	_	2	punct
+
+# This market has been very badly damaged . ''
+1	This	this	DET	_	_	_	_	2	det
+2	market	market	NOUN	_	_	_	_	7	nsubjpass
+3	has	has	AUX	_	_	_	_	7	aux
+4	been	been	AUX	_	_	_	_	7	auxpass
+5	very	very	ADV	_	_	_	_	6	advmod
+6	badly	badly	ADV	_	_	_	_	7	advmod
+7	damaged	damaged	VERB	_	_	_	_	0	root
+8	.	.	PUNCT	_	_	_	_	7	punct
+9	''	''	PUNCT	_	_	_	_	7	punct
+
+# They saw an opportunity created by the sell-off .
+1	They	they	PRON	_	_	_	_	2	nsubj
+2	saw	saw	VERB	_	_	_	_	0	root
+3	an	an	DET	_	_	_	_	4	det
+4	opportunity	opportunity	NOUN	_	_	_	_	2	dobj
+5	created	created	VERB	_	_	_	_	4	vmod
+6	by	by	ADP	_	_	_	_	5	prep
+7	the	the	DET	_	_	_	_	8	det
+8	sell-off	sell-off	NOUN	_	_	_	_	6	pobj
+9	.	.	PUNCT	_	_	_	_	2	punct
+
+# `` This is panic buying ! ''
+1	``	``	PUNCT	_	_	_	_	3	punct
+2	This	this	PRON	_	_	_	_	3	nsubj
+3	is	is	VERB	_	_	_	_	0	root
+4	panic	panic	NOUN	_	_	_	_	5	nn
+5	buying	buying	NOUN	_	_	_	_	3	xcomp
+6	!	!	PUNCT	_	_	_	_	3	punct
+7	''	''	PUNCT	_	_	_	_	3	punct
+
+# Frank Tremdine
+1	Frank	frank	PROPN	_	_	_	_	2	nn
+2	Tremdine	tremdine	PROPN	_	_	_	_	0	root
+
+# Union officials could n't be reached for comment .
+1	Union	union	NOUN	_	_	_	_	2	nn
+2	officials	officials	NOUN	_	_	_	_	6	nsubjpass
+3	could	could	AUX	_	_	_	_	6	aux
+4	n't	n't	PART	_	_	_	_	6	neg
+5	be	be	AUX	_	_	_	_	6	auxpass
+6	reached	reached	VERB	_	_	_	_	0	root
+7	for	for	ADP	_	_	_	_	6	prep
+8	comment	comment	NOUN	_	_	_	_	7	pobj
+9	.	.	PUNCT	_	_	_	_	6	punct
+
+# Following is a breakdown of major market activity :
+1	Following	following	VERB	_	_	_	_	0	root
+2	is	is	VERB	_	_	_	_	1	aux
+3	a	a	DET	_	_	_	_	4	det
+4	breakdown	breakdown	NOUN	_	_	_	_	1	nsubj
+5	of	of	ADP	_	_	_	_	4	prep
+6	major	major	ADJ	_	_	_	_	8	amod
+7	market	market	NOUN	_	_	_	_	8	nn
+8	activity	activity	NOUN	_	_	_	_	5	pobj
+9	:	:	PUNCT	_	_	_	_	1	punct
+
+# FRANKFURT :
+1	FRANKFURT	frankfurt	PROPN	_	_	_	_	0	root
+2	:	:	PUNCT	_	_	_	_	1	punct
+
+# LONDON :
+1	LONDON	london	PROPN	_	_	_	_	0	root
+2	:	:	PUNCT	_	_	_	_	1	punct
+
+# PARIS :
+1	PARIS	paris	PROPN	_	_	_	_	0	root
+2	:	:	PUNCT	_	_	_	_	1	punct
+
+# J.P. Morgan & Co .
+1	J.P.	j.p.	PROPN	_	_	_	_	2	nn
+2	Morgan	morgan	PROPN	_	_	_	_	0	root
+3	&	&	CCONJ	_	_	_	_	2	cc
+4	Co	co	PROPN	_	_	_	_	2	conj
+5	.	.	PUNCT	_	_	_	_	2	punct
+
+# NCNB Corp .
+1	NCNB	ncnb	PROPN	_	_	_	_	2	nn
+2	Corp	corp	PROPN	_	_	_	_	0	root
+3	.	.	PUNCT	_	_	_	_	2	punct
+
+# Results were released after the market closed .
+1	Results	results	NOUN	_	_	_	_	3	nsubjpass
+2	were	were	AUX	_	_	_	_	3	auxpass
+3	released	released	VERB	_	_	_	_	0	root
+4	after	after	SCONJ	_	_	_	_	7	mark
+5	the	the	DET	_	_	_	_	6	det
+6	market	market	NOUN	_	_	_	_	7	nsubj
+7	closed	closed	VERB	_	_	_	_	3	advcl
+8	.	.	PUNCT	_	_	_	_	3	punct
+
+# Security Pacific Corp .
+1	Security	security	PROPN	_	_	_	_	3	nn
+2	Pacific	pacific	PROPN	_	_	_	_	3	nn
+3	Corp	corp	PROPN	_	_	_	_	0	root
+4	.	.	PUNCT	_	_	_	_	3	punct
+
+# The letter was dated Oct. 6 .
+1	The	the	DET	_	_	_	_	2	det
+2	letter	letter	NOUN	_	_	_	_	4	nsubjpass
+3	was	was	AUX	_	_	_	_	4	auxpass
+4	dated	dated	VERB	_	_	_	_	0	root
+5	Oct.	oct.	PROPN	_	_	_	_	4	tmod
+6	6	6	NUM	_	_	_	_	5	num
+7	.	.	PUNCT	_	_	_	_	4	punct
+
+# Idle Thought
+1	Idle	idle	ADJ	_	_	_	_	0	root
+2	Thought	thought	NOUN	_	_	_	_	1	punct
+
+# -- May Richstone .
+1	--	--	PUNCT	_	_	_	_	3	punct
+2	May	may	PROPN	_	_	_	_	3	nn
+3	Richstone	richstone	PROPN	_	_	_	_	0	root
+4	.	.	PUNCT	_	_	_	_	3	punct
+
+# Telecussed
+1	Telecussed	telecussed	VERB	_	_	_	_	0	root
+
+# -- Dick Emmons .
+1	--	--	PUNCT	_	_	_	_	3	punct
+2	Dick	dick	PROPN	_	_	_	_	3	nn
+3	Emmons	emmons	PROPN	_	_	_	_	0	root
+4	.	.	PUNCT	_	_	_	_	3	punct
+
+# BSN currently has 4.6 million common shares outstanding .
+1	BSN	bsn	PROPN	_	_	_	_	3	nsubj
+2	currently	currently	ADV	_	_	_	_	3	advmod
+3	has	has	VERB	_	_	_	_	0	root
+4	4.6	4.6	NUM	_	_	_	_	5	number
+5	million	million	NUM	_	_	_	_	7	num
+6	common	common	ADJ	_	_	_	_	7	amod
+7	shares	shares	NOUN	_	_	_	_	3	dobj
+8	outstanding	outstanding	ADJ	_	_	_	_	7	amod
+9	.	.	PUNCT	_	_	_	_	3	punct
+
+# Options markets stopped trading in many securities .
+1	Options	options	NOUN	_	_	_	_	2	nn
+2	markets	markets	NOUN	_	_	_	_	3	nsubj
+3	stopped	stopped	VERB	_	_	_	_	0	root
+4	trading	trading	NOUN	_	_	_	_	3	dobj
+5	in	in	ADP	_	_	_	_	3	prep
+6	many	many	ADJ	_	_	_	_	7	amod
+7	securities	securities	NOUN	_	_	_	_	5	pobj
+8	.	.	PUNCT	_	_	_	_	3	punct
+
+# Some give lump-sum incentives .
+1	Some	some	DET	_	_	_	_	2	nsubj
+2	give	give	VERB	_	_	_	_	0	root
+3	lump-sum	lump-sum	ADJ	_	_	_	_	4	amod
+4	incentives	incentives	NOUN	_	_	_	_	2	dobj
+5	.	.	PUNCT	_	_	_	_	2	punct
+
+# Chicken Chains Ruffled By Loss of Customers
+1	Chicken	chicken	NOUN	_	_	_	_	2	nn
+2	Chains	chains	NOUN	_	_	_	_	3	nsubj
+3	Ruffled	ruffled	VERB	_	_	_	_	0	root
+4	By	by	ADP	_	_	_	_	3	prep
+5	Loss	loss	NOUN	_	_	_	_	4	pobj
+6	of	of	ADP	_	_	_	_	5	prep
+7	Customers	customers	NOUN	_	_	_	_	6	pobj
+
+# But the company declines to comment .
+1	But	but	CCONJ	_	_	_	_	4	cc
+2	the	the	DET	_	_	_	_	3	det
+3	company	company	NOUN	_	_	_	_	4	nsubj
+4	declines	declines	VERB	_	_	_	_	0	root
+5	to	to	PART	_	_	_	_	6	aux
+6	comment	comment	VERB	_	_	_	_	4	xcomp
+7	.	.	PUNCT	_	_	_	_	4	punct
+
+# Reluctant Advertisers Try Soft-Sell Spots
+1	Reluctant	reluctant	ADJ	_	_	_	_	2	amod
+2	Advertisers	advertisers	NOUN	_	_	_	_	3	nsubj
+3	Try	try	VERB	_	_	_	_	0	root
+4	Soft-Sell	soft-sell	ADJ	_	_	_	_	5	amod
+5	Spots	spots	NOUN	_	_	_	_	3	punct
+
+# CALL IT un-advertising .
+1	CALL	call	VERB	_	_	_	_	0	root
+2	IT	it	PRON	_	_	_	_	3	nsubj
+3	un-advertising	un-advertising	NOUN	_	_	_	_	1	xcomp
+4	.	.	PUNCT	_	_	_	_	1	punct
+
+# But such spots can be too soft .
+1	But	but	CCONJ	_	_	_	_	5	cc
+2	such	such	ADJ	_	_	_	_	3	amod
+3	spots	spots	NOUN	_	_	_	_	5	nsubj
+4	can	can	AUX	_	_	_	_	5	aux
+5	be	be	VERB	_	_	_	_	0	root
+6	too	too	ADV	_	_	_	_	7	advmod
+7	soft	soft	ADJ	_	_	_	_	5	acomp
+8	.	.	PUNCT	_	_	_	_	5	punct
+
+# Retailer Sees Pitfalls In Environmental Push
+1	Retailer	retailer	NOUN	_	_	_	_	2	nsubj
+2	Sees	sees	VERB	_	_	_	_	0	root
+3	Pitfalls	pitfalls	NOUN	_	_	_	_	2	dobj
+4	In	in	ADP	_	_	_	_	3	prep
+5	Environmental	environmental	ADJ	_	_	_	_	6	amod
+6	Push	push	NOUN	_	_	_	_	4	pobj
+
+# Yet parents demand them .
+1	Yet	yet	CCONJ	_	_	_	_	3	cc
+2	parents	parents	NOUN	_	_	_	_	3	nsubj
+3	demand	demand	VERB	_	_	_	_	0	root
+4	them	them	PRON	_	_	_	_	3	dobj
+5	.	.	PUNCT	_	_	_	_	3	punct
+
+# Odds and Ends
+1	Odds	odds	NOUN	_	_	_	_	0	root
+2	and	and	CCONJ	_	_	_	_	1	cc
+3	Ends	ends	NOUN	_	_	_	_	1	conj
+
+# Which celebrity endorsers are most believable ?
+1	Which	which	DET	_	_	_	_	3	det
+2	celebrity	celebrity	NOUN	_	_	_	_	3	nn
+3	endorsers	endorsers	NOUN	_	_	_	_	4	nsubj
+4	are	are	VERB	_	_	_	_	0	root
+5	most	most	ADV	_	_	_	_	6	advmod
+6	believable	believable	ADJ	_	_	_	_	4	acomp
+7	?	?	PUNCT	_	_	_	_	4	punct
+
+# Is this what the home builders want ?
+1	Is	is	VERB	_	_	_	_	0	root
+2	this	this	PRON	_	_	_	_	1	nsubj
+3	what	what	PRON	_	_	_	_	7	dobj
+4	the	the	DET	_	_	_	_	6	det
+5	home	home	NOUN	_	_	_	_	6	nn
+6	builders	builders	NOUN	_	_	_	_	7	nsubj
+7	want	want	VERB	_	_	_	_	1	dep
+8	?	?	PUNCT	_	_	_	_	1	punct
+
+# Mr. Bandow is a Cato Institute fellow .
+1	Mr.	mr.	PROPN	_	_	_	_	2	nn
+2	Bandow	bandow	PROPN	_	_	_	_	3	nsubj
+3	is	is	VERB	_	_	_	_	0	root
+4	a	a	DET	_	_	_	_	7	det
+5	Cato	cato	PROPN	_	_	_	_	7	nn
+6	Institute	institute	PROPN	_	_	_	_	7	nn
+7	fellow	fellow	NOUN	_	_	_	_	3	xcomp
+8	.	.	PUNCT	_	_	_	_	3	punct
+
+# And so it was on Gray Friday .
+1	And	and	CCONJ	_	_	_	_	4	cc
+2	so	so	ADP	_	_	_	_	4	advmod
+3	it	it	PRON	_	_	_	_	4	nsubj
+4	was	was	VERB	_	_	_	_	0	root
+5	on	on	ADP	_	_	_	_	4	prep
+6	Gray	gray	PROPN	_	_	_	_	5	pobj
+7	Friday	friday	PROPN	_	_	_	_	4	tmod
+8	.	.	PUNCT	_	_	_	_	4	punct
+
+# ( Both took further hits yesterday . )
+1	(	(	PUNCT	_	_	_	_	3	punct
+2	Both	both	DET	_	_	_	_	3	nsubj
+3	took	took	VERB	_	_	_	_	0	root
+4	further	further	ADJ	_	_	_	_	5	amod
+5	hits	hits	NOUN	_	_	_	_	3	dobj
+6	yesterday	yesterday	NOUN	_	_	_	_	3	tmod
+7	.	.	PUNCT	_	_	_	_	3	punct
+8	)	)	PUNCT	_	_	_	_	3	punct
+
+# Absolutely not .
+1	Absolutely	absolutely	ADV	_	_	_	_	2	advmod
+2	not	not	PART	_	_	_	_	0	root
+3	.	.	PUNCT	_	_	_	_	2	punct
+
+# Not surprisingly , he sometimes bites .
+1	Not	not	PART	_	_	_	_	2	dep
+2	surprisingly	surprisingly	ADV	_	_	_	_	6	advmod
+3	,	,	PUNCT	_	_	_	_	6	punct
+4	he	he	PRON	_	_	_	_	6	nsubj
+5	sometimes	sometimes	ADV	_	_	_	_	6	advmod
+6	bites	bites	VERB	_	_	_	_	0	root
+7	.	.	PUNCT	_	_	_	_	6	punct
+
+# Declining issues swamped advancers , 941-105 .
+1	Declining	declining	VERB	_	_	_	_	2	amod
+2	issues	issues	NOUN	_	_	_	_	3	nsubj
+3	swamped	swamped	VERB	_	_	_	_	0	root
+4	advancers	advancers	NOUN	_	_	_	_	3	dobj
+5	,	,	PUNCT	_	_	_	_	3	punct
+6	941-105	941-105	NUM	_	_	_	_	3	dobj
+7	.	.	PUNCT	_	_	_	_	3	punct
+
+# Other fund managers were similarly sanguine .
+1	Other	other	ADJ	_	_	_	_	3	amod
+2	fund	fund	NOUN	_	_	_	_	3	nn
+3	managers	managers	NOUN	_	_	_	_	4	nsubj
+4	were	were	VERB	_	_	_	_	0	root
+5	similarly	similarly	ADV	_	_	_	_	6	advmod
+6	sanguine	sanguine	ADJ	_	_	_	_	4	acomp
+7	.	.	PUNCT	_	_	_	_	4	punct
+
+# The percentage change is since year-end .
+1	The	the	DET	_	_	_	_	3	det
+2	percentage	percentage	NOUN	_	_	_	_	3	nn
+3	change	change	NOUN	_	_	_	_	4	nsubj
+4	is	is	VERB	_	_	_	_	0	root
+5	since	since	ADP	_	_	_	_	4	prep
+6	year-end	year-end	NOUN	_	_	_	_	5	pobj
+7	.	.	PUNCT	_	_	_	_	4	punct
+
+# Consider the greenhouse-effect provision .
+1	Consider	consider	VERB	_	_	_	_	0	root
+2	the	the	DET	_	_	_	_	4	det
+3	greenhouse-effect	greenhouse-effect	ADJ	_	_	_	_	4	amod
+4	provision	provision	NOUN	_	_	_	_	1	dobj
+5	.	.	PUNCT	_	_	_	_	1	punct
+
+# He 's running for governor .
+1	He	he	PRON	_	_	_	_	3	nsubj
+2	's	's	AUX	_	_	_	_	3	aux
+3	running	running	VERB	_	_	_	_	0	root
+4	for	for	ADP	_	_	_	_	3	prep
+5	governor	governor	NOUN	_	_	_	_	4	pobj
+6	.	.	PUNCT	_	_	_	_	3	punct
+
+# First , there was a death watch .
+1	First	first	ADV	_	_	_	_	4	advmod
+2	,	,	PUNCT	_	_	_	_	4	punct
+3	there	there	PRON	_	_	_	_	4	expl
+4	was	was	VERB	_	_	_	_	0	root
+5	a	a	DET	_	_	_	_	7	det
+6	death	death	NOUN	_	_	_	_	7	nn
+7	watch	watch	NOUN	_	_	_	_	4	nsubj
+8	.	.	PUNCT	_	_	_	_	4	punct
+
+# Then exhilaration .
+1	Then	then	ADV	_	_	_	_	2	advmod
+2	exhilaration	exhilaration	NOUN	_	_	_	_	0	root
+3	.	.	PUNCT	_	_	_	_	2	punct
+
+# It 's just a strange feeling .
+1	It	it	PRON	_	_	_	_	2	nsubj
+2	's	's	VERB	_	_	_	_	0	root
+3	just	just	ADV	_	_	_	_	6	advmod
+4	a	a	DET	_	_	_	_	6	det
+5	strange	strange	ADJ	_	_	_	_	6	amod
+6	feeling	feeling	NOUN	_	_	_	_	2	xcomp
+7	.	.	PUNCT	_	_	_	_	2	punct
+
+# They did n't .
+1	They	they	PRON	_	_	_	_	2	nsubj
+2	did	did	VERB	_	_	_	_	0	root
+3	n't	n't	PART	_	_	_	_	2	neg
+4	.	.	PUNCT	_	_	_	_	2	punct
+
+# It was orderly .
+1	It	it	PRON	_	_	_	_	2	nsubj
+2	was	was	VERB	_	_	_	_	0	root
+3	orderly	orderly	ADJ	_	_	_	_	2	acomp
+4	.	.	PUNCT	_	_	_	_	2	punct
+
+# We put some orders together .
+1	We	we	PRON	_	_	_	_	2	nsubj
+2	put	put	VERB	_	_	_	_	0	root
+3	some	some	DET	_	_	_	_	4	det
+4	orders	orders	NOUN	_	_	_	_	2	dobj
+5	together	together	ADV	_	_	_	_	2	advmod
+6	.	.	PUNCT	_	_	_	_	2	punct
+
+# But not everybody was making money .
+1	But	but	CCONJ	_	_	_	_	5	cc
+2	not	not	ADV	_	_	_	_	3	neg
+3	everybody	everybody	PRON	_	_	_	_	5	nsubj
+4	was	was	AUX	_	_	_	_	5	aux
+5	making	making	VERB	_	_	_	_	0	root
+6	money	money	NOUN	_	_	_	_	5	dobj
+7	.	.	PUNCT	_	_	_	_	5	punct
+
+# They used their judgment .
+1	They	they	PRON	_	_	_	_	2	nsubj
+2	used	used	VERB	_	_	_	_	0	root
+3	their	their	PRON	_	_	_	_	4	poss
+4	judgment	judgment	NOUN	_	_	_	_	2	dobj
+5	.	.	PUNCT	_	_	_	_	2	punct
+
+# Maybe they learned from experience . ''
+1	Maybe	maybe	ADV	_	_	_	_	3	advmod
+2	they	they	PRON	_	_	_	_	3	nsubj
+3	learned	learned	VERB	_	_	_	_	0	root
+4	from	from	ADP	_	_	_	_	3	prep
+5	experience	experience	NOUN	_	_	_	_	4	pobj
+6	.	.	PUNCT	_	_	_	_	3	punct
+7	''	''	PUNCT	_	_	_	_	3	punct
+
+# Of course it was .
+1	Of	of	ADP	_	_	_	_	4	prep
+2	course	course	NOUN	_	_	_	_	1	pobj
+3	it	it	PRON	_	_	_	_	4	nsubj
+4	was	was	VERB	_	_	_	_	0	root
+5	.	.	PUNCT	_	_	_	_	4	punct
+
+# Congress previously cut six airports this year .
+1	Congress	congress	PROPN	_	_	_	_	3	nsubj
+2	previously	previously	ADV	_	_	_	_	3	advmod
+3	cut	cut	VERB	_	_	_	_	0	root
+4	six	six	NUM	_	_	_	_	5	num
+5	airports	airports	NOUN	_	_	_	_	3	dobj
+6	this	this	DET	_	_	_	_	7	det
+7	year	year	NOUN	_	_	_	_	3	tmod
+8	.	.	PUNCT	_	_	_	_	3	punct
+
+# There were n't any extraordinary items .
+1	There	there	PRON	_	_	_	_	2	expl
+2	were	were	VERB	_	_	_	_	0	root
+3	n't	n't	PART	_	_	_	_	2	neg
+4	any	any	DET	_	_	_	_	6	det
+5	extraordinary	extraordinary	ADJ	_	_	_	_	6	amod
+6	items	items	NOUN	_	_	_	_	2	nsubj
+7	.	.	PUNCT	_	_	_	_	2	punct
+
+# Waterford has decided against paying an interim dividend .
+1	Waterford	waterford	PROPN	_	_	_	_	3	nsubj
+2	has	has	AUX	_	_	_	_	3	aux
+3	decided	decided	VERB	_	_	_	_	0	root
+4	against	against	SCONJ	_	_	_	_	3	prep
+5	paying	paying	VERB	_	_	_	_	4	pcomp
+6	an	an	DET	_	_	_	_	8	det
+7	interim	interim	ADJ	_	_	_	_	8	amod
+8	dividend	dividend	NOUN	_	_	_	_	5	dobj
+9	.	.	PUNCT	_	_	_	_	3	punct
+
+# `` It was a pretty wild day .
+1	``	``	PUNCT	_	_	_	_	3	punct
+2	It	it	PRON	_	_	_	_	3	nsubj
+3	was	was	VERB	_	_	_	_	0	root
+4	a	a	DET	_	_	_	_	7	det
+5	pretty	pretty	ADV	_	_	_	_	6	advmod
+6	wild	wild	ADJ	_	_	_	_	7	amod
+7	day	day	NOUN	_	_	_	_	3	tmod
+8	.	.	PUNCT	_	_	_	_	3	punct
+
+# In Tokyo , trading is halted during lunchtime .
+1	In	in	ADP	_	_	_	_	6	prep
+2	Tokyo	tokyo	PROPN	_	_	_	_	1	pobj
+3	,	,	PUNCT	_	_	_	_	6	punct
+4	trading	trading	NOUN	_	_	_	_	6	nsubjpass
+5	is	is	AUX	_	_	_	_	6	auxpass
+6	halted	halted	VERB	_	_	_	_	0	root
+7	during	during	ADP	_	_	_	_	6	prep
+8	lunchtime	lunchtime	NOUN	_	_	_	_	7	pobj
+9	.	.	PUNCT	_	_	_	_	6	punct
+
+# It could do damage to us . ''
+1	It	it	PRON	_	_	_	_	3	nsubj
+2	could	could	AUX	_	_	_	_	3	aux
+3	do	do	VERB	_	_	_	_	0	root
+4	damage	damage	NOUN	_	_	_	_	3	dobj
+5	to	to	ADP	_	_	_	_	3	prep
+6	us	us	PRON	_	_	_	_	5	pobj
+7	.	.	PUNCT	_	_	_	_	3	punct
+8	''	''	PUNCT	_	_	_	_	3	punct
+
+# Treasury Securities
+1	Treasury	treasury	PROPN	_	_	_	_	2	nn
+2	Securities	securities	PROPN	_	_	_	_	0	root
+
+# Here are auction details :
+1	Here	here	ADV	_	_	_	_	2	advmod
+2	are	are	VERB	_	_	_	_	0	root
+3	auction	auction	NOUN	_	_	_	_	4	nn
+4	details	details	NOUN	_	_	_	_	2	nsubj
+5	:	:	PUNCT	_	_	_	_	2	punct
+
+# Both issues are dated Oct. 19 .
+1	Both	both	DET	_	_	_	_	2	det
+2	issues	issues	NOUN	_	_	_	_	4	nsubjpass
+3	are	are	AUX	_	_	_	_	4	auxpass
+4	dated	dated	VERB	_	_	_	_	0	root
+5	Oct.	oct.	PROPN	_	_	_	_	4	tmod
+6	19	19	NUM	_	_	_	_	5	num
+7	.	.	PUNCT	_	_	_	_	4	punct
+
+# Corporate Issues
+1	Corporate	corporate	ADJ	_	_	_	_	2	amod
+2	Issues	issues	NOUN	_	_	_	_	0	root
+
+# There were no new issues .
+1	There	there	PRON	_	_	_	_	2	expl
+2	were	were	VERB	_	_	_	_	0	root
+3	no	no	DET	_	_	_	_	5	neg
+4	new	new	ADJ	_	_	_	_	5	amod
+5	issues	issues	NOUN	_	_	_	_	2	nsubj
+6	.	.	PUNCT	_	_	_	_	2	punct
+
+# Foreign Bonds
+1	Foreign	foreign	ADJ	_	_	_	_	2	amod
+2	Bonds	bonds	NOUN	_	_	_	_	0	root
+
+# The yield was 5.245 % .
+1	The	the	DET	_	_	_	_	2	det
+2	yield	yield	NOUN	_	_	_	_	3	nsubj
+3	was	was	VERB	_	_	_	_	0	root
+4	5.245	5.245	NUM	_	_	_	_	5	num
+5	%	%	SYM	_	_	_	_	3	xcomp
+6	.	.	PUNCT	_	_	_	_	3	punct
+
+# Mortgage-Backed Securities
+1	Mortgage-Backed	mortgage-backed	ADJ	_	_	_	_	2	amod
+2	Securities	securities	NOUN	_	_	_	_	0	root
+
+# Municipals
+1	Municipals	municipals	NOUN	_	_	_	_	0	root
+
+# Professionals dominated municipal trading throughout the session .
+1	Professionals	professionals	NOUN	_	_	_	_	2	nsubj
+2	dominated	dominated	VERB	_	_	_	_	0	root
+3	municipal	municipal	ADJ	_	_	_	_	4	amod
+4	trading	trading	NOUN	_	_	_	_	2	dobj
+5	throughout	throughout	ADP	_	_	_	_	2	prep
+6	the	the	DET	_	_	_	_	7	det
+7	session	session	NOUN	_	_	_	_	5	pobj
+8	.	.	PUNCT	_	_	_	_	2	punct
+
+# Domestic leisure sales , however , were lower .
+1	Domestic	domestic	ADJ	_	_	_	_	3	amod
+2	leisure	leisure	NOUN	_	_	_	_	3	nn
+3	sales	sales	NOUN	_	_	_	_	7	nsubj
+4	,	,	PUNCT	_	_	_	_	7	punct
+5	however	however	ADV	_	_	_	_	7	advmod
+6	,	,	PUNCT	_	_	_	_	7	punct
+7	were	were	VERB	_	_	_	_	0	root
+8	lower	lower	ADJ	_	_	_	_	7	acomp
+9	.	.	PUNCT	_	_	_	_	7	punct
+
+# What does n't belong here ?
+1	What	what	PRON	_	_	_	_	4	nsubj
+2	does	does	AUX	_	_	_	_	4	aux
+3	n't	n't	PART	_	_	_	_	4	neg
+4	belong	belong	VERB	_	_	_	_	0	root
+5	here	here	ADV	_	_	_	_	4	advmod
+6	?	?	PUNCT	_	_	_	_	4	punct
+
+# And black-and-white photography classes are crowded with students .
+1	And	and	CCONJ	_	_	_	_	6	cc
+2	black-and-white	black-and-white	ADJ	_	_	_	_	4	amod
+3	photography	photography	NOUN	_	_	_	_	4	nn
+4	classes	classes	NOUN	_	_	_	_	6	nsubjpass
+5	are	are	AUX	_	_	_	_	6	auxpass
+6	crowded	crowded	VERB	_	_	_	_	0	root
+7	with	with	ADP	_	_	_	_	6	prep
+8	students	students	NOUN	_	_	_	_	7	pobj
+9	.	.	PUNCT	_	_	_	_	6	punct
+
+# Why all the interest ?
+1	Why	why	ADV	_	_	_	_	4	dep
+2	all	all	DET	_	_	_	_	4	predet
+3	the	the	DET	_	_	_	_	4	det
+4	interest	interest	NOUN	_	_	_	_	0	root
+5	?	?	PUNCT	_	_	_	_	4	punct
+
+# Portrait studios have also latched onto the trend .
+1	Portrait	portrait	NOUN	_	_	_	_	2	nn
+2	studios	studios	NOUN	_	_	_	_	5	nsubj
+3	have	have	AUX	_	_	_	_	5	aux
+4	also	also	ADV	_	_	_	_	5	advmod
+5	latched	latched	VERB	_	_	_	_	0	root
+6	onto	onto	ADP	_	_	_	_	5	prep
+7	the	the	DET	_	_	_	_	8	det
+8	trend	trend	NOUN	_	_	_	_	6	pobj
+9	.	.	PUNCT	_	_	_	_	5	punct
+
+# It is n't ordinary like color . ''
+1	It	it	PRON	_	_	_	_	2	nsubj
+2	is	is	VERB	_	_	_	_	0	root
+3	n't	n't	PART	_	_	_	_	2	neg
+4	ordinary	ordinary	ADJ	_	_	_	_	2	acomp
+5	like	like	ADP	_	_	_	_	4	prep
+6	color	color	NOUN	_	_	_	_	5	pobj
+7	.	.	PUNCT	_	_	_	_	2	punct
+8	''	''	PUNCT	_	_	_	_	2	punct
+
+# Some companies are starting to tackle that problem .
+1	Some	some	DET	_	_	_	_	2	det
+2	companies	companies	NOUN	_	_	_	_	4	nsubj
+3	are	are	AUX	_	_	_	_	4	aux
+4	starting	starting	VERB	_	_	_	_	0	root
+5	to	to	PART	_	_	_	_	6	aux
+6	tackle	tackle	VERB	_	_	_	_	4	xcomp
+7	that	that	DET	_	_	_	_	8	det
+8	problem	problem	NOUN	_	_	_	_	6	dobj
+9	.	.	PUNCT	_	_	_	_	4	punct
+
+# Other companies are introducing related products .
+1	Other	other	ADJ	_	_	_	_	2	amod
+2	companies	companies	NOUN	_	_	_	_	4	nsubj
+3	are	are	AUX	_	_	_	_	4	aux
+4	introducing	introducing	VERB	_	_	_	_	0	root
+5	related	related	VERB	_	_	_	_	6	amod
+6	products	products	NOUN	_	_	_	_	4	dobj
+7	.	.	PUNCT	_	_	_	_	4	punct
+
+# `` That 's the appeal .
+1	``	``	PUNCT	_	_	_	_	3	punct
+2	That	that	PRON	_	_	_	_	3	nsubj
+3	's	's	VERB	_	_	_	_	0	root
+4	the	the	DET	_	_	_	_	5	det
+5	appeal	appeal	NOUN	_	_	_	_	3	xcomp
+6	.	.	PUNCT	_	_	_	_	3	punct
+
+# The price was n't disclosed .
+1	The	the	DET	_	_	_	_	2	det
+2	price	price	NOUN	_	_	_	_	5	nsubjpass
+3	was	was	AUX	_	_	_	_	5	auxpass
+4	n't	n't	PART	_	_	_	_	5	neg
+5	disclosed	disclosed	VERB	_	_	_	_	0	root
+6	.	.	PUNCT	_	_	_	_	5	punct
+
+# The value of the acquisition was n't disclosed .
+1	The	the	DET	_	_	_	_	2	det
+2	value	value	NOUN	_	_	_	_	8	nsubjpass
+3	of	of	ADP	_	_	_	_	2	prep
+4	the	the	DET	_	_	_	_	5	det
+5	acquisition	acquisition	NOUN	_	_	_	_	3	pobj
+6	was	was	AUX	_	_	_	_	8	auxpass
+7	n't	n't	PART	_	_	_	_	8	neg
+8	disclosed	disclosed	VERB	_	_	_	_	0	root
+9	.	.	PUNCT	_	_	_	_	8	punct
+
+# CENTRUST SAVINGS BANK ( Miami ) --
+1	CENTRUST	centrust	PROPN	_	_	_	_	3	nn
+2	SAVINGS	savings	PROPN	_	_	_	_	3	nn
+3	BANK	bank	PROPN	_	_	_	_	0	root
+4	(	(	PUNCT	_	_	_	_	5	punct
+5	Miami	miami	PROPN	_	_	_	_	3	appos
+6	)	)	PUNCT	_	_	_	_	5	punct
+7	--	--	PUNCT	_	_	_	_	3	punct
+
+# Gold also rose .
+1	Gold	gold	PROPN	_	_	_	_	3	nsubj
+2	also	also	ADV	_	_	_	_	3	advmod
+3	rose	rose	VERB	_	_	_	_	0	root
+4	.	.	PUNCT	_	_	_	_	3	punct
+
+# The dollar also moved higher in Tokyo .
+1	The	the	DET	_	_	_	_	2	det
+2	dollar	dollar	NOUN	_	_	_	_	4	nsubj
+3	also	also	ADV	_	_	_	_	4	advmod
+4	moved	moved	VERB	_	_	_	_	0	root
+5	higher	higher	ADV	_	_	_	_	4	advmod
+6	in	in	ADP	_	_	_	_	4	prep
+7	Tokyo	tokyo	PROPN	_	_	_	_	6	pobj
+8	.	.	PUNCT	_	_	_	_	4	punct
+
+# AMR slid $ 22.125 , to $ 76.50 .
+1	AMR	amr	PROPN	_	_	_	_	2	nsubj
+2	slid	slid	VERB	_	_	_	_	0	root
+3	$	$	SYM	_	_	_	_	2	dobj
+4	22.125	22.125	NUM	_	_	_	_	3	num
+5	,	,	PUNCT	_	_	_	_	2	punct
+6	to	to	ADP	_	_	_	_	2	prep
+7	$	$	SYM	_	_	_	_	6	pobj
+8	76.50	76.50	NUM	_	_	_	_	7	num
+9	.	.	PUNCT	_	_	_	_	2	punct
+
+# UAL fell $ 56.875 , to $ 222.875 .
+1	UAL	ual	PROPN	_	_	_	_	2	nsubj
+2	fell	fell	VERB	_	_	_	_	0	root
+3	$	$	SYM	_	_	_	_	2	dobj
+4	56.875	56.875	NUM	_	_	_	_	3	num
+5	,	,	PUNCT	_	_	_	_	2	punct
+6	to	to	ADP	_	_	_	_	2	prep
+7	$	$	SYM	_	_	_	_	6	pobj
+8	222.875	222.875	NUM	_	_	_	_	7	num
+9	.	.	PUNCT	_	_	_	_	2	punct
+
+# NCNB 's profit more than doubled .
+1	NCNB	ncnb	PROPN	_	_	_	_	3	poss
+2	's	's	PART	_	_	_	_	1	possessive
+3	profit	profit	NOUN	_	_	_	_	6	nsubj
+4	more	more	ADV	_	_	_	_	5	advmod
+5	than	than	ADP	_	_	_	_	6	advmod
+6	doubled	doubled	VERB	_	_	_	_	0	root
+7	.	.	PUNCT	_	_	_	_	6	punct
+
+# Markets --
+1	Markets	markets	NOUN	_	_	_	_	0	root
+2	--	--	PUNCT	_	_	_	_	1	punct
+
+# Stocks : Volume 416,290,000 shares .
+1	Stocks	stocks	NOUN	_	_	_	_	0	root
+2	:	:	PUNCT	_	_	_	_	1	punct
+3	Volume	volume	NOUN	_	_	_	_	1	dep
+4	416,290,000	416,290,000	NUM	_	_	_	_	5	num
+5	shares	shares	NOUN	_	_	_	_	3	dep
+6	.	.	PUNCT	_	_	_	_	1	punct
+
+# Monday , October 16 , 1989
+1	Monday	monday	PROPN	_	_	_	_	0	root
+2	,	,	PUNCT	_	_	_	_	1	punct
+3	October	october	PROPN	_	_	_	_	1	appos
+4	16	16	NUM	_	_	_	_	3	num
+5	,	,	PUNCT	_	_	_	_	3	punct
+6	1989	1989	NUM	_	_	_	_	3	num
+
+# PRIME RATE : 10 1/2 % .
+1	PRIME	prime	PROPN	_	_	_	_	2	nn
+2	RATE	rate	PROPN	_	_	_	_	0	root
+3	:	:	PUNCT	_	_	_	_	2	punct
+4	10	10	NUM	_	_	_	_	5	number
+5	1/2	1/2	NUM	_	_	_	_	6	num
+6	%	%	SYM	_	_	_	_	2	dep
+7	.	.	PUNCT	_	_	_	_	2	punct
+
+# DISCOUNT RATE : 7 % .
+1	DISCOUNT	discount	PROPN	_	_	_	_	2	nn
+2	RATE	rate	PROPN	_	_	_	_	0	root
+3	:	:	PUNCT	_	_	_	_	2	punct
+4	7	7	NUM	_	_	_	_	5	num
+5	%	%	SYM	_	_	_	_	2	dep
+6	.	.	PUNCT	_	_	_	_	2	punct
+
+# The minimum unit is $ 100,000 .
+1	The	the	DET	_	_	_	_	3	det
+2	minimum	minimum	NOUN	_	_	_	_	3	nn
+3	unit	unit	NOUN	_	_	_	_	4	nsubj
+4	is	is	VERB	_	_	_	_	0	root
+5	$	$	SYM	_	_	_	_	4	xcomp
+6	100,000	100,000	NUM	_	_	_	_	5	num
+7	.	.	PUNCT	_	_	_	_	4	punct
+
+# Source : Telerate Systems Inc .
+1	Source	source	NOUN	_	_	_	_	0	root
+2	:	:	PUNCT	_	_	_	_	1	punct
+3	Telerate	telerate	PROPN	_	_	_	_	5	nn
+4	Systems	systems	PROPN	_	_	_	_	5	nn
+5	Inc	inc	PROPN	_	_	_	_	1	dep
+6	.	.	PUNCT	_	_	_	_	1	punct
+
+# Source : Telerate Systems Inc .
+1	Source	source	NOUN	_	_	_	_	0	root
+2	:	:	PUNCT	_	_	_	_	1	punct
+3	Telerate	telerate	PROPN	_	_	_	_	5	nn
+4	Systems	systems	PROPN	_	_	_	_	5	nn
+5	Inc	inc	PROPN	_	_	_	_	1	dep
+6	.	.	PUNCT	_	_	_	_	1	punct
+
+# MERRILL LYNCH READY ASSETS TRUST : 8.49 % .
+1	MERRILL	merrill	PROPN	_	_	_	_	5	nn
+2	LYNCH	lynch	PROPN	_	_	_	_	5	nn
+3	READY	ready	PROPN	_	_	_	_	5	nn
+4	ASSETS	assets	PROPN	_	_	_	_	5	nn
+5	TRUST	trust	PROPN	_	_	_	_	0	root
+6	:	:	PUNCT	_	_	_	_	5	punct
+7	8.49	8.49	NUM	_	_	_	_	8	num
+8	%	%	SYM	_	_	_	_	5	dep
+9	.	.	PUNCT	_	_	_	_	5	punct
+
+# SHV also owns 40 % of Calor .
+1	SHV	shv	PROPN	_	_	_	_	3	nsubj
+2	also	also	ADV	_	_	_	_	3	advmod
+3	owns	owns	VERB	_	_	_	_	0	root
+4	40	40	NUM	_	_	_	_	5	num
+5	%	%	SYM	_	_	_	_	3	dobj
+6	of	of	ADP	_	_	_	_	5	prep
+7	Calor	calor	PROPN	_	_	_	_	6	pobj
+8	.	.	PUNCT	_	_	_	_	3	punct
+
+# The elections are set for Nov. 7 .
+1	The	the	DET	_	_	_	_	2	det
+2	elections	elections	NOUN	_	_	_	_	4	nsubjpass
+3	are	are	AUX	_	_	_	_	4	auxpass
+4	set	set	VERB	_	_	_	_	0	root
+5	for	for	ADP	_	_	_	_	4	prep
+6	Nov.	nov.	PROPN	_	_	_	_	5	pobj
+7	7	7	NUM	_	_	_	_	6	num
+8	.	.	PUNCT	_	_	_	_	4	punct
+
+# Silver performed quietly .
+1	Silver	silver	NOUN	_	_	_	_	2	nsubj
+2	performed	performed	VERB	_	_	_	_	0	root
+3	quietly	quietly	ADV	_	_	_	_	2	advmod
+4	.	.	PUNCT	_	_	_	_	2	punct
+
+# ENERGY :
+1	ENERGY	energy	PROPN	_	_	_	_	0	root
+2	:	:	PUNCT	_	_	_	_	1	punct
+
+# COPPER :
+1	COPPER	copper	NOUN	_	_	_	_	0	root
+2	:	:	PUNCT	_	_	_	_	1	punct
+
+# COTTON :
+1	COTTON	cotton	PROPN	_	_	_	_	0	root
+2	:	:	PUNCT	_	_	_	_	1	punct
+
+# SUGAR :
+1	SUGAR	sugar	NOUN	_	_	_	_	0	root
+2	:	:	PUNCT	_	_	_	_	1	punct
+
+# Futures prices declined .
+1	Futures	futures	NOUN	_	_	_	_	2	nn
+2	prices	prices	NOUN	_	_	_	_	3	nsubj
+3	declined	declined	VERB	_	_	_	_	0	root
+4	.	.	PUNCT	_	_	_	_	3	punct
+
+# FARM PRODUCTS :
+1	FARM	farm	NOUN	_	_	_	_	2	nn
+2	PRODUCTS	products	NOUN	_	_	_	_	0	root
+3	:	:	PUNCT	_	_	_	_	2	punct
+
+# Terms of the agreement were n't disclosed .
+1	Terms	terms	NOUN	_	_	_	_	7	nsubjpass
+2	of	of	ADP	_	_	_	_	1	prep
+3	the	the	DET	_	_	_	_	4	det
+4	agreement	agreement	NOUN	_	_	_	_	2	pobj
+5	were	were	AUX	_	_	_	_	7	auxpass
+6	n't	n't	PART	_	_	_	_	7	neg
+7	disclosed	disclosed	VERB	_	_	_	_	0	root
+8	.	.	PUNCT	_	_	_	_	7	punct
+
+# Many went bargain-hunting .
+1	Many	many	ADJ	_	_	_	_	2	nsubj
+2	went	went	VERB	_	_	_	_	0	root
+3	bargain-hunting	bargain-hunting	NOUN	_	_	_	_	2	dobj
+4	.	.	PUNCT	_	_	_	_	2	punct
+
+# It ended with a gain of 88.12 points .
+1	It	it	PRON	_	_	_	_	2	nsubj
+2	ended	ended	VERB	_	_	_	_	0	root
+3	with	with	ADP	_	_	_	_	2	prep
+4	a	a	DET	_	_	_	_	5	det
+5	gain	gain	NOUN	_	_	_	_	3	pobj
+6	of	of	ADP	_	_	_	_	5	prep
+7	88.12	88.12	NUM	_	_	_	_	8	num
+8	points	points	NOUN	_	_	_	_	6	pobj
+9	.	.	PUNCT	_	_	_	_	2	punct
+
+# World-wide , trading was generally manageable .
+1	World-wide	world-wide	ADJ	_	_	_	_	4	advmod
+2	,	,	PUNCT	_	_	_	_	4	punct
+3	trading	trading	NOUN	_	_	_	_	4	nsubj
+4	was	was	VERB	_	_	_	_	0	root
+5	generally	generally	ADV	_	_	_	_	6	advmod
+6	manageable	manageable	ADJ	_	_	_	_	4	acomp
+7	.	.	PUNCT	_	_	_	_	4	punct
+
+# The screen was a sea of red .
+1	The	the	DET	_	_	_	_	2	det
+2	screen	screen	NOUN	_	_	_	_	3	nsubj
+3	was	was	VERB	_	_	_	_	0	root
+4	a	a	DET	_	_	_	_	5	det
+5	sea	sea	NOUN	_	_	_	_	3	xcomp
+6	of	of	ADP	_	_	_	_	5	prep
+7	red	red	NOUN	_	_	_	_	6	pobj
+8	.	.	PUNCT	_	_	_	_	3	punct
+
+# By 10 a.m. , it was down 49 .
+1	By	by	ADP	_	_	_	_	6	prep
+2	10	10	NUM	_	_	_	_	3	num
+3	a.m.	a.m.	NOUN	_	_	_	_	1	pobj
+4	,	,	PUNCT	_	_	_	_	6	punct
+5	it	it	PRON	_	_	_	_	6	nsubj
+6	was	was	VERB	_	_	_	_	0	root
+7	down	down	ADV	_	_	_	_	6	advmod
+8	49	49	NUM	_	_	_	_	7	pobj
+9	.	.	PUNCT	_	_	_	_	6	punct
+
+# Shearson 's London trading room went wild .
+1	Shearson	shearson	PROPN	_	_	_	_	5	poss
+2	's	's	PART	_	_	_	_	1	possessive
+3	London	london	PROPN	_	_	_	_	5	nn
+4	trading	trading	VERB	_	_	_	_	5	amod
+5	room	room	NOUN	_	_	_	_	6	nsubj
+6	went	went	VERB	_	_	_	_	0	root
+7	wild	wild	ADJ	_	_	_	_	6	acomp
+8	.	.	PUNCT	_	_	_	_	6	punct
+
+# `` This is panic buying . ''
+1	``	``	PUNCT	_	_	_	_	3	punct
+2	This	this	PRON	_	_	_	_	3	nsubj
+3	is	is	VERB	_	_	_	_	0	root
+4	panic	panic	NOUN	_	_	_	_	5	nn
+5	buying	buying	NOUN	_	_	_	_	3	xcomp
+6	.	.	PUNCT	_	_	_	_	3	punct
+7	''	''	PUNCT	_	_	_	_	3	punct
+
+# Japanese were said to be heavy buyers .
+1	Japanese	japanese	PROPN	_	_	_	_	3	nsubjpass
+2	were	were	AUX	_	_	_	_	3	auxpass
+3	said	said	VERB	_	_	_	_	0	root
+4	to	to	PART	_	_	_	_	5	aux
+5	be	be	VERB	_	_	_	_	3	xcomp
+6	heavy	heavy	NOUN	_	_	_	_	7	nn
+7	buyers	buyers	NOUN	_	_	_	_	5	xcomp
+8	.	.	PUNCT	_	_	_	_	3	punct
+
+# Not everybody was making money .
+1	Not	not	ADV	_	_	_	_	2	neg
+2	everybody	everybody	PRON	_	_	_	_	4	nsubj
+3	was	was	AUX	_	_	_	_	4	aux
+4	making	making	VERB	_	_	_	_	0	root
+5	money	money	NOUN	_	_	_	_	4	dobj
+6	.	.	PUNCT	_	_	_	_	4	punct
+
+# The public is still cautious .
+1	The	the	DET	_	_	_	_	2	det
+2	public	public	NOUN	_	_	_	_	3	nsubj
+3	is	is	VERB	_	_	_	_	0	root
+4	still	still	ADV	_	_	_	_	3	advmod
+5	cautious	cautious	ADJ	_	_	_	_	3	acomp
+6	.	.	PUNCT	_	_	_	_	3	punct
+
+# Revenue was $ 19.9 million .
+1	Revenue	revenue	NOUN	_	_	_	_	2	nsubj
+2	was	was	VERB	_	_	_	_	0	root
+3	$	$	SYM	_	_	_	_	2	xcomp
+4	19.9	19.9	NUM	_	_	_	_	5	number
+5	million	million	NUM	_	_	_	_	3	num
+6	.	.	PUNCT	_	_	_	_	2	punct
+
+# Police did n't intervene .
+1	Police	police	NOUN	_	_	_	_	4	nsubj
+2	did	did	AUX	_	_	_	_	4	aux
+3	n't	n't	PART	_	_	_	_	4	neg
+4	intervene	intervene	VERB	_	_	_	_	0	root
+5	.	.	PUNCT	_	_	_	_	4	punct
+
+# A temporary prohibition was imposed in March 1988 .
+1	A	a	DET	_	_	_	_	3	det
+2	temporary	temporary	ADJ	_	_	_	_	3	amod
+3	prohibition	prohibition	NOUN	_	_	_	_	5	nsubjpass
+4	was	was	AUX	_	_	_	_	5	auxpass
+5	imposed	imposed	VERB	_	_	_	_	0	root
+6	in	in	ADP	_	_	_	_	5	prep
+7	March	march	PROPN	_	_	_	_	6	pobj
+8	1988	1988	NUM	_	_	_	_	7	num
+9	.	.	PUNCT	_	_	_	_	5	punct
+
+# Two-Way Street
+1	Two-Way	two-way	PROPN	_	_	_	_	0	root
+2	Street	street	PROPN	_	_	_	_	1	punct
+
+# -- Rollin S. Trexler .
+1	--	--	PUNCT	_	_	_	_	4	punct
+2	Rollin	rollin	PROPN	_	_	_	_	4	nn
+3	S.	s.	PROPN	_	_	_	_	4	nn
+4	Trexler	trexler	PROPN	_	_	_	_	0	root
+5	.	.	PUNCT	_	_	_	_	4	punct
+
+# Candid Comment
+1	Candid	candid	PROPN	_	_	_	_	2	nn
+2	Comment	comment	PROPN	_	_	_	_	0	root
+
+# -- C.E. Friedman .
+1	--	--	PUNCT	_	_	_	_	3	punct
+2	C.E.	c.e.	PROPN	_	_	_	_	3	nn
+3	Friedman	friedman	PROPN	_	_	_	_	0	root
+4	.	.	PUNCT	_	_	_	_	3	punct
+
+# Ah , perfidious Columbia !
+1	Ah	ah	INTJ	_	_	_	_	4	discourse
+2	,	,	PUNCT	_	_	_	_	4	punct
+3	perfidious	perfidious	ADJ	_	_	_	_	4	amod
+4	Columbia	columbia	PROPN	_	_	_	_	0	root
+5	!	!	PUNCT	_	_	_	_	4	punct
+
+# But the investigation continues .
+1	But	but	CCONJ	_	_	_	_	4	cc
+2	the	the	DET	_	_	_	_	3	det
+3	investigation	investigation	NOUN	_	_	_	_	4	nsubj
+4	continues	continues	VERB	_	_	_	_	0	root
+5	.	.	PUNCT	_	_	_	_	4	punct
+
+# In fact , few consume much of anything .
+1	In	in	ADP	_	_	_	_	5	prep
+2	fact	fact	NOUN	_	_	_	_	1	pobj
+3	,	,	PUNCT	_	_	_	_	5	punct
+4	few	few	ADJ	_	_	_	_	5	nsubj
+5	consume	consume	VERB	_	_	_	_	0	root
+6	much	much	ADV	_	_	_	_	5	dobj
+7	of	of	ADP	_	_	_	_	6	prep
+8	anything	anything	PRON	_	_	_	_	7	pobj
+9	.	.	PUNCT	_	_	_	_	5	punct
+
+# Two share a house almost devoid of furniture .
+1	Two	two	NUM	_	_	_	_	2	nsubj
+2	share	share	NOUN	_	_	_	_	0	root
+3	a	a	DET	_	_	_	_	4	det
+4	house	house	NOUN	_	_	_	_	6	nsubj
+5	almost	almost	ADV	_	_	_	_	6	advmod
+6	devoid	devoid	ADJ	_	_	_	_	2	xcomp
+7	of	of	ADP	_	_	_	_	6	prep
+8	furniture	furniture	NOUN	_	_	_	_	7	pobj
+9	.	.	PUNCT	_	_	_	_	2	punct
+
+# The seeds already are in the script .
+1	The	the	DET	_	_	_	_	2	det
+2	seeds	seeds	NOUN	_	_	_	_	4	nsubj
+3	already	already	ADV	_	_	_	_	4	advmod
+4	are	are	VERB	_	_	_	_	0	root
+5	in	in	ADP	_	_	_	_	4	prep
+6	the	the	DET	_	_	_	_	7	det
+7	script	script	NOUN	_	_	_	_	5	pobj
+8	.	.	PUNCT	_	_	_	_	4	punct
+
+# It should run forever .
+1	It	it	PRON	_	_	_	_	3	nsubj
+2	should	should	AUX	_	_	_	_	3	aux
+3	run	run	VERB	_	_	_	_	0	root
+4	forever	forever	ADV	_	_	_	_	3	advmod
+5	.	.	PUNCT	_	_	_	_	3	punct
+
+# c - Domestic car
+1	c	c	SYM	_	_	_	_	0	root
+2	-	-	PUNCT	_	_	_	_	1	punct
+3	Domestic	domestic	ADJ	_	_	_	_	4	amod
+4	car	car	NOUN	_	_	_	_	1	punct
+
+# Sequa makes and repairs jet engines .
+1	Sequa	sequa	PROPN	_	_	_	_	2	nsubj
+2	makes	makes	VERB	_	_	_	_	0	root
+3	and	and	CCONJ	_	_	_	_	2	cc
+4	repairs	repairs	VERB	_	_	_	_	2	conj
+5	jet	jet	NOUN	_	_	_	_	6	nn
+6	engines	engines	NOUN	_	_	_	_	2	dobj
+7	.	.	PUNCT	_	_	_	_	2	punct
+
+# Radio and television are getting livelier and bolder .
+1	Radio	radio	NOUN	_	_	_	_	5	nsubj
+2	and	and	CCONJ	_	_	_	_	1	cc
+3	television	television	NOUN	_	_	_	_	1	conj
+4	are	are	AUX	_	_	_	_	5	aux
+5	getting	getting	VERB	_	_	_	_	0	root
+6	livelier	livelier	ADJ	_	_	_	_	5	acomp
+7	and	and	CCONJ	_	_	_	_	6	cc
+8	bolder	bolder	ADJ	_	_	_	_	6	conj
+9	.	.	PUNCT	_	_	_	_	5	punct
+
+# `` That is a miracle . ''
+1	``	``	PUNCT	_	_	_	_	3	punct
+2	That	that	PRON	_	_	_	_	3	nsubj
+3	is	is	VERB	_	_	_	_	0	root
+4	a	a	DET	_	_	_	_	5	det
+5	miracle	miracle	NOUN	_	_	_	_	3	xcomp
+6	.	.	PUNCT	_	_	_	_	3	punct
+7	''	''	PUNCT	_	_	_	_	3	punct
+
+# `` There were some very brave broadcasts . ''
+1	``	``	PUNCT	_	_	_	_	3	punct
+2	There	there	PRON	_	_	_	_	3	expl
+3	were	were	VERB	_	_	_	_	0	root
+4	some	some	DET	_	_	_	_	7	det
+5	very	very	ADV	_	_	_	_	6	advmod
+6	brave	brave	ADJ	_	_	_	_	7	amod
+7	broadcasts	broadcasts	NOUN	_	_	_	_	3	nsubj
+8	.	.	PUNCT	_	_	_	_	3	punct
+9	''	''	PUNCT	_	_	_	_	3	punct
+
+# Why does the national-service virus keep coming back ?
+1	Why	why	ADV	_	_	_	_	6	advmod
+2	does	does	AUX	_	_	_	_	6	aux
+3	the	the	DET	_	_	_	_	5	det
+4	national-service	national-service	ADJ	_	_	_	_	5	amod
+5	virus	virus	NOUN	_	_	_	_	6	nsubj
+6	keep	keep	VERB	_	_	_	_	0	root
+7	coming	coming	VERB	_	_	_	_	6	xcomp
+8	back	back	ADV	_	_	_	_	7	advmod
+9	?	?	PUNCT	_	_	_	_	6	punct
+
+# The aroma of patronage is in the air .
+1	The	the	DET	_	_	_	_	2	det
+2	aroma	aroma	NOUN	_	_	_	_	5	nsubj
+3	of	of	ADP	_	_	_	_	2	prep
+4	patronage	patronage	NOUN	_	_	_	_	3	pobj
+5	is	is	VERB	_	_	_	_	0	root
+6	in	in	ADP	_	_	_	_	5	prep
+7	the	the	DET	_	_	_	_	8	det
+8	air	air	NOUN	_	_	_	_	6	pobj
+9	.	.	PUNCT	_	_	_	_	5	punct
+
+# Not necessarily .
+1	Not	not	PART	_	_	_	_	2	dep
+2	necessarily	necessarily	ADV	_	_	_	_	0	root
+3	.	.	PUNCT	_	_	_	_	2	punct
+
+# There 's no need for such concessions .
+1	There	there	PRON	_	_	_	_	2	expl
+2	's	's	VERB	_	_	_	_	0	root
+3	no	no	DET	_	_	_	_	4	neg
+4	need	need	NOUN	_	_	_	_	2	nsubj
+5	for	for	ADP	_	_	_	_	4	prep
+6	such	such	ADJ	_	_	_	_	7	amod
+7	concessions	concessions	NOUN	_	_	_	_	5	pobj
+8	.	.	PUNCT	_	_	_	_	2	punct
+
+# The bonds go on sale Oct. 19 .
+1	The	the	DET	_	_	_	_	2	det
+2	bonds	bonds	NOUN	_	_	_	_	3	nsubj
+3	go	go	VERB	_	_	_	_	0	root
+4	on	on	ADP	_	_	_	_	3	prep
+5	sale	sale	NOUN	_	_	_	_	4	pobj
+6	Oct.	oct.	PROPN	_	_	_	_	3	tmod
+7	19	19	NUM	_	_	_	_	6	num
+8	.	.	PUNCT	_	_	_	_	3	punct
+
+# The debate over National Service has begun again .
+1	The	the	DET	_	_	_	_	2	det
+2	debate	debate	NOUN	_	_	_	_	7	nsubj
+3	over	over	ADP	_	_	_	_	2	prep
+4	National	national	PROPN	_	_	_	_	5	nn
+5	Service	service	PROPN	_	_	_	_	3	pobj
+6	has	has	AUX	_	_	_	_	7	aux
+7	begun	begun	VERB	_	_	_	_	0	root
+8	again	again	ADV	_	_	_	_	7	advmod
+9	.	.	PUNCT	_	_	_	_	7	punct
+
+# It might well win Senate passage .
+1	It	it	PRON	_	_	_	_	4	nsubj
+2	might	might	AUX	_	_	_	_	4	aux
+3	well	well	ADV	_	_	_	_	4	advmod
+4	win	win	VERB	_	_	_	_	0	root
+5	Senate	senate	PROPN	_	_	_	_	6	nn
+6	passage	passage	NOUN	_	_	_	_	4	dobj
+7	.	.	PUNCT	_	_	_	_	4	punct
+
+# What is one to think of all this ?
+1	What	what	PRON	_	_	_	_	2	nsubj
+2	is	is	VERB	_	_	_	_	0	root
+3	one	one	NOUN	_	_	_	_	2	xcomp
+4	to	to	PART	_	_	_	_	5	aux
+5	think	think	VERB	_	_	_	_	3	vmod
+6	of	of	ADP	_	_	_	_	5	prep
+7	all	all	DET	_	_	_	_	8	predet
+8	this	this	DET	_	_	_	_	6	pobj
+9	?	?	PUNCT	_	_	_	_	2	punct
+
+# Doctrine and special interests govern some responses .
+1	Doctrine	doctrine	NOUN	_	_	_	_	5	nsubj
+2	and	and	CCONJ	_	_	_	_	1	cc
+3	special	special	ADJ	_	_	_	_	4	amod
+4	interests	interests	NOUN	_	_	_	_	1	conj
+5	govern	govern	VERB	_	_	_	_	0	root
+6	some	some	DET	_	_	_	_	7	det
+7	responses	responses	NOUN	_	_	_	_	5	dobj
+8	.	.	PUNCT	_	_	_	_	5	punct
+
+# Then there are instinctive opponents .
+1	Then	then	ADV	_	_	_	_	3	advmod
+2	there	there	PRON	_	_	_	_	3	expl
+3	are	are	VERB	_	_	_	_	0	root
+4	instinctive	instinctive	ADJ	_	_	_	_	5	amod
+5	opponents	opponents	NOUN	_	_	_	_	3	nsubj
+6	.	.	PUNCT	_	_	_	_	3	punct
+
+# How should we think about national service ?
+1	How	how	ADV	_	_	_	_	4	advmod
+2	should	should	AUX	_	_	_	_	4	aux
+3	we	we	PRON	_	_	_	_	4	nsubj
+4	think	think	VERB	_	_	_	_	0	root
+5	about	about	ADP	_	_	_	_	4	prep
+6	national	national	ADJ	_	_	_	_	7	amod
+7	service	service	NOUN	_	_	_	_	5	pobj
+8	?	?	PUNCT	_	_	_	_	4	punct
+
+# Would service be voluntary or compulsory ?
+1	Would	would	AUX	_	_	_	_	3	aux
+2	service	service	NOUN	_	_	_	_	3	nsubj
+3	be	be	VERB	_	_	_	_	0	root
+4	voluntary	voluntary	ADJ	_	_	_	_	3	acomp
+5	or	or	CCONJ	_	_	_	_	4	cc
+6	compulsory	compulsory	ADJ	_	_	_	_	4	conj
+7	?	?	PUNCT	_	_	_	_	3	punct
+
+# Short or long ?
+1	Short	short	ADJ	_	_	_	_	0	root
+2	or	or	CCONJ	_	_	_	_	1	cc
+3	long	long	ADJ	_	_	_	_	1	conj
+4	?	?	PUNCT	_	_	_	_	1	punct
+
+# Part-time or full-time ?
+1	Part-time	part-time	ADJ	_	_	_	_	0	root
+2	or	or	CCONJ	_	_	_	_	1	cc
+3	full-time	full-time	ADJ	_	_	_	_	1	conj
+4	?	?	PUNCT	_	_	_	_	1	punct
+
+# Paid or unpaid ?
+1	Paid	paid	VERB	_	_	_	_	0	root
+2	or	or	CCONJ	_	_	_	_	1	cc
+3	unpaid	unpaid	ADJ	_	_	_	_	1	conj
+4	?	?	PUNCT	_	_	_	_	1	punct
+
+# What kinds of work would they do ?
+1	What	what	DET	_	_	_	_	2	det
+2	kinds	kinds	NOUN	_	_	_	_	7	dobj
+3	of	of	ADP	_	_	_	_	2	prep
+4	work	work	NOUN	_	_	_	_	3	pobj
+5	would	would	AUX	_	_	_	_	7	aux
+6	they	they	PRON	_	_	_	_	7	nsubj
+7	do	do	VERB	_	_	_	_	0	root
+8	?	?	PUNCT	_	_	_	_	7	punct
+
+# What does `` national '' mean ?
+1	What	what	PRON	_	_	_	_	6	dobj
+2	does	does	AUX	_	_	_	_	6	aux
+3	``	``	PUNCT	_	_	_	_	6	punct
+4	national	national	ADJ	_	_	_	_	6	dep
+5	''	''	PUNCT	_	_	_	_	6	punct
+6	mean	mean	VERB	_	_	_	_	0	root
+7	?	?	PUNCT	_	_	_	_	6	punct
+
+# And who would serve ?
+1	And	and	CCONJ	_	_	_	_	4	cc
+2	who	who	PRON	_	_	_	_	4	nsubj
+3	would	would	AUX	_	_	_	_	4	aux
+4	serve	serve	VERB	_	_	_	_	0	root
+5	?	?	PUNCT	_	_	_	_	4	punct
+
+# Youth only or all ages ?
+1	Youth	youth	NOUN	_	_	_	_	0	root
+2	only	only	ADV	_	_	_	_	5	advmod
+3	or	or	CCONJ	_	_	_	_	2	cc
+4	all	all	DET	_	_	_	_	5	det
+5	ages	ages	NOUN	_	_	_	_	1	conj
+6	?	?	PUNCT	_	_	_	_	1	punct
+
+# Many or few ?
+1	Many	many	ADJ	_	_	_	_	0	root
+2	or	or	CCONJ	_	_	_	_	1	cc
+3	few	few	ADJ	_	_	_	_	1	conj
+4	?	?	PUNCT	_	_	_	_	1	punct
+
+# Then how should we think about national service ?
+1	Then	then	ADV	_	_	_	_	5	advmod
+2	how	how	ADV	_	_	_	_	5	advmod
+3	should	should	AUX	_	_	_	_	5	aux
+4	we	we	PRON	_	_	_	_	5	nsubj
+5	think	think	VERB	_	_	_	_	0	root
+6	about	about	ADP	_	_	_	_	5	prep
+7	national	national	ADJ	_	_	_	_	8	amod
+8	service	service	NOUN	_	_	_	_	6	pobj
+9	?	?	PUNCT	_	_	_	_	5	punct
+
+# They will differ in crucial ways .
+1	They	they	PRON	_	_	_	_	3	nsubj
+2	will	will	AUX	_	_	_	_	3	aux
+3	differ	differ	VERB	_	_	_	_	0	root
+4	in	in	ADP	_	_	_	_	3	prep
+5	crucial	crucial	ADJ	_	_	_	_	6	amod
+6	ways	ways	NOUN	_	_	_	_	4	pobj
+7	.	.	PUNCT	_	_	_	_	3	punct
+
+# 2 . `` Service '' should be service .
+1	2	2	X	_	_	_	_	7	dep
+2	.	.	PUNCT	_	_	_	_	1	punct
+3	``	``	PUNCT	_	_	_	_	4	punct
+4	Service	service	NOUN	_	_	_	_	7	nsubj
+5	''	''	PUNCT	_	_	_	_	4	punct
+6	should	should	AUX	_	_	_	_	7	aux
+7	be	be	VERB	_	_	_	_	0	root
+8	service	service	NOUN	_	_	_	_	7	xcomp
+9	.	.	PUNCT	_	_	_	_	7	punct
+
+# As commonly understood , service implies sacrifice .
+1	As	as	SCONJ	_	_	_	_	3	mark
+2	commonly	commonly	ADV	_	_	_	_	3	advmod
+3	understood	understood	VERB	_	_	_	_	6	advcl
+4	,	,	PUNCT	_	_	_	_	6	punct
+5	service	service	NOUN	_	_	_	_	6	nsubj
+6	implies	implies	VERB	_	_	_	_	0	root
+7	sacrifice	sacrifice	NOUN	_	_	_	_	6	dobj
+8	.	.	PUNCT	_	_	_	_	6	punct
+
+# Why call that service ?
+1	Why	why	ADV	_	_	_	_	2	advmod
+2	call	call	VERB	_	_	_	_	0	root
+3	that	that	PRON	_	_	_	_	4	nsubj
+4	service	service	NOUN	_	_	_	_	2	xcomp
+5	?	?	PUNCT	_	_	_	_	2	punct
+
+# Compelled service is unconstitutional .
+1	Compelled	compelled	VERB	_	_	_	_	2	amod
+2	service	service	NOUN	_	_	_	_	3	nsubj
+3	is	is	VERB	_	_	_	_	0	root
+4	unconstitutional	unconstitutional	ADJ	_	_	_	_	3	acomp
+5	.	.	PUNCT	_	_	_	_	3	punct
+
+# It is also unwise and unenforceable .
+1	It	it	PRON	_	_	_	_	2	nsubj
+2	is	is	VERB	_	_	_	_	0	root
+3	also	also	ADV	_	_	_	_	2	advmod
+4	unwise	unwise	ADJ	_	_	_	_	2	acomp
+5	and	and	CCONJ	_	_	_	_	4	cc
+6	unenforceable	unenforceable	ADJ	_	_	_	_	4	conj
+7	.	.	PUNCT	_	_	_	_	2	punct
+
+# 4 . Good programs are not cheap .
+1	4	4	X	_	_	_	_	5	dep
+2	.	.	PUNCT	_	_	_	_	1	punct
+3	Good	good	ADJ	_	_	_	_	4	amod
+4	programs	programs	NOUN	_	_	_	_	5	nsubj
+5	are	are	VERB	_	_	_	_	0	root
+6	not	not	PART	_	_	_	_	5	neg
+7	cheap	cheap	ADJ	_	_	_	_	5	acomp
+8	.	.	PUNCT	_	_	_	_	5	punct
+
+# They involve stipends to participants .
+1	They	they	PRON	_	_	_	_	2	nsubj
+2	involve	involve	VERB	_	_	_	_	0	root
+3	stipends	stipends	NOUN	_	_	_	_	2	dobj
+4	to	to	ADP	_	_	_	_	3	prep
+5	participants	participants	NOUN	_	_	_	_	4	pobj
+6	.	.	PUNCT	_	_	_	_	2	punct
+
+# Are they worth that ?
+1	Are	are	VERB	_	_	_	_	0	root
+2	they	they	PRON	_	_	_	_	1	nsubj
+3	worth	worth	ADJ	_	_	_	_	1	prep
+4	that	that	PRON	_	_	_	_	3	dep
+5	?	?	PUNCT	_	_	_	_	1	punct
+
+# But the calculations are challengeable .
+1	But	but	CCONJ	_	_	_	_	4	cc
+2	the	the	DET	_	_	_	_	3	det
+3	calculations	calculations	NOUN	_	_	_	_	4	nsubj
+4	are	are	VERB	_	_	_	_	0	root
+5	challengeable	challengeable	ADJ	_	_	_	_	4	acomp
+6	.	.	PUNCT	_	_	_	_	4	punct
+
+# 5 . Underclass youth are a special concern .
+1	5	5	X	_	_	_	_	5	dep
+2	.	.	PUNCT	_	_	_	_	1	punct
+3	Underclass	underclass	NOUN	_	_	_	_	4	nn
+4	youth	youth	NOUN	_	_	_	_	5	nsubj
+5	are	are	VERB	_	_	_	_	0	root
+6	a	a	DET	_	_	_	_	8	det
+7	special	special	ADJ	_	_	_	_	8	amod
+8	concern	concern	NOUN	_	_	_	_	5	xcomp
+9	.	.	PUNCT	_	_	_	_	5	punct
+
+# Are such expenditures worthwhile , then ?
+1	Are	are	VERB	_	_	_	_	0	root
+2	such	such	ADJ	_	_	_	_	3	amod
+3	expenditures	expenditures	NOUN	_	_	_	_	1	nsubj
+4	worthwhile	worthwhile	ADJ	_	_	_	_	1	acomp
+5	,	,	PUNCT	_	_	_	_	1	punct
+6	then	then	ADV	_	_	_	_	1	advmod
+7	?	?	PUNCT	_	_	_	_	1	punct
+
+# Yes , if targeted .
+1	Yes	yes	INTJ	_	_	_	_	0	root
+2	,	,	PUNCT	_	_	_	_	1	punct
+3	if	if	SCONJ	_	_	_	_	4	mark
+4	targeted	targeted	VERB	_	_	_	_	1	dep
+5	.	.	PUNCT	_	_	_	_	1	punct
+
+# Underclass youth do n't have those opportunities .
+1	Underclass	underclass	ADJ	_	_	_	_	2	amod
+2	youth	youth	NOUN	_	_	_	_	5	nsubj
+3	do	do	AUX	_	_	_	_	5	aux
+4	n't	n't	PART	_	_	_	_	5	neg
+5	have	have	VERB	_	_	_	_	0	root
+6	those	those	DET	_	_	_	_	7	det
+7	opportunities	opportunities	NOUN	_	_	_	_	5	dobj
+8	.	.	PUNCT	_	_	_	_	5	punct
+
+# They are unlikely to be employed .
+1	They	they	PRON	_	_	_	_	2	nsubj
+2	are	are	VERB	_	_	_	_	0	root
+3	unlikely	unlikely	ADJ	_	_	_	_	2	acomp
+4	to	to	PART	_	_	_	_	6	aux
+5	be	be	AUX	_	_	_	_	6	auxpass
+6	employed	employed	VERB	_	_	_	_	3	xcomp
+7	.	.	PUNCT	_	_	_	_	2	punct
+
+# That is a service to the nation .
+1	That	that	PRON	_	_	_	_	2	nsubj
+2	is	is	VERB	_	_	_	_	0	root
+3	a	a	DET	_	_	_	_	4	det
+4	service	service	NOUN	_	_	_	_	2	xcomp
+5	to	to	ADP	_	_	_	_	4	prep
+6	the	the	DET	_	_	_	_	7	det
+7	nation	nation	NOUN	_	_	_	_	5	pobj
+8	.	.	PUNCT	_	_	_	_	2	punct
+
+# ( Lexington Books , 1986 ) .
+1	(	(	PUNCT	_	_	_	_	3	punct
+2	Lexington	lexington	PROPN	_	_	_	_	3	nn
+3	Books	books	PROPN	_	_	_	_	0	root
+4	,	,	PUNCT	_	_	_	_	3	punct
+5	1986	1986	NUM	_	_	_	_	3	appos
+6	)	)	PUNCT	_	_	_	_	3	punct
+7	.	.	PUNCT	_	_	_	_	3	punct
+
+# I think that 's less likely . ''
+1	I	i	PRON	_	_	_	_	2	nsubj
+2	think	think	VERB	_	_	_	_	0	root
+3	that	that	PRON	_	_	_	_	4	nsubj
+4	's	's	VERB	_	_	_	_	2	ccomp
+5	less	less	ADV	_	_	_	_	6	advmod
+6	likely	likely	ADJ	_	_	_	_	4	acomp
+7	.	.	PUNCT	_	_	_	_	2	punct
+8	''	''	PUNCT	_	_	_	_	2	punct
+
+# b - As of Thursday 's close .
+1	b	b	SYM	_	_	_	_	3	dep
+2	-	-	PUNCT	_	_	_	_	3	punct
+3	As	as	ADP	_	_	_	_	0	root
+4	of	of	ADP	_	_	_	_	3	pcomp
+5	Thursday	thursday	PROPN	_	_	_	_	7	poss
+6	's	's	PART	_	_	_	_	5	possessive
+7	close	close	NOUN	_	_	_	_	4	pobj
+8	.	.	PUNCT	_	_	_	_	3	punct
+
+# c - Translated at Commercial Rand exchange rate .
+1	c	c	SYM	_	_	_	_	3	dep
+2	-	-	PUNCT	_	_	_	_	3	punct
+3	Translated	translated	VERB	_	_	_	_	0	root
+4	at	at	ADP	_	_	_	_	3	prep
+5	Commercial	commercial	PROPN	_	_	_	_	8	nn
+6	Rand	rand	PROPN	_	_	_	_	8	nn
+7	exchange	exchange	NOUN	_	_	_	_	8	nn
+8	rate	rate	NOUN	_	_	_	_	4	pobj
+9	.	.	PUNCT	_	_	_	_	3	punct
+
+# e - In Canadian dollars .
+1	e	e	SYM	_	_	_	_	3	dep
+2	-	-	PUNCT	_	_	_	_	3	punct
+3	In	in	ADP	_	_	_	_	0	root
+4	Canadian	canadian	ADJ	_	_	_	_	5	amod
+5	dollars	dollars	NOUN	_	_	_	_	3	pobj
+6	.	.	PUNCT	_	_	_	_	3	punct
+
+# f - As of Wednesday 's close .
+1	f	f	SYM	_	_	_	_	3	dep
+2	-	-	PUNCT	_	_	_	_	3	punct
+3	As	as	ADP	_	_	_	_	0	root
+4	of	of	ADP	_	_	_	_	3	pcomp
+5	Wednesday	wednesday	PROPN	_	_	_	_	7	poss
+6	's	's	PART	_	_	_	_	5	possessive
+7	close	close	NOUN	_	_	_	_	4	pobj
+8	.	.	PUNCT	_	_	_	_	3	punct
+
+# g - 10.06.89 NAV:22.15 .
+1	g	g	SYM	_	_	_	_	0	root
+2	-	-	PUNCT	_	_	_	_	1	punct
+3	10.06.89	10.06.89	NUM	_	_	_	_	4	num
+4	NAV:22.15	nav:22.15	NOUN	_	_	_	_	1	dep
+5	.	.	PUNCT	_	_	_	_	1	punct
+
+# z - Not available .
+1	z	z	SYM	_	_	_	_	4	dep
+2	-	-	PUNCT	_	_	_	_	4	punct
+3	Not	not	ADV	_	_	_	_	4	neg
+4	available	available	ADJ	_	_	_	_	0	root
+5	.	.	PUNCT	_	_	_	_	4	punct
+
+# Put down that phone .
+1	Put	put	VERB	_	_	_	_	0	root
+2	down	down	ADP	_	_	_	_	1	prt
+3	that	that	DET	_	_	_	_	4	det
+4	phone	phone	NOUN	_	_	_	_	1	dobj
+5	.	.	PUNCT	_	_	_	_	1	punct
+
+# `` We understand panics and euphoria .
+1	``	``	PUNCT	_	_	_	_	3	punct
+2	We	we	PRON	_	_	_	_	3	nsubj
+3	understand	understand	VERB	_	_	_	_	0	root
+4	panics	panics	NOUN	_	_	_	_	3	dobj
+5	and	and	CCONJ	_	_	_	_	4	cc
+6	euphoria	euphoria	NOUN	_	_	_	_	4	conj
+7	.	.	PUNCT	_	_	_	_	3	punct
+
+# Other investment pros are more pessimistic .
+1	Other	other	ADJ	_	_	_	_	3	amod
+2	investment	investment	NOUN	_	_	_	_	3	nn
+3	pros	pros	NOUN	_	_	_	_	4	nsubj
+4	are	are	VERB	_	_	_	_	0	root
+5	more	more	ADV	_	_	_	_	6	advmod
+6	pessimistic	pessimistic	ADJ	_	_	_	_	4	acomp
+7	.	.	PUNCT	_	_	_	_	4	punct
+
+# `` It 's totally different . ''
+1	``	``	PUNCT	_	_	_	_	3	punct
+2	It	it	PRON	_	_	_	_	3	nsubj
+3	's	's	VERB	_	_	_	_	0	root
+4	totally	totally	ADV	_	_	_	_	5	advmod
+5	different	different	ADJ	_	_	_	_	3	acomp
+6	.	.	PUNCT	_	_	_	_	3	punct
+7	''	''	PUNCT	_	_	_	_	3	punct
+
+# `` There was no panic .
+1	``	``	PUNCT	_	_	_	_	3	punct
+2	There	there	PRON	_	_	_	_	3	expl
+3	was	was	VERB	_	_	_	_	0	root
+4	no	no	DET	_	_	_	_	5	neg
+5	panic	panic	NOUN	_	_	_	_	3	nsubj
+6	.	.	PUNCT	_	_	_	_	3	punct
+
+# S&P and MMI contracts also halt .
+1	S&P	s&p	PROPN	_	_	_	_	4	nn
+2	and	and	CCONJ	_	_	_	_	1	cc
+3	MMI	mmi	PROPN	_	_	_	_	1	conj
+4	contracts	contracts	NOUN	_	_	_	_	6	nsubj
+5	also	also	ADV	_	_	_	_	6	advmod
+6	halt	halt	VERB	_	_	_	_	0	root
+7	.	.	PUNCT	_	_	_	_	6	punct
+
+# Trading in MMI and S&P futures also halted .
+1	Trading	trading	NOUN	_	_	_	_	8	nsubj
+2	in	in	ADP	_	_	_	_	1	prep
+3	MMI	mmi	PROPN	_	_	_	_	2	pobj
+4	and	and	CCONJ	_	_	_	_	3	cc
+5	S&P	s&p	PROPN	_	_	_	_	6	nn
+6	futures	futures	NOUN	_	_	_	_	3	conj
+7	also	also	ADV	_	_	_	_	8	advmod
+8	halted	halted	VERB	_	_	_	_	0	root
+9	.	.	PUNCT	_	_	_	_	8	punct
+
+# Brady Task Force recommendations ( Jan. 1988 ) :
+1	Brady	brady	PROPN	_	_	_	_	4	nn
+2	Task	task	PROPN	_	_	_	_	4	nn
+3	Force	force	PROPN	_	_	_	_	4	nn
+4	recommendations	recommendations	NOUN	_	_	_	_	0	root
+5	(	(	PUNCT	_	_	_	_	6	punct
+6	Jan.	jan.	PROPN	_	_	_	_	4	appos
+7	1988	1988	NUM	_	_	_	_	6	num
+8	)	)	PUNCT	_	_	_	_	6	punct
+9	:	:	PUNCT	_	_	_	_	4	punct
+
+# -- Establish an overarching regulator for financial markets
+1	--	--	PUNCT	_	_	_	_	2	punct
+2	Establish	establish	VERB	_	_	_	_	0	root
+3	an	an	DET	_	_	_	_	5	det
+4	overarching	overarching	VERB	_	_	_	_	5	amod
+5	regulator	regulator	NOUN	_	_	_	_	2	dobj
+6	for	for	ADP	_	_	_	_	5	prep
+7	financial	financial	ADJ	_	_	_	_	8	amod
+8	markets	markets	NOUN	_	_	_	_	6	pobj
+
+# -- Unify trade-clearing systems
+1	--	--	PUNCT	_	_	_	_	2	punct
+2	Unify	unify	VERB	_	_	_	_	0	root
+3	trade-clearing	trade-clearing	ADJ	_	_	_	_	2	dobj
+4	systems	systems	NOUN	_	_	_	_	2	punct
+
+# -- Make margins consistent across stock and futures markets
+1	--	--	PUNCT	_	_	_	_	2	punct
+2	Make	make	VERB	_	_	_	_	0	root
+3	margins	margins	NOUN	_	_	_	_	4	nsubj
+4	consistent	consistent	ADJ	_	_	_	_	2	xcomp
+5	across	across	ADP	_	_	_	_	4	prep
+6	stock	stock	NOUN	_	_	_	_	5	pobj
+7	and	and	CCONJ	_	_	_	_	6	cc
+8	futures	futures	NOUN	_	_	_	_	6	conj
+9	markets	markets	NOUN	_	_	_	_	2	punct
+
+# SEC proposals ( May 1988 ) :
+1	SEC	sec	PROPN	_	_	_	_	2	nn
+2	proposals	proposals	NOUN	_	_	_	_	0	root
+3	(	(	PUNCT	_	_	_	_	4	punct
+4	May	may	PROPN	_	_	_	_	2	appos
+5	1988	1988	NUM	_	_	_	_	4	num
+6	)	)	PUNCT	_	_	_	_	4	punct
+7	:	:	PUNCT	_	_	_	_	2	punct
+
+# -- Require prompt reports of large securities trades .
+1	--	--	PUNCT	_	_	_	_	2	punct
+2	Require	require	VERB	_	_	_	_	0	root
+3	prompt	prompt	ADJ	_	_	_	_	4	amod
+4	reports	reports	NOUN	_	_	_	_	2	dobj
+5	of	of	ADP	_	_	_	_	4	prep
+6	large	large	ADJ	_	_	_	_	8	amod
+7	securities	securities	NOUN	_	_	_	_	8	nn
+8	trades	trades	NOUN	_	_	_	_	5	pobj
+9	.	.	PUNCT	_	_	_	_	2	punct
+
+# ( Opposed by new SEC chairman )
+1	(	(	PUNCT	_	_	_	_	2	punct
+2	Opposed	opposed	VERB	_	_	_	_	0	root
+3	by	by	ADP	_	_	_	_	2	prep
+4	new	new	ADJ	_	_	_	_	6	amod
+5	SEC	sec	PROPN	_	_	_	_	6	nn
+6	chairman	chairman	NOUN	_	_	_	_	3	pobj
+7	)	)	PUNCT	_	_	_	_	2	punct
+
+# Congressional proposal :
+1	Congressional	congressional	ADJ	_	_	_	_	2	amod
+2	proposal	proposal	NOUN	_	_	_	_	0	root
+3	:	:	PUNCT	_	_	_	_	2	punct
+
+# Replied a Justin salesman : `` Exactly . ''
+1	Replied	replied	VERB	_	_	_	_	0	root
+2	a	a	DET	_	_	_	_	4	det
+3	Justin	justin	PROPN	_	_	_	_	4	nn
+4	salesman	salesman	NOUN	_	_	_	_	1	nsubj
+5	:	:	PUNCT	_	_	_	_	1	punct
+6	``	``	PUNCT	_	_	_	_	1	punct
+7	Exactly	exactly	ADV	_	_	_	_	1	advmod
+8	.	.	PUNCT	_	_	_	_	1	punct
+9	''	''	PUNCT	_	_	_	_	1	punct
+
+# The visitor waxed enthusiastic and promised to return .
+1	The	the	DET	_	_	_	_	2	det
+2	visitor	visitor	NOUN	_	_	_	_	3	nsubj
+3	waxed	waxed	VERB	_	_	_	_	0	root
+4	enthusiastic	enthusiastic	ADJ	_	_	_	_	3	acomp
+5	and	and	CCONJ	_	_	_	_	3	cc
+6	promised	promised	VERB	_	_	_	_	3	conj
+7	to	to	PART	_	_	_	_	8	aux
+8	return	return	VERB	_	_	_	_	6	xcomp
+9	.	.	PUNCT	_	_	_	_	3	punct
+
+# ( Sony itself declines to comment . )
+1	(	(	PUNCT	_	_	_	_	4	punct
+2	Sony	sony	PROPN	_	_	_	_	4	nsubj
+3	itself	itself	PRON	_	_	_	_	2	npadvmod
+4	declines	declines	VERB	_	_	_	_	0	root
+5	to	to	PART	_	_	_	_	6	aux
+6	comment	comment	VERB	_	_	_	_	4	xcomp
+7	.	.	PUNCT	_	_	_	_	4	punct
+8	)	)	PUNCT	_	_	_	_	4	punct
+
+# It 's also costly .
+1	It	it	PRON	_	_	_	_	2	nsubj
+2	's	's	VERB	_	_	_	_	0	root
+3	also	also	ADV	_	_	_	_	2	advmod
+4	costly	costly	ADJ	_	_	_	_	2	acomp
+5	.	.	PUNCT	_	_	_	_	2	punct
+
+# Both companies rejected the offers .
+1	Both	both	DET	_	_	_	_	2	det
+2	companies	companies	NOUN	_	_	_	_	3	nsubj
+3	rejected	rejected	VERB	_	_	_	_	0	root
+4	the	the	DET	_	_	_	_	5	det
+5	offers	offers	NOUN	_	_	_	_	3	dobj
+6	.	.	PUNCT	_	_	_	_	3	punct
+
+# The previous agreement expired Thursday .
+1	The	the	DET	_	_	_	_	3	det
+2	previous	previous	ADJ	_	_	_	_	3	amod
+3	agreement	agreement	NOUN	_	_	_	_	4	nsubj
+4	expired	expired	VERB	_	_	_	_	0	root
+5	Thursday	thursday	PROPN	_	_	_	_	4	tmod
+6	.	.	PUNCT	_	_	_	_	4	punct
+
+# Giant agreed last month to purchase the carrier .
+1	Giant	giant	PROPN	_	_	_	_	2	nsubj
+2	agreed	agreed	VERB	_	_	_	_	0	root
+3	last	last	ADJ	_	_	_	_	4	amod
+4	month	month	NOUN	_	_	_	_	2	tmod
+5	to	to	PART	_	_	_	_	6	aux
+6	purchase	purchase	VERB	_	_	_	_	2	xcomp
+7	the	the	DET	_	_	_	_	8	det
+8	carrier	carrier	NOUN	_	_	_	_	6	dobj
+9	.	.	PUNCT	_	_	_	_	2	punct
+
+# Goldman officials declined to comment .
+1	Goldman	goldman	PROPN	_	_	_	_	2	nn
+2	officials	officials	NOUN	_	_	_	_	3	nsubj
+3	declined	declined	VERB	_	_	_	_	0	root
+4	to	to	PART	_	_	_	_	5	aux
+5	comment	comment	VERB	_	_	_	_	3	xcomp
+6	.	.	PUNCT	_	_	_	_	3	punct
+
+# It was herd instinct . ''
+1	It	it	PRON	_	_	_	_	2	nsubj
+2	was	was	VERB	_	_	_	_	0	root
+3	herd	herd	NOUN	_	_	_	_	4	nn
+4	instinct	instinct	NOUN	_	_	_	_	2	xcomp
+5	.	.	PUNCT	_	_	_	_	2	punct
+6	''	''	PUNCT	_	_	_	_	2	punct
+
+# Friday 's Market Activity
+1	Friday	friday	PROPN	_	_	_	_	4	poss
+2	's	's	PART	_	_	_	_	1	possessive
+3	Market	market	PROPN	_	_	_	_	4	nn
+4	Activity	activity	PROPN	_	_	_	_	0	root
+
+# Bond prices barely budged until midday .
+1	Bond	bond	NOUN	_	_	_	_	2	nn
+2	prices	prices	NOUN	_	_	_	_	4	nsubj
+3	barely	barely	ADV	_	_	_	_	4	advmod
+4	budged	budged	VERB	_	_	_	_	0	root
+5	until	until	ADP	_	_	_	_	4	prep
+6	midday	midday	NOUN	_	_	_	_	5	pobj
+7	.	.	PUNCT	_	_	_	_	4	punct
+
+# Municipal bonds rose as much as 3/4 point .
+1	Municipal	municipal	ADJ	_	_	_	_	2	amod
+2	bonds	bonds	NOUN	_	_	_	_	3	nsubj
+3	rose	rose	VERB	_	_	_	_	0	root
+4	as	as	ADV	_	_	_	_	7	quantmod
+5	much	much	ADV	_	_	_	_	7	quantmod
+6	as	as	ADP	_	_	_	_	7	quantmod
+7	3/4	3/4	NUM	_	_	_	_	8	num
+8	point	point	NOUN	_	_	_	_	3	dobj
+9	.	.	PUNCT	_	_	_	_	3	punct
+
+# Roger Lowenstein contributed to this article .
+1	Roger	roger	PROPN	_	_	_	_	2	nn
+2	Lowenstein	lowenstein	PROPN	_	_	_	_	3	nsubj
+3	contributed	contributed	VERB	_	_	_	_	0	root
+4	to	to	ADP	_	_	_	_	3	prep
+5	this	this	DET	_	_	_	_	6	det
+6	article	article	NOUN	_	_	_	_	4	pobj
+7	.	.	PUNCT	_	_	_	_	3	punct
+
+# Congratulations , Mr. Secretary and Mr. Congressman .
+1	Congratulations	congratulations	INTJ	_	_	_	_	4	discourse
+2	,	,	PUNCT	_	_	_	_	4	punct
+3	Mr.	mr.	PROPN	_	_	_	_	4	nn
+4	Secretary	secretary	PROPN	_	_	_	_	0	root
+5	and	and	CCONJ	_	_	_	_	4	cc
+6	Mr.	mr.	PROPN	_	_	_	_	7	nn
+7	Congressman	congressman	PROPN	_	_	_	_	4	conj
+8	.	.	PUNCT	_	_	_	_	4	punct
+
+# They are better capitalized .
+1	They	they	PRON	_	_	_	_	4	nsubjpass
+2	are	are	AUX	_	_	_	_	4	auxpass
+3	better	better	ADV	_	_	_	_	4	advmod
+4	capitalized	capitalized	VERB	_	_	_	_	0	root
+5	.	.	PUNCT	_	_	_	_	4	punct
+
+# The Fed promises any needed liquidity .
+1	The	the	DET	_	_	_	_	2	det
+2	Fed	fed	PROPN	_	_	_	_	3	nsubj
+3	promises	promises	VERB	_	_	_	_	0	root
+4	any	any	DET	_	_	_	_	6	det
+5	needed	needed	VERB	_	_	_	_	6	amod
+6	liquidity	liquidity	NOUN	_	_	_	_	3	dobj
+7	.	.	PUNCT	_	_	_	_	3	punct
+
+# Interest income and most fee income was strong .
+1	Interest	interest	NOUN	_	_	_	_	2	nn
+2	income	income	NOUN	_	_	_	_	7	nsubj
+3	and	and	CCONJ	_	_	_	_	2	cc
+4	most	most	ADJ	_	_	_	_	6	amod
+5	fee	fee	NOUN	_	_	_	_	6	nn
+6	income	income	NOUN	_	_	_	_	2	conj
+7	was	was	VERB	_	_	_	_	0	root
+8	strong	strong	ADJ	_	_	_	_	7	acomp
+9	.	.	PUNCT	_	_	_	_	7	punct
+
+# As for Mr. Papandreou ?
+1	As	as	ADP	_	_	_	_	0	root
+2	for	for	ADP	_	_	_	_	1	pcomp
+3	Mr.	mr.	PROPN	_	_	_	_	4	nn
+4	Papandreou	papandreou	PROPN	_	_	_	_	2	pobj
+5	?	?	PUNCT	_	_	_	_	1	punct
+
+# The dollar was trading sharply lower in Tokyo .
+1	The	the	DET	_	_	_	_	2	det
+2	dollar	dollar	NOUN	_	_	_	_	4	nsubj
+3	was	was	AUX	_	_	_	_	4	aux
+4	trading	trading	VERB	_	_	_	_	0	root
+5	sharply	sharply	ADV	_	_	_	_	6	advmod
+6	lower	lower	ADJ	_	_	_	_	4	advmod
+7	in	in	ADP	_	_	_	_	4	prep
+8	Tokyo	tokyo	PROPN	_	_	_	_	7	pobj
+9	.	.	PUNCT	_	_	_	_	4	punct
+
+# The Boeing strike is starting to affect airlines .
+1	The	the	DET	_	_	_	_	3	det
+2	Boeing	boeing	PROPN	_	_	_	_	3	nn
+3	strike	strike	NOUN	_	_	_	_	5	nsubj
+4	is	is	AUX	_	_	_	_	5	aux
+5	starting	starting	VERB	_	_	_	_	0	root
+6	to	to	PART	_	_	_	_	7	aux
+7	affect	affect	VERB	_	_	_	_	5	xcomp
+8	airlines	airlines	NOUN	_	_	_	_	7	dobj
+9	.	.	PUNCT	_	_	_	_	5	punct
+
+# Japan 's steel quota will be cut significantly .
+1	Japan	japan	PROPN	_	_	_	_	4	poss
+2	's	's	PART	_	_	_	_	1	possessive
+3	steel	steel	NOUN	_	_	_	_	4	nn
+4	quota	quota	NOUN	_	_	_	_	7	nsubjpass
+5	will	will	AUX	_	_	_	_	7	aux
+6	be	be	AUX	_	_	_	_	7	auxpass
+7	cut	cut	VERB	_	_	_	_	0	root
+8	significantly	significantly	ADV	_	_	_	_	7	advmod
+9	.	.	PUNCT	_	_	_	_	7	punct
+
+# Markets --
+1	Markets	markets	NOUN	_	_	_	_	0	root
+2	--	--	PUNCT	_	_	_	_	1	punct
+
+# Stocks : Volume 251,170,000 shares .
+1	Stocks	stocks	NOUN	_	_	_	_	0	root
+2	:	:	PUNCT	_	_	_	_	1	punct
+3	Volume	volume	NOUN	_	_	_	_	1	dep
+4	251,170,000	251,170,000	NUM	_	_	_	_	5	num
+5	shares	shares	NOUN	_	_	_	_	3	dep
+6	.	.	PUNCT	_	_	_	_	1	punct
+
+# HOUSTON-CALGARY ALLIANCE :
+1	HOUSTON-CALGARY	houston-calgary	PROPN	_	_	_	_	2	nn
+2	ALLIANCE	alliance	PROPN	_	_	_	_	0	root
+3	:	:	PUNCT	_	_	_	_	2	punct
+
+# FCC COUNSEL JOINS FIRM :
+1	FCC	fcc	PROPN	_	_	_	_	2	nn
+2	COUNSEL	counsel	NOUN	_	_	_	_	3	nsubj
+3	JOINS	joins	VERB	_	_	_	_	0	root
+4	FIRM	firm	NOUN	_	_	_	_	5	nn
+5	:	:	PUNCT	_	_	_	_	3	dobj
+
+# He left the company in 1987 .
+1	He	he	PRON	_	_	_	_	2	nsubj
+2	left	left	VERB	_	_	_	_	0	root
+3	the	the	DET	_	_	_	_	4	det
+4	company	company	NOUN	_	_	_	_	2	dobj
+5	in	in	ADP	_	_	_	_	2	prep
+6	1987	1987	NUM	_	_	_	_	5	pobj
+7	.	.	PUNCT	_	_	_	_	2	punct
+
+# It will have its headquarters in Munich .
+1	It	it	PRON	_	_	_	_	3	nsubj
+2	will	will	AUX	_	_	_	_	3	aux
+3	have	have	VERB	_	_	_	_	0	root
+4	its	its	PRON	_	_	_	_	5	poss
+5	headquarters	headquarters	NOUN	_	_	_	_	3	dobj
+6	in	in	ADP	_	_	_	_	3	prep
+7	Munich	munich	PROPN	_	_	_	_	6	pobj
+8	.	.	PUNCT	_	_	_	_	3	punct
+
+# Siemens will retain majority voting rights .
+1	Siemens	siemens	PROPN	_	_	_	_	3	nsubj
+2	will	will	AUX	_	_	_	_	3	aux
+3	retain	retain	VERB	_	_	_	_	0	root
+4	majority	majority	NOUN	_	_	_	_	6	nn
+5	voting	voting	VERB	_	_	_	_	6	amod
+6	rights	rights	NOUN	_	_	_	_	3	dobj
+7	.	.	PUNCT	_	_	_	_	3	punct
+
+# He said he will now consider those offers .
+1	He	he	PRON	_	_	_	_	2	nsubj
+2	said	said	VERB	_	_	_	_	0	root
+3	he	he	PRON	_	_	_	_	6	nsubj
+4	will	will	AUX	_	_	_	_	6	aux
+5	now	now	ADV	_	_	_	_	6	advmod
+6	consider	consider	VERB	_	_	_	_	2	ccomp
+7	those	those	DET	_	_	_	_	8	det
+8	offers	offers	NOUN	_	_	_	_	6	dobj
+9	.	.	PUNCT	_	_	_	_	2	punct
+
+# The company did n't elaborate .
+1	The	the	DET	_	_	_	_	2	det
+2	company	company	NOUN	_	_	_	_	5	nsubj
+3	did	did	AUX	_	_	_	_	5	aux
+4	n't	n't	PART	_	_	_	_	5	neg
+5	elaborate	elaborate	ADJ	_	_	_	_	0	root
+6	.	.	PUNCT	_	_	_	_	5	punct
+
+# The real-estate market suffered even more severe setbacks .
+1	The	the	DET	_	_	_	_	3	det
+2	real-estate	real-estate	NOUN	_	_	_	_	3	nn
+3	market	market	NOUN	_	_	_	_	4	nsubj
+4	suffered	suffered	VERB	_	_	_	_	0	root
+5	even	even	ADV	_	_	_	_	7	advmod
+6	more	more	ADV	_	_	_	_	7	advmod
+7	severe	severe	ADJ	_	_	_	_	8	amod
+8	setbacks	setbacks	NOUN	_	_	_	_	4	dobj
+9	.	.	PUNCT	_	_	_	_	4	punct
+
+# Office construction dropped 97 % .
+1	Office	office	NOUN	_	_	_	_	2	nn
+2	construction	construction	NOUN	_	_	_	_	3	nsubj
+3	dropped	dropped	VERB	_	_	_	_	0	root
+4	97	97	NUM	_	_	_	_	5	num
+5	%	%	SYM	_	_	_	_	3	dobj
+6	.	.	PUNCT	_	_	_	_	3	punct
+
+# As usual , the real-estate market had overreacted .
+1	As	as	ADP	_	_	_	_	8	prep
+2	usual	usual	ADJ	_	_	_	_	1	pobj
+3	,	,	PUNCT	_	_	_	_	8	punct
+4	the	the	DET	_	_	_	_	6	det
+5	real-estate	real-estate	NOUN	_	_	_	_	6	nn
+6	market	market	NOUN	_	_	_	_	8	nsubj
+7	had	had	AUX	_	_	_	_	8	aux
+8	overreacted	overreacted	VERB	_	_	_	_	0	root
+9	.	.	PUNCT	_	_	_	_	8	punct
+
+# Manufacturers are upgrading standby power plants .
+1	Manufacturers	manufacturers	NOUN	_	_	_	_	3	nsubj
+2	are	are	AUX	_	_	_	_	3	aux
+3	upgrading	upgrading	VERB	_	_	_	_	0	root
+4	standby	standby	ADJ	_	_	_	_	6	amod
+5	power	power	NOUN	_	_	_	_	6	nn
+6	plants	plants	NOUN	_	_	_	_	3	dobj
+7	.	.	PUNCT	_	_	_	_	3	punct
+
+# Indeed it is .
+1	Indeed	indeed	ADV	_	_	_	_	3	advmod
+2	it	it	PRON	_	_	_	_	3	nsubj
+3	is	is	VERB	_	_	_	_	0	root
+4	.	.	PUNCT	_	_	_	_	3	punct
+
+# Six years ago they were tantalizingly close .
+1	Six	six	NUM	_	_	_	_	2	num
+2	years	years	NOUN	_	_	_	_	3	npadvmod
+3	ago	ago	ADP	_	_	_	_	5	advmod
+4	they	they	PRON	_	_	_	_	5	nsubj
+5	were	were	VERB	_	_	_	_	0	root
+6	tantalizingly	tantalizingly	ADV	_	_	_	_	7	advmod
+7	close	close	ADJ	_	_	_	_	5	acomp
+8	.	.	PUNCT	_	_	_	_	5	punct
+
+# The FCC effort collapsed .
+1	The	the	DET	_	_	_	_	3	det
+2	FCC	fcc	PROPN	_	_	_	_	3	nn
+3	effort	effort	NOUN	_	_	_	_	4	nsubj
+4	collapsed	collapsed	VERB	_	_	_	_	0	root
+5	.	.	PUNCT	_	_	_	_	4	punct
+
+# The networks and studios have bickered ever since .
+1	The	the	DET	_	_	_	_	2	det
+2	networks	networks	NOUN	_	_	_	_	6	nsubj
+3	and	and	CCONJ	_	_	_	_	2	cc
+4	studios	studios	NOUN	_	_	_	_	2	conj
+5	have	have	AUX	_	_	_	_	6	aux
+6	bickered	bickered	VERB	_	_	_	_	0	root
+7	ever	ever	ADV	_	_	_	_	8	advmod
+8	since	since	ADP	_	_	_	_	6	advmod
+9	.	.	PUNCT	_	_	_	_	6	punct
+
+# The company and its executives deny the charges .
+1	The	the	DET	_	_	_	_	2	det
+2	company	company	NOUN	_	_	_	_	6	nsubj
+3	and	and	CCONJ	_	_	_	_	2	cc
+4	its	its	PRON	_	_	_	_	5	poss
+5	executives	executives	NOUN	_	_	_	_	2	conj
+6	deny	deny	VERB	_	_	_	_	0	root
+7	the	the	DET	_	_	_	_	8	det
+8	charges	charges	NOUN	_	_	_	_	6	dobj
+9	.	.	PUNCT	_	_	_	_	6	punct
+
+# There 's no turning back . ''
+1	There	there	PRON	_	_	_	_	2	expl
+2	's	's	VERB	_	_	_	_	0	root
+3	no	no	DET	_	_	_	_	5	neg
+4	turning	turning	VERB	_	_	_	_	5	amod
+5	back	back	NOUN	_	_	_	_	2	nsubj
+6	.	.	PUNCT	_	_	_	_	2	punct
+7	''	''	PUNCT	_	_	_	_	2	punct
+
+# They never considered themselves to be anything else .
+1	They	they	PRON	_	_	_	_	3	nsubj
+2	never	never	ADV	_	_	_	_	3	neg
+3	considered	considered	VERB	_	_	_	_	0	root
+4	themselves	themselves	PRON	_	_	_	_	3	dobj
+5	to	to	PART	_	_	_	_	6	aux
+6	be	be	VERB	_	_	_	_	3	xcomp
+7	anything	anything	PRON	_	_	_	_	6	xcomp
+8	else	else	ADV	_	_	_	_	7	advmod
+9	.	.	PUNCT	_	_	_	_	3	punct
+
