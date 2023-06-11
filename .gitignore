@@ -25,8 +25,8 @@ rescore_module/data/
 rescore_module/models/
 
 test/*
-
-outputs/
+outputs/*
+obs/*
 
 forest_decoder_obs.py
 
