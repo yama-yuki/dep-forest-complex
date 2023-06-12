@@ -103,11 +103,11 @@ class DepHeadBinarizer:
         '''
         r_tails = sorted([tail for tail in tree.relation[node] if tail>node],reverse=True)
         l_tails = sorted([tail for tail in tree.relation[node] if tail<node])
-        print('---')
-        print(node)
-        print(r_tails)
-        print(l_tails)
-        print('---')
+        #print('---')
+        #print(node)
+        #print(r_tails)
+        #print(l_tails)
+        #print('---')
 
         if not l_tails and not r_tails: #terminal
             self.visited.add(node)
@@ -120,9 +120,9 @@ class DepHeadBinarizer:
             
             for rt in r_tails:
                 ## x -> x, rt
-                print('rt')
-                print(rt)
-                print(sorted(governed))
+                #print('rt')
+                #print(rt)
+                #print(sorted(governed))
 
                 rt_governed = []
                 dfs_for_span(tree, rt, rt_governed)
@@ -135,9 +135,9 @@ class DepHeadBinarizer:
 
             for lt in l_tails:
                 ## x -> lt, x
-                print('lt')
-                print(lt)
-                print(sorted(governed))
+                #print('lt')
+                #print(lt)
+                #print(sorted(governed))
 
                 lt_governed = []
                 dfs_for_span(tree, lt, lt_governed)
@@ -152,9 +152,9 @@ class DepHeadBinarizer:
                 ## x -> x, rt
                 rt_governed = []
                 dfs_for_span(tree, rt, rt_governed)
-                print('rt')
-                print(rt)
-                print(rt_governed)
+                #print('rt')
+                #print(rt)
+                #print(rt_governed)
                 tails = [node,rt]
                 edge = self._make_edge(tree, node, rt, tails, rt_governed, rt_governed, 'rt')
                 self.actions.append(edge)
@@ -165,9 +165,9 @@ class DepHeadBinarizer:
                 ## x -> lt, x
                 lt_governed = []
                 dfs_for_span(tree, lt, lt_governed)
-                print('lt')
-                print(lt)
-                print(lt_governed)
+                #print('lt')
+                #print(lt)
+                #print(lt_governed)
                 tails = [lt,node]
                 edge = self._make_edge(tree, node, lt, tails, lt_governed, lt_governed, 'lt')
                 self.actions.append(edge)
@@ -188,7 +188,7 @@ class DepHeadBinarizer:
 
         node_name = '_'.join(map(str,[node]+tails+tri_span+[label]))
         edge = (node,tails,tri_span,node_name) #(1, [1, 5], [0, 4, 9], '1_1_5_0_4_9')
-        print(edge)
+        #print(edge)
         return edge
     
     def __str__(self):
@@ -227,7 +227,7 @@ def form_cfg_hyperedges(edges, parse_probs, rel_probs, rel_vocab):
     tree = Tree(edges)
 
     if len(tree.relation[0])>1:
-        print('invalid_tree')
+        #print('invalid_tree')
         return
     top = tree.find_top()
 
@@ -235,7 +235,7 @@ def form_cfg_hyperedges(edges, parse_probs, rel_probs, rel_vocab):
     #actions,visited = [],set()
     #cfg_conversion(tree, top, actions, visited)
     db = DepHeadBinarizer(tree,top) 
-    print(db.actions)
+    #print(db.actions)
 
     ## create a set of hyperedges
     hyperedges = set()
@@ -359,14 +359,14 @@ def cube_pruning(s, t, kk, memory, parse_probs, rel_probs, rel_vocab, rescores, 
                 #rhs_he = form_cfg_hyperedges(memory[rhs][k2].edges, parse_probs, rel_probs, rel_vocab)
                 all_he = form_cfg_hyperedges(edges, parse_probs, rel_probs, rel_vocab)
                 #wo_root_he = form_cfg_hyperedges(set(filter(lambda x: x[1]!=0, edges)), parse_probs, rel_probs, rel_vocab)
-                print(edges)
+                #print(edges)
                 #print(set(filter(lambda x: x[1]!=0, edges)))
                 #print([he.as_list() for he in hyperedges])
                 #for hyperedges in [lhs_he, rhs_he, all_he, wo_root_he]:
                 for hyperedges in [all_he]:
                     if hyperedges is not None:
                         for he in hyperedges:
-                            print(he.he_name)
+                            #print(he.he_name)
                             if he.as_dict() not in forest['hyperedges']:
                                 forest['hyperedges'].append(he.as_dict())
                                 forest['nodes'].append(he.he_name)
@@ -462,7 +462,11 @@ eisner_dp_forest: returns binarized dependency forest
 def eisner_dp_nbest(length, parse_probs, rel_probs, rel_vocab, rescores, RESCORE, NBEST, ALPHA):
     #st_time = time.time()
     forest = {'hyperedges': [], 'nodes': [], 'node_ids': [i for i in range(int(length+1))]}
-    
+
+    '''init
+    memory:
+    defaultdict(<class 'list'>, {(0, 0, '->', 0): [0], (0, 0, '->', 1): [0], (0, 0, '<-', 0): [0], (0, 0, '<-', 1): [0], (1, 1, '->', 0): [0], (1, 1, '->', 1): [0], (1, 1, '<-', 0): [0], (1, 1, '<-', 1): [0], (2, 2, '->', 0): [0], (2, 2, '->', 1): [0], (2, 2, '<-', 0): [0], (2, 2, '<-', 1): [0], (3, 3, '->', 0): [0], (3, 3, '->', 1): [0], (3, 3, '<-', 0): [0], (3, 3, '<-', 1): [0], (4, 4, '->', 0): [0], (4, 4, '->', 1): [0], (4, 4, '<-', 0): [0], (4, 4, '<-', 1): [0], (5, 5, '->', 0): [0], (5, 5, '->', 1): [0], (5, 5, '<-', 0): [0], (5, 5, '<-', 1): [0]})
+    '''
     memory = defaultdict(list)
     for i in range(0, length+1): ##token_len
         for d in ('->', '<-'): ##direction
@@ -484,6 +488,12 @@ def eisner_dp_nbest(length, parse_probs, rel_probs, rel_vocab, rescores, RESCORE
             assert prb > 0.0
             nbest[-1].append((prb,mi,hi,lb))
 
+    '''ids
+    mi: child idx
+    hi: head idx
+    lb: relation label
+    '''
+
     '''
     print(len(forest['hyperedges']))
     len_file='len.out'
@@ -502,11 +512,6 @@ def eisner_dp_forest(length, parse_probs, rel_probs, rel_vocab, NBEST):
     ALPHA=None
     RESCORE=False
     rescores=None
-
-    '''init
-    memory:
-    defaultdict(<class 'list'>, {(0, 0, '->', 0): [0], (0, 0, '->', 1): [0], (0, 0, '<-', 0): [0], (0, 0, '<-', 1): [0], (1, 1, '->', 0): [0], (1, 1, '->', 1): [0], (1, 1, '<-', 0): [0], (1, 1, '<-', 1): [0], (2, 2, '->', 0): [0], (2, 2, '->', 1): [0], (2, 2, '<-', 0): [0], (2, 2, '<-', 1): [0], (3, 3, '->', 0): [0], (3, 3, '->', 1): [0], (3, 3, '<-', 0): [0], (3, 3, '<-', 1): [0], (4, 4, '->', 0): [0], (4, 4, '->', 1): [0], (4, 4, '<-', 0): [0], (4, 4, '<-', 1): [0], (5, 5, '->', 0): [0], (5, 5, '->', 1): [0], (5, 5, '<-', 0): [0], (5, 5, '<-', 1): [0]})
-    '''
 
     memory = defaultdict(list)
     for i in range(0, length+1): ##token_len
@@ -528,28 +533,6 @@ def eisner_dp_forest(length, parse_probs, rel_probs, rel_vocab, NBEST):
         print hyp.edges, hyp.logp, hyp.num_roots
     print('Length %d, time %f' %(length, time.time()-st_time))
     return [list(hyp.edges) for hyp in memory[(0,length,'->',1)]] # return edges containing (mi,hi,lb)
-    '''
-
-    '''ids
-    mi: child idx
-    hi: head idx
-    lb: relation label
-    '''
-
-    nbest = []
-    for hyp in memory[(0,length,'->',1)]:
-        nbest.append([])
-        for mi,hi,lb in hyp.edges:
-            prb = parse_probs[mi,hi] * rel_probs[mi,hi,lb]
-            assert prb > 0.0
-            nbest[-1].append((prb,mi,hi,lb))
-
-    print(len(forest['hyperedges']))
-    '''
-    len_file='len.out'
-    with open(len_file, 'a') as f:
-        f.write(str(len(forest['node_ids']))+' '+str(len(forest['hyperedges'])))
-        f.write('\n')
     '''
 
     return forest

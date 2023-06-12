@@ -12,7 +12,7 @@ alpha=1
 beta=1
 
 ## mode
-rescore=True
+rescore=False
 test=False
 
 if [ ${rescore} = True ] ; then

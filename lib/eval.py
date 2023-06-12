@@ -20,36 +20,6 @@ def make_conllu_list(lines):
 
     return conllu_list
 
-'''
-def evaluate_from_conllu_list(conllu_list):
-    punct = set(['``', "''", ':', ',', '.', 'PU', 'PUNCT'])
-
-    correct = {'UAS': [], 'LAS': []}
-
-    for nbests in conllu_list:
-        uas_res, las_res = [], []
-
-        for lines in nbests[:1]: ## <-
-            
-
-            for line in lines:
-                #line = line.strip().split('\t')
-                if len(line) == 10 and line[4] not in punct:
-                    correct['UAS'].append(0)
-                    correct['LAS'].append(0)
-                    if line[6] == line[8]:
-                        correct['UAS'][-1] = 1
-                    ##if line[7] == line[9]:
-                    if line[6] == line[8] and line[7] == line[9]:
-                        correct['LAS'][-1] = 1
-            correct = {k:np.array(v) for k, v in correct.items()}
-            uas, las = np.mean(correct['UAS']) * 100, np.mean(correct['LAS']) * 100
-            uas_res.append(uas)
-            las_res.append(las)
-
-    print('UAS:'+str((np.mean(correct['UAS']) * 100), 'LAS: '+str(np.mean(correct['LAS']) * 100))
-'''
-
 def evaluate(filename):
     punct = set(['``', "''", ':', ',', '.', 'PU', 'PUNCT'])
 

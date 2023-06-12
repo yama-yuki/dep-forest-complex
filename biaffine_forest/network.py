@@ -336,8 +336,8 @@ class Network(Configurable):
     all_parse_probs = []
     all_rel_probs = []
     all_tags = []
-
     all_sents = []
+
     btch_idx = 0
     for (feed_dict, sents) in minibatches():
       print('N-best batch {}'.format(btch_idx))
@@ -347,23 +347,31 @@ class Network(Configurable):
       mb_probs = sess.run(op, feed_dict=feed_dict)
 
       forests, parse_probs_list, rel_probs_list, input_tags_list = self.model.validate_nbest_forest(mb_inputs, mb_targets, mb_probs, self.rels, sents, self.words, self.tags, NBEST)
+
+      '''
       all_forests.extend(forests)
       all_parse_probs.extend(parse_probs_list)
       all_rel_probs.extend(rel_probs_list)
       all_tags.extend(input_tags_list)
       all_sents.extend([[w for w in sent] for sent in sents])
+      '''
+      all_forests=forests
+      all_parse_probs=parse_probs_list
+      all_rel_probs=rel_probs_list
+      all_tags=input_tags_list
+      all_sents=[[w for w in sent] for sent in sents]
 
-    pkl_dir = 'pkl_test'
-    with open(pkl_dir+'/forests.pkl', 'wb') as p1:
-      pkl.dump(all_forests, p1)
-    with open(pkl_dir+'/parse_probs.pkl', 'wb') as p2:
-      pkl.dump(all_parse_probs, p2)
-    with open(pkl_dir+'/rel_probs.pkl', 'wb') as p3:
-      pkl.dump(all_rel_probs, p3)  
-    with open(pkl_dir+'/sents.pkl', 'wb') as p4:
-      pkl.dump(all_sents, p4)
-    with open(pkl_dir+'/tags.pkl', 'wb') as p5:
-      pkl.dump(all_tags, p5)
+      pkl_dir = 'pkl_test'
+      with open(os.path.join(pkl_dir,str(btch_idx)+'forests.pkl'), 'wb') as p1:
+        pkl.dump(all_forests, p1)
+      with open(os.path.join(pkl_dir,str(btch_idx)+'parse_probs.pkl'), 'wb') as p2:
+        pkl.dump(all_parse_probs, p2)
+      with open(os.path.join(pkl_dir,str(btch_idx)+'rel_probs.pkl'), 'wb') as p3:
+        pkl.dump(all_rel_probs, p3)  
+      with open(os.path.join(pkl_dir,str(btch_idx)+'sents.pkl'), 'wb') as p4:
+        pkl.dump(all_sents, p4)
+      with open(os.path.join(pkl_dir,str(btch_idx)+'tags.pkl'), 'wb') as p5:
+        pkl.dump(all_tags, p5)
 
     return
 

@@ -5,7 +5,7 @@
 PARSER_DIR=/home/is/yuki-yama/work/d3/dep-forest-complex/biaffine_forest
 
 save_name=saves/ptb_cophead
-NBEST=16
+NBEST=4
 
 . ~/.bashrc
 conda activate for

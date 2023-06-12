@@ -41,7 +41,7 @@ class HypoD:
 ## (A) Forest Reader
 ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 
-def node2hyperedge(forest):
+def id2hyperedge(forest):
     '''
     forest_d[node_name]: hyperedge
     '''
@@ -84,14 +84,14 @@ def load_forest(forest):
 
     hyperedge_id: X_A_B_a_c_b_lb
     Xspan: X, a, b
-    forest_d: node_id -> hyperedge
+    forest_d: hyperedge_id -> hyperedge
     Xspan_forest_d: (X, a, b) -> list(hyperedge_ids)
     '''
 
-    ## a list of node_ids
+    ## a list of hyperedge_ids
     hyperedge_ids = forest['nodes']
-    ## node_id->hyperedge
-    forest_d = node2hyperedge(forest)
+    ## hyperedge_id->hyperedge
+    forest_d = id2hyperedge(forest)
     ## sorting hyperedges based on span_len
     Xspans = topological_sort(hyperedge_ids)
     ## node_span_range->[hyperedges]
@@ -127,7 +127,7 @@ def topological_sort(hyperedge_ids):
 ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 
 def main_loop(forest, parse_probs, rel_probs, rescore_matrix, rescore_config, sent, tags, out_path, K):
-    length = len(forest['node_ids'])
+    length = len(forest['node_ids']) # hyperedge_ids
     print('sentence length: '+str(length-1))
     #print('with root: '+str(length))
     print('total nodes: '+str(len(forest['nodes'])))
@@ -164,7 +164,7 @@ def main_loop(forest, parse_probs, rel_probs, rescore_matrix, rescore_config, se
         print('------------------------------')
         select_k(Xspan, derivations, terminals, forest_d, Xspan_forest_d, parse_probs, rel_probs, rescore_matrix, rescore_config, K)
 
-    ## the goal is to get to the root Xspan(0,-1,length-1) with all node_ids in it
+    ## the goal is to get to the root Xspan(0,-1,length-1) with all hyperedge_ids in it
     ## find 1-best and write out
     best_tree = final_1best(length, derivations, parse_probs, rel_probs)
     to_conllu(out_path, best_tree, sent, tags)
