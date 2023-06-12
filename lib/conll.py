@@ -1,4 +1,10 @@
+'''
+module for operation on trees/forests
+'''
+
 import heapq
+import os
+import pickle as pkl
 from collections import defaultdict
 from pprint import pprint
 
@@ -72,4 +78,33 @@ def to_conllu(out_path, best_tree, sent, tags):
         for line in conll_lines:
             o.write(line+'\n')
         o.write('\n')
+
+def pkl_loader(pkl_dir):
+    #pkl_dir = '/home/is/yuki-yama/work/d3/dep-forest-complex/biaffine_forest/pkl/k4'
+
+    all_forests = []
+    all_parse_probs, all_rel_probs = [], []
+    all_sents, all_tags = [], []
+
+    for n in range(1,11): ## id of buckets in parser
+        with open(os.path.join(pkl_dir,str(n)+'forests.pkl'), 'rb') as p1:
+            forests = pkl.load(p1)
+            all_forests.extend(forests)
+        with open(os.path.join(pkl_dir,str(n)+'parse_probs.pkl'), 'rb') as p2:
+            parse_probs = pkl.load(p2)
+            all_parse_probs.extend(parse_probs)
+        with open(os.path.join(pkl_dir,str(n)+'rel_probs.pkl'), 'rb') as p3:
+            rel_probs = pkl.load(p3)
+            all_rel_probs.extend(rel_probs)
+        with open(os.path.join(pkl_dir,str(n)+'sents.pkl'), 'rb') as p4:
+            sents = pkl.load(p4)
+            all_sents.extend(sents)
+        with open(os.path.join(pkl_dir,str(n)+'tags.pkl'), 'rb') as p5:
+            tags = pkl.load(p5)
+            all_tags.extend(tags)
+        print('Number of Parsed Forests: '+str(len(sents)))
+
+    print('Total: '+str(len(all_sents)))
+
+    return all_forests, all_parse_probs, all_rel_probs, all_sents, all_tags
 

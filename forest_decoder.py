@@ -17,7 +17,7 @@ from pprint import pprint
 from tqdm import tqdm
 
 from rescore_module.my_lib.rescore_main import RescoreModel
-from lib.conll import final_1best, to_conllu
+from lib.conll import final_1best, to_conllu, pkl_loader
 
 ## derivation D
 class HypoD:
@@ -269,9 +269,10 @@ def select_k(Xspan, derivations, terminals, forest_d, Xspan_forest_d, parse_prob
             has_head.add(edge[1])
         
         '''
-        [D] append new derivation to best_K_buffer
+        [D] insert new derivation to best_K_buffer
         '''
         ## stop if invalid
+        ## find position to insert
         j = -1 #init
         for i, best_K in enumerate(best_K_buffer):
             '''legacy
@@ -452,18 +453,7 @@ if __name__ == '__main__':
     print('TEST MODE: '+str(test))
 
     print('1: Loading Parsed Forests')
-    ## todo: pack pkl / currently separated for dev purposes
-    with open(os.path.join(pkl_dir,'forests.pkl'), 'rb') as p1:
-        all_forests = pkl.load(p1)
-    with open(os.path.join(pkl_dir,'parse_probs.pkl'), 'rb') as p2:
-        all_parse_probs = pkl.load(p2)
-    with open(os.path.join(pkl_dir,'rel_probs.pkl'), 'rb') as p3:
-        all_rel_probs = pkl.load(p3)
-    with open(os.path.join(pkl_dir,'sents.pkl'), 'rb') as p4:
-        all_sents = pkl.load(p4)
-    with open(os.path.join(pkl_dir,'tags.pkl'), 'rb') as p5:
-        all_tags = pkl.load(p5)
-    print('Number of Parsed Forests: '+str(len(all_forests)))
+    all_forests,all_parse_probs,all_rel_probs,all_sents,all_tags = pkl_loader(pkl_dir)
     
     cnt=0
 
@@ -483,6 +473,8 @@ if __name__ == '__main__':
             rescore_matrix = remodel.head_prediction(sent, tags)
             main_loop(forest, parse_probs, rel_probs, rescore_matrix, rescore_config, sent, tags, out_path, args.K)
             cnt+=1
+        
+        print('5: Done')
 
     ## for testing purpose using an example from devset
     else:
