@@ -17,32 +17,60 @@ Notes from [Song+,19]:
 
 Extensions: `biaffine_forest/lib/models/parser/eisner_nbest.py` (also `biaffine_forest/lib/models/parser/base_parser.py` and `biaffine_forest/network.py`)
 
-* In `eisner_nbest.py`, we added `eisner_dp_forest` that outputs a forest (a set of hypergraphs) in .json format.
-* `DepHeadBinarizer` converts intermediate eisner spans into binarized structure `BinHyperedge` by Head-Binarization method to resolve spuriousness.
-* todo: current implementation targets all spans (including incomplete) which may be causing some errors in later cube pruning. better to target only complete spans
+* In `eisner_nbest.py`, we have added `eisner_dp_forest` that outputs a forest (a set of hypergraphs) in .json format.
+* `DepHeadBinarizer` converts intermediate eisner spans (complete spans) into binarized structure `BinHyperedge` by Head-Binarization method to resolve spuriousness.
 
 ## Rescoring Module
-some experimental results and stuff: `rescore_module`
+Some experimental results and stuff: `rescore_module`
+
+* BERT-based sentence-pair model that predicts the head span of an input word (snt1) in an input sentence (snt2).
+* Our best performing model `bert-base-uncased_1_2_3e-5_32` is placed in `rescore_module/models/`.
+
+Accuracy(%) of head prediction on UD-v2 by number of subordinate clauses in a sentence:
+
+| # | biaffine | token | children | g-children |
+|:---|:---:|:---:|:---:|---:|
+| 1 | 88.15 | 89.30 | 90.45 | 89.57 |
+| 2 | 84.63 | 88.42 | 90.07 | 89.83 |
+| 3 | 78.95 | 84.21 | 80.70 | 82.46 |
+
+Models:
+
+`biaffine`: biaffine classifier
+
+`token`: BERT trained on token-level input in snt1
+
+`children`: BERT trained on children-level input in snt1
+
+`grand-children`: BERT trained on grand-children-level input in snt1
 
 ## Forest Decoder
-CURRENTLY BEING FIXED: `forest_decoder.py`
+Bugs fixed: `forest_decoder.py`
 
-Adopting Cube Pruning for Binarized Dependency Forest
+(A) Forest Reader: take out nodes from forest and sort them for cube pruning
 
-`main_loop`: load hyperedges from forest .json, initialize derivation memory, select_k for each node (head, lgov, rgov), output final derivation
+(B) Cube Pruning Algorithm: the part where search/rescore happens
 
-`select_k`: actual cube pruning function: find incoming edges, initialize cubes, manage priority queue
+* This algorithm searches Kbest derivations of a **Xspan** which is a triplet of **X** (head node), **a** (leftmost governing span boundary of X), and **b** (rightmost governing span boundary of X)
+* Then returns the resulting 1-best dependency tree with a root node (0) governing a (-1) to b (snt_len-1)
 
-`cube_next`: search on cubes, rescore inside
+(C) Rescoring Function: rescore when combining spans inside cubes
 
-`bert_rescore`: actual scoring function
+Adopting Cube Pruning for Binarized Dependency Forest:
 
-The scores in each step do not seem to align with vanilla k-best even without rescoring
-* Bugs (some duplication fixed, overevaluation: somehow keeps spans with the lower scores, tends to prune spans with broader range)
-* todo?: Rescoring model sometimes overevaluates the case where the verb of matrix clause becomes the dependent of the verb of subordinate clause. Threshold for rescoring S_BERT (e.g., rescore only when S_BERT > S_biaffine)?
-* todo?: However, it's better not adding  much complicated rules... considering improvements training-wise
+`main_loop`: load hyperedges from forest .json, initialize derivation chart, select_k for each Xspan(X,a,b), output final derivation Xspan(0,-1,snt_len-1)
+
+`select_k`: actual cube pruning function to find incoming edges, initialize cubes, manage priority queue, check validity of new derivation, insert new derivation to K-best buffer, and move on to next cube grid
+
+`cube_next`: search next combinations and rescore inside cubes
+
+`bert_rescore`: actual rescoring function
 
 ## etc
-`analyze_deprel.py`: head prediction accuracy based on deprel
+`analyze_deprel.py`: evaluate head prediction accuracy based on deprel
 
-`analyze_forest.py`: density: nodes&edges per sentence, check if gold tree is included (in progress)
+`analyze_forest.py`: analyze density (nodes&edges per sentence) if forests and check if gold tree is included (in progress)
+
+
+
+
