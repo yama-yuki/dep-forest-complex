@@ -328,6 +328,17 @@ class Network(Configurable):
     #filename = self.test_file + '_nbest.json'
     filename = self.test_file+'_'+str(NBEST)+'best_forest'+'.json'
 
+    '''
+    [1] make pkl_dir
+    '''
+    pkl_dir = os.path.join('pkl','k'+str(NBEST))
+    if not os.path.isdir(pkl_dir):
+      os.mkdir(pkl_dir)
+
+    '''
+    [2] parse by minibatches
+    '''
+
     minibatches = self.test_minibatches
     dataset = self._testset
     op = self.ops['test_op'][1]
@@ -346,7 +357,14 @@ class Network(Configurable):
       mb_targets = feed_dict[dataset.targets]
       mb_probs = sess.run(op, feed_dict=feed_dict)
 
+      '''
+      [3] actual parsing
+      '''
       forests, parse_probs_list, rel_probs_list, input_tags_list = self.model.validate_nbest_forest(mb_inputs, mb_targets, mb_probs, self.rels, sents, self.words, self.tags, NBEST)
+
+      '''
+      [4] save to pkl
+      '''
 
       '''
       all_forests.extend(forests)
@@ -361,7 +379,6 @@ class Network(Configurable):
       all_tags=input_tags_list
       all_sents=[[w for w in sent] for sent in sents]
 
-      pkl_dir = 'pkl_test'
       with open(os.path.join(pkl_dir,str(btch_idx)+'forests.pkl'), 'wb') as p1:
         pkl.dump(all_forests, p1)
       with open(os.path.join(pkl_dir,str(btch_idx)+'parse_probs.pkl'), 'wb') as p2:

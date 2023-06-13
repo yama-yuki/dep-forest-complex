@@ -11,18 +11,22 @@ PKL_DIR=${PJ_DIR}/biaffine_forest/pkl/k${EisnerK}
 
 ## parameters
 K=4
-alpha=1
-beta=1
+alpha=0.7
+beta=0.5
 
 ## mode
-rescore=False
+rescore=True
 test=False
 
 if [ ${rescore} = True ] ; then
-out_name=rescore_${K}-${alpha}-${beta} ;
+a=${alpha//'.'/''}
+b=${beta//'.'/''}
+out_name=rescore_${K}-${a}-${b};
 else
 out_name=vanilla_${K}
 fi
+
+echo ${out_name}
 
 ## out_path
 OUT_DIR=${PJ_DIR}/outputs/k${EisnerK}
