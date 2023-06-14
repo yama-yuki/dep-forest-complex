@@ -100,6 +100,14 @@ class RescoreModel:
 
         return sent_predictions
 
+    def head_prediction_lintree(self, sent, md, hd, lintree):
+        ##tail_top,head_top = sent[md-1],sent[hd-1]
+        self._to_squad(sent, lintree, self.cfg['OS']['input_path'])
+        rescore_matrix = self._predict_head()
+        bert_score = rescore_matrix[hd-1]
+
+        return bert_score
+
     def _to_squad(self, sent, cur_node, input_path):
         new_data = {"data": [{"title": "None", "paragraphs":[]}]}
         entry = {"context":"","qas":[]}

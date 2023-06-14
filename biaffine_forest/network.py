@@ -335,7 +335,7 @@ class Network(Configurable):
     ##pkl_dir = os.path.join('pkl','k'+str(NBEST))
     pkl_dir = args.pkl_dir
     if not os.path.isdir(pkl_dir):
-      os.mkdir(pkl_dir)
+      os.makedirs(pkl_dir)
 
     '''
     [2] parse by minibatches

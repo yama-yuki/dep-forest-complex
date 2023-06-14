@@ -28,3 +28,6 @@ test/
 outputs/
 obs/
 
+forest_decoder_mod.py
+forest_decoder_lintree.py
+

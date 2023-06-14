@@ -2,35 +2,72 @@
 module for operation on trees/forests
 '''
 
-import heapq
-import os
+import os, sys
 import pickle as pkl
 from collections import defaultdict
 from pprint import pprint
 
 class Tree:
     '''
-    tree structure to organize edges for output
-    edge: (head, tail)
+    For organizing edges and creating linearized tree with brackets for the snt1 input of child/g-child models.
+
+    edges: {(head, tail),...}
+    sent: ['I','am',...,'.']
+    O: 2 for child models / 3 for g-child models
     '''
-    def __init__(self, edges):
+    def __init__(self, edges, md, sent, O):
+        self.O = O
+        self.sent = sent
         self.relation = defaultdict(list)
         self.heads = set()
         self.tails = set()
-        for (head, tail) in edges:
-            self.relation[head].append(tail)
-            self.heads.add(head)
-            self.tails.add(tail)
+        for edge in edges:
+            if edge!=None:
+                (head, tail) = edge
+                self.relation[head].append(tail)
+                self.heads.add(head)
+                self.tails.add(tail)
         self._sort_rel()
-    
+        #self.top = self._find_top()
+        self.top = md
+        self.lintree = self._make_lintree()
+
     def _sort_rel(self):
         for head in self.relation:
             self.relation[head] = sorted(self.relation[head])
     
-    def find_top(self):
+    def _find_top(self):
+        top = None
         for head in self.heads:
             if head not in self.tails:
-                return head
+                top = head
+                break
+        if top:
+            return top
+        else:
+            sys.exit('No top Found: Invalid Tree')
+
+    def _make_lintree(self):
+        child_ids = self.relation[self.top]
+        child_toks = [self.sent[i-1] for i in child_ids]
+        top_tok = self.sent[self.top-1]
+        if self.O==2:
+            lintree = ' '.join([top_tok,'(']+child_toks+[')'])
+            return lintree
+        elif self.O==3:
+            tmp = [top_tok]
+            if child_ids:
+                for i in child_ids:
+                    tmp.extend(['(']+[self.sent[i-1]])
+                    gchild_ids = self.relation[i]
+                    if gchild_ids:
+                        gchild_toks = [self.sent[i-1] for i in gchild_ids]
+                        tmp.extend(['(']+gchild_toks+[')'])
+                tmp.append(')')
+            lintree = ' '.join(tmp)
+            return lintree
+        else:
+            sys.exit('Invalid O: '+str(self.O))
 
 def final_1best(length, derivations, parse_probs, rel_probs):
     '''
