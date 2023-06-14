@@ -331,7 +331,9 @@ class Network(Configurable):
     '''
     [1] make pkl_dir
     '''
-    pkl_dir = os.path.join('pkl','k'+str(NBEST))
+
+    ##pkl_dir = os.path.join('pkl','k'+str(NBEST))
+    pkl_dir = args.pkl_dir
     if not os.path.isdir(pkl_dir):
       os.mkdir(pkl_dir)
 
@@ -353,6 +355,7 @@ class Network(Configurable):
     for (feed_dict, sents) in minibatches():
       print('N-best batch {}'.format(btch_idx))
       btch_idx += 1
+
       mb_inputs = feed_dict[dataset.inputs]
       mb_targets = feed_dict[dataset.targets]
       mb_probs = sess.run(op, feed_dict=feed_dict)
@@ -600,11 +603,12 @@ if __name__ == '__main__':
   argparser.add_argument('--model', default='GRNParser')
   argparser.add_argument('--matrix', action='store_true')
   argparser.add_argument('--nbest', action='store_true')
-  argparser.add_argument('--parse_forest', action='store_true')
   argparser.add_argument('--cube', action='store_true')
   argparser.add_argument('--cubesparse', action='store_true')
 
   argparser.add_argument('--parse', action='store_true')
+  argparser.add_argument('--parse_forest', action='store_true')
+  argparser.add_argument('--pkl_dir', help='dir path to save parsed forests')
 
   argparser.add_argument('--rescore', help='inside, outside', default=False)
   argparser.add_argument('--n')
@@ -619,7 +623,7 @@ if __name__ == '__main__':
   if 'CUDA_VISIBLE_DEVICES' in os.environ:
     print("CUDA_VISIBLE_DEVICES " + os.environ['CUDA_VISIBLE_DEVICES'])
 
-  test_cases = (args.test or args.matrix or args.nbest or args.cube or args.cubesparse or args.parse or args.parse_forest)
+  test_cases = (args.test or args.matrix or args.nbest or args.cube or args.cubesparse or args.parse or args.parse_forest or args.pkl_dir)
   other_cases = test_cases or args.load
   if 'save_dir' in cargs and os.path.isdir(cargs['save_dir']) and not other_cases:
     raw_input('Save directory already exists. Press <Enter> to overwrite or <Ctrl-C> to exit.')

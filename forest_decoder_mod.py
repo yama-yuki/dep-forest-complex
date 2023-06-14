@@ -369,35 +369,44 @@ def cube_next(derivations, terminals, forest_d, label_for_incoming_edges_d, edge
         print('Aspan: '+str(Aspan)+' + Bspan: '+str(Bspan))
         md,hd = tail,X
         if Aspan in terminals and Bspan in terminals:
-            lhs, rhs = None, None
-            logp = np.log(parse_probs[md,hd]+1e-10) + np.log(rel_probs[md,hd,:][lb]+1e-10)
             comb_type=1
+            lhs, rhs = None, None
+            if rescore_config['RESCORE']=='True':
+                newlogp = bert_rescore(comb_type, rhs, lhs, md, hd, lb, rescore_matrix, rescore_config)
+            else: #for debug
+                newlogp = np.log(parse_probs[md,hd]+1e-10) + np.log(rel_probs[md,hd,:][lb]+1e-10)            
             print('new: '+str(np.log(parse_probs[md,hd]+1e-10) + np.log(rel_probs[md,hd,:][lb]+1e-10)))
+
         elif Aspan in terminals:
-            lhs, rhs = None, derivations[Bspan][kb][-1]
-            logp = rhs.acclogp + np.log(parse_probs[md,hd]+1e-10) + np.log(rel_probs[md,hd,:][lb]+1e-10)
             comb_type=2
+            lhs, rhs = None, derivations[Bspan][kb][-1]
+            if rescore_config['RESCORE']=='True':
+                newlogp = bert_rescore(comb_type, rhs, lhs, md, hd, lb, rescore_matrix, rescore_config)
+            else: #for debug
+                newlogp = rhs.acclogp + np.log(parse_probs[md,hd]+1e-10) + np.log(rel_probs[md,hd,:][lb]+1e-10)
             print('new: '+str(np.log(parse_probs[md,hd]+1e-10) + np.log(rel_probs[md,hd,:][lb]+1e-10))+' +Bspan: '+str(rhs.acclogp))
+
         elif Bspan in terminals:
-            lhs, rhs = derivations[Aspan][ka][-1], None
-            logp = lhs.acclogp + np.log(parse_probs[md,hd]+1e-10) + np.log(rel_probs[md,hd,:][lb]+1e-10)
             comb_type=3
+            lhs, rhs = derivations[Aspan][ka][-1], None
+            if rescore_config['RESCORE']=='True':
+                newlogp = bert_rescore(comb_type, rhs, lhs, md, hd, lb, rescore_matrix, rescore_config)
+            else: #for debug
+                newlogp = lhs.acclogp + np.log(parse_probs[md,hd]+1e-10) + np.log(rel_probs[md,hd,:][lb]+1e-10)
             print('Aspan: '+str(lhs.acclogp)+' + new: '+str(np.log(parse_probs[md,hd]+1e-10) + np.log(rel_probs[md,hd,:][lb]+1e-10)))
+
         else:
-            lhs, rhs= derivations[Aspan][ka][-1], derivations[Bspan][kb][-1]
-            logp = lhs.acclogp + rhs.acclogp + np.log(parse_probs[md,hd]+1e-10) + np.log(rel_probs[md,hd,:][lb]+1e-10)
             comb_type=0
+            lhs, rhs= derivations[Aspan][ka][-1], derivations[Bspan][kb][-1]
+            if rescore_config['RESCORE']=='True':
+                newlogp = bert_rescore(comb_type, rhs, lhs, md, hd, lb, rescore_matrix, rescore_config)
+            else: #for debug
+                newlogp = lhs.acclogp + rhs.acclogp + np.log(parse_probs[md,hd]+1e-10) + np.log(rel_probs[md,hd,:][lb]+1e-10)
             print('Aspan: '+str(lhs.acclogp)+' + Bspan: '+str(rhs.acclogp))
     
         '''
         [5] add bert score
         '''
-        print('logp: '+str(logp))
-        if rescore_config['RESCORE']=='True':
-            newlogp = bert_rescore(logp, md, hd, deprel, rescore_matrix, rescore_config)
-        else: #for debug
-            newlogp = logp
-        
         print('newlogp: '+str(newlogp))
         print('----------')
 
@@ -410,7 +419,7 @@ def cube_next(derivations, terminals, forest_d, label_for_incoming_edges_d, edge
 ## (C) Rescoring Function
 ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 
-def bert_rescore(logp, md, hd, deprel, rescore_matrix, rescore_config):
+def bert_rescore(comb_type, rhs, lhs, md, hd, lb, rescore_matrix, rescore_config):
     '''BERT score integration
     Apply rescoring function when condition is met
     condition: md and hd are both verbs
@@ -420,16 +429,24 @@ def bert_rescore(logp, md, hd, deprel, rescore_matrix, rescore_config):
     '''
     alpha, beta = rescore_config['alpha'], rescore_config['beta']
     #print('Xspan: ' + str(Xspan))
-
     ## rescoring condition
-    if rescore_matrix[md-1] is not None and deprel=='advcl': # parent node is verb
-        bert_score = np.log(rescore_matrix[md-1][hd-1])
-        #print('before: '+str(logp))
-        #print('bert: '+str(bert_score))
-        #print('after: '+str(logp + beta + alpha*np.log(bert_score)))
-        return logp + beta + alpha*bert_score
+    if comb_type==1:
+        if rescore_matrix[md-1] is not None:
+            return np.log(rescore_matrix[md-1][hd-1]+1e-10) + np.log(rel_probs[md,hd,:][lb]+1e-10)
+        return np.log(parse_probs[md,hd]+1e-10) + np.log(rel_probs[md,hd,:][lb]+1e-10)    
+    
+    elif comb_type==2:
+        if rescore_matrix[md-1] is not None:
+            return rhs.acclogp + np.log(rescore_matrix[md-1][hd-1]+1e-10) + np.log(rel_probs[md,hd,:][lb]+1e-10)
+        return rhs.acclogp + np.log(parse_probs[md,hd]+1e-10) + np.log(rel_probs[md,hd,:][lb]+1e-10)
+    elif comb_type==3:
+        if rescore_matrix[md-1] is not None:
+            return lhs.acclogp + np.log(rescore_matrix[md-1][hd-1]+1e-10) + np.log(rel_probs[md,hd,:][lb]+1e-10)
+        return lhs.acclogp + np.log(parse_probs[md,hd]+1e-10) + np.log(rel_probs[md,hd,:][lb]+1e-10)
     else:
-        return logp
+        if rescore_matrix[md-1] is not None:
+            return lhs.acclogp + rhs.acclogp + np.log(rescore_matrix[md-1][hd-1]+1e-10) + np.log(rel_probs[md,hd,:][lb]+1e-10)
+        return lhs.acclogp + rhs.acclogp + np.log(parse_probs[md,hd]+1e-10) + np.log(rel_probs[md,hd,:][lb]+1e-10)
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()

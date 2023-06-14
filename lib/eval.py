@@ -1,5 +1,5 @@
 import argparse
-import sys
+import os, sys
 import numpy as np
 from collections import defaultdict, Counter
 from pprint import pprint
@@ -23,6 +23,8 @@ def make_conllu_list(lines):
 def pred_evaluate(pred_path, test_d):
     punct = set(['``', "''", ':', ',', '.', 'PU', 'PUNCT'])
     correct = {'UAS': [], 'LAS': []}
+
+    wrongs = []
 
     cnt=0
     with open(pred_path, mode='r', encoding='utf-8') as p:
@@ -51,6 +53,8 @@ def pred_evaluate(pred_path, test_d):
                             correct['UAS'][-1] = 1
                         if thead == phead and tlabel == plabel:
                             correct['LAS'][-1] = 1
+                        else:
+                            wrongs.append((thead, phead, tlabel, plabel))
 
     correct = {k:np.array(v) for k, v in correct.items()}
 
@@ -65,11 +69,21 @@ def pred_evaluate(pred_path, test_d):
     c2 = Counter(correct['LAS'])
     print(c2)
 
-    return UAS, LAS
+    #print(wrongs)
+
+    return UAS, LAS, wrongs
+
+def analyze_deprel(wrongs):
+    wrong_label = [wrong[2] for wrong in wrongs]
+    #print(wrong_label)
+    c = Counter(wrong_label)
+    print(c)
+    return
 
 def self_evaluate(test_path):
     punct = set(['``', "''", ':', ',', '.', 'PU', 'PUNCT'])
     correct = {'UAS': [], 'LAS': []}
+    wrongs = []
 
     with open(test_path, mode='r', encoding='utf-8') as t:
         ##['1', 'We', '_', 'PRON', 'PRP', '_', '2', 'nsubj', '2', 'nsubj']
@@ -89,6 +103,8 @@ def self_evaluate(test_path):
                         correct['UAS'][-1] = 1
                     if thead == phead and tlabel == plabel:
                         correct['LAS'][-1] = 1
+                    else:
+                        wrongs.append((thead, phead, tlabel, plabel))
 
     correct = {k:np.array(v) for k, v in correct.items()}
 
@@ -103,15 +119,17 @@ def self_evaluate(test_path):
     c2 = Counter(correct['LAS'])
     print(c2)
 
-    return UAS, LAS
+    return UAS, LAS, wrongs
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--pred_path', help='file path for predictions')
     parser.add_argument('--test_path', help='file path for test data')
+    parser.add_argument('--plist', nargs='+', type=str, help='a list of file paths to evaluate')
     args = parser.parse_args()
     pred_path = args.pred_path
     test_path = args.test_path
+    plist = args.plist
 
     print('create a dict of correct trees')
     test_d = defaultdict()
@@ -140,14 +158,40 @@ if __name__ == '__main__':
     
         print('-----EVALUATION-----')
         ## 1best eisner
-        UAS, LAS = self_evaluate(test_path)
+        UAS, LAS, wrongs = self_evaluate(test_path)
         print('test file')
         print('1best Eisner')
         print('UAS: '+str(UAS), 'LAS: '+str(LAS))
-        print('----------')        
-        UAS, LAS = pred_evaluate(pred_path, test_d)
+        print(analyze_deprel(wrongs))
+        print('----------')
         print('pred file')
         print('Forest Decoder')
-        print('UAS: '+str(UAS), 'LAS: '+str(LAS))
 
+        if plist:
+            for pred_path in plist:
+                print('----------')
+                UAS, LAS, _ = pred_evaluate(pred_path, test_d)
+                root, ext = os.path.splitext(pred_path)
+                dirname, basename = os.path.split(root)
+                params = basename.split('_')[-1].split('-')
+                if len(params)>1:
+                    k,a,b = params
+                    print('K='+str(k)+', a='+str(a)+', b='+str(b)+', rescore')
+                else:
+                    k = params[0]
+                    print('K='+str(k)+', vanilla')
+                print('UAS: '+str(UAS), 'LAS: '+str(LAS))
 
+        else:
+            print('vanilla_4.conllu')
+            UAS, LAS, wrongs1 = pred_evaluate('/home/is/yuki-yama/work/d3/dep-forest-complex/outputs/mod/k4/vanilla_4.conllu', test_d)
+            print('UAS: '+str(UAS), 'LAS: '+str(LAS))
+
+            print('rescore_4.conllu')
+            UAS, LAS, wrongs2 = pred_evaluate(pred_path, test_d)
+            print('UAS: '+str(UAS), 'LAS: '+str(LAS))
+
+            print('-----')
+            analyze_deprel(wrongs1)
+            print('-----')
+            analyze_deprel(wrongs2)
