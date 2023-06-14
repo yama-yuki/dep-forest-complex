@@ -3,7 +3,8 @@ Create Binarized Dependency Forest [Hayashi+,13] with Forest Parser [Song+,19] t
 Our system comprises 3 components including `Dependency Forest Parser`, `Rescoring Module`, and `Forest Decoder`.
 
 ## Dependency Forest Parser
-We have extended the implementation of https://github.com/freesunshine0316/dep-forest-re/tree/master/biaffine_forest [Song+,19]
+We have extended an Eisner-based dependency parser (https://github.com/freesunshine0316/dep-forest-re/tree/master/biaffine_forest [Song+,19])* to parse a sentence into a set of hyperedges (i.e. forest).
+(*) Some modifications were needed since the original implementation returns a list of nbest trees rather than forest.
 
 Notes from [Song+,19]:
 * 1-best parsing algorithm is based on maximum (minimum) spanning tree
@@ -15,16 +16,20 @@ Notes from [Song+,19]:
   NumPy array, one for relation probabilitis and the other for label
   probabilities. 
 
-Extensions: `biaffine_forest/lib/models/parser/eisner_nbest.py` (also `biaffine_forest/lib/models/parser/base_parser.py` and `biaffine_forest/network.py`)
+Since the original implementation does not actually output a forest, we have modified the following codes `biaffine_forest/lib/models/parser/eisner_nbest.py` (also `biaffine_forest/lib/models/parser/base_parser.py` and `biaffine_forest/network.py`)
 
-* In `eisner_nbest.py`, we have added `eisner_dp_forest` that outputs a forest (a set of dependency hyperedges) in .json format.
+* In `eisner_nbest.py`, we have added `eisner_dp_forest` to output a forest (a set of dependency hyperedges) which is denser than just merging a list of nbest trees.
 * `DepHeadBinarizer` converts intermediate eisner spans (only complete spans) into binarized structure `BinHyperedge` by Head-Binarization method to resolve spuriousness.
+
+<p align="center">
+<img src="https://github.com/yama-yuki/dep-forest-complex/assets/43964651/961a3bc6-a505-4be3-a024-b480f67d0908" height="300px" />
+</p>
 
 ## Rescoring Module
 Some experimental results and stuff in `rescore_module`
-
 * BERT-based sentence-pair model that predicts the head span of an input word (snt1) in an input sentence (snt2).
-* Our best performing model `bert-base-uncased_1_2_3e-5_32` is placed in `rescore_module/models/`.
+* Our best performing model `bert-base-uncased_1_2_3e-5_32` is placed in `models/`.
+* Run `scripts/train1.sh` to train a model on specified verb-chain data (default=UD).
 
 Accuracy(%) of head prediction on UD-v2 by number of subordinate clauses in a sentence:
 
@@ -48,6 +53,11 @@ Models:
 Bugs (duplicate computation / overevaluation) fixed in the Third Commit of `forest_decoder.py`
 
 (A) Forest Reader: take out Xspans from a forest file and sort them for cube pruning
+* Here, `BinHyperedge` instances are converted into `Xspans` with Aspan (lhs) & Bspan (rhs)
+<p align="center">
+<img src="https://github.com/yama-yuki/dep-forest-complex/assets/43964651/0a19ca5c-f17c-4934-bd9a-983577c14b5b" height="200px" />
+<img src="https://github.com/yama-yuki/dep-forest-complex/assets/43964651/df6f479e-cd49-4f90-bed9-97e5aa6d774c" height="200px" />
+</p>
 
 (B) Cube Pruning Algorithm: the part where combinatory operation of subderivations (Aspan & Bspan) and rescoring happens
 
