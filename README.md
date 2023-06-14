@@ -45,22 +45,22 @@ Models:
 `grand-children`: BERT trained on grand-children-level input in snt1
 
 ## Forest Decoder
-Bugs (duplicate computation / overevaluation) fixed in Third Commit of `forest_decoder.py`
+Bugs (duplicate computation / overevaluation) fixed in the Third Commit of `forest_decoder.py`
 
-(A) Forest Reader: take out Xspans from forest and sort them for cube pruning
+(A) Forest Reader: take out Xspans from a forest file and sort them for cube pruning
 
 (B) Cube Pruning Algorithm: the part where combinatory operation of subderivations (Aspan & Bspan) and rescoring happens
 
-* This algorithm searches Kbest derivations of a **Xspan** which is a triplet of **X** (head node), **a** (leftmost governing span boundary of X), and **b** (rightmost governing span boundary of X)
+* This algorithm searches Kbest derivations of an **Xspan** which is a triplet of **X** (head node), **a** (leftmost governing span boundary of X), and **b** (rightmost governing span boundary of X)
 * Then returns the resulting 1-best dependency tree with a root node (0) governing a (-1) to b (snt_len-1)
 
 (C) Rescoring Function: applied inside `cube_next()` function when combining Aspan & Bsapan
 
 Cube Pruning Algorthm overview:
 
-`main_loop()`: load hyperedges from forest .json, initialize derivation chart with Xspans(X,a,b), `select_k()` for each Xspan, output final derivation Xspan(0,-1,snt_len-1)
+`main_loop()`: load hyperedges from forest .json, initialize derivation chart with Xspans(X,a,b), `select_k()` for each Xspan, then output final derivation Xspan(0,-1,snt_len-1)
 
-`select_k()`: actual cube pruning function to find incoming edges, initialize cubes, manage priority queue, check validity of new Xspan derivation, insert new derivations to `best_K_buffer`, and move on to next cube grid
+`select_k()`: actual cube pruning function to find incoming edges, initialize cubes, manage priority queue, check validity of new Xspan derivation, insert new derivations to `best_K_buffer`, and do `cube_next()` to look for next cube grid
 
 `cube_next()`: look for next best combination of Aspan & Bspan and rescore inside cubes
 
