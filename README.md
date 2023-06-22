@@ -17,6 +17,7 @@ Notes from [Song+,19]:
   probabilities. 
 
 Our Extensions:
+
 Since the original implementation does not actually output a forest, we have modified the following codes `biaffine_forest/lib/models/parser/eisner_nbest.py` (also `biaffine_forest/lib/models/parser/base_parser.py` and `biaffine_forest/network.py`)
 
 * In `eisner_nbest.py`, we have added `eisner_dp_forest` to output a forest (a set of dependency hyperedges) which is denser than just merging a list of nbest trees.
