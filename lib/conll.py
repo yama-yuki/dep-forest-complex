@@ -15,7 +15,7 @@ class Tree:
     sent: ['I','am',...,'.']
     O: 2 for child models / 3 for g-child models
     '''
-    def __init__(self, edges, md, sent, O):
+    def __init__(self, edges, top, sent, O):
         self.O = O
         self.sent = sent
         self.relation = defaultdict(list)
@@ -29,7 +29,7 @@ class Tree:
                 self.tails.add(tail)
         self._sort_rel()
         #self.top = self._find_top()
-        self.top = md
+        self.top = top
         self.lintree = self._make_lintree()
 
     def _sort_rel(self):

@@ -27,6 +27,7 @@ rescore_module/models/
 test/
 outputs/
 obs/
+tmp/
 
 forest_decoder_mod.py
 forest_decoder_lintree.py

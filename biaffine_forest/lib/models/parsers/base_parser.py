@@ -224,7 +224,7 @@ class BaseParser(NN):
       else:
         rescores = None
         nbest = [[[float(x[0]), int(x[1]), int(x[2]), rel_vocab[x[-1]],] for x in cur_best] \
-                for cur_best in eisner_dp_nbest(length, parse_probs, rel_probs, rescores, RESCORE, NBEST, ALPHA)]
+                for cur_best in eisner_dp_nbest(length, parse_probs, rel_probs, rel_vocab, rescores, RESCORE, NBEST, ALPHA)]
         
         sents.append(nbest) # [batch, nbest, edges]
 
