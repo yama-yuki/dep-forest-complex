@@ -61,7 +61,7 @@ Bugs (duplicate computation / overevaluation) fixed in the Third Commit of `fore
 
 (B) Cube Pruning Algorithm: the part where combinatory operation of subderivations (Aspan & Bspan) and rescoring happens
 
-* This algorithm searches Kbest derivations of an **Xspan** which is a triplet of **X** (head node), **a** (leftmost governing span boundary of X), and **b** (rightmost governing span boundary of X)
+* This algorithm searches Kbest derivations of each **Xspan** which is a triplet of **X** (head node), **a** (leftmost governing span boundary of X), and **b** (rightmost governing span boundary of X)
 * Then returns the resulting 1-best dependency tree with a root node (0) governing a (-1) to b (snt_len-1)
 
 (C) Rescoring Function: applied inside `cube_next()` function when combining Aspan & Bsapan
