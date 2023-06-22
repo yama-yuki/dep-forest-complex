@@ -1,6 +1,6 @@
 # Dependency Forest Rescoring
 Create Binarized Dependency Forest [Hayashi+,13] with Forest Parser [Song+,19] to do rescoring through Cube Pruning [Huang,08].
-Our system comprises 3 components including `Dependency Forest Parser`, `Rescoring Module`, and `Forest Decoder`.
+Our system comprises 3 components including `Dependency Forest Parser`, `Rescoring Module`, and `Forest Reescorer`.
 
 ## Dependency Forest Parser
 We have extended an Eisner-based dependency parser (https://github.com/freesunshine0316/dep-forest-re/tree/master/biaffine_forest [Song+,19])* to parse a sentence into a set of hyperedges (i.e. forest).
@@ -49,8 +49,8 @@ Models:
 
 `grand-children`: BERT trained on grand-children-level input in snt1
 
-## Forest Decoder
-Bugs (duplicate computation / overevaluation) fixed in the Third Commit of `forest_decoder.py`
+## Forest Rescorer
+Bugs (duplicate computation / overevaluation) fixed in the Third Commit of `forest_rescorer.py`
 
 (A) Forest Reader: take out Xspans from a forest file and sort them for cube pruning
 * Here, `BinHyperedge` instances are converted into `Xspans` with Aspan (lhs) & Bspan (rhs)
