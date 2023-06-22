@@ -19,7 +19,7 @@ Notes from [Song+,19]:
 Since the original implementation does not actually output a forest, we have modified the following codes `biaffine_forest/lib/models/parser/eisner_nbest.py` (also `biaffine_forest/lib/models/parser/base_parser.py` and `biaffine_forest/network.py`)
 
 * In `eisner_nbest.py`, we have added `eisner_dp_forest` to output a forest (a set of dependency hyperedges) which is denser than just merging a list of nbest trees.
-* `DepHeadBinarizer` converts intermediate eisner spans (only complete spans) into binarized structure `BinHyperedge` by Head-Binarization method to resolve spuriousness.
+* `DepHeadBinarizer` converts intermediate eisner spans (only complete spans) into binarized structure `BinHyperedge` by Head-Binarization method to resolve spuriousness of the resulting forest and to maintain cubic complexity of later cube pruning.
 
 <p align="center">
 <img src="https://github.com/yama-yuki/dep-forest-complex/assets/43964651/961a3bc6-a505-4be3-a024-b480f67d0908" height="300px" />
