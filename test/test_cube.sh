@@ -41,7 +41,7 @@ conda activate for
 conda info -e
 
 cd ${PJ_DIR}
-python forest_decoder.py \
+python forest_rescorer.py \
     --pkl_dir=${PKL_DIR} \
     --out_path=${out_path} \
     --rescore_cfg=${rescore_config} \

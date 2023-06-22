@@ -29,6 +29,6 @@ outputs/
 obs/
 tmp/
 
-forest_decoder_mod.py
-forest_decoder_lintree.py
+forest_rescorer_mod.py
+forest_rescorer_lintree.py
 
