@@ -2,7 +2,7 @@
 RESCORE_DIR=/home/is/yuki-yama/work/d3/dep-forest-complex/rescore_module
 MODEL_DIR=${RESCORE_DIR}/models
 DATA_DIR=${RESCORE_DIR}/data
-PRED_DIR=${RESCORE_DIR}/pred
+PRED_DIR=${RESCORE_DIR}/predictions
 
 ## data type (ewt/gum/partut)
 type=ewt

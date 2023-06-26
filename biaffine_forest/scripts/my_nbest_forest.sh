@@ -5,13 +5,13 @@
 PARSER_DIR=/home/is/yuki-yama/work/d3/dep-forest-complex/biaffine_forest
 
 save_name=saves/ptb_cophead
-NBEST=8
+NBEST=16
 
 ##dev/test/mytree
 test_data=mytree
 PKL_DIR=${PARSER_DIR}/pkl/${test_data}/k${NBEST}
 
-##sbatch --gres=gpu:1 --job-name=forest_parse --partition=gpu_long --time=12:00:00 my_nbest_forest.sh
+##sbatch --gres=gpu:1 --job-name=forest_parse --partition=gpu_long --time=96:00:00 my_nbest_forest.sh
 
 . ~/.bashrc
 conda activate for

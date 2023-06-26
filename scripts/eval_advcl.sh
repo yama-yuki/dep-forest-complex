@@ -2,8 +2,8 @@
 
 PJ_DIR=/home/is/yuki-yama/work/d3/dep-forest-complex
 
-model_type=V-V
-data_type=test
+model_type=V-Any
+data_type=mytree
 if [ ${data_type} = mytree ] ; then
 data=mytree_upos;
 else
@@ -22,10 +22,10 @@ gold_path=${GOLD_DIR}/${data}.conllu
 
 EisnerK=4
 K=4
-A=01
+A=03
 B=01
 PRED_DIR=${PJ_DIR}/outputs
-pred_path=${PRED_DIR}/${model_type}/${data_type}/k${EisnerK}/rescore_${K}-${A}-${B}.conllu
+pred_path=${PRED_DIR}/${model_type}/${data_type}/advcl/k${EisnerK}/rescore_${K}-${A}-${B}.conllu
 
 cd ${PJ_DIR}/lib
 python eval.py \

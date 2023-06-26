@@ -22,10 +22,8 @@ gold_path=${GOLD_DIR}/${data}.conllu
 
 EisnerK=4
 K=4
-A=01
-B=01
 PRED_DIR=${PJ_DIR}/outputs
-pred_path=${PRED_DIR}/${model_type}/${data_type}/k${EisnerK}/rescore_${K}-${A}-${B}.conllu
+pred_path=${PRED_DIR}/${model_type}/${data_type}/mod/k${EisnerK}/rescore_${K}.conllu
 
 cd ${PJ_DIR}/lib
 python eval.py \

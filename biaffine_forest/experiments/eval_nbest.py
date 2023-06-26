@@ -1,5 +1,6 @@
 '''
-finds 1-best UAS, LAS from n-bests
+finds 1-best UAS, LAS from n-best lists
+
 '''
 
 import csv
@@ -193,7 +194,6 @@ if __name__ == '__main__':
 
     file_name = 'test'
     #file_name = 'mytree_upos'
-    
     test_file = 'data/wsj_sd_cophead/'+file_name+'.conllu'
 
     if mode=='file':
