@@ -59,6 +59,9 @@ class RescoreModel:
         self.model.eval()
 
     def get_embedding(self, snt1, snt2):
+        '''
+        obs
+        '''
         tokenized_snt = self.tokenizer(snt1, snt2)
         indexed_tok = self.tokenizer.convert_tokens_to_ids(tokenized_snt)
 
@@ -283,7 +286,7 @@ if __name__ == '__main__':
     cfg_path='../rescore.cfg'
     cfg = configparser.RawConfigParser()
     if not os.path.exists(cfg_path):
-      logger.error('rescore.cfg not found')
+      logger.error(f'{cfg_path} not found')
       sys.exit(-1)
     cfg.read(cfg_path)
 

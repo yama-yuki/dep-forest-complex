@@ -1,0 +1,205 @@
+V-Any_NV-NV
+test
+test
+-----EVALUATION-----
+---biaffine 1best---
+len_conllu_list: 2416
+total_lines: 56684
+total gold conllu: 2416
+2413
+23.483630335681724
+len_conllu_list: 2416
+total_lines: 56684
+total conllus: 2416
+total scored lines: 49748
+total processed lines: 56684
+Head: Counter({1: 47982, 0: 1766}) Head&Label: Counter({1: 47455, 0: 2293})
+121
+wo_punct
+UAS: 96.45010854707728 LAS: 95.39076947816997
+Counter({'prep': 520, 'dep': 350, 'advmod': 200, 'conj': 121, 'cc': 97, 'pobj': 85, 'vmod': 83, 'amod': 80, 'nn': 68, 'nsubj': 58, 'dobj': 57, 'num': 52, 'rcmod': 45, 'ccomp': 44, 'xcomp': 44, 'appos': 42, 'tmod': 41, 'det': 39, 'root': 37, 'advcl': 35, 'quantmod': 32, 'acomp': 25, 'parataxis': 20, 'npadvmod': 18, 'pcomp': 18, 'number': 17, 'poss': 11, 'mark': 10, 'prt': 10, 'neg': 9, 'discourse': 5, 'nsubjpass': 4, 'iobj': 3, 'possessive': 3, 'auxpass': 3, 'aux': 3, 'mwe': 2, 'predet': 1, 'csubj': 1})
+dep: 0.47761194029850745
+advmod: 0.8909487459105779
+prep: 0.9032738095238095
+quantmod: 0.8454106280193237
+num: 0.9580306698950767
+tmod: 0.8525179856115108
+cc: 0.9298626174981923
+number: 0.9625550660792952
+vmod: 0.8416030534351145
+poss: 0.9895833333333334
+conj: 0.9103703703703704
+nsubj: 0.9855217174238642
+root: 0.9846854304635762
+advcl: 0.9059139784946236
+npadvmod: 0.922077922077922
+amod: 0.97701809824763
+appos: 0.9098712446351931
+ccomp: 0.9561316051844466
+parataxis: 0.7894736842105263
+rcmod: 0.9010989010989011
+pobj: 0.9839076107535024
+dobj: 0.9737569060773481
+iobj: 0.875
+nn: 0.9844179651695693
+det: 0.9914153642967203
+xcomp: 0.9530416221985059
+mark: 0.9847328244274809
+discourse: 0.5454545454545454
+pcomp: 0.925
+neg: 0.9757412398921833
+acomp: 0.9375
+prt: 0.9371069182389937
+nsubjpass: 0.9894736842105263
+predet: 0.9444444444444444
+possessive: 0.9945155393053017
+auxpass: 0.9929742388758782
+aux: 0.998598785614199
+csubj: 0.95
+mwe: 0.9767441860465116
+---rescored---
+/home/is/yuki-yama/work/d3/dep-forest-complex/outputs/pruned/unlabel2/V-Any_NV-NV/test/lb_mod/k2/rescore_3-01-01.conllu
+len_conllu_list: 2416
+total_lines: 56684
+_make_gold_dict_subord
+total gold conllu: 2416
+len_conllu_list: 2416
+total_lines: 56684
+total conllus: 1765
+total scored lines: 32323
+total processed lines: 37170
+Head: Counter({1: 31156, 0: 1167}) Head&Label: Counter({1: 30806, 0: 1517})
+total conllus: 512
+total scored lines: 12986
+total processed lines: 14577
+Head: Counter({1: 12538, 0: 448}) Head&Label: Counter({1: 12409, 0: 577})
+total conllus: 121
+total scored lines: 3833
+total processed lines: 4266
+Head: Counter({1: 3724, 0: 109}) Head&Label: Counter({1: 3684, 0: 149})
+total conllus: 18
+total scored lines: 606
+total processed lines: 671
+Head: Counter({1: 580, 0: 26}) Head&Label: Counter({1: 568, 0: 38})
+wo_punct
+UAS: 96.38956780001855 LAS: 95.30674751724779
+Counter({'prep': 342, 'dep': 232, 'advmod': 136, 'conj': 78, 'amod': 67, 'nn': 58, 'pobj': 58, 'cc': 58, 'vmod': 57, 'dobj': 38, 'nsubj': 37, 'num': 34, 'appos': 33, 'root': 30, 'rcmod': 30, 'xcomp': 27, 'tmod': 27, 'det': 27, 'ccomp': 26, 'quantmod': 23, 'number': 15, 'acomp': 13, 'npadvmod': 12, 'pcomp': 10, 'parataxis': 10, 'poss': 8, 'advcl': 5, 'prt': 5, 'nsubjpass': 4, 'neg': 4, 'discourse': 4, 'auxpass': 3, 'mwe': 2, 'iobj': 1, 'aux': 1, 'predet': 1, 'possessive': 1})
+advmod: 0.887881286067601
+prep: 0.9046822742474916
+amod: 0.9714163822525598
+root: 0.9830028328611898
+dep: 0.5095137420718816
+nsubj: 0.9846854304635762
+poss: 0.9880774962742176
+dobj: 0.9711026615969581
+nsubjpass: 0.984313725490196
+auxpass: 0.9894736842105263
+nn: 0.9807500829737803
+ccomp: 0.949119373776908
+acomp: 0.9406392694063926
+iobj: 0.9411764705882353
+pobj: 0.9840615553723551
+advcl: 0.9074074074074074
+neg: 0.9831932773109243
+num: 0.9641350210970464
+xcomp: 0.9545454545454546
+tmod: 0.8548387096774194
+det: 0.9907723855092276
+appos: 0.9037900874635568
+quantmod: 0.8380281690140845
+vmod: 0.845945945945946
+pcomp: 0.8461538461538461
+conj: 0.9172852598091198
+discourse: 0.6
+prt: 0.9473684210526315
+number: 0.9597855227882037
+npadvmod: 0.9337016574585635
+cc: 0.9395203336809176
+aux: 0.9992406985573272
+parataxis: 0.8333333333333334
+rcmod: 0.9047619047619048
+mwe: 0.9615384615384616
+predet: 0.875
+possessive: 0.9971988795518207
+UAS: 96.550130910211 LAS: 95.55675342676729
+Counter({'prep': 131, 'dep': 83, 'advmod': 41, 'conj': 39, 'cc': 30, 'vmod': 26, 'pobj': 21, 'rcmod': 17, 'advcl': 17, 'dobj': 15, 'nsubj': 14, 'amod': 14, 'ccomp': 11, 'det': 11, 'acomp': 11, 'tmod': 10, 'num': 10, 'nn': 10, 'xcomp': 10, 'appos': 7, 'parataxis': 6, 'quantmod': 6, 'npadvmod': 6, 'mark': 5, 'root': 5, 'pcomp': 5, 'prt': 4, 'poss': 4, 'neg': 3, 'number': 2, 'aux': 1, 'iobj': 1, 'possessive': 1})
+nsubj: 0.9880341880341881
+tmod: 0.855072463768116
+mark: 0.9879518072289156
+dep: 0.4028776978417266
+root: 0.990234375
+ccomp: 0.9698630136986301
+prep: 0.9045189504373178
+aux: 0.9983606557377049
+advmod: 0.9106753812636166
+dobj: 0.9762282091917591
+pobj: 0.9836065573770492
+iobj: 0.8
+vmod: 0.7952755905511811
+rcmod: 0.8521739130434782
+det: 0.9909983633387889
+pcomp: 0.9553571428571429
+parataxis: 0.76
+quantmod: 0.88
+num: 0.9553571428571429
+nn: 0.9901864573110893
+advcl: 0.9186602870813397
+xcomp: 0.96
+neg: 0.9659090909090909
+npadvmod: 0.8378378378378378
+acomp: 0.9112903225806451
+cc: 0.9019607843137255
+conj: 0.8677966101694915
+amod: 0.983926521239954
+prt: 0.9069767441860465
+possessive: 0.9928057553956835
+number: 0.9701492537313433
+poss: 0.9855595667870036
+appos: 0.9278350515463918
+UAS: 97.15627445864857 LAS: 96.11270545264806
+Counter({'prep': 36, 'dep': 25, 'advcl': 13, 'advmod': 12, 'conj': 7, 'cc': 6, 'xcomp': 5, 'nsubj': 5, 'num': 4, 'ccomp': 4, 'pcomp': 3, 'mark': 3, 'appos': 3, 'dobj': 2, 'amod': 2, 'quantmod': 2, 'root': 2, 'det': 2, 'nn': 2, 'aux': 2, 'tmod': 2, 'pobj': 2, 'acomp': 1, 'iobj': 1, 'rcmod': 1, 'prt': 1, 'vmod': 1})
+conj: 0.9313725490196079
+advcl: 0.8602150537634409
+prep: 0.8997214484679665
+pcomp: 0.9347826086956522
+xcomp: 0.9390243902439024
+num: 0.9298245614035088
+nsubj: 0.9860724233983287
+advmod: 0.9111111111111111
+dobj: 0.9891891891891892
+dep: 0.4318181818181818
+mark: 0.9848484848484849
+amod: 0.9912663755458515
+ccomp: 0.963963963963964
+quantmod: 0.8571428571428571
+root: 0.9834710743801653
+cc: 0.9433962264150944
+det: 0.9940652818991098
+acomp: 0.9787234042553191
+nn: 0.9934426229508196
+iobj: 0.5
+rcmod: 0.9583333333333334
+aux: 0.989247311827957
+prt: 0.9333333333333333
+tmod: 0.9
+appos: 0.875
+vmod: 0.9583333333333334
+pobj: 0.9937694704049844
+UAS: 95.7095709570957 LAS: 93.72937293729373
+Counter({'dep': 11, 'prep': 5, 'cc': 3, 'advmod': 3, 'conj': 2, 'dobj': 2, 'nsubj': 2, 'parataxis': 2, 'quantmod': 1, 'pcomp': 1, 'rcmod': 1, 'mark': 1, 'root': 1, 'ccomp': 1, 'csubj': 1, 'nn': 1})
+quantmod: 0.0
+dep: 0.21428571428571427
+pcomp: 0.9411764705882353
+prep: 0.9122807017543859
+cc: 0.75
+conj: 0.8
+rcmod: 0.0
+dobj: 0.9512195121951219
+mark: 0.975
+nsubj: 0.9672131147540983
+root: 0.9444444444444444
+advmod: 0.8888888888888888
+parataxis: 0.3333333333333333
+ccomp: 0.9375
+csubj: 0.5
+nn: 0.9629629629629629

@@ -166,16 +166,18 @@ class Vocab(Configurable):
     with open(self.embed_file) as f:
       cur_idx = Vocab.START_IDX
       for line_num, line in enumerate(f):
-        line = line.strip().split()
+        line = line.strip('\n').split(' ')
         if line:
           try:
-            self._str2embed[line[0]] = cur_idx
-            self._embed2str[cur_idx] = line[0]
-            embeds.append(line[1:])
-            cur_idx += 1
+            if len(line[1:])==100:##yuki-yama
+              self._str2embed[line[0]] = cur_idx
+              self._embed2str[cur_idx] = line[0]
+              embeds.append(line[1:])
+              cur_idx += 1
           except:
             raise ValueError('The embedding file is misformatted at line %d' % (line_num+1))
     self.pretrained_embeddings = np.array(embeds, dtype=np.float32)
+    ##self.pretrained_embeddings = np.array(embeds, dtype=object)
     self.pretrained_embeddings = np.pad(self.pretrained_embeddings, ((self.START_IDX, 0), (0, 0)), 'constant')
     if os.path.isfile(self.embed_aux_file):
       with open(self.embed_aux_file) as f:

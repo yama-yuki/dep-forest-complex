@@ -1,3 +1,4 @@
+biaffine_forest/
 biaffine_forest/config/obs/
 biaffine_forest/data/
 biaffine_forest/obs/
@@ -21,14 +22,13 @@ biaffine_forest/*.sh
 biaffine_forest/*log
 biaffine_forest/*.out
 
+rescore_module/
 rescore_module/data/
 rescore_module/models/
 
 test/
 outputs/
-obs/
-tmp/
+deprecated/
+inside-outside/
 
-forest_rescorer_mod.py
-forest_rescorer_lintree.py
-
+log*

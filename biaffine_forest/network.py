@@ -276,7 +276,7 @@ class Network(Configurable):
 
   #=============================================================
   # TODO make this work if lines_per_buff isn't set to 0
-  def test_nbest(self, sess, RESCORE, NBEST, ALPHA):
+  def test_nbest(self, sess, RESCORE, NBEST, ALPHA, bert_config):
     #filename = self.test_file + '_nbest.json'
     if RESCORE:
       r = 'r'+str(ALPHA).replace('.','')
@@ -304,7 +304,7 @@ class Network(Configurable):
       mb_targets = feed_dict[dataset.targets]
       mb_probs = sess.run(op, feed_dict=feed_dict)
       #all_predictions[-1].extend(self.model.validate_nbest(mb_inputs, mb_targets, mb_probs, self.rels, sents, self.words)) # [sents, nbests]
-      all_predictions[-1].extend(self.model.validate_nbest_rescore(mb_inputs, mb_targets, mb_probs, self.rels, sents, self.words, self.tags, RESCORE, NBEST, ALPHA)) # [sents, nbests]
+      all_predictions[-1].extend(self.model.validate_nbest_rescore(mb_inputs, mb_targets, mb_probs, self.rels, sents, self.words, self.tags, RESCORE, NBEST, ALPHA, bert_config)) # [sents, nbests]
       all_sents[-1].extend([[w for w in sent] for sent in sents])
       if len(all_predictions[-1]) == len(dataset[bkt_idx]):
         bkt_idx += 1
@@ -352,6 +352,14 @@ class Network(Configurable):
     all_sents = []
 
     btch_idx = 0
+
+    '''
+    with open(os.path.join(pkl_dir,'deprel_ctb5.1.pkl'), 'wb') as p:
+      deprels = [rel for rel in self.rels]
+      pkl.dump(deprels, p)
+      sys.exit('Saved deprel')
+    '''
+
     for (feed_dict, sents) in minibatches():
       print('N-best batch {}'.format(btch_idx))
       btch_idx += 1
@@ -392,6 +400,10 @@ class Network(Configurable):
         pkl.dump(all_sents, p4)
       with open(os.path.join(pkl_dir,str(btch_idx)+'tags.pkl'), 'wb') as p5:
         pkl.dump(all_tags, p5)
+      
+
+      print('DEBUG: network.py l.397')
+      #break
 
     return
 
@@ -606,13 +618,20 @@ if __name__ == '__main__':
   argparser.add_argument('--cube', action='store_true')
   argparser.add_argument('--cubesparse', action='store_true')
 
+  ##essentials for 'forest' parsing
   argparser.add_argument('--parse', action='store_true')
   argparser.add_argument('--parse_forest', action='store_true')
   argparser.add_argument('--pkl_dir', help='dir path to save parsed forests')
 
+  ##rescore configs for 'nbest' rescoring
   argparser.add_argument('--rescore', help='inside, outside', default=False)
   argparser.add_argument('--n')
   argparser.add_argument('--alpha')
+
+  ##loading bert for 'nbest' rescoring
+  argparser.add_argument('--tmp_data_dir')
+  argparser.add_argument('--model_dir')
+  argparser.add_argument('--pretrained')
 
   args, extra_args = argparser.parse_known_args()
   cargs = {k: v for (k, v) in vars(Configurable.argparser.parse_args(extra_args)).items() if v is not None}
@@ -657,10 +676,19 @@ if __name__ == '__main__':
       RESCORE=args.rescore
       NBEST=int(args.n)
       ALPHA=float(args.alpha)
+
+      bert_config = {'mode': 'pred',
+      'data_dir': args.tmp_data_dir,
+      'model_dir': args.model_dir,
+      'pretrained': args.pretrained,
+      'input_path': os.path.join(args.tmp_data_dir, 'temp.in'),
+      'output_path': os.path.join(args.tmp_data_dir, 'temp.out')
+      }
+
       saver = tf.train.Saver(var_list=network.save_vars)
       saver.restore(sess, tf.train.latest_checkpoint(network.save_dir, latest_filename=network.name.lower()))
       start_time = time.time()
-      network.test_nbest(sess, RESCORE, NBEST, ALPHA)
+      network.test_nbest(sess, RESCORE, NBEST, ALPHA, bert_config)
       print('Parsing took %f seconds' % (time.time() - start_time))
     elif args.parse_forest:
       NBEST=int(args.n)

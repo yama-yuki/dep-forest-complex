@@ -188,6 +188,9 @@ class DepEvaluator:
         cnt_conllu=0
         cnt_line=0
 
+        g_label_d = dict()
+        cnt_root=0
+
         with open(self._pred_path, mode='r', encoding='utf-8') as p:
             pred_conllu_list = self._make_conllu_list(p.readlines())
             for i,pred_conllu in enumerate(pred_conllu_list):
@@ -239,6 +242,10 @@ class DepEvaluator:
                             ## init with 0
                             correct['UAS'].append(0)
                             correct['LAS'].append(0)
+                            if glabel in g_label_d.keys():
+                                g_label_d[glabel]+=1
+                            else:
+                                g_label_d[glabel]=1
                             ## replace with 1 if correct
                             ## check unlabeled attachment
                             if ghead == phead:
@@ -250,6 +257,10 @@ class DepEvaluator:
                             else:
                                 flag=True
                                 wrongs.append((ghead, phead, glabel, plabel))
+                                if glabel=='conj':
+                                    cnt_root+=1
+
+                                    #print(sent)
 
                     if flag==True:
                         wrong_conllu_list.append(pred_conllu)
@@ -266,7 +277,9 @@ class DepEvaluator:
         print('total processed lines: '+str(cnt_line))
         print('Head: '+str(c1), 'Head&Label: '+str(c2))
 
-        return UAS, LAS, wrongs, wrong_conllu_list
+        print(cnt_root)
+
+        return UAS, LAS, wrongs, wrong_conllu_list, g_label_d
 
 '''
 def make_conllu_list(lines):
@@ -415,11 +428,17 @@ def self_evaluate(test_path):
     return UAS, LAS, wrongs, wrong_conlls
 '''
 
-def analyze_deprel(wrongs):
+def analyze_deprel(wrongs,g_label_d):
     wrong_label = [wrong[2] for wrong in wrongs]
     #print(wrong_label)
     c = Counter(wrong_label)
     print(c)
+
+    for label in c:
+        cnt = g_label_d[label]
+        rate=(cnt-c[label])/cnt
+        print(label,end=': ')
+        print(rate)
     return
     
 if __name__ == '__main__':
@@ -430,6 +449,7 @@ if __name__ == '__main__':
     parser.add_argument('--plist', nargs='+', type=str, help='a list of file paths to evaluate')
     parser.add_argument('--nbest', action='store_true', help='evaluate nbest list')
     parser.add_argument('--eisner_k', type=str, help='EisnerK')
+    parser.add_argument('--K', type=str, help='K')
 
     args = parser.parse_args()
     pred_path = args.pred_path
@@ -438,6 +458,7 @@ if __name__ == '__main__':
     plist = args.plist
     eval_nbest=args.nbest
     eisner_k = args.eisner_k
+    K = args.K
 
     ## -----
     print('-----EVALUATION-----')
@@ -450,36 +471,36 @@ if __name__ == '__main__':
     else:
         print('---biaffine 1best---')
         biaf_evaluator = DepEvaluator(gold_path, biaf_path)
-        UAS, LAS, wrongs, _ = biaf_evaluator.forest(mode1='wo_punct',mode2='1best')
+        UAS, LAS, wrongs, _, g_label_d = biaf_evaluator.forest(mode1='wo_punct',mode2='1best')
         print('wo_punct')
         print('UAS: '+str(UAS), 'LAS: '+str(LAS))
-        analyze_deprel(wrongs)
+        analyze_deprel(wrongs,g_label_d)
 
         if plist:
             pass
         else:
             print('---vanilla---')
-            vanilla_name = 'vanilla_'+eisner_k+'.conllu'
+            vanilla_name = 'vanilla_'+K+'.conllu'
             dirname, basename = os.path.split(pred_path)
             vanilla_path = os.path.join(dirname, vanilla_name)
             print(vanilla_path)
             vanilla_evaluator = DepEvaluator(gold_path, vanilla_path)
-            UAS, LAS, wrongs0, wrong_conlls0 = vanilla_evaluator.forest(mode1='wo_punct',mode2='vanilla')
+            UAS, LAS, wrongs0, wrong_conlls0, g_label_d = vanilla_evaluator.forest(mode1='wo_punct',mode2='vanilla')
             print('wo_punct')
             print('UAS: '+str(UAS), 'LAS: '+str(LAS))
-            analyze_deprel(wrongs0)
+            analyze_deprel(wrongs0,g_label_d)
 
             print('---rescored---')
             print(pred_path)
             wo_punct_evaluator = DepEvaluator(gold_path, pred_path)
-            UAS, LAS, wrongs1, wrong_conlls1 = wo_punct_evaluator.forest(mode1='wo_punct',mode2='rescored')
+            UAS, LAS, wrongs1, wrong_conlls1, g_label_d = wo_punct_evaluator.forest(mode1='wo_punct',mode2='rescored')
             print('wo_punct')
             print('UAS: '+str(UAS), 'LAS: '+str(LAS))
-            analyze_deprel(wrongs1)
-            UAS, LAS, wrongs2, wrong_conlls2 = wo_punct_evaluator.forest(mode1='w_punct',mode2='rescored')
+            analyze_deprel(wrongs1,g_label_d)
+            UAS, LAS, wrongs2, wrong_conlls2, g_label_d = wo_punct_evaluator.forest(mode1='w_punct',mode2='rescored')
             print('w_punct')
             print('UAS: '+str(UAS), 'LAS: '+str(LAS))    
-            analyze_deprel(wrongs2)
+            analyze_deprel(wrongs2,g_label_d)
 
     ## -----
 

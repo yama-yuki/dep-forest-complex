@@ -26,7 +26,8 @@ import tensorflow.compat.v1 as tf
 from vocab import Vocab
 from lib.models import NN
 #from lib.models.parsers import eisner_dp_nbest
-from lib.models.parsers.eisner_nbest import eisner_dp_nbest, eisner_dp_forest
+from lib.models.parsers.eisner_nbest_unlabel import eisner_dp_forest
+from lib.models.parsers.eisner_nbest import eisner_dp_nbest
 
 import math
 import os
@@ -121,7 +122,7 @@ class BaseParser(NN):
       sents.append(nbest) # [batch, nbest, edges]
     return sents
 
-  def rescoring(self, inputs, words, tags):
+  def rescoring(self, inputs, words, tags, bert_config):
     inp_snt = [words._idx2str[inp[0]] for inp in inputs if inp[0]>Vocab.ROOT]
     inp_tags = [tags._idx2str[inp[2]] for inp in inputs if inp[2]>Vocab.ROOT]
 
@@ -129,19 +130,14 @@ class BaseParser(NN):
     print(inp_snt)
     print(inp_tags)
     print('len_inp_snt: '+str(len(inp_snt)))
-    rescores = bert_head_scores(inp_snt, inp_tags)
+
+    rescores = bert_head_scores(inp_snt, inp_tags, bert_config)
     print(rescores)
 
     inp_snt.insert(0,'root')
-    #rescores = [None]*(len(inp_snt))
     verb_nodes = [bool(tag[0] == 'V') for tag in inp_tags]
     verb_nodes.insert(0,False)
-    
-    #print(inp_snt)
-    #print(verb_nodes)
     verb_idx = [i for i in range(len(verb_nodes)) if verb_nodes[i]]
-    #print(verb_idx)
-    #print([inp_snt[i] for i in verb_idx])
 
     rescore_dict = defaultdict(list)
     for i,tok in enumerate(inp_snt):
@@ -149,12 +145,11 @@ class BaseParser(NN):
         rescore_dict[i] = [tok, None]
       else:
         rescore_dict[i] = [tok, rescores[i-1]]
-
     print(rescore_dict)
 
     return rescore_dict
 
-  def validate_nbest_rescore(self, mb_inputs, mb_targets, mb_probs, rel_vocab, snts, words, tags, RESCORE, NBEST, ALPHA):
+  def validate_nbest_rescore(self, mb_inputs, mb_targets, mb_probs, rel_vocab, snts, words, tags, RESCORE, NBEST, ALPHA, bert_config):
     sents = []
     mb_parse_probs, mb_rel_probs = mb_probs
     for inputs, targets, parse_probs, rel_probs, snt in tqdm(zip(mb_inputs, mb_targets, mb_parse_probs, mb_rel_probs, snts)):
@@ -196,19 +191,14 @@ class BaseParser(NN):
 
       if RESCORE:
 
-        rescores = self.rescoring(inputs, words, tags)
-        #print(rescores)
+        rescores = self.rescoring(inputs, words, tags, bert_config)
         '''
         [0.999235987663269, 4, 5, 'nsubj']
         edge_prob, child, head, rel
         '''
-
         nbest = [[[float(x[0]), int(x[1]), int(x[2]), rel_vocab[x[-1]],] for x in cur_best] \
                 for cur_best in eisner_dp_nbest(length, parse_probs, rel_probs, rel_vocab, rescores, RESCORE, NBEST, ALPHA)]
-        
         sents.append(nbest) # [batch, nbest, edges]
-
-        #pprint(nbest)
 
         '''
         for tree in nbest:
@@ -225,7 +215,6 @@ class BaseParser(NN):
         rescores = None
         nbest = [[[float(x[0]), int(x[1]), int(x[2]), rel_vocab[x[-1]],] for x in cur_best] \
                 for cur_best in eisner_dp_nbest(length, parse_probs, rel_probs, rel_vocab, rescores, RESCORE, NBEST, ALPHA)]
-        
         sents.append(nbest) # [batch, nbest, edges]
 
     return sents

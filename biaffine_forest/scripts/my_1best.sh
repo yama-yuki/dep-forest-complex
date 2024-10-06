@@ -5,6 +5,8 @@
 
 #module load cudnn/8.0-6.0
 
+##sbatch --gres=gpu:1 --job-name=wiki_parse --partition=gpu_long --time=96:00:00 my_1best.sh
+
 . ~/.bashrc
 conda activate for
 conda info -e
