@@ -1,0 +1,285 @@
+Notes on the modification of Charniak parser for dumping packed forests. 
+by Liang Huang (lhuang3@cis.upenn.edu).
+
+Release v0.8. March 24, 2008.
+---------------------------------------------------------------------------
+
+Contents:
+
+0	About
+I	Usage
+II	Output Format
+III	Some Notes on the Implementation
+
+Appendix (part of the forest reranker package): 
+
+A. Post-Processing
+	A.1 Spurious Node Removal
+	A.2 Forest Pruning
+	A.3 Annotating the Gold Parse (to be available)
+	A.4	Annotating the Forest Oracle (to be available)
+
+B. Forest Visualization (to be available)
+
+---------------------------------------------------------------------------
+
+0	About
+
+This package contains a version of the Charniak parser that has been modified
+to output a packed forest for each individual sentence, originally developed
+in my work on forest reranking:
+
+Liang Huang (2008). 
+Forest Reranking: Discriminative Parsing with Non-Local Features.
+In Proceedings of ACL 2008, Columbus, OH.
+
+This tool is freely available for research use, as long as you cite both the 
+above paper and the following Charniak and Johnson paper in your published work
+that use it:
+
+Eugene Charniak and Mark Johnson (2005). 
+Coarse-to-Fine n-best Parsing and Maxent Discriminative Reranking.
+In Proceedings of ACL 2005, Ann Arbor, MI.
+
+----------------------------------------------------------------------------
+
+I	Usage
+
+(To compile the parser, simply type "make" in the first-stage/PARSE dir.)
+
+Then go to first-stage/, there are testcases "test.*".
+
+The new command line option for dumping forest is "-f<FILE>]", which
+dumpes the forests to <FILE>, with a blank line separating forests.
+
+For example, in the top directory of the parser, run
+
+ PARSE/parseIt -K -l399 -ftest.out DATA/EN/ test.txt \
+	| grep . | perl -ple 's/^\(S1/\(TOP/g'
+
+Notes:
+
+0. -K: keep tokenization (for Treebank parsing). -l399: max. length is 399.
+
+1. There should be no space between -f and <FILE>. 
+	Running the above command should produce a file "test.out" that is 
+	identical to the reference output "test.forest" in this directory.
+
+2. as specified in Charniak parser, the input file must contain lines like:
+
+		<s> ... </s>
+
+   if you would like to supply a plain input without <s> and </s>, 
+	simply replace testfile by:
+	
+	    <(cat testfile | perl -nle 'print ("<s> $_ <\/s>")') \
+
+   But for large-scale experiments, it is recommended to use the <s> format
+	since it can annotate the sentence by a tag like <s wsj_0000.0>	which can
+	be used for identifying the forest (see below section II).
+
+3. as specified in Charniak parser, the output is separated by a blank line 
+	between sentences, and each parse is embraced by (S1 ... ). So I use grep
+	and perl to filter/edit the output.
+
+4. The original Charniak parser is able to use multithreading, but for the 
+	forest mode, it currently runs only in singlethread mode. So even if you
+	specify "-T2", the parser will treat it as "-T1" internally (and prints 
+	a warning).
+
+
+----------------------------------------------------------------------------
+
+II	Output Format
+
+The forest file has a blank line between the forests, each of which have 
+the following format:
+
+<sentence_tag>		<sentence>
+<#_of_nodes>
+<nid>	<label> [<left>-<right>]	<#_of_hyperedges>
+		<list_of_tail_nodes>  |||  0=<log_prob>
+		...
+...
+
+For example,
+
+wsj_0000.0		I saw her duck . 
+134
+1       NN [0-1]        0
+2       NP [0-1]        1
+        1  ||| 0=-4.20609
+
+...
+
+5       NP* [0-1]       2
+        2  ||| 0=-8.80136
+        4  ||| 0=4.20521
+
+...
+
+132     SINV [0-5]      2
+        88 106 107  ||| 0=-12.5642
+        88 6 130 131  ||| 0=-10.9256
+133     S1 [0-5]        2
+        85  ||| 0=-0.0205583
+        132  ||| 0=-5.29062
+134     S1* [0-5]       1
+        133  ||| 0=-1.17614
+
+Notes:
+
+1. Multiple spaces denote a TAB.
+
+2. <sentence_tag> is an optional tag for the input sentence, e.g.:
+	
+	<s wsj_0000.0> I saw her duck . </s>
+
+	it will not show up in the forest file if it is missing from the input, 
+	i.e., if you supply <s> I ... </s>. (see above, section I)
+
+3. The <nid> (node_id) starts from 1, but is not guaranteed in general
+	to increase monotonically. The only guarantee is the topological ordering:
+	all nodes refered (in the tail list of a hyperedge) are already defined.
+
+4. Each node has a nonterminal label, like NP, followed by an optional *.
+ 	Nodes marked with a * are called "spurious nodes" in the Charniak parser.
+	They *always* have unary hyperedges from non-spurious counterparts, and
+	they *always* appear in the right-hand-side when they are non-heads, i.e.,
+	there are rules like the following in the grammar:
+		
+		NP* -> NP		(cost 1)
+		VP -> VBD NP*	(cost 2)
+
+	I strongly recommend to remove them by a script (See Section A.1), 
+	resulting in an equivalent forest without these nodes, 
+	possibly at the cost of more hyperedges. Basically, the idea is to bypass
+	spurious nodes by connecting directly to non-spurious ones, for example:
+	
+		VP -> VBD NP	(cost 1+2=3)
+
+5. The spans of nodes use C-style indices, where [0-3] means:
+	word_0, word_1, and word_2.
+
+6. A node is followed by zero or more hyperedges, each of which will have a 
+	list of children node Ids. In the above example, node 2 (NP [0-1]) has one 
+	hyperedge, which is from node 1 (NN [0-1]), while node 132 (SINV [0-5])
+	has two hyperedges, which having four childrens.
+
+7. A node has no hyperedges *if and only if* it is a part-of-speech tag.
+
+8. In a hyperedge, after the list of tails, one or two spaces and 
+	a separator ("|||") and some white spaces, there comes the 
+	weight(s) of this hyperedge in the form of
+		
+		"0=<log_prob>"
+
+	here 0 is a "feature_id". In the case of Charniak parser, there is only 
+	one feature, the log_probability, but you can imagine in the reranking
+	phase there will be something like:
+		
+		"0=-14.234 1000=2 5000 6000=-1 ..."
+
+	here the format is "<feature_id>[=<feature_value>]" where the default 
+	feature value is 1 (as most features are binary).	 
+
+----------------------------------------------------------------------------
+
+III	Some Notes on the Implementation
+
+This modification is relatively easy because the Charniak parser already 
+implemented k-best parsing Algorithm 3 of Huang and Chiang (2005), which
+requires storing the forest (alternative hyperedges leading to a node).
+
+Details of this part (esp. re: Bst, Val) will come soon.
+
+under PARSE/ dir:
+	
+	parseIt.C: main loop, entrance point
+		
+		void printSentenceAndTag(ofstream & fout, SentRep * srp)
+
+			print to fout the sentence tag (specified in <s ...> from input), 
+			followed by TAB, and the sentence itself.
+
+		void printSkippedForest(ofstream & fout, SentRep * srp, MeChart * chart)
+
+			in case of parse failure, still output a flat FRAG forest.			
+			POS tags are supplied by chart.
+
+		mainLoop() calls printForest(fout, bst, srp) in Bst.C.
+
+			bst probably means "best", which seem to correspond to 
+			a node in the forest (along with its 1-best derivation).
+			here in mainLoop, bst points to the TOP node.
+
+	Bst.C:
+		
+		void printForest(ofstream & fout, Bst & bst, SentRep & sr)
+
+			main function for the major work of forest dumping.
+	
+			1. prepare all nodes (which is reachable from TOP (bst)) 
+				and hyperedges, by calling a recursive function
+					bst.prepareNode(visited, sr, start, cells, startid, 0)
+				which in turn prepares all the descendants.
+
+			2. print all nodes and hyperedges.
+
+		void Bst::prepareNode(set<Bst*> & visited, SentRep& sr, int & pos, \
+			Cellstype & cells, int & count, int dep)
+		
+			recursively prepare hyperedges of each node.
+
+	Bst.h:
+
+		  BSType BS; // incoming hyperedges (Backward-Star)
+
+
+----------------------------------------------------------------------------
+
+Appendix
+
+A. Post-Processing
+
+	These Python scripts are drawn from my forest reranker package, 
+	which is to be released separately. They are currently in ../forest-stage/.
+
+	General Test:
+
+		cat <forest_file> | ../forest-stage/forest.py -k <K>
+
+	for dumping <K>-best parses of each forest, which is useful to test if the forests
+	we got are correct (by comparing the k-best list with those from Charniak parser, 
+	modulo floating point bounding errors, which usually happens on the 4th digit).
+
+	A.1 Spurious Node Removal
+		
+		cat <forest_file> | ../forest-stage/remove_sp.py 	
+
+		Note: S1 are also changed into TOP after this step.
+
+	A.2 Forest Pruning
+	
+		cat <forest_file> | ../forest-stage/prune.py -p <log_prob>
+
+		Here <log_prob> is the (log) prob. beam you allow. 
+		For a hyperedge, if the best derivation that traverses through it
+		is e^{<log_prob>} worse than the global 1-best derivation, then it
+		will be pruned.
+
+		In my ACL 2008 paper I used a threshold of 10.
+
+	Example:
+	
+		cat test.forest | ../forest-stage/remove_sp.py \
+			| ../forest-stage/prune.py -p 5 > test.p5
+		diff -bd test.p5 test.forest.removed.pruned-p5
+		
+		** should be identical **
+		
+-----------------------------------------------------------------------------				
+
+
+Questions or Comments? Feel free to email me at lhuang3@cis.upenn.edu.
+Thanks for your interest.

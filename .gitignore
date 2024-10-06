@@ -29,6 +29,8 @@ rescore_module/models/
 test/
 outputs/
 deprecated/
-inside-outside/
+inside-outside/out*
+inside-outside/*.out
+inside-outside/test
 
 log*
